@@ -99,5 +99,15 @@ namespace EmployeManagementSoftware.Properties {
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Screenshot_2026_07_08_154020 {
+            get {
+                object obj = ResourceManager.GetObject("Screenshot 2026-07-08 154020", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
     }
 }
