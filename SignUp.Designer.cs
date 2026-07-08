@@ -39,6 +39,7 @@
             btnCreateAccount = new Button();
             linkLogin = new LinkLabel();
             txtConfirm = new TextBox();
+            lblConfirm = new Label();
             SuspendLayout();
             // 
             // panel1
@@ -64,7 +65,7 @@
             txtFullName.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
             txtFullName.Location = new Point(421, 37);
             txtFullName.Name = "txtFullName";
-            txtFullName.Size = new Size(100, 29);
+            txtFullName.Size = new Size(278, 29);
             txtFullName.TabIndex = 1;
             // 
             // lblEmail
@@ -80,16 +81,16 @@
             // txtEmail
             // 
             txtEmail.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            txtEmail.Location = new Point(407, 93);
+            txtEmail.Location = new Point(421, 93);
             txtEmail.Name = "txtEmail";
-            txtEmail.Size = new Size(100, 29);
+            txtEmail.Size = new Size(278, 29);
             txtEmail.TabIndex = 3;
             // 
             // lblPassword
             // 
             lblPassword.AutoSize = true;
             lblPassword.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            lblPassword.Location = new Point(311, 148);
+            lblPassword.Location = new Point(296, 178);
             lblPassword.Name = "lblPassword";
             lblPassword.Size = new Size(79, 21);
             lblPassword.TabIndex = 4;
@@ -98,17 +99,17 @@
             // txtPassword
             // 
             txtPassword.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            txtPassword.Location = new Point(433, 155);
+            txtPassword.Location = new Point(421, 170);
             txtPassword.Name = "txtPassword";
             txtPassword.PasswordChar = '*';
-            txtPassword.Size = new Size(100, 29);
+            txtPassword.Size = new Size(206, 29);
             txtPassword.TabIndex = 5;
             // 
             // chkShowPassword
             // 
             chkShowPassword.AutoSize = true;
             chkShowPassword.Font = new Font("Segoe UI Semibold", 9.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            chkShowPassword.Location = new Point(307, 214);
+            chkShowPassword.Location = new Point(586, 303);
             chkShowPassword.Name = "chkShowPassword";
             chkShowPassword.Size = new Size(122, 21);
             chkShowPassword.TabIndex = 6;
@@ -119,7 +120,7 @@
             // btnCreateAccount
             // 
             btnCreateAccount.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            btnCreateAccount.Location = new Point(338, 251);
+            btnCreateAccount.Location = new Point(311, 303);
             btnCreateAccount.Name = "btnCreateAccount";
             btnCreateAccount.Size = new Size(133, 27);
             btnCreateAccount.TabIndex = 7;
@@ -131,7 +132,7 @@
             // 
             linkLogin.AutoSize = true;
             linkLogin.Font = new Font("Segoe UI Semibold", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            linkLogin.Location = new Point(352, 311);
+            linkLogin.Location = new Point(526, 351);
             linkLogin.Name = "linkLogin";
             linkLogin.Size = new Size(182, 15);
             linkLogin.TabIndex = 8;
@@ -142,17 +143,28 @@
             // txtConfirm
             // 
             txtConfirm.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            txtConfirm.Location = new Point(493, 200);
+            txtConfirm.Location = new Point(421, 230);
             txtConfirm.Name = "txtConfirm";
             txtConfirm.PasswordChar = '*';
-            txtConfirm.Size = new Size(94, 29);
+            txtConfirm.Size = new Size(206, 29);
             txtConfirm.TabIndex = 9;
+            // 
+            // lblConfirm
+            // 
+            lblConfirm.AutoSize = true;
+            lblConfirm.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            lblConfirm.Location = new Point(273, 238);
+            lblConfirm.Name = "lblConfirm";
+            lblConfirm.Size = new Size(142, 21);
+            lblConfirm.TabIndex = 10;
+            lblConfirm.Text = "Confirm Password";
             // 
             // SignUp
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 450);
+            Controls.Add(lblConfirm);
             Controls.Add(txtConfirm);
             Controls.Add(linkLogin);
             Controls.Add(btnCreateAccount);
@@ -185,5 +197,6 @@
         private Button btnCreateAccount;
         private LinkLabel linkLogin;
         private TextBox txtConfirm;
+        private Label lblConfirm;
     }
 }
