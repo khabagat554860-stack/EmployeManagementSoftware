@@ -34,13 +34,20 @@
             label2 = new Label();
             label1 = new Label();
             pictureBox1 = new PictureBox();
+            pictureBox2 = new PictureBox();
+            label4 = new Label();
+            dataGridView1 = new DataGridView();
             panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)pictureBox2).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
             SuspendLayout();
             // 
             // panel1
             // 
             panel1.BackColor = Color.White;
+            panel1.Controls.Add(label4);
+            panel1.Controls.Add(pictureBox2);
             panel1.Controls.Add(pictureBox1);
             panel1.Controls.Add(label3);
             panel1.Controls.Add(label2);
@@ -103,11 +110,46 @@
             pictureBox1.TabStop = false;
             pictureBox1.Click += pictureBox1_Click;
             // 
+            // pictureBox2
+            // 
+            pictureBox2.BackgroundImageLayout = ImageLayout.Stretch;
+            pictureBox2.ErrorImage = null;
+            pictureBox2.Image = (Image)resources.GetObject("pictureBox2.Image");
+            pictureBox2.Location = new Point(27, 172);
+            pictureBox2.Name = "pictureBox2";
+            pictureBox2.Size = new Size(18, 18);
+            pictureBox2.SizeMode = PictureBoxSizeMode.StretchImage;
+            pictureBox2.TabIndex = 4;
+            pictureBox2.TabStop = false;
+            pictureBox2.Click += pictureBox2_Click;
+            // 
+            // label4
+            // 
+            label4.AutoSize = true;
+            label4.BackColor = Color.White;
+            label4.Font = new Font("Microsoft YaHei", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label4.ForeColor = Color.MidnightBlue;
+            label4.Location = new Point(51, 173);
+            label4.Name = "label4";
+            label4.Size = new Size(74, 17);
+            label4.TabIndex = 5;
+            label4.Text = "Employees";
+            label4.Click += label4_Click;
+            // 
+            // dataGridView1
+            // 
+            dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataGridView1.Location = new Point(189, -18);
+            dataGridView1.Name = "dataGridView1";
+            dataGridView1.Size = new Size(620, 494);
+            dataGridView1.TabIndex = 3;
+            // 
             // MainInterface
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 450);
+            Controls.Add(dataGridView1);
             Controls.Add(panel1);
             Name = "MainInterface";
             Text = "MainInterface";
@@ -115,6 +157,8 @@
             panel1.ResumeLayout(false);
             panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
+            ((System.ComponentModel.ISupportInitialize)pictureBox2).EndInit();
+            ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
             ResumeLayout(false);
         }
 
@@ -125,5 +169,8 @@
         private Label label1;
         private Label label3;
         private PictureBox pictureBox1;
+        private PictureBox pictureBox2;
+        private Label label4;
+        private DataGridView dataGridView1;
     }
 }
