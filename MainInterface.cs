@@ -31,7 +31,13 @@ namespace EmployeManagementSoftware
 
         private void lblDashboard_Click(object sender, EventArgs e)
         {
+            Dashboard dashboardForm = new Dashboard();
 
+            
+            dashboardForm.Show();
+
+           
+            this.Hide();
         }
 
         private void lblEmployees_Click(object sender, EventArgs e)

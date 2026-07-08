@@ -29,7 +29,11 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainInterface));
-            panel1 = new Panel();
+            panelMainInterface = new Panel();
+            lblSignOut = new Label();
+            pictureBox5 = new PictureBox();
+            lblSalary = new Label();
+            pictureBox4 = new PictureBox();
             pictureBox3 = new PictureBox();
             lblEmployees = new Label();
             lblDashboard = new Label();
@@ -37,40 +41,85 @@
             pictureBox1 = new PictureBox();
             label2 = new Label();
             lblStaffroom = new Label();
-            panel2 = new Panel();
-            pictureBox4 = new PictureBox();
-            lblSalary = new Label();
-            pictureBox5 = new PictureBox();
-            lblSignOut = new Label();
-            panel1.SuspendLayout();
+            panelMainInterface.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)pictureBox5).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)pictureBox4).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox3).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox2).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)pictureBox4).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)pictureBox5).BeginInit();
             SuspendLayout();
             // 
-            // panel1
+            // panelMainInterface
             // 
-            panel1.BackColor = Color.White;
-            panel1.Controls.Add(lblSignOut);
-            panel1.Controls.Add(pictureBox5);
-            panel1.Controls.Add(lblSalary);
-            panel1.Controls.Add(pictureBox4);
-            panel1.Controls.Add(pictureBox3);
-            panel1.Controls.Add(lblEmployees);
-            panel1.Controls.Add(lblDashboard);
-            panel1.Controls.Add(pictureBox2);
-            panel1.Controls.Add(pictureBox1);
-            panel1.Controls.Add(label2);
-            panel1.Controls.Add(lblStaffroom);
-            panel1.Dock = DockStyle.Left;
-            panel1.Location = new Point(0, 0);
-            panel1.Margin = new Padding(3, 4, 3, 4);
-            panel1.Name = "panel1";
-            panel1.Size = new Size(239, 600);
-            panel1.TabIndex = 2;
-            panel1.Paint += panel1_Paint;
+            panelMainInterface.BackColor = Color.White;
+            panelMainInterface.Controls.Add(lblSignOut);
+            panelMainInterface.Controls.Add(pictureBox5);
+            panelMainInterface.Controls.Add(lblSalary);
+            panelMainInterface.Controls.Add(pictureBox4);
+            panelMainInterface.Controls.Add(pictureBox3);
+            panelMainInterface.Controls.Add(lblEmployees);
+            panelMainInterface.Controls.Add(lblDashboard);
+            panelMainInterface.Controls.Add(pictureBox2);
+            panelMainInterface.Controls.Add(pictureBox1);
+            panelMainInterface.Controls.Add(label2);
+            panelMainInterface.Controls.Add(lblStaffroom);
+            panelMainInterface.Dock = DockStyle.Left;
+            panelMainInterface.Location = new Point(0, 0);
+            panelMainInterface.Margin = new Padding(3, 4, 3, 4);
+            panelMainInterface.Name = "panelMainInterface";
+            panelMainInterface.Size = new Size(239, 600);
+            panelMainInterface.TabIndex = 2;
+            panelMainInterface.Paint += panel1_Paint;
+            // 
+            // lblSignOut
+            // 
+            lblSignOut.AutoSize = true;
+            lblSignOut.BackColor = Color.White;
+            lblSignOut.Font = new Font("Microsoft YaHei", 10F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            lblSignOut.ForeColor = Color.MidnightBlue;
+            lblSignOut.Location = new Point(61, 488);
+            lblSignOut.Name = "lblSignOut";
+            lblSignOut.Size = new Size(84, 24);
+            lblSignOut.TabIndex = 11;
+            lblSignOut.Text = "Sign Out";
+            // 
+            // pictureBox5
+            // 
+            pictureBox5.BackgroundImageLayout = ImageLayout.Stretch;
+            pictureBox5.ErrorImage = null;
+            pictureBox5.Image = (Image)resources.GetObject("pictureBox5.Image");
+            pictureBox5.Location = new Point(31, 488);
+            pictureBox5.Margin = new Padding(3, 4, 3, 4);
+            pictureBox5.Name = "pictureBox5";
+            pictureBox5.Size = new Size(24, 24);
+            pictureBox5.SizeMode = PictureBoxSizeMode.StretchImage;
+            pictureBox5.TabIndex = 10;
+            pictureBox5.TabStop = false;
+            // 
+            // lblSalary
+            // 
+            lblSalary.AutoSize = true;
+            lblSalary.BackColor = Color.White;
+            lblSalary.Font = new Font("Microsoft YaHei", 10F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            lblSalary.ForeColor = Color.MidnightBlue;
+            lblSalary.Location = new Point(61, 276);
+            lblSalary.Name = "lblSalary";
+            lblSalary.Size = new Size(62, 24);
+            lblSalary.TabIndex = 9;
+            lblSalary.Text = "Salary";
+            // 
+            // pictureBox4
+            // 
+            pictureBox4.BackgroundImageLayout = ImageLayout.Stretch;
+            pictureBox4.ErrorImage = null;
+            pictureBox4.Image = (Image)resources.GetObject("pictureBox4.Image");
+            pictureBox4.Location = new Point(31, 276);
+            pictureBox4.Margin = new Padding(3, 4, 3, 4);
+            pictureBox4.Name = "pictureBox4";
+            pictureBox4.Size = new Size(24, 24);
+            pictureBox4.SizeMode = PictureBoxSizeMode.StretchImage;
+            pictureBox4.TabIndex = 8;
+            pictureBox4.TabStop = false;
             // 
             // pictureBox3
             // 
@@ -159,87 +208,29 @@
             lblStaffroom.Text = "Staffroom";
             lblStaffroom.Click += lblStaffroom_Click;
             // 
-            // panel2
-            // 
-            panel2.Location = new Point(237, 0);
-            panel2.Name = "panel2";
-            panel2.Size = new Size(683, 529);
-            panel2.TabIndex = 3;
-            // 
-            // pictureBox4
-            // 
-            pictureBox4.BackgroundImageLayout = ImageLayout.Stretch;
-            pictureBox4.ErrorImage = null;
-            pictureBox4.Image = (Image)resources.GetObject("pictureBox4.Image");
-            pictureBox4.Location = new Point(31, 276);
-            pictureBox4.Margin = new Padding(3, 4, 3, 4);
-            pictureBox4.Name = "pictureBox4";
-            pictureBox4.Size = new Size(24, 24);
-            pictureBox4.SizeMode = PictureBoxSizeMode.StretchImage;
-            pictureBox4.TabIndex = 8;
-            pictureBox4.TabStop = false;
-            // 
-            // lblSalary
-            // 
-            lblSalary.AutoSize = true;
-            lblSalary.BackColor = Color.White;
-            lblSalary.Font = new Font("Microsoft YaHei", 10F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            lblSalary.ForeColor = Color.MidnightBlue;
-            lblSalary.Location = new Point(61, 276);
-            lblSalary.Name = "lblSalary";
-            lblSalary.Size = new Size(62, 24);
-            lblSalary.TabIndex = 9;
-            lblSalary.Text = "Salary";
-            // 
-            // pictureBox5
-            // 
-            pictureBox5.BackgroundImageLayout = ImageLayout.Stretch;
-            pictureBox5.ErrorImage = null;
-            pictureBox5.Image = (Image)resources.GetObject("pictureBox5.Image");
-            pictureBox5.Location = new Point(31, 488);
-            pictureBox5.Margin = new Padding(3, 4, 3, 4);
-            pictureBox5.Name = "pictureBox5";
-            pictureBox5.Size = new Size(24, 24);
-            pictureBox5.SizeMode = PictureBoxSizeMode.StretchImage;
-            pictureBox5.TabIndex = 10;
-            pictureBox5.TabStop = false;
-            // 
-            // lblSignOut
-            // 
-            lblSignOut.AutoSize = true;
-            lblSignOut.BackColor = Color.White;
-            lblSignOut.Font = new Font("Microsoft YaHei", 10F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            lblSignOut.ForeColor = Color.MidnightBlue;
-            lblSignOut.Location = new Point(61, 488);
-            lblSignOut.Name = "lblSignOut";
-            lblSignOut.Size = new Size(84, 24);
-            lblSignOut.TabIndex = 11;
-            lblSignOut.Text = "Sign Out";
-            // 
             // MainInterface
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(914, 600);
-            Controls.Add(panel2);
-            Controls.Add(panel1);
+            Controls.Add(panelMainInterface);
             Margin = new Padding(3, 4, 3, 4);
             Name = "MainInterface";
             Text = "MainInterface";
             Load += MainInterface_Load;
-            panel1.ResumeLayout(false);
-            panel1.PerformLayout();
+            panelMainInterface.ResumeLayout(false);
+            panelMainInterface.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)pictureBox5).EndInit();
+            ((System.ComponentModel.ISupportInitialize)pictureBox4).EndInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox3).EndInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox2).EndInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
-            ((System.ComponentModel.ISupportInitialize)pictureBox4).EndInit();
-            ((System.ComponentModel.ISupportInitialize)pictureBox5).EndInit();
             ResumeLayout(false);
         }
 
         #endregion
 
-        private Panel panel1;
+        private Panel panelMainInterface;
         private Label label2;
         private Label lblStaffroom;
         private PictureBox pictureBox1;
@@ -247,7 +238,6 @@
         private Label lblEmployees;
         private Label lblDashboard;
         private PictureBox pictureBox3;
-        private Panel panel2;
         private Label lblSalary;
         private PictureBox pictureBox4;
         private Label lblSignOut;
