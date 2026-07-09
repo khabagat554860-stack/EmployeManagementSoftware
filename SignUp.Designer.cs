@@ -383,6 +383,7 @@
             txtConfirm.Location = new Point(672, 445);
             txtConfirm.Margin = new Padding(4);
             txtConfirm.Name = "txtConfirm";
+            txtConfirm.PasswordChar = '*';
             txtConfirm.PlaceholderText = "Confirm your password";
             txtConfirm.SelectedText = "";
             txtConfirm.ShadowDecoration.CustomizableEdges = customizableEdges10;
