@@ -29,32 +29,86 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainInterface));
-            panelMainInterface = new Panel();
-            lblSignOut = new Label();
-            pictureBox5 = new PictureBox();
-            lblSalary = new Label();
-            pictureBox4 = new PictureBox();
-            pictureBox3 = new PictureBox();
-            lblEmployees = new Label();
-            lblDashboard = new Label();
+            panel1 = new Panel();
+            label4 = new Label();
             pictureBox2 = new PictureBox();
             pictureBox1 = new PictureBox();
+            label3 = new Label();
             label2 = new Label();
-            lblStaffroom = new Label();
-            menuContainerPanel = new Panel();
-            sigOutContainerPanel = new Panel();
-            mainPanel = new Panel();
-            panelMainInterface.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)pictureBox5).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)pictureBox4).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)pictureBox3).BeginInit();
+            label1 = new Label();
+            dataGridView1 = new DataGridView();
+            panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox2).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
-            menuContainerPanel.SuspendLayout();
-            sigOutContainerPanel.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
             SuspendLayout();
             // 
-            // panelMainInterface
+            // panel1
+            // 
+            panel1.BackColor = Color.White;
+            panel1.Controls.Add(label4);
+            panel1.Controls.Add(pictureBox2);
+            panel1.Controls.Add(pictureBox1);
+            panel1.Controls.Add(label3);
+            panel1.Controls.Add(label2);
+            panel1.Controls.Add(label1);
+            panel1.Location = new Point(0, -7);
+            panel1.Name = "panel1";
+            panel1.Size = new Size(183, 483);
+            panel1.TabIndex = 2;
+            panel1.Paint += panel1_Paint;
+            // 
+            // label4
+            // 
+            label4.AutoSize = true;
+            label4.BackColor = Color.White;
+            label4.Font = new Font("Microsoft YaHei", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label4.ForeColor = Color.MidnightBlue;
+            label4.Location = new Point(51, 173);
+            label4.Name = "label4";
+            label4.Size = new Size(74, 17);
+            label4.TabIndex = 5;
+            label4.Text = "Employees";
+            label4.Click += label4_Click;
+            // 
+            // pictureBox2
+            // 
+            pictureBox2.BackgroundImageLayout = ImageLayout.Stretch;
+            pictureBox2.ErrorImage = null;
+            pictureBox2.Image = (Image)resources.GetObject("pictureBox2.Image");
+            pictureBox2.Location = new Point(27, 172);
+            pictureBox2.Name = "pictureBox2";
+            pictureBox2.Size = new Size(18, 18);
+            pictureBox2.SizeMode = PictureBoxSizeMode.StretchImage;
+            pictureBox2.TabIndex = 4;
+            pictureBox2.TabStop = false;
+            pictureBox2.Click += pictureBox2_Click;
+            // 
+            // pictureBox1
+            // 
+            pictureBox1.BackgroundImageLayout = ImageLayout.Stretch;
+            pictureBox1.ErrorImage = (Image)resources.GetObject("pictureBox1.ErrorImage");
+            pictureBox1.Image = (Image)resources.GetObject("pictureBox1.Image");
+            pictureBox1.Location = new Point(27, 132);
+            pictureBox1.Name = "pictureBox1";
+            pictureBox1.Size = new Size(18, 18);
+            pictureBox1.SizeMode = PictureBoxSizeMode.StretchImage;
+            pictureBox1.TabIndex = 3;
+            pictureBox1.TabStop = false;
+            pictureBox1.Click += pictureBox1_Click;
+            // 
+            // label3
+            // 
+            label3.AutoSize = true;
+            label3.BackColor = Color.White;
+            label3.Font = new Font("Microsoft YaHei", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label3.ForeColor = Color.MidnightBlue;
+            label3.Location = new Point(51, 133);
+            label3.Name = "label3";
+            label3.Size = new Size(75, 17);
+            label3.TabIndex = 2;
+            label3.Text = "Dashboard";
+            label3.Click += label3_Click;
             // 
             panelMainInterface.BackColor = Color.White;
             panelMainInterface.Controls.Add(sigOutContainerPanel);
@@ -83,102 +137,7 @@
             // 
             // pictureBox5
             // 
-            pictureBox5.BackgroundImageLayout = ImageLayout.Stretch;
-            pictureBox5.ErrorImage = null;
-            pictureBox5.Image = (Image)resources.GetObject("pictureBox5.Image");
-            pictureBox5.Location = new Point(32, 20);
-            pictureBox5.Name = "pictureBox5";
-            pictureBox5.Size = new Size(21, 18);
-            pictureBox5.SizeMode = PictureBoxSizeMode.StretchImage;
-            pictureBox5.TabIndex = 10;
-            pictureBox5.TabStop = false;
-            // 
-            // lblSalary
-            // 
-            lblSalary.AutoSize = true;
-            lblSalary.BackColor = Color.White;
-            lblSalary.Font = new Font("Microsoft YaHei", 10F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            lblSalary.ForeColor = Color.MidnightBlue;
-            lblSalary.Location = new Point(39, 120);
-            lblSalary.Name = "lblSalary";
-            lblSalary.Size = new Size(51, 19);
-            lblSalary.TabIndex = 9;
-            lblSalary.Text = "Salary";
-            // 
-            // pictureBox4
-            // 
-            pictureBox4.BackgroundImageLayout = ImageLayout.Stretch;
-            pictureBox4.ErrorImage = null;
-            pictureBox4.Image = (Image)resources.GetObject("pictureBox4.Image");
-            pictureBox4.Location = new Point(13, 120);
-            pictureBox4.Name = "pictureBox4";
-            pictureBox4.Size = new Size(21, 21);
-            pictureBox4.SizeMode = PictureBoxSizeMode.StretchImage;
-            pictureBox4.TabIndex = 8;
-            pictureBox4.TabStop = false;
-            // 
-            // pictureBox3
-            // 
-            pictureBox3.BackgroundImage = (Image)resources.GetObject("pictureBox3.BackgroundImage");
-            pictureBox3.BackgroundImageLayout = ImageLayout.Stretch;
-            pictureBox3.Location = new Point(12, 26);
-            pictureBox3.Margin = new Padding(3, 2, 3, 2);
-            pictureBox3.Name = "pictureBox3";
-            pictureBox3.Size = new Size(46, 46);
-            pictureBox3.TabIndex = 7;
-            pictureBox3.TabStop = false;
-            // 
-            // lblEmployees
-            // 
-            lblEmployees.AutoSize = true;
-            lblEmployees.BackColor = Color.White;
-            lblEmployees.Font = new Font("Microsoft YaHei", 10F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            lblEmployees.ForeColor = Color.MidnightBlue;
-            lblEmployees.Location = new Point(37, 85);
-            lblEmployees.Name = "lblEmployees";
-            lblEmployees.Size = new Size(84, 19);
-            lblEmployees.TabIndex = 6;
-            lblEmployees.Text = "Employees";
-            lblEmployees.Click += lblEmployees_Click;
-            // 
-            // lblDashboard
-            // 
-            lblDashboard.AutoSize = true;
-            lblDashboard.BackColor = Color.White;
-            lblDashboard.Font = new Font("Microsoft YaHei", 10F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            lblDashboard.ForeColor = Color.MidnightBlue;
-            lblDashboard.Location = new Point(37, 45);
-            lblDashboard.Name = "lblDashboard";
-            lblDashboard.Size = new Size(85, 19);
-            lblDashboard.TabIndex = 5;
-            lblDashboard.Text = "Dashboard";
-            lblDashboard.Click += lblDashboard_Click;
-            // 
-            // pictureBox2
-            // 
-            pictureBox2.BackgroundImageLayout = ImageLayout.Stretch;
-            pictureBox2.ErrorImage = null;
-            pictureBox2.Image = (Image)resources.GetObject("pictureBox2.Image");
-            pictureBox2.Location = new Point(13, 85);
-            pictureBox2.Name = "pictureBox2";
-            pictureBox2.Size = new Size(21, 21);
-            pictureBox2.SizeMode = PictureBoxSizeMode.StretchImage;
-            pictureBox2.TabIndex = 4;
-            pictureBox2.TabStop = false;
-            // 
-            // pictureBox1
-            // 
-            pictureBox1.BackgroundImageLayout = ImageLayout.Stretch;
-            pictureBox1.ErrorImage = (Image)resources.GetObject("pictureBox1.ErrorImage");
-            pictureBox1.Image = (Image)resources.GetObject("pictureBox1.Image");
-            pictureBox1.Location = new Point(13, 45);
-            pictureBox1.Name = "pictureBox1";
-            pictureBox1.Size = new Size(21, 21);
-            pictureBox1.SizeMode = PictureBoxSizeMode.StretchImage;
-            pictureBox1.TabIndex = 3;
-            pictureBox1.TabStop = false;
-            // 
-            // label2
+            // dataGridView1
             // 
             label2.AutoSize = true;
             label2.BackColor = Color.White;
@@ -246,17 +205,11 @@
             Name = "MainInterface";
             Text = "MainInterface";
             Load += MainInterface_Load;
-            panelMainInterface.ResumeLayout(false);
-            panelMainInterface.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)pictureBox5).EndInit();
-            ((System.ComponentModel.ISupportInitialize)pictureBox4).EndInit();
-            ((System.ComponentModel.ISupportInitialize)pictureBox3).EndInit();
+            panel1.ResumeLayout(false);
+            panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox2).EndInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
-            menuContainerPanel.ResumeLayout(false);
-            menuContainerPanel.PerformLayout();
-            sigOutContainerPanel.ResumeLayout(false);
-            sigOutContainerPanel.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
             ResumeLayout(false);
         }
 

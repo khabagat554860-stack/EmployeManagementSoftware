@@ -1,0 +1,331 @@
+﻿namespace EmployeManagementSoftware
+{
+    partial class AddEmployee
+    {
+        /// <summary>
+        /// Required designer variable.
+        /// </summary>
+        private System.ComponentModel.IContainer components = null;
+
+        /// <summary>
+        /// Clean up any resources being used.
+        /// </summary>
+        /// <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        protected override void Dispose(bool disposing)
+        {
+            if (disposing && (components != null))
+            {
+                components.Dispose();
+            }
+            base.Dispose(disposing);
+        }
+
+        #region Windows Form Designer generated code
+
+        /// <summary>
+        /// Required method for Designer support - do not modify
+        /// the contents of this method with the code editor.
+        /// </summary>
+        private void InitializeComponent()
+        {
+            panel2 = new Panel();
+            btnClear = new Button();
+            btnLoad = new Button();
+            btnDelete = new Button();
+            cbPosition = new ComboBox();
+            label6 = new Label();
+            btnAdd = new Button();
+            btnImport = new Button();
+            pbPicuture = new PictureBox();
+            txtPhoneNumber = new TextBox();
+            label5 = new Label();
+            cbGender = new ComboBox();
+            label4 = new Label();
+            txtFullName = new TextBox();
+            label3 = new Label();
+            txtEmployeeID = new TextBox();
+            label2 = new Label();
+            panel1 = new Panel();
+            dataGridView1 = new DataGridView();
+            label1 = new Label();
+            panel2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)pbPicuture).BeginInit();
+            panel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
+            SuspendLayout();
+            // 
+            // panel2
+            // 
+            panel2.BackColor = SystemColors.ButtonHighlight;
+            panel2.BorderStyle = BorderStyle.FixedSingle;
+            panel2.Controls.Add(btnClear);
+            panel2.Controls.Add(btnLoad);
+            panel2.Controls.Add(btnDelete);
+            panel2.Controls.Add(cbPosition);
+            panel2.Controls.Add(label6);
+            panel2.Controls.Add(btnAdd);
+            panel2.Controls.Add(btnImport);
+            panel2.Controls.Add(pbPicuture);
+            panel2.Controls.Add(txtPhoneNumber);
+            panel2.Controls.Add(label5);
+            panel2.Controls.Add(cbGender);
+            panel2.Controls.Add(label4);
+            panel2.Controls.Add(txtFullName);
+            panel2.Controls.Add(label3);
+            panel2.Controls.Add(txtEmployeeID);
+            panel2.Controls.Add(label2);
+            panel2.Location = new Point(12, 278);
+            panel2.Name = "panel2";
+            panel2.Size = new Size(835, 243);
+            panel2.TabIndex = 5;
+            // 
+            // btnClear
+            // 
+            btnClear.BackColor = Color.FromArgb(0, 150, 200);
+            btnClear.Cursor = Cursors.Hand;
+            btnClear.FlatAppearance.BorderColor = Color.FromArgb(0, 150, 200);
+            btnClear.FlatAppearance.CheckedBackColor = Color.FromArgb(0, 150, 200);
+            btnClear.FlatAppearance.MouseDownBackColor = Color.FromArgb(0, 150, 200);
+            btnClear.FlatAppearance.MouseOverBackColor = Color.FromArgb(0, 150, 200);
+            btnClear.FlatStyle = FlatStyle.Flat;
+            btnClear.Font = new Font("Segoe UI Semibold", 14.25F, FontStyle.Bold);
+            btnClear.Location = new Point(522, 160);
+            btnClear.Name = "btnClear";
+            btnClear.Size = new Size(109, 50);
+            btnClear.TabIndex = 15;
+            btnClear.Text = "CLEAR";
+            btnClear.UseVisualStyleBackColor = false;
+            // 
+            // btnLoad
+            // 
+            btnLoad.BackColor = Color.FromArgb(0, 150, 200);
+            btnLoad.Cursor = Cursors.Hand;
+            btnLoad.FlatAppearance.BorderColor = Color.FromArgb(0, 150, 200);
+            btnLoad.FlatAppearance.CheckedBackColor = Color.FromArgb(0, 150, 200);
+            btnLoad.FlatAppearance.MouseDownBackColor = Color.FromArgb(0, 150, 200);
+            btnLoad.FlatAppearance.MouseOverBackColor = Color.FromArgb(0, 150, 200);
+            btnLoad.FlatStyle = FlatStyle.Flat;
+            btnLoad.Font = new Font("Segoe UI Semibold", 14.25F, FontStyle.Bold);
+            btnLoad.Location = new Point(378, 160);
+            btnLoad.Name = "btnLoad";
+            btnLoad.Size = new Size(109, 50);
+            btnLoad.TabIndex = 14;
+            btnLoad.Text = "LOAD";
+            btnLoad.UseVisualStyleBackColor = false;
+            // 
+            // btnDelete
+            // 
+            btnDelete.BackColor = Color.FromArgb(0, 150, 200);
+            btnDelete.Cursor = Cursors.Hand;
+            btnDelete.FlatAppearance.BorderColor = Color.FromArgb(0, 150, 200);
+            btnDelete.FlatAppearance.CheckedBackColor = Color.FromArgb(0, 150, 200);
+            btnDelete.FlatAppearance.MouseDownBackColor = Color.FromArgb(0, 150, 200);
+            btnDelete.FlatAppearance.MouseOverBackColor = Color.FromArgb(0, 150, 200);
+            btnDelete.FlatStyle = FlatStyle.Flat;
+            btnDelete.Font = new Font("Segoe UI Semibold", 14.25F, FontStyle.Bold);
+            btnDelete.Location = new Point(241, 160);
+            btnDelete.Name = "btnDelete";
+            btnDelete.Size = new Size(109, 50);
+            btnDelete.TabIndex = 13;
+            btnDelete.Text = "DELETE";
+            btnDelete.UseVisualStyleBackColor = false;
+            // 
+            // cbPosition
+            // 
+            cbPosition.FormattingEnabled = true;
+            cbPosition.Items.AddRange(new object[] { "Male\t", "Female", "Others" });
+            cbPosition.Location = new Point(429, 51);
+            cbPosition.Name = "cbPosition";
+            cbPosition.Size = new Size(150, 23);
+            cbPosition.TabIndex = 12;
+            // 
+            // label6
+            // 
+            label6.AutoSize = true;
+            label6.Font = new Font("Microsoft Sans Serif", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            label6.Location = new Point(343, 51);
+            label6.Name = "label6";
+            label6.Size = new Size(54, 15);
+            label6.TabIndex = 11;
+            label6.Text = "Position:";
+            // 
+            // btnAdd
+            // 
+            btnAdd.BackColor = Color.FromArgb(0, 150, 200);
+            btnAdd.Cursor = Cursors.Hand;
+            btnAdd.FlatAppearance.BorderColor = Color.FromArgb(0, 150, 200);
+            btnAdd.FlatAppearance.CheckedBackColor = Color.FromArgb(0, 150, 200);
+            btnAdd.FlatAppearance.MouseDownBackColor = Color.FromArgb(0, 150, 200);
+            btnAdd.FlatAppearance.MouseOverBackColor = Color.FromArgb(0, 150, 200);
+            btnAdd.FlatStyle = FlatStyle.Flat;
+            btnAdd.Font = new Font("Segoe UI Semibold", 14.25F, FontStyle.Bold);
+            btnAdd.Location = new Point(97, 160);
+            btnAdd.Name = "btnAdd";
+            btnAdd.Size = new Size(109, 50);
+            btnAdd.TabIndex = 10;
+            btnAdd.Text = "ADD";
+            btnAdd.UseVisualStyleBackColor = false;
+            // 
+            // btnImport
+            // 
+            btnImport.BackColor = Color.FromArgb(0, 150, 200);
+            btnImport.Cursor = Cursors.Hand;
+            btnImport.FlatStyle = FlatStyle.Flat;
+            btnImport.Font = new Font("Microsoft Sans Serif", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            btnImport.Location = new Point(706, 132);
+            btnImport.Name = "btnImport";
+            btnImport.Size = new Size(118, 25);
+            btnImport.TabIndex = 9;
+            btnImport.Text = "Import";
+            btnImport.UseVisualStyleBackColor = false;
+            // 
+            // pbPicuture
+            // 
+            pbPicuture.BackColor = SystemColors.ButtonShadow;
+            pbPicuture.Location = new Point(706, 28);
+            pbPicuture.Name = "pbPicuture";
+            pbPicuture.Size = new Size(118, 101);
+            pbPicuture.TabIndex = 8;
+            pbPicuture.TabStop = false;
+            // 
+            // txtPhoneNumber
+            // 
+            txtPhoneNumber.Location = new Point(429, 13);
+            txtPhoneNumber.Name = "txtPhoneNumber";
+            txtPhoneNumber.Size = new Size(150, 23);
+            txtPhoneNumber.TabIndex = 7;
+            // 
+            // label5
+            // 
+            label5.AutoSize = true;
+            label5.Font = new Font("Microsoft Sans Serif", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            label5.Location = new Point(313, 17);
+            label5.Name = "label5";
+            label5.Size = new Size(94, 15);
+            label5.TabIndex = 6;
+            label5.Text = "Phone Number:";
+            // 
+            // cbGender
+            // 
+            cbGender.FormattingEnabled = true;
+            cbGender.Items.AddRange(new object[] { "Male\t", "Female", "Others" });
+            cbGender.Location = new Point(96, 99);
+            cbGender.Name = "cbGender";
+            cbGender.Size = new Size(150, 23);
+            cbGender.TabIndex = 5;
+            // 
+            // label4
+            // 
+            label4.AutoSize = true;
+            label4.Font = new Font("Microsoft Sans Serif", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            label4.Location = new Point(10, 99);
+            label4.Name = "label4";
+            label4.Size = new Size(51, 15);
+            label4.TabIndex = 4;
+            label4.Text = "Gender:";
+            // 
+            // txtFullName
+            // 
+            txtFullName.Location = new Point(96, 57);
+            txtFullName.Name = "txtFullName";
+            txtFullName.Size = new Size(150, 23);
+            txtFullName.TabIndex = 3;
+            // 
+            // label3
+            // 
+            label3.AutoSize = true;
+            label3.Font = new Font("Microsoft Sans Serif", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            label3.Location = new Point(10, 59);
+            label3.Name = "label3";
+            label3.Size = new Size(67, 15);
+            label3.TabIndex = 2;
+            label3.Text = "Full Name:";
+            // 
+            // txtEmployeeID
+            // 
+            txtEmployeeID.Location = new Point(96, 13);
+            txtEmployeeID.Name = "txtEmployeeID";
+            txtEmployeeID.Size = new Size(150, 23);
+            txtEmployeeID.TabIndex = 1;
+            // 
+            // label2
+            // 
+            label2.AutoSize = true;
+            label2.Font = new Font("Microsoft Sans Serif", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            label2.Location = new Point(10, 15);
+            label2.Name = "label2";
+            label2.Size = new Size(80, 15);
+            label2.TabIndex = 0;
+            label2.Text = "Employee ID:";
+            // 
+            // panel1
+            // 
+            panel1.BackColor = SystemColors.ButtonHighlight;
+            panel1.BorderStyle = BorderStyle.FixedSingle;
+            panel1.Controls.Add(dataGridView1);
+            panel1.Controls.Add(label1);
+            panel1.Location = new Point(12, 6);
+            panel1.Name = "panel1";
+            panel1.Size = new Size(835, 231);
+            panel1.TabIndex = 4;
+            // 
+            // dataGridView1
+            // 
+            dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataGridView1.Location = new Point(10, 31);
+            dataGridView1.Name = "dataGridView1";
+            dataGridView1.Size = new Size(814, 179);
+            dataGridView1.TabIndex = 1;
+            // 
+            // label1
+            // 
+            label1.AutoSize = true;
+            label1.Font = new Font("Tahoma", 14.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            label1.Location = new Point(10, 5);
+            label1.Name = "label1";
+            label1.Size = new Size(148, 23);
+            label1.TabIndex = 0;
+            label1.Text = "Employee's Data";
+            // 
+            // AddEmployee
+            // 
+            AutoScaleDimensions = new SizeF(7F, 15F);
+            AutoScaleMode = AutoScaleMode.Font;
+            ClientSize = new Size(859, 526);
+            Controls.Add(panel2);
+            Controls.Add(panel1);
+            Name = "AddEmployee";
+            Text = "AddEmployee";
+            panel2.ResumeLayout(false);
+            panel2.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)pbPicuture).EndInit();
+            panel1.ResumeLayout(false);
+            panel1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
+            ResumeLayout(false);
+        }
+
+        #endregion
+
+        private Panel panel2;
+        private Button btnClear;
+        private Button btnLoad;
+        private Button btnDelete;
+        private ComboBox cbPosition;
+        private Label label6;
+        private Button btnAdd;
+        private Button btnImport;
+        private PictureBox pbPicuture;
+        private TextBox txtPhoneNumber;
+        private Label label5;
+        private ComboBox cbGender;
+        private Label label4;
+        private TextBox txtFullName;
+        private Label label3;
+        private TextBox txtEmployeeID;
+        private Label label2;
+        private Panel panel1;
+        private DataGridView dataGridView1;
+        private Label label1;
+    }
+}

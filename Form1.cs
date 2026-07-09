@@ -64,14 +64,7 @@ namespace EmployeManagementSoftware
 
         private void checkshowpassword_CheckedChanged(object sender, EventArgs e)
         {
-            if (checkshowpassword.Checked)
-            {
-                txtpassword.UseSystemPasswordChar = false;
-            }
-            else
-            {
-                txtpassword.UseSystemPasswordChar = true;
-            }
+            txtpassword.PasswordChar = checkshowpassword.Checked ? '\0' : '*';
         }
 
         
