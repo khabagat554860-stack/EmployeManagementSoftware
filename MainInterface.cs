@@ -33,10 +33,10 @@ namespace EmployeManagementSoftware
         {
             Dashboard dashboardForm = new Dashboard();
 
-            
+
             dashboardForm.Show();
 
-           
+
             this.Hide();
         }
 
@@ -48,6 +48,18 @@ namespace EmployeManagementSoftware
         private void lblStaffroom_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void lblSignOut_Click(object sender, EventArgs e)
+        {
+
+            Form1 loginForm = new Form1();
+
+            
+            loginForm.Show();
+
+            
+            this.Close();
         }
     }
 }
