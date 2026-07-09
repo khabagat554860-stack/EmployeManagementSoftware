@@ -31,13 +31,19 @@ namespace EmployeManagementSoftware
 
         private void lblDashboard_Click(object sender, EventArgs e)
         {
-            Dashboard dashboardForm = new Dashboard();
-
-            
-            dashboardForm.Show();
+            mainPanel.Controls.Clear();
 
            
-            this.Hide();
+            Dashboard dashboardForm = new Dashboard();
+
+            dashboardForm.TopLevel = false;
+
+            dashboardForm.FormBorderStyle = FormBorderStyle.None;
+
+            dashboardForm.Dock = DockStyle.Fill;
+
+            mainPanel.Controls.Add(dashboardForm);
+            dashboardForm.Show();
         }
 
         private void lblEmployees_Click(object sender, EventArgs e)
@@ -48,6 +54,18 @@ namespace EmployeManagementSoftware
         private void lblStaffroom_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void lblSignOut_Click(object sender, EventArgs e)
+        {
+
+            Form1 loginForm = new Form1();
+
+            
+            loginForm.Show();
+
+            
+            this.Close();
         }
     }
 }
