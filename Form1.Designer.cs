@@ -146,6 +146,7 @@
             txtpassword.Location = new Point(13, 342);
             txtpassword.Margin = new Padding(4);
             txtpassword.Name = "txtpassword";
+            txtpassword.PasswordChar = '*';
             txtpassword.PlaceholderForeColor = Color.FromArgb(0, 150, 200);
             txtpassword.PlaceholderText = "Type Password Here";
             txtpassword.SelectedText = "";
