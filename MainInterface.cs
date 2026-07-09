@@ -22,39 +22,50 @@ namespace EmployeManagementSoftware
 
         }
 
-        private void label2_Click(object sender, EventArgs e)
-        {
 
-        }
-
-        private void label1_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label3_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void pictureBox1_Click(object sender, EventArgs e)
-        {
-
-        }
 
         private void MainInterface_Load(object sender, EventArgs e)
         {
 
         }
 
-        private void pictureBox2_Click(object sender, EventArgs e)
+        private void lblDashboard_Click(object sender, EventArgs e)
+        {
+            mainPanel.Controls.Clear();
+
+           
+            Dashboard dashboardForm = new Dashboard();
+
+            dashboardForm.TopLevel = false;
+
+            dashboardForm.FormBorderStyle = FormBorderStyle.None;
+
+            dashboardForm.Dock = DockStyle.Fill;
+
+            mainPanel.Controls.Add(dashboardForm);
+            dashboardForm.Show();
+        }
+
+        private void lblEmployees_Click(object sender, EventArgs e)
         {
 
         }
 
-        private void label4_Click(object sender, EventArgs e)
+        private void lblStaffroom_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void lblSignOut_Click(object sender, EventArgs e)
+        {
+
+            Form1 loginForm = new Form1();
+
+            
+            loginForm.Show();
+
+            
+            this.Close();
         }
     }
 }

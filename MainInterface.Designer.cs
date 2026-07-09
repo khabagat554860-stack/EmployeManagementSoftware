@@ -110,47 +110,98 @@
             label3.Text = "Dashboard";
             label3.Click += label3_Click;
             // 
-            // label2
+            panelMainInterface.BackColor = Color.White;
+            panelMainInterface.Controls.Add(sigOutContainerPanel);
+            panelMainInterface.Controls.Add(menuContainerPanel);
+            panelMainInterface.Controls.Add(pictureBox3);
+            panelMainInterface.Controls.Add(lblStaffroom);
+            panelMainInterface.Dock = DockStyle.Left;
+            panelMainInterface.Location = new Point(0, 0);
+            panelMainInterface.Name = "panelMainInterface";
+            panelMainInterface.Size = new Size(209, 450);
+            panelMainInterface.TabIndex = 2;
+            panelMainInterface.Paint += panel1_Paint;
+            // 
+            // lblSignOut
+            // 
+            lblSignOut.AutoSize = true;
+            lblSignOut.BackColor = Color.White;
+            lblSignOut.Font = new Font("Microsoft YaHei", 10F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            lblSignOut.ForeColor = Color.MidnightBlue;
+            lblSignOut.Location = new Point(58, 20);
+            lblSignOut.Name = "lblSignOut";
+            lblSignOut.Size = new Size(69, 19);
+            lblSignOut.TabIndex = 11;
+            lblSignOut.Text = "Sign Out";
+            lblSignOut.Click += lblSignOut_Click;
+            // 
+            // pictureBox5
+            // 
+            // dataGridView1
             // 
             label2.AutoSize = true;
             label2.BackColor = Color.White;
             label2.Font = new Font("Microsoft YaHei", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
             label2.ForeColor = Color.MidnightBlue;
-            label2.Location = new Point(12, 101);
+            label2.Location = new Point(13, 15);
             label2.Name = "label2";
             label2.Size = new Size(43, 17);
             label2.TabIndex = 1;
             label2.Text = "Menu";
-            label2.Click += label2_Click;
             // 
-            // label1
+            // lblStaffroom
             // 
-            label1.AutoSize = true;
-            label1.BackColor = Color.White;
-            label1.Font = new Font("Microsoft YaHei", 14.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label1.ForeColor = Color.MidnightBlue;
-            label1.Location = new Point(31, 27);
-            label1.Name = "label1";
-            label1.Size = new Size(109, 26);
-            label1.TabIndex = 0;
-            label1.Text = "Staffroom";
-            label1.Click += label1_Click;
+            lblStaffroom.AutoSize = true;
+            lblStaffroom.BackColor = Color.White;
+            lblStaffroom.Font = new Font("Microsoft YaHei", 14.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            lblStaffroom.ForeColor = Color.MidnightBlue;
+            lblStaffroom.Location = new Point(64, 33);
+            lblStaffroom.Name = "lblStaffroom";
+            lblStaffroom.Size = new Size(136, 26);
+            lblStaffroom.TabIndex = 0;
+            lblStaffroom.Text = "STAFFROOM";
+            lblStaffroom.Click += lblStaffroom_Click;
             // 
-            // dataGridView1
+            // menuContainerPanel
             // 
-            dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridView1.Location = new Point(189, -18);
-            dataGridView1.Name = "dataGridView1";
-            dataGridView1.Size = new Size(620, 494);
-            dataGridView1.TabIndex = 3;
+            menuContainerPanel.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left;
+            menuContainerPanel.Controls.Add(label2);
+            menuContainerPanel.Controls.Add(pictureBox1);
+            menuContainerPanel.Controls.Add(lblSalary);
+            menuContainerPanel.Controls.Add(pictureBox2);
+            menuContainerPanel.Controls.Add(pictureBox4);
+            menuContainerPanel.Controls.Add(lblDashboard);
+            menuContainerPanel.Controls.Add(lblEmployees);
+            menuContainerPanel.Location = new Point(12, 129);
+            menuContainerPanel.Name = "menuContainerPanel";
+            menuContainerPanel.Size = new Size(179, 151);
+            menuContainerPanel.TabIndex = 0;
+            // 
+            // sigOutContainerPanel
+            // 
+            sigOutContainerPanel.Controls.Add(lblSignOut);
+            sigOutContainerPanel.Controls.Add(pictureBox5);
+            sigOutContainerPanel.Dock = DockStyle.Bottom;
+            sigOutContainerPanel.Location = new Point(0, 397);
+            sigOutContainerPanel.Name = "sigOutContainerPanel";
+            sigOutContainerPanel.Size = new Size(209, 53);
+            sigOutContainerPanel.TabIndex = 1;
+            // 
+            // mainPanel
+            // 
+            mainPanel.Dock = DockStyle.Fill;
+            mainPanel.Location = new Point(209, 0);
+            mainPanel.Name = "mainPanel";
+            mainPanel.Size = new Size(591, 450);
+            mainPanel.TabIndex = 3;
             // 
             // MainInterface
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 450);
-            Controls.Add(dataGridView1);
-            Controls.Add(panel1);
+            Controls.Add(mainPanel);
+            Controls.Add(panelMainInterface);
             Name = "MainInterface";
             Text = "MainInterface";
             Load += MainInterface_Load;
@@ -164,13 +215,20 @@
 
         #endregion
 
-        private Panel panel1;
+        private Panel panelMainInterface;
         private Label label2;
-        private Label label1;
-        private Label label3;
+        private Label lblStaffroom;
         private PictureBox pictureBox1;
         private PictureBox pictureBox2;
-        private Label label4;
-        private DataGridView dataGridView1;
+        private Label lblEmployees;
+        private Label lblDashboard;
+        private PictureBox pictureBox3;
+        private Label lblSalary;
+        private PictureBox pictureBox4;
+        private Label lblSignOut;
+        private PictureBox pictureBox5;
+        private Panel mainPanel;
+        private Panel menuContainerPanel;
+        private Panel sigOutContainerPanel;
     }
 }
