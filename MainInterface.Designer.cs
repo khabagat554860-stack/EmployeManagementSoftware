@@ -41,6 +41,7 @@
             pictureBox1 = new PictureBox();
             label2 = new Label();
             lblStaffroom = new Label();
+            mainPanel = new Panel();
             panelMainInterface.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox5).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox4).BeginInit();
@@ -205,11 +206,20 @@
             lblStaffroom.Text = "Staffroom";
             lblStaffroom.Click += lblStaffroom_Click;
             // 
+            // mainPanel
+            // 
+            mainPanel.Dock = DockStyle.Fill;
+            mainPanel.Location = new Point(209, 0);
+            mainPanel.Name = "mainPanel";
+            mainPanel.Size = new Size(591, 450);
+            mainPanel.TabIndex = 3;
+            // 
             // MainInterface
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 450);
+            Controls.Add(mainPanel);
             Controls.Add(panelMainInterface);
             Name = "MainInterface";
             Text = "MainInterface";
@@ -238,5 +248,6 @@
         private PictureBox pictureBox4;
         private Label lblSignOut;
         private PictureBox pictureBox5;
+        private Panel mainPanel;
     }
 }
