@@ -72,6 +72,17 @@ namespace EmployeManagementSoftware
                     MessageBoxButtons.OK, MessageBoxIcon.Information);
                 ClearForm();
             }
+
+
+            
+            this.Hide();
+
+           
+            Form1 loginForm = new Form1();
+            loginForm.Show();
+
+            
+
         }
 
         private void btnCreateAccount_Click_1(object sender, EventArgs e)
