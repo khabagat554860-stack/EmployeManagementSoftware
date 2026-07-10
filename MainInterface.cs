@@ -1,14 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
-
-namespace EmployeManagementSoftware
+﻿namespace EmployeManagementSoftware
 {
     public partial class MainInterface : Form
     {
@@ -33,7 +23,7 @@ namespace EmployeManagementSoftware
         {
             mainPanel.Controls.Clear();
 
-           
+
             Dashboard dashboardForm = new Dashboard();
 
             dashboardForm.TopLevel = false;
@@ -61,10 +51,10 @@ namespace EmployeManagementSoftware
 
             Form1 loginForm = new Form1();
 
-            
+
             loginForm.Show();
 
-            
+
             this.Close();
         }
     }
