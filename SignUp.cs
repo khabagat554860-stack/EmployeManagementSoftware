@@ -16,27 +16,6 @@ namespace EmployeManagementSoftware
         {
             InitializeComponent();
         }
-        private bool IsValidEmail(string email)
-        {
-            try
-            {
-                var addr = new System.Net.Mail.MailAddress(email);
-                return addr.Address == email;
-            }
-            catch
-            {
-                return false;
-            }
-        }
-        private bool IsValidPhoneNumber(string phone)
-        {
-            return phone.Length == 11 && phone.All(char.IsDigit);
-        }
-
-        private bool IsValidUsername(string username)
-        {
-            return username.Length >= 5;
-        }
         private void ClearForm()
         {
             txtFullName.Clear();
