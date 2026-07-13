@@ -22,14 +22,6 @@ namespace EmployeManagementSoftware
 
         }
 
-        private void tableLayoutPanel2_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
-
-        private void panel5_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
+      
     }
 }
