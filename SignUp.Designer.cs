@@ -424,6 +424,7 @@
             // pictureBox7
             // 
             pictureBox7.BackgroundImage = (Image)resources.GetObject("pictureBox7.BackgroundImage");
+            pictureBox7.BorderStyle = BorderStyle.FixedSingle;
             pictureBox7.Location = new Point(553, 99);
             pictureBox7.Name = "pictureBox7";
             pictureBox7.Size = new Size(379, 50);
@@ -444,6 +445,7 @@
             // 
             pictureBox6.BackgroundImage = (Image)resources.GetObject("pictureBox6.BackgroundImage");
             pictureBox6.BackgroundImageLayout = ImageLayout.Stretch;
+            pictureBox6.BorderStyle = BorderStyle.FixedSingle;
             pictureBox6.Location = new Point(460, 343);
             pictureBox6.Name = "pictureBox6";
             pictureBox6.Size = new Size(30, 30);
@@ -454,6 +456,7 @@
             // 
             pictureBox5.BackgroundImage = (Image)resources.GetObject("pictureBox5.BackgroundImage");
             pictureBox5.BackgroundImageLayout = ImageLayout.Stretch;
+            pictureBox5.BorderStyle = BorderStyle.FixedSingle;
             pictureBox5.Location = new Point(460, 454);
             pictureBox5.Name = "pictureBox5";
             pictureBox5.Size = new Size(30, 30);
@@ -464,6 +467,7 @@
             // 
             pictureBox4.BackgroundImage = (Image)resources.GetObject("pictureBox4.BackgroundImage");
             pictureBox4.BackgroundImageLayout = ImageLayout.Stretch;
+            pictureBox4.BorderStyle = BorderStyle.FixedSingle;
             pictureBox4.Location = new Point(460, 398);
             pictureBox4.Name = "pictureBox4";
             pictureBox4.Size = new Size(30, 30);
@@ -484,6 +488,7 @@
             // 
             pictureBox3.BackgroundImage = (Image)resources.GetObject("pictureBox3.BackgroundImage");
             pictureBox3.BackgroundImageLayout = ImageLayout.Stretch;
+            pictureBox3.BorderStyle = BorderStyle.FixedSingle;
             pictureBox3.Location = new Point(460, 289);
             pictureBox3.Name = "pictureBox3";
             pictureBox3.Size = new Size(30, 30);
@@ -494,6 +499,7 @@
             // 
             pictureBox2.BackgroundImage = (Image)resources.GetObject("pictureBox2.BackgroundImage");
             pictureBox2.BackgroundImageLayout = ImageLayout.Stretch;
+            pictureBox2.BorderStyle = BorderStyle.FixedSingle;
             pictureBox2.Location = new Point(460, 232);
             pictureBox2.Name = "pictureBox2";
             pictureBox2.Size = new Size(30, 30);
@@ -504,6 +510,7 @@
             // 
             pictureBox1.BackgroundImage = (Image)resources.GetObject("pictureBox1.BackgroundImage");
             pictureBox1.BackgroundImageLayout = ImageLayout.Stretch;
+            pictureBox1.BorderStyle = BorderStyle.FixedSingle;
             pictureBox1.Location = new Point(460, 176);
             pictureBox1.Name = "pictureBox1";
             pictureBox1.Size = new Size(30, 30);
