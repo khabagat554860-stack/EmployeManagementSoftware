@@ -54,37 +54,7 @@
             ((System.ComponentModel.ISupportInitialize)pictureBox3).BeginInit();
             SuspendLayout();
             // 
-           
-            // 
-           
-            
-            // pictureBox2
-            // 
-            pictureBox2.BackgroundImageLayout = ImageLayout.Stretch;
-            pictureBox2.ErrorImage = null;
-            pictureBox2.Image = (Image)resources.GetObject("pictureBox2.Image");
-            pictureBox2.Location = new Point(27, 172);
-            pictureBox2.Name = "pictureBox2";
-            pictureBox2.Size = new Size(18, 18);
-            pictureBox2.SizeMode = PictureBoxSizeMode.StretchImage;
-            pictureBox2.TabIndex = 4;
-            pictureBox2.TabStop = false;
-           
-            // 
-            // pictureBox1
-            // 
-            pictureBox1.BackgroundImageLayout = ImageLayout.Stretch;
-            pictureBox1.ErrorImage = (Image)resources.GetObject("pictureBox1.ErrorImage");
-            pictureBox1.Image = (Image)resources.GetObject("pictureBox1.Image");
-            pictureBox1.Location = new Point(27, 132);
-            pictureBox1.Name = "pictureBox1";
-            pictureBox1.Size = new Size(18, 18);
-            pictureBox1.SizeMode = PictureBoxSizeMode.StretchImage;
-            pictureBox1.TabIndex = 3;
-            pictureBox1.TabStop = false;
-          
-            // 
-           
+            // panelMainInterface
             // 
             panelMainInterface.BackColor = Color.White;
             panelMainInterface.BackgroundImage = (Image)resources.GetObject("panelMainInterface.BackgroundImage");
@@ -95,7 +65,7 @@
             panelMainInterface.Dock = DockStyle.Left;
             panelMainInterface.Location = new Point(0, 0);
             panelMainInterface.Name = "panelMainInterface";
-            panelMainInterface.Size = new Size(209, 450);
+            panelMainInterface.Size = new Size(209, 610);
             panelMainInterface.TabIndex = 2;
             panelMainInterface.Paint += panel1_Paint;
             // 
@@ -105,7 +75,7 @@
             sigOutContainerPanel.Controls.Add(lblSignOut);
             sigOutContainerPanel.Controls.Add(pictureBox5);
             sigOutContainerPanel.Dock = DockStyle.Bottom;
-            sigOutContainerPanel.Location = new Point(0, 397);
+            sigOutContainerPanel.Location = new Point(0, 557);
             sigOutContainerPanel.Name = "sigOutContainerPanel";
             sigOutContainerPanel.Size = new Size(209, 53);
             sigOutContainerPanel.TabIndex = 1;
@@ -148,7 +118,7 @@
             menuContainerPanel.Controls.Add(lblEmployees);
             menuContainerPanel.Location = new Point(12, 129);
             menuContainerPanel.Name = "menuContainerPanel";
-            menuContainerPanel.Size = new Size(179, 151);
+            menuContainerPanel.Size = new Size(179, 311);
             menuContainerPanel.TabIndex = 0;
             // 
             // label2
@@ -267,14 +237,14 @@
             mainPanel.Dock = DockStyle.Fill;
             mainPanel.Location = new Point(209, 0);
             mainPanel.Name = "mainPanel";
-            mainPanel.Size = new Size(591, 450);
+            mainPanel.Size = new Size(1248, 610);
             mainPanel.TabIndex = 3;
             // 
             // MainInterface
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(800, 450);
+            ClientSize = new Size(1457, 610);
             Controls.Add(mainPanel);
             Controls.Add(panelMainInterface);
             Name = "MainInterface";
