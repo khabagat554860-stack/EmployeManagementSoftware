@@ -198,7 +198,7 @@
             // 
             linkLogin.AutoSize = true;
             linkLogin.Font = new Font("Segoe UI Semibold", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            linkLogin.Location = new Point(777, 577);
+            linkLogin.Location = new Point(759, 577);
             linkLogin.Name = "linkLogin";
             linkLogin.Size = new Size(66, 15);
             linkLogin.TabIndex = 8;
@@ -210,41 +210,41 @@
             // 
             lblFullName.AutoSize = true;
             lblFullName.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            lblFullName.Location = new Point(507, 185);
+            lblFullName.Location = new Point(507, 176);
             lblFullName.Name = "lblFullName";
-            lblFullName.Size = new Size(82, 21);
+            lblFullName.Size = new Size(86, 21);
             lblFullName.TabIndex = 0;
-            lblFullName.Text = "Full Name";
+            lblFullName.Text = "Full Name:";
             // 
             // lblConfirm
             // 
             lblConfirm.AutoSize = true;
             lblConfirm.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            lblConfirm.Location = new Point(507, 463);
+            lblConfirm.Location = new Point(507, 454);
             lblConfirm.Name = "lblConfirm";
-            lblConfirm.Size = new Size(142, 21);
+            lblConfirm.Size = new Size(146, 21);
             lblConfirm.TabIndex = 10;
-            lblConfirm.Text = "Confirm Password";
+            lblConfirm.Text = "Confirm Password:";
             // 
             // lblEmail
             // 
             lblEmail.AutoSize = true;
             lblEmail.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            lblEmail.Location = new Point(507, 241);
+            lblEmail.Location = new Point(507, 232);
             lblEmail.Name = "lblEmail";
-            lblEmail.Size = new Size(112, 21);
+            lblEmail.Size = new Size(116, 21);
             lblEmail.TabIndex = 2;
-            lblEmail.Text = "Email Address";
+            lblEmail.Text = "Email Address:";
             // 
             // lblPassword
             // 
             lblPassword.AutoSize = true;
             lblPassword.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            lblPassword.Location = new Point(511, 407);
+            lblPassword.Location = new Point(507, 398);
             lblPassword.Name = "lblPassword";
-            lblPassword.Size = new Size(79, 21);
+            lblPassword.Size = new Size(83, 21);
             lblPassword.TabIndex = 4;
-            lblPassword.Text = "Password";
+            lblPassword.Text = "Password:";
             // 
             // label5
             // 
@@ -434,11 +434,11 @@
             // 
             label7.AutoSize = true;
             label7.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label7.Location = new Point(507, 352);
+            label7.Location = new Point(507, 343);
             label7.Name = "label7";
-            label7.Size = new Size(131, 21);
+            label7.Size = new Size(136, 21);
             label7.TabIndex = 20;
-            label7.Text = "Contact Number";
+            label7.Text = "Contact Number:";
             // 
             // pictureBox6
             // 
@@ -474,11 +474,11 @@
             // 
             label6.AutoSize = true;
             label6.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label6.Location = new Point(507, 298);
+            label6.Location = new Point(507, 289);
             label6.Name = "label6";
-            label6.Size = new Size(83, 21);
+            label6.Size = new Size(87, 21);
             label6.TabIndex = 15;
-            label6.Text = "Username";
+            label6.Text = "Username:";
             // 
             // pictureBox3
             // 
@@ -509,6 +509,7 @@
             pictureBox1.Size = new Size(30, 30);
             pictureBox1.TabIndex = 12;
             pictureBox1.TabStop = false;
+           
             // 
             // SignUp
             // 

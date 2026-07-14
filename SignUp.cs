@@ -74,14 +74,14 @@ namespace EmployeManagementSoftware
             }
 
 
-            
+
             this.Hide();
 
-           
+
             Form1 loginForm = new Form1();
             loginForm.Show();
 
-            
+
 
         }
 
@@ -205,6 +205,14 @@ namespace EmployeManagementSoftware
 
         }
 
+        private void label6_Click(object sender, EventArgs e)
+        {
 
+        }
+
+        private void pictureBox1_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
