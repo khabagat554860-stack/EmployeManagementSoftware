@@ -14,9 +14,9 @@ namespace EmployeManagementSoftware
 
         public Boolean isvalid()
         {
-            if(string.IsNullOrEmpty(txtusername.Text))
+            if (string.IsNullOrEmpty(txtusername.Text))
             {
-                MessageBox.Show("Enter Username",  "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Enter Username", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return false;
             }
 
@@ -32,12 +32,18 @@ namespace EmployeManagementSoftware
 
         private void btnlogin_Click(object sender, EventArgs e)
         {
-            if (!isvalid()) 
+            if (isvalid())
             {
                 if (txtusername.Text == username && txtpassword.Text == password)
                 {
                     MessageBox.Show("Login Successful", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    
+                    MainInterface mainInterface = new MainInterface();
+                    mainInterface.Show();
+                    this.Hide();
+                }
+                else
+                {
+                    MessageBox.Show("Invalid, Please Try Again.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
 
 
@@ -46,5 +52,21 @@ namespace EmployeManagementSoftware
 
             }
         }
+
+        private void linksignup_Click(object sender, EventArgs e)
+        {
+            SignUp signUp = new SignUp();
+            signUp.Show();
+            this.Hide();
+
+        }
+
+
+        private void checkshowpassword_CheckedChanged(object sender, EventArgs e)
+        {
+            txtpassword.PasswordChar = checkshowpassword.Checked ? '\0' : '*';
+        }
+
+        
     }
 }
