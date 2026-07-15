@@ -302,12 +302,14 @@
             txtContactNumber.HoverState.BorderColor = Color.FromArgb(94, 148, 255);
             txtContactNumber.Location = new Point(672, 336);
             txtContactNumber.Margin = new Padding(4);
+            txtContactNumber.MaxLength = 11;
             txtContactNumber.Name = "txtContactNumber";
             txtContactNumber.PlaceholderText = "Enter contact number";
             txtContactNumber.SelectedText = "";
             txtContactNumber.ShadowDecoration.CustomizableEdges = customizableEdges2;
             txtContactNumber.Size = new Size(340, 37);
             txtContactNumber.TabIndex = 30;
+            txtContactNumber.KeyPress += txtContactNumber_KeyPress;
             // 
             // txtUsername
             // 

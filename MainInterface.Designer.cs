@@ -54,37 +54,7 @@
             ((System.ComponentModel.ISupportInitialize)pictureBox3).BeginInit();
             SuspendLayout();
             // 
-           
-            // 
-           
-            
-            // pictureBox2
-            // 
-            pictureBox2.BackgroundImageLayout = ImageLayout.Stretch;
-            pictureBox2.ErrorImage = null;
-            pictureBox2.Image = (Image)resources.GetObject("pictureBox2.Image");
-            pictureBox2.Location = new Point(27, 172);
-            pictureBox2.Name = "pictureBox2";
-            pictureBox2.Size = new Size(18, 18);
-            pictureBox2.SizeMode = PictureBoxSizeMode.StretchImage;
-            pictureBox2.TabIndex = 4;
-            pictureBox2.TabStop = false;
-           
-            // 
-            // pictureBox1
-            // 
-            pictureBox1.BackgroundImageLayout = ImageLayout.Stretch;
-            pictureBox1.ErrorImage = (Image)resources.GetObject("pictureBox1.ErrorImage");
-            pictureBox1.Image = (Image)resources.GetObject("pictureBox1.Image");
-            pictureBox1.Location = new Point(27, 132);
-            pictureBox1.Name = "pictureBox1";
-            pictureBox1.Size = new Size(18, 18);
-            pictureBox1.SizeMode = PictureBoxSizeMode.StretchImage;
-            pictureBox1.TabIndex = 3;
-            pictureBox1.TabStop = false;
-          
-            // 
-           
+            // panelMainInterface
             // 
             panelMainInterface.BackColor = Color.White;
             panelMainInterface.BackgroundImage = (Image)resources.GetObject("panelMainInterface.BackgroundImage");
