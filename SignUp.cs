@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Data.SQLite;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -72,11 +73,21 @@ namespace EmployeManagementSoftware
                     MessageBoxButtons.OK, MessageBoxIcon.Information);
                 ClearForm();
             }
+
+
+            
+            this.Hide();
+
+           
+            Form1 loginForm = new Form1();
+            loginForm.Show();
+
+            
+
         }
 
         private void btnCreateAccount_Click_1(object sender, EventArgs e)
         {
-            // Get all values
             string fullName = txtFullName.Text.Trim();
             string email = txtEmail.Text.Trim();
             string contactNumber = txtContactNumber.Text.Trim();
@@ -178,20 +189,56 @@ namespace EmployeManagementSoftware
                 return;
             }
 
-            // ============ SUCCESS MESSAGE ============
-            MessageBox.Show(
-                $"✅ Account created successfully!\n\n" +
-                $"👤 Full Name: {fullName}\n" +
-                $"📧 Email: {email}\n" +
-                $"📱 Contact: {contactNumber}\n" +
-                $"🔑 Username: {username}",
-                "Success",
-                MessageBoxButtons.OK,
-                MessageBoxIcon.Information);
+            // ==================== 💾 SAVE TO DATABASE ====================
+            string query = "INSERT INTO Users (FullName, Email, Username, ContactNumber, Password) VALUES (@FullName, @Email, @Username, @Contact, @Password)";
 
-            // Clear all fields
-            ClearForm();
+            using (SQLiteConnection conn = new SQLiteConnection(DatabaseHelper.ConnectionString))
+            {
+                using (SQLiteCommand cmd = new SQLiteCommand(query, conn))
+                {
+                    // Bind the sanitized variables to parameters
+                    cmd.Parameters.AddWithValue("@FullName", fullName);
+                    cmd.Parameters.AddWithValue("@Email", email);
+                    cmd.Parameters.AddWithValue("@Username", username);
+                    cmd.Parameters.AddWithValue("@Contact", contactNumber);
+                    cmd.Parameters.AddWithValue("@Password", password);
 
+                    try
+                    {
+                        conn.Open();
+                        cmd.ExecuteNonQuery(); // This executes the insert!
+
+                        // ==================== SUCCESS MESSAGE ====================
+                        MessageBox.Show(
+                            $"✔️ Account created successfully!\n\n" +
+                            $"👤 Full Name: {fullName}\n" +
+                            $"📧 Email: {email}\n" +
+                            $"📞 Contact: {contactNumber}\n" +
+                            $"🔑 Username: {username}",
+                            "Success",
+                            MessageBoxButtons.OK,
+                            MessageBoxIcon.Information);
+
+                        // Clear all fields
+                        ClearForm();
+
+                        // Redirect to Login form
+                        Form1 loginForm = new Form1();
+                        loginForm.Show();
+                        this.Close(); // Closes the signup screen
+                    }
+                    catch (SQLiteException ex) when (ex.ResultCode == SQLiteErrorCode.Constraint)
+                    {
+                        // This will catch the error if someone tries to sign up with a username that already exists
+                        MessageBox.Show("This username is already taken. Please choose another one.", "Registration Failed", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        txtUsername.Focus();
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show("Error saving to database: " + ex.Message, "Database Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                }
+            }
         }
 
 

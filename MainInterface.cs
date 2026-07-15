@@ -38,7 +38,19 @@
 
         private void lblEmployees_Click(object sender, EventArgs e)
         {
+            mainPanel.Controls.Clear();
 
+
+            AddEmployee employeeForm = new AddEmployee();
+
+            employeeForm.TopLevel = false;
+
+            employeeForm.FormBorderStyle = FormBorderStyle.None;
+
+            employeeForm.Dock = DockStyle.Fill;
+
+            mainPanel.Controls.Add(employeeForm);
+            employeeForm.Show();
         }
 
         private void lblStaffroom_Click(object sender, EventArgs e)
