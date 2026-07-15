@@ -29,6 +29,9 @@
         private void InitializeComponent()
         {
             panel2 = new Panel();
+            txtEmail = new TextBox();
+            txtPhoneNumber = new TextBox();
+            label7 = new Label();
             btnClear = new Button();
             btnLoad = new Button();
             btnDelete = new Button();
@@ -36,8 +39,7 @@
             label6 = new Label();
             btnAdd = new Button();
             btnImport = new Button();
-            pbPicuture = new PictureBox();
-            txtPhoneNumber = new TextBox();
+            pbPicture = new PictureBox();
             label5 = new Label();
             cbGender = new ComboBox();
             label4 = new Label();
@@ -49,7 +51,7 @@
             dataGridView1 = new DataGridView();
             label1 = new Label();
             panel2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)pbPicuture).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)pbPicture).BeginInit();
             panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
             SuspendLayout();
@@ -58,6 +60,9 @@
             // 
             panel2.BackColor = SystemColors.ButtonHighlight;
             panel2.BorderStyle = BorderStyle.FixedSingle;
+            panel2.Controls.Add(txtEmail);
+            panel2.Controls.Add(txtPhoneNumber);
+            panel2.Controls.Add(label7);
             panel2.Controls.Add(btnClear);
             panel2.Controls.Add(btnLoad);
             panel2.Controls.Add(btnDelete);
@@ -65,8 +70,7 @@
             panel2.Controls.Add(label6);
             panel2.Controls.Add(btnAdd);
             panel2.Controls.Add(btnImport);
-            panel2.Controls.Add(pbPicuture);
-            panel2.Controls.Add(txtPhoneNumber);
+            panel2.Controls.Add(pbPicture);
             panel2.Controls.Add(label5);
             panel2.Controls.Add(cbGender);
             panel2.Controls.Add(label4);
@@ -78,6 +82,32 @@
             panel2.Name = "panel2";
             panel2.Size = new Size(835, 243);
             panel2.TabIndex = 5;
+            // 
+            // txtEmail
+            // 
+            txtEmail.Location = new Point(429, 13);
+            txtEmail.Name = "txtEmail";
+            txtEmail.Size = new Size(150, 23);
+            txtEmail.TabIndex = 18;
+            txtEmail.KeyPress += txtEmail_KeyPress;
+            // 
+            // txtPhoneNumber
+            // 
+            txtPhoneNumber.Location = new Point(429, 59);
+            txtPhoneNumber.Name = "txtPhoneNumber";
+            txtPhoneNumber.Size = new Size(150, 23);
+            txtPhoneNumber.TabIndex = 17;
+            txtPhoneNumber.KeyPress += txtPhoneNumber_KeyPress;
+            // 
+            // label7
+            // 
+            label7.AutoSize = true;
+            label7.Font = new Font("Microsoft Sans Serif", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            label7.Location = new Point(320, 61);
+            label7.Name = "label7";
+            label7.Size = new Size(94, 15);
+            label7.TabIndex = 16;
+            label7.Text = "Phone Number:";
             // 
             // btnClear
             // 
@@ -95,6 +125,7 @@
             btnClear.TabIndex = 15;
             btnClear.Text = "CLEAR";
             btnClear.UseVisualStyleBackColor = false;
+            btnClear.Click += btnClear_Click;
             // 
             // btnLoad
             // 
@@ -112,6 +143,7 @@
             btnLoad.TabIndex = 14;
             btnLoad.Text = "LOAD";
             btnLoad.UseVisualStyleBackColor = false;
+            btnLoad.Click += btnLoad_Click;
             // 
             // btnDelete
             // 
@@ -129,12 +161,12 @@
             btnDelete.TabIndex = 13;
             btnDelete.Text = "DELETE";
             btnDelete.UseVisualStyleBackColor = false;
+            btnDelete.Click += btnDelete_Click;
             // 
             // cbPosition
             // 
             cbPosition.FormattingEnabled = true;
-            cbPosition.Items.AddRange(new object[] { "Male\t", "Female", "Others" });
-            cbPosition.Location = new Point(429, 51);
+            cbPosition.Location = new Point(429, 99);
             cbPosition.Name = "cbPosition";
             cbPosition.Size = new Size(150, 23);
             cbPosition.TabIndex = 12;
@@ -143,7 +175,7 @@
             // 
             label6.AutoSize = true;
             label6.Font = new Font("Microsoft Sans Serif", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label6.Location = new Point(343, 51);
+            label6.Location = new Point(343, 99);
             label6.Name = "label6";
             label6.Size = new Size(54, 15);
             label6.TabIndex = 11;
@@ -165,6 +197,7 @@
             btnAdd.TabIndex = 10;
             btnAdd.Text = "ADD";
             btnAdd.UseVisualStyleBackColor = false;
+            btnAdd.Click += btnAdd_Click;
             // 
             // btnImport
             // 
@@ -178,37 +211,30 @@
             btnImport.TabIndex = 9;
             btnImport.Text = "Import";
             btnImport.UseVisualStyleBackColor = false;
+            btnImport.Click += btnImport_Click;
             // 
-            // pbPicuture
+            // pbPicture
             // 
-            pbPicuture.BackColor = SystemColors.ButtonShadow;
-            pbPicuture.Location = new Point(706, 28);
-            pbPicuture.Name = "pbPicuture";
-            pbPicuture.Size = new Size(118, 101);
-            pbPicuture.TabIndex = 8;
-            pbPicuture.TabStop = false;
-            // 
-            // txtPhoneNumber
-            // 
-            txtPhoneNumber.Location = new Point(429, 13);
-            txtPhoneNumber.Name = "txtPhoneNumber";
-            txtPhoneNumber.Size = new Size(150, 23);
-            txtPhoneNumber.TabIndex = 7;
+            pbPicture.BackColor = SystemColors.ButtonShadow;
+            pbPicture.Location = new Point(706, 28);
+            pbPicture.Name = "pbPicture";
+            pbPicture.Size = new Size(118, 101);
+            pbPicture.TabIndex = 8;
+            pbPicture.TabStop = false;
             // 
             // label5
             // 
             label5.AutoSize = true;
             label5.Font = new Font("Microsoft Sans Serif", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label5.Location = new Point(313, 17);
+            label5.Location = new Point(320, 15);
             label5.Name = "label5";
-            label5.Size = new Size(94, 15);
+            label5.Size = new Size(89, 15);
             label5.TabIndex = 6;
-            label5.Text = "Phone Number:";
+            label5.Text = "Email Address:";
             // 
             // cbGender
             // 
             cbGender.FormattingEnabled = true;
-            cbGender.Items.AddRange(new object[] { "Male\t", "Female", "Others" });
             cbGender.Location = new Point(96, 99);
             cbGender.Name = "cbGender";
             cbGender.Size = new Size(150, 23);
@@ -271,11 +297,13 @@
             // 
             // dataGridView1
             // 
+            dataGridView1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dataGridView1.Location = new Point(10, 31);
             dataGridView1.Name = "dataGridView1";
             dataGridView1.Size = new Size(814, 179);
             dataGridView1.TabIndex = 1;
+            dataGridView1.CellContentClick += dataGridView1_CellContentClick;
             // 
             // label1
             // 
@@ -298,7 +326,7 @@
             Text = "AddEmployee";
             panel2.ResumeLayout(false);
             panel2.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)pbPicuture).EndInit();
+            ((System.ComponentModel.ISupportInitialize)pbPicture).EndInit();
             panel1.ResumeLayout(false);
             panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
@@ -315,8 +343,7 @@
         private Label label6;
         private Button btnAdd;
         private Button btnImport;
-        private PictureBox pbPicuture;
-        private TextBox txtPhoneNumber;
+        private PictureBox pbPicture;
         private Label label5;
         private ComboBox cbGender;
         private Label label4;
@@ -327,5 +354,8 @@
         private Panel panel1;
         private DataGridView dataGridView1;
         private Label label1;
+        private TextBox txtPhoneNumber;
+        private Label label7;
+        private TextBox txtEmail;
     }
 }
