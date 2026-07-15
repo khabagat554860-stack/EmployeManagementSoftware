@@ -75,14 +75,14 @@ namespace EmployeManagementSoftware
             }
 
 
-            
+
             this.Hide();
 
-           
+
             Form1 loginForm = new Form1();
             loginForm.Show();
 
-            
+
 
         }
 
@@ -225,7 +225,7 @@ namespace EmployeManagementSoftware
                         // Redirect to Login form
                         Form1 loginForm = new Form1();
                         loginForm.Show();
-                        this.Close(); // Closes the signup screen
+                        this.Hide(); // Closes the signup screen
                     }
                     catch (SQLiteException ex) when (ex.ResultCode == SQLiteErrorCode.Constraint)
                     {
@@ -241,6 +241,12 @@ namespace EmployeManagementSoftware
             }
         }
 
-
+        private void txtContactNumber_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar))
+            {
+                e.Handled = true; // This tells Windows to ignore the keypress completely
+            }
+        }
     }
 }
