@@ -21,6 +21,7 @@ namespace EmployeManagementSoftware
         public AddEmployee()
         {
             InitializeComponent();
+            this.dataGridView1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             this.dataGridView1.Columns.Add("colEmployeeID", "Employee ID");
             this.dataGridView1.Columns.Add("colFullName", "Full Name");
             this.dataGridView1.Columns.Add("colPhoneNumber", "Phone Number");
@@ -152,6 +153,7 @@ namespace EmployeManagementSoftware
                 MessageBox.Show("Full Name is required.");
                 return;
             }
+
 
             if (!string.IsNullOrWhiteSpace(txtPhoneNumber.Text) && txtPhoneNumber.Text.Length != 11)
             {
