@@ -58,6 +58,7 @@
             // 
             // panel2
             // 
+            panel2.Anchor = AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             panel2.BackColor = SystemColors.ButtonHighlight;
             panel2.BorderStyle = BorderStyle.FixedSingle;
             panel2.Controls.Add(txtEmail);
@@ -80,7 +81,7 @@
             panel2.Controls.Add(label2);
             panel2.Location = new Point(12, 278);
             panel2.Name = "panel2";
-            panel2.Size = new Size(835, 243);
+            panel2.Size = new Size(1481, 243);
             panel2.TabIndex = 5;
             // 
             // txtEmail
@@ -111,6 +112,7 @@
             // 
             // btnClear
             // 
+            btnClear.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Right;
             btnClear.BackColor = Color.FromArgb(0, 150, 200);
             btnClear.Cursor = Cursors.Hand;
             btnClear.FlatAppearance.BorderColor = Color.FromArgb(0, 150, 200);
@@ -119,9 +121,9 @@
             btnClear.FlatAppearance.MouseOverBackColor = Color.FromArgb(0, 150, 200);
             btnClear.FlatStyle = FlatStyle.Flat;
             btnClear.Font = new Font("Segoe UI Semibold", 14.25F, FontStyle.Bold);
-            btnClear.Location = new Point(522, 160);
+            btnClear.Location = new Point(1109, 160);
             btnClear.Name = "btnClear";
-            btnClear.Size = new Size(109, 50);
+            btnClear.Size = new Size(297, 50);
             btnClear.TabIndex = 15;
             btnClear.Text = "CLEAR";
             btnClear.UseVisualStyleBackColor = false;
@@ -129,6 +131,7 @@
             // 
             // btnLoad
             // 
+            btnLoad.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Right;
             btnLoad.BackColor = Color.FromArgb(0, 150, 200);
             btnLoad.Cursor = Cursors.Hand;
             btnLoad.FlatAppearance.BorderColor = Color.FromArgb(0, 150, 200);
@@ -137,9 +140,9 @@
             btnLoad.FlatAppearance.MouseOverBackColor = Color.FromArgb(0, 150, 200);
             btnLoad.FlatStyle = FlatStyle.Flat;
             btnLoad.Font = new Font("Segoe UI Semibold", 14.25F, FontStyle.Bold);
-            btnLoad.Location = new Point(378, 160);
+            btnLoad.Location = new Point(731, 160);
             btnLoad.Name = "btnLoad";
-            btnLoad.Size = new Size(109, 50);
+            btnLoad.Size = new Size(327, 50);
             btnLoad.TabIndex = 14;
             btnLoad.Text = "LOAD";
             btnLoad.UseVisualStyleBackColor = false;
@@ -147,6 +150,7 @@
             // 
             // btnDelete
             // 
+            btnDelete.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left;
             btnDelete.BackColor = Color.FromArgb(0, 150, 200);
             btnDelete.Cursor = Cursors.Hand;
             btnDelete.FlatAppearance.BorderColor = Color.FromArgb(0, 150, 200);
@@ -155,9 +159,9 @@
             btnDelete.FlatAppearance.MouseOverBackColor = Color.FromArgb(0, 150, 200);
             btnDelete.FlatStyle = FlatStyle.Flat;
             btnDelete.Font = new Font("Segoe UI Semibold", 14.25F, FontStyle.Bold);
-            btnDelete.Location = new Point(241, 160);
+            btnDelete.Location = new Point(370, 160);
             btnDelete.Name = "btnDelete";
-            btnDelete.Size = new Size(109, 50);
+            btnDelete.Size = new Size(304, 50);
             btnDelete.TabIndex = 13;
             btnDelete.Text = "DELETE";
             btnDelete.UseVisualStyleBackColor = false;
@@ -183,6 +187,7 @@
             // 
             // btnAdd
             // 
+            btnAdd.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left;
             btnAdd.BackColor = Color.FromArgb(0, 150, 200);
             btnAdd.Cursor = Cursors.Hand;
             btnAdd.FlatAppearance.BorderColor = Color.FromArgb(0, 150, 200);
@@ -191,9 +196,9 @@
             btnAdd.FlatAppearance.MouseOverBackColor = Color.FromArgb(0, 150, 200);
             btnAdd.FlatStyle = FlatStyle.Flat;
             btnAdd.Font = new Font("Segoe UI Semibold", 14.25F, FontStyle.Bold);
-            btnAdd.Location = new Point(97, 160);
+            btnAdd.Location = new Point(25, 160);
             btnAdd.Name = "btnAdd";
-            btnAdd.Size = new Size(109, 50);
+            btnAdd.Size = new Size(287, 50);
             btnAdd.TabIndex = 10;
             btnAdd.Text = "ADD";
             btnAdd.UseVisualStyleBackColor = false;
@@ -201,11 +206,12 @@
             // 
             // btnImport
             // 
+            btnImport.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Right;
             btnImport.BackColor = Color.FromArgb(0, 150, 200);
             btnImport.Cursor = Cursors.Hand;
             btnImport.FlatStyle = FlatStyle.Flat;
             btnImport.Font = new Font("Microsoft Sans Serif", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            btnImport.Location = new Point(706, 132);
+            btnImport.Location = new Point(1352, 132);
             btnImport.Name = "btnImport";
             btnImport.Size = new Size(118, 25);
             btnImport.TabIndex = 9;
@@ -215,8 +221,9 @@
             // 
             // pbPicture
             // 
+            pbPicture.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Right;
             pbPicture.BackColor = SystemColors.ButtonShadow;
-            pbPicture.Location = new Point(706, 28);
+            pbPicture.Location = new Point(1352, 28);
             pbPicture.Name = "pbPicture";
             pbPicture.Size = new Size(118, 101);
             pbPicture.TabIndex = 8;
@@ -286,22 +293,24 @@
             // 
             // panel1
             // 
+            panel1.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             panel1.BackColor = SystemColors.ButtonHighlight;
             panel1.BorderStyle = BorderStyle.FixedSingle;
             panel1.Controls.Add(dataGridView1);
             panel1.Controls.Add(label1);
             panel1.Location = new Point(12, 6);
             panel1.Name = "panel1";
-            panel1.Size = new Size(835, 231);
+            panel1.Size = new Size(1481, 231);
             panel1.TabIndex = 4;
             // 
             // dataGridView1
             // 
+            dataGridView1.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             dataGridView1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dataGridView1.Location = new Point(10, 31);
             dataGridView1.Name = "dataGridView1";
-            dataGridView1.Size = new Size(814, 179);
+            dataGridView1.Size = new Size(1460, 179);
             dataGridView1.TabIndex = 1;
             dataGridView1.CellContentClick += dataGridView1_CellContentClick;
             // 
@@ -319,7 +328,7 @@
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(859, 526);
+            ClientSize = new Size(1505, 526);
             Controls.Add(panel2);
             Controls.Add(panel1);
             Name = "AddEmployee";
