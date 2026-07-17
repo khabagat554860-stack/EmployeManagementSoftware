@@ -43,20 +43,21 @@ namespace EmployeManagementSoftware
             {
                 dataGridView1.Columns.Clear();
 
-                dataGridView1.Columns.Add("colEmployeeID", "Employee ID");
-                dataGridView1.Columns.Add("colFullName", "Full Name");
-                dataGridView1.Columns.Add("colPhoneNumber", "Phone Number");
-                dataGridView1.Columns.Add("colEmail", "Email Address");
-                dataGridView1.Columns.Add("colPosition", "Position");
-                dataGridView1.Columns.Add("colGender", "Gender");
-
-                // Photo Column
+                // Photo FIRST (Leftmost)
                 DataGridViewImageColumn imgColumn = new DataGridViewImageColumn();
                 imgColumn.Name = "colPhoto";
                 imgColumn.HeaderText = "Photo";
                 imgColumn.ImageLayout = DataGridViewImageCellLayout.Zoom;
                 imgColumn.Width = 80;
                 dataGridView1.Columns.Add(imgColumn);
+
+                // Other columns
+                dataGridView1.Columns.Add("colEmployeeID", "Employee ID");
+                dataGridView1.Columns.Add("colFullName", "Full Name");
+                dataGridView1.Columns.Add("colPhoneNumber", "Phone Number");
+                dataGridView1.Columns.Add("colEmail", "Email Address");
+                dataGridView1.Columns.Add("colPosition", "Position");
+                dataGridView1.Columns.Add("colGender", "Gender");
             }
 
             dataGridView1.Rows.Clear();
@@ -64,8 +65,6 @@ namespace EmployeManagementSoftware
             using (var connection = new SqliteConnection($"Data Source={dbPath}"))
             {
                 connection.Open();
-
-                // IMPORTANT: Include Photo in SELECT
                 string query = "SELECT EmployeeID, FullName, PhoneNumber, Email, Position, Gender, Photo FROM Employees";
 
                 using (var command = new SqliteCommand(query, connection))
@@ -74,7 +73,7 @@ namespace EmployeManagementSoftware
                     while (reader.Read())
                     {
                         Image photo = null;
-                        if (!reader.IsDBNull(6)) // Photo is the 7th column (index 6)
+                        if (!reader.IsDBNull(6))
                         {
                             byte[] photoBytes = reader.GetValue(6) as byte[];
                             if (photoBytes != null && photoBytes.Length > 0)
@@ -87,13 +86,13 @@ namespace EmployeManagementSoftware
                         }
 
                         dataGridView1.Rows.Add(
-                            reader.GetInt32(0),
-                            reader.GetValue(1) ?? "",
-                            reader.GetValue(2) ?? "",
-                            reader.GetValue(3) ?? "",
-                            reader.GetValue(4) ?? "",
-                            reader.GetValue(5) ?? "",
-                            photo
+                            photo,                        // Photo - First column
+                            reader.GetInt32(0),           // Employee ID
+                            reader.GetValue(1) ?? "",     // Full Name
+                            reader.GetValue(2) ?? "",     // Phone
+                            reader.GetValue(3) ?? "",     // Email
+                            reader.GetValue(4) ?? "",     // Position
+                            reader.GetValue(5) ?? ""      // Gender
                         );
                     }
                 }
