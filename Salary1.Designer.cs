@@ -29,26 +29,26 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(DashboardForm));
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges21 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges22 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges23 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges24 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges25 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges26 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges27 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges28 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges29 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges30 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges31 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges32 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges33 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges34 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges35 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges36 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges37 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges38 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges39 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges40 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges1 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges2 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges3 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges4 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges5 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges6 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges7 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges8 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges9 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges10 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges11 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges12 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges13 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges14 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges15 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges16 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges17 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges18 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges19 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges20 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             panelHeader = new Panel();
             dtpPayPeriod = new DateTimePicker();
             lblPayPeriod = new Label();
@@ -100,7 +100,7 @@
             guna2CirclePictureBox5 = new Guna.UI2.WinForms.Guna2CirclePictureBox();
             lblSalaryDetails = new Label();
             panelSalaryRecords = new Panel();
-            dgvSalarydgvSalaryRecords = new DataGridView();
+            dgvSalaryRecords = new DataGridView();
             panel2 = new Panel();
             lblTotalRecord = new Label();
             lblTotalRecords = new Label();
@@ -121,7 +121,7 @@
             pnlTopSalaryDetails.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)guna2CirclePictureBox5).BeginInit();
             panelSalaryRecords.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)dgvSalarydgvSalaryRecords).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)dgvSalaryRecords).BeginInit();
             panel2.SuspendLayout();
             panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)guna2CirclePictureBox6).BeginInit();
@@ -149,6 +149,7 @@
             dtpPayPeriod.Name = "dtpPayPeriod";
             dtpPayPeriod.Size = new Size(124, 23);
             dtpPayPeriod.TabIndex = 3;
+            dtpPayPeriod.ValueChanged += dtpPayPeriod_ValueChanged;
             // 
             // lblPayPeriod
             // 
@@ -200,7 +201,7 @@
             guna2CirclePictureBox1.ImageRotate = 0F;
             guna2CirclePictureBox1.Location = new Point(14, 14);
             guna2CirclePictureBox1.Name = "guna2CirclePictureBox1";
-            guna2CirclePictureBox1.ShadowDecoration.CustomizableEdges = customizableEdges21;
+            guna2CirclePictureBox1.ShadowDecoration.CustomizableEdges = customizableEdges1;
             guna2CirclePictureBox1.ShadowDecoration.Mode = Guna.UI2.WinForms.Enums.ShadowMode.Circle;
             guna2CirclePictureBox1.Size = new Size(80, 80);
             guna2CirclePictureBox1.SizeMode = PictureBoxSizeMode.StretchImage;
@@ -257,7 +258,7 @@
             guna2CirclePictureBox2.ImageRotate = 0F;
             guna2CirclePictureBox2.Location = new Point(14, 14);
             guna2CirclePictureBox2.Name = "guna2CirclePictureBox2";
-            guna2CirclePictureBox2.ShadowDecoration.CustomizableEdges = customizableEdges22;
+            guna2CirclePictureBox2.ShadowDecoration.CustomizableEdges = customizableEdges2;
             guna2CirclePictureBox2.ShadowDecoration.Mode = Guna.UI2.WinForms.Enums.ShadowMode.Circle;
             guna2CirclePictureBox2.Size = new Size(80, 80);
             guna2CirclePictureBox2.SizeMode = PictureBoxSizeMode.StretchImage;
@@ -314,7 +315,7 @@
             guna2CirclePictureBox3.ImageRotate = 0F;
             guna2CirclePictureBox3.Location = new Point(14, 14);
             guna2CirclePictureBox3.Name = "guna2CirclePictureBox3";
-            guna2CirclePictureBox3.ShadowDecoration.CustomizableEdges = customizableEdges23;
+            guna2CirclePictureBox3.ShadowDecoration.CustomizableEdges = customizableEdges3;
             guna2CirclePictureBox3.ShadowDecoration.Mode = Guna.UI2.WinForms.Enums.ShadowMode.Circle;
             guna2CirclePictureBox3.Size = new Size(80, 80);
             guna2CirclePictureBox3.SizeMode = PictureBoxSizeMode.StretchImage;
@@ -371,7 +372,7 @@
             guna2CirclePictureBox4.ImageRotate = 0F;
             guna2CirclePictureBox4.Location = new Point(14, 14);
             guna2CirclePictureBox4.Name = "guna2CirclePictureBox4";
-            guna2CirclePictureBox4.ShadowDecoration.CustomizableEdges = customizableEdges24;
+            guna2CirclePictureBox4.ShadowDecoration.CustomizableEdges = customizableEdges4;
             guna2CirclePictureBox4.ShadowDecoration.Mode = Guna.UI2.WinForms.Enums.ShadowMode.Circle;
             guna2CirclePictureBox4.Size = new Size(80, 80);
             guna2CirclePictureBox4.SizeMode = PictureBoxSizeMode.StretchImage;
@@ -451,6 +452,7 @@
             btnClear.TabIndex = 21;
             btnClear.Text = "Clear";
             btnClear.UseVisualStyleBackColor = false;
+            btnClear.Click += btnClear_Click;
             // 
             // btnUpdate
             // 
@@ -463,6 +465,7 @@
             btnUpdate.TabIndex = 20;
             btnUpdate.Text = "Update";
             btnUpdate.UseVisualStyleBackColor = false;
+            btnUpdate.Click += btnUpdate_Click;
             // 
             // btnSave
             // 
@@ -475,6 +478,7 @@
             btnSave.TabIndex = 19;
             btnSave.Text = "Save";
             btnSave.UseVisualStyleBackColor = false;
+            btnSave.Click += btnSave_Click;
             // 
             // btnAddNew
             // 
@@ -487,6 +491,7 @@
             btnAddNew.TabIndex = 18;
             btnAddNew.Text = "Add New";
             btnAddNew.UseVisualStyleBackColor = false;
+            btnAddNew.Click += btnAddNew_Click;
             // 
             // btnSearch
             // 
@@ -499,6 +504,7 @@
             btnSearch.TabIndex = 17;
             btnSearch.Text = "Search";
             btnSearch.UseVisualStyleBackColor = false;
+            btnSearch.Click += btnSearch_Click;
             // 
             // dtpPaymentDate
             // 
@@ -510,7 +516,7 @@
             // 
             // txtNetSalary
             // 
-            txtNetSalary.CustomizableEdges = customizableEdges25;
+            txtNetSalary.CustomizableEdges = customizableEdges5;
             txtNetSalary.DefaultText = "";
             txtNetSalary.DisabledState.BorderColor = Color.FromArgb(208, 208, 208);
             txtNetSalary.DisabledState.FillColor = Color.FromArgb(226, 226, 226);
@@ -523,13 +529,13 @@
             txtNetSalary.Name = "txtNetSalary";
             txtNetSalary.PlaceholderText = "₱";
             txtNetSalary.SelectedText = "";
-            txtNetSalary.ShadowDecoration.CustomizableEdges = customizableEdges26;
+            txtNetSalary.ShadowDecoration.CustomizableEdges = customizableEdges6;
             txtNetSalary.Size = new Size(132, 36);
             txtNetSalary.TabIndex = 15;
             // 
             // txtDeductions
             // 
-            txtDeductions.CustomizableEdges = customizableEdges27;
+            txtDeductions.CustomizableEdges = customizableEdges7;
             txtDeductions.DefaultText = "";
             txtDeductions.DisabledState.BorderColor = Color.FromArgb(208, 208, 208);
             txtDeductions.DisabledState.FillColor = Color.FromArgb(226, 226, 226);
@@ -542,13 +548,13 @@
             txtDeductions.Name = "txtDeductions";
             txtDeductions.PlaceholderText = "₱";
             txtDeductions.SelectedText = "";
-            txtDeductions.ShadowDecoration.CustomizableEdges = customizableEdges28;
+            txtDeductions.ShadowDecoration.CustomizableEdges = customizableEdges8;
             txtDeductions.Size = new Size(132, 36);
             txtDeductions.TabIndex = 14;
             // 
             // txtAllowances
             // 
-            txtAllowances.CustomizableEdges = customizableEdges29;
+            txtAllowances.CustomizableEdges = customizableEdges9;
             txtAllowances.DefaultText = "";
             txtAllowances.DisabledState.BorderColor = Color.FromArgb(208, 208, 208);
             txtAllowances.DisabledState.FillColor = Color.FromArgb(226, 226, 226);
@@ -561,13 +567,13 @@
             txtAllowances.Name = "txtAllowances";
             txtAllowances.PlaceholderText = "₱";
             txtAllowances.SelectedText = "";
-            txtAllowances.ShadowDecoration.CustomizableEdges = customizableEdges30;
+            txtAllowances.ShadowDecoration.CustomizableEdges = customizableEdges10;
             txtAllowances.Size = new Size(132, 36);
             txtAllowances.TabIndex = 13;
             // 
             // txtBasicSalary
             // 
-            txtBasicSalary.CustomizableEdges = customizableEdges31;
+            txtBasicSalary.CustomizableEdges = customizableEdges11;
             txtBasicSalary.DefaultText = "";
             txtBasicSalary.DisabledState.BorderColor = Color.FromArgb(208, 208, 208);
             txtBasicSalary.DisabledState.FillColor = Color.FromArgb(226, 226, 226);
@@ -581,13 +587,13 @@
             txtBasicSalary.PlaceholderText = "₱";
             txtBasicSalary.RightToLeft = RightToLeft.No;
             txtBasicSalary.SelectedText = "";
-            txtBasicSalary.ShadowDecoration.CustomizableEdges = customizableEdges32;
+            txtBasicSalary.ShadowDecoration.CustomizableEdges = customizableEdges12;
             txtBasicSalary.Size = new Size(132, 36);
             txtBasicSalary.TabIndex = 12;
             // 
             // txtPosition
             // 
-            txtPosition.CustomizableEdges = customizableEdges33;
+            txtPosition.CustomizableEdges = customizableEdges13;
             txtPosition.DefaultText = "";
             txtPosition.DisabledState.BorderColor = Color.FromArgb(208, 208, 208);
             txtPosition.DisabledState.FillColor = Color.FromArgb(226, 226, 226);
@@ -600,13 +606,13 @@
             txtPosition.Name = "txtPosition";
             txtPosition.PlaceholderText = "Enter Employee Position";
             txtPosition.SelectedText = "";
-            txtPosition.ShadowDecoration.CustomizableEdges = customizableEdges34;
+            txtPosition.ShadowDecoration.CustomizableEdges = customizableEdges14;
             txtPosition.Size = new Size(259, 36);
             txtPosition.TabIndex = 11;
             // 
             // txtEmpName
             // 
-            txtEmpName.CustomizableEdges = customizableEdges35;
+            txtEmpName.CustomizableEdges = customizableEdges15;
             txtEmpName.DefaultText = "";
             txtEmpName.DisabledState.BorderColor = Color.FromArgb(208, 208, 208);
             txtEmpName.DisabledState.FillColor = Color.FromArgb(226, 226, 226);
@@ -619,13 +625,13 @@
             txtEmpName.Name = "txtEmpName";
             txtEmpName.PlaceholderText = "Enter Employee Name";
             txtEmpName.SelectedText = "";
-            txtEmpName.ShadowDecoration.CustomizableEdges = customizableEdges36;
+            txtEmpName.ShadowDecoration.CustomizableEdges = customizableEdges16;
             txtEmpName.Size = new Size(259, 36);
             txtEmpName.TabIndex = 10;
             // 
             // txtEmpID
             // 
-            txtEmpID.CustomizableEdges = customizableEdges37;
+            txtEmpID.CustomizableEdges = customizableEdges17;
             txtEmpID.DefaultText = "";
             txtEmpID.DisabledState.BorderColor = Color.FromArgb(208, 208, 208);
             txtEmpID.DisabledState.FillColor = Color.FromArgb(226, 226, 226);
@@ -638,7 +644,7 @@
             txtEmpID.Name = "txtEmpID";
             txtEmpID.PlaceholderText = "Enter Employee ID";
             txtEmpID.SelectedText = "";
-            txtEmpID.ShadowDecoration.CustomizableEdges = customizableEdges38;
+            txtEmpID.ShadowDecoration.CustomizableEdges = customizableEdges18;
             txtEmpID.Size = new Size(132, 36);
             txtEmpID.TabIndex = 9;
             // 
@@ -740,7 +746,7 @@
             guna2CirclePictureBox5.ImageRotate = 0F;
             guna2CirclePictureBox5.Location = new Point(13, -1);
             guna2CirclePictureBox5.Name = "guna2CirclePictureBox5";
-            guna2CirclePictureBox5.ShadowDecoration.CustomizableEdges = customizableEdges39;
+            guna2CirclePictureBox5.ShadowDecoration.CustomizableEdges = customizableEdges19;
             guna2CirclePictureBox5.ShadowDecoration.Mode = Guna.UI2.WinForms.Enums.ShadowMode.Circle;
             guna2CirclePictureBox5.Size = new Size(60, 60);
             guna2CirclePictureBox5.SizeMode = PictureBoxSizeMode.StretchImage;
@@ -761,7 +767,7 @@
             // panelSalaryRecords
             // 
             panelSalaryRecords.BorderStyle = BorderStyle.FixedSingle;
-            panelSalaryRecords.Controls.Add(dgvSalarydgvSalaryRecords);
+            panelSalaryRecords.Controls.Add(dgvSalaryRecords);
             panelSalaryRecords.Controls.Add(panel2);
             panelSalaryRecords.Controls.Add(panel1);
             panelSalaryRecords.Location = new Point(478, 231);
@@ -769,17 +775,18 @@
             panelSalaryRecords.Size = new Size(860, 470);
             panelSalaryRecords.TabIndex = 6;
             // 
-            // dgvSalarydgvSalaryRecords
+            // dgvSalaryRecords
             // 
-            dgvSalarydgvSalaryRecords.BackgroundColor = Color.LightGray;
-            dgvSalarydgvSalaryRecords.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dgvSalarydgvSalaryRecords.Dock = DockStyle.Fill;
-            dgvSalarydgvSalaryRecords.Location = new Point(0, 62);
-            dgvSalarydgvSalaryRecords.Name = "dgvSalarydgvSalaryRecords";
-            dgvSalarydgvSalaryRecords.ReadOnly = true;
-            dgvSalarydgvSalaryRecords.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            dgvSalarydgvSalaryRecords.Size = new Size(858, 376);
-            dgvSalarydgvSalaryRecords.TabIndex = 2;
+            dgvSalaryRecords.BackgroundColor = Color.LightGray;
+            dgvSalaryRecords.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dgvSalaryRecords.Dock = DockStyle.Fill;
+            dgvSalaryRecords.Location = new Point(0, 62);
+            dgvSalaryRecords.Name = "dgvSalaryRecords";
+            dgvSalaryRecords.ReadOnly = true;
+            dgvSalaryRecords.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+            dgvSalaryRecords.Size = new Size(858, 376);
+            dgvSalaryRecords.TabIndex = 2;
+            dgvSalaryRecords.CellContentClick += dgvSalaryRecords_CellContentClick;
             // 
             // panel2
             // 
@@ -830,7 +837,7 @@
             guna2CirclePictureBox6.ImageRotate = 0F;
             guna2CirclePictureBox6.Location = new Point(21, -1);
             guna2CirclePictureBox6.Name = "guna2CirclePictureBox6";
-            guna2CirclePictureBox6.ShadowDecoration.CustomizableEdges = customizableEdges40;
+            guna2CirclePictureBox6.ShadowDecoration.CustomizableEdges = customizableEdges20;
             guna2CirclePictureBox6.ShadowDecoration.Mode = Guna.UI2.WinForms.Enums.ShadowMode.Circle;
             guna2CirclePictureBox6.Size = new Size(60, 60);
             guna2CirclePictureBox6.SizeMode = PictureBoxSizeMode.StretchImage;
@@ -894,7 +901,7 @@
             pnlTopSalaryDetails.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)guna2CirclePictureBox5).EndInit();
             panelSalaryRecords.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)dgvSalarydgvSalaryRecords).EndInit();
+            ((System.ComponentModel.ISupportInitialize)dgvSalaryRecords).EndInit();
             panel2.ResumeLayout(false);
             panel2.PerformLayout();
             panel1.ResumeLayout(false);
@@ -964,6 +971,6 @@
         private Panel panel2;
         private Label lblTotalRecord;
         private Label lblTotalRecords;
-        private DataGridView dgvSalarydgvSalaryRecords;
+        private DataGridView dgvSalaryRecords;
     }
 }
