@@ -4,45 +4,41 @@ using System.Data.SQLite;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.IO;
 
 namespace EmployeManagementSoftware
 {
     public static class DatabaseHelper
     {
+        private const string DB_NAME = "SalaryDB.sqlite";
 
-        private static string dbFileName = "StaffroomDB.db";
-
-        
-        public static string ConnectionString => $"Data Source={dbFileName};Version=3;";
+        // Fixed CS0229: Only keep one ConnectionString definition
+        public static string ConnectionString { get; } = $"Data Source={DB_NAME};Version=3;";
 
         public static void InitializeDatabase()
         {
-           
-            if (!File.Exists(dbFileName))
+            // Creates the database file if it doesn't exist yet
+            if (!File.Exists(DB_NAME))
             {
-                SQLiteConnection.CreateFile(dbFileName);
+                SQLiteConnection.CreateFile(DB_NAME);
             }
 
-           
-            using (var conn = new SQLiteConnection(ConnectionString))
-            {
-                conn.Open();
-                string createTableQuery = @"
-                    CREATE TABLE IF NOT EXISTS Users (
-                        Id INTEGER PRIMARY KEY AUTOINCREMENT,
-                        FullName TEXT,
-                        Email TEXT,
-                        Username TEXT UNIQUE,
-                        ContactNumber TEXT,
-                        Password TEXT
-                    );";
+            // Fixed IDE0063: Using simplified modern 'using' statement syntax
+            using var conn = new SQLiteConnection(ConnectionString);
+            conn.Open();
 
-                using (var cmd = new SQLiteCommand(createTableQuery, conn))
-                {
-                    cmd.ExecuteNonQuery();
-                }
-            }
+            // Fixed RCS1118: Marked local string as const since it doesn't change
+            const string createUsersQuery = @"CREATE TABLE IF NOT EXISTS Users (
+                Id INTEGER PRIMARY KEY AUTOINCREMENT,
+                FullName TEXT,
+                Email TEXT,
+                Username TEXT UNIQUE,
+                ContactNumber TEXT)";
+
+            using var cmd = new SQLiteCommand(createUsersQuery, conn);
+            cmd.ExecuteNonQuery();
+
+            // (Your code to execute the command goes here...)
         }
     }
 }
-
