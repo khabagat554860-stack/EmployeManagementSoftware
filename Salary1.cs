@@ -8,15 +8,16 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Guna.UI2.WinForms;
 
 namespace EmployeManagementSoftware
 {
-    public partial class DashboardForm : Form
+    public partial class Salary1 : Form
     {
-        public DashboardForm()
+        public Salary1()
         {
             InitializeComponent();
-            InitializePlaceholders();
+            //InitializePlaceholders(); //Commened out temporarily
         }
 
         private void InitializePlaceholders()
@@ -25,7 +26,7 @@ namespace EmployeManagementSoftware
             throw new NotImplementedException();
             
         }
-        private double GetDecimalValue(TextBox tb)
+        private double GetDecimalValue(Guna.UI2.WinForms.Guna2TextBox tb)
         {
             return (tb.Text == "0.00" || string.IsNullOrWhiteSpace(tb.Text)) ? 0.00 : Convert.ToDouble(tb.Text);
         }
@@ -204,7 +205,7 @@ namespace EmployeManagementSoftware
             {
                 DataGridViewRow row = dgvSalaryRecords.Rows[e.RowIndex];
                 txtEmpID.Text = row.Cells["EmployeeID"].Value.ToString();
-                txtEmpName.Text = row.Cells["EmployeeName"].Value.ToString();
+                txtEmpName.Text = row.Cells["EmployeeName"].Value?.ToString() ??"";
                 txtPosition.Text = row.Cells["Position"].Value.ToString();
                 txtBasicSalary.Text = row.Cells["BasicSalary"].Value.ToString();
                 txtAllowances.Text = row.Cells["Allowances"].Value.ToString();
