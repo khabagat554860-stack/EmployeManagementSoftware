@@ -29,257 +29,256 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainInterface));
-            panelMainInterface = new Panel();
-            sigOutContainerPanel = new Panel();
-            lblSignOut = new Label();
-            pictureBox5 = new PictureBox();
-            menuContainerPanel = new Panel();
-            label2 = new Label();
-            pictureBox1 = new PictureBox();
-            lblSalary = new Label();
-            pictureBox2 = new PictureBox();
-            pictureBox4 = new PictureBox();
-            lblDashboard = new Label();
-            lblEmployees = new Label();
-            pictureBox3 = new PictureBox();
-            lblStaffroom = new Label();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges1 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges2 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges3 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges4 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges5 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges6 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges7 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges8 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges9 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             mainPanel = new Panel();
+            lblStaffroom = new Label();
+            guna2CirclePictureBox1 = new Guna.UI2.WinForms.Guna2CirclePictureBox();
+            lblSubtitle = new Label();
+            label2 = new Label();
+            panel1 = new Panel();
+            lblDashboard = new Guna.UI2.WinForms.Guna2Button();
+            lblEmployees = new Guna.UI2.WinForms.Guna2Button();
+            lblSalary = new Guna.UI2.WinForms.Guna2Button();
+            panel2 = new Panel();
+            panelMainInterface = new Panel();
+            pictureBox5 = new Guna.UI2.WinForms.Guna2Button();
+            ((System.ComponentModel.ISupportInitialize)guna2CirclePictureBox1).BeginInit();
             panelMainInterface.SuspendLayout();
-            sigOutContainerPanel.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)pictureBox5).BeginInit();
-            menuContainerPanel.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)pictureBox2).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)pictureBox4).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)pictureBox3).BeginInit();
             SuspendLayout();
             // 
-            // panelMainInterface
+            // mainPanel
             // 
-            panelMainInterface.BackColor = Color.White;
-            panelMainInterface.BackgroundImage = (Image)resources.GetObject("panelMainInterface.BackgroundImage");
-            panelMainInterface.Controls.Add(sigOutContainerPanel);
-            panelMainInterface.Controls.Add(menuContainerPanel);
-            panelMainInterface.Controls.Add(pictureBox3);
-            panelMainInterface.Controls.Add(lblStaffroom);
-            panelMainInterface.Dock = DockStyle.Left;
-            panelMainInterface.Location = new Point(0, 0);
-            panelMainInterface.Name = "panelMainInterface";
-            panelMainInterface.Size = new Size(209, 610);
-            panelMainInterface.TabIndex = 2;
-            panelMainInterface.Paint += panel1_Paint;
-            // 
-            // sigOutContainerPanel
-            // 
-            sigOutContainerPanel.BackColor = Color.Transparent;
-            sigOutContainerPanel.Controls.Add(lblSignOut);
-            sigOutContainerPanel.Controls.Add(pictureBox5);
-            sigOutContainerPanel.Dock = DockStyle.Bottom;
-            sigOutContainerPanel.Location = new Point(0, 557);
-            sigOutContainerPanel.Name = "sigOutContainerPanel";
-            sigOutContainerPanel.Size = new Size(209, 53);
-            sigOutContainerPanel.TabIndex = 1;
-            // 
-            // lblSignOut
-            // 
-            lblSignOut.AutoSize = true;
-            lblSignOut.BackColor = Color.Transparent;
-            lblSignOut.Font = new Font("Microsoft YaHei", 10F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            lblSignOut.ForeColor = Color.MidnightBlue;
-            lblSignOut.Location = new Point(58, 20);
-            lblSignOut.Name = "lblSignOut";
-            lblSignOut.Size = new Size(69, 19);
-            lblSignOut.TabIndex = 11;
-            lblSignOut.Text = "Sign Out";
-            lblSignOut.Click += lblSignOut_Click;
-            // 
-            // pictureBox5
-            // 
-            pictureBox5.BackgroundImageLayout = ImageLayout.Stretch;
-            pictureBox5.ErrorImage = null;
-            pictureBox5.Image = (Image)resources.GetObject("pictureBox5.Image");
-            pictureBox5.Location = new Point(32, 20);
-            pictureBox5.Name = "pictureBox5";
-            pictureBox5.Size = new Size(21, 18);
-            pictureBox5.SizeMode = PictureBoxSizeMode.StretchImage;
-            pictureBox5.TabIndex = 10;
-            pictureBox5.TabStop = false;
-            // 
-            // menuContainerPanel
-            // 
-            menuContainerPanel.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left;
-            menuContainerPanel.BackColor = Color.Transparent;
-            menuContainerPanel.Controls.Add(label2);
-            menuContainerPanel.Controls.Add(pictureBox1);
-            menuContainerPanel.Controls.Add(lblSalary);
-            menuContainerPanel.Controls.Add(pictureBox2);
-            menuContainerPanel.Controls.Add(pictureBox4);
-            menuContainerPanel.Controls.Add(lblDashboard);
-            menuContainerPanel.Controls.Add(lblEmployees);
-            menuContainerPanel.Location = new Point(12, 129);
-            menuContainerPanel.Name = "menuContainerPanel";
-            menuContainerPanel.Size = new Size(179, 311);
-            menuContainerPanel.TabIndex = 0;
-            // 
-            // label2
-            // 
-            label2.AutoSize = true;
-            label2.BackColor = Color.Transparent;
-            label2.Font = new Font("Microsoft YaHei", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label2.ForeColor = Color.MidnightBlue;
-            label2.Location = new Point(13, 15);
-            label2.Name = "label2";
-            label2.Size = new Size(43, 17);
-            label2.TabIndex = 1;
-            label2.Text = "Menu";
-            // 
-            // pictureBox1
-            // 
-            pictureBox1.BackgroundImageLayout = ImageLayout.Stretch;
-            pictureBox1.ErrorImage = (Image)resources.GetObject("pictureBox1.ErrorImage");
-            pictureBox1.Image = (Image)resources.GetObject("pictureBox1.Image");
-            pictureBox1.Location = new Point(13, 45);
-            pictureBox1.Name = "pictureBox1";
-            pictureBox1.Size = new Size(21, 21);
-            pictureBox1.SizeMode = PictureBoxSizeMode.StretchImage;
-            pictureBox1.TabIndex = 3;
-            pictureBox1.TabStop = false;
-            // 
-            // lblSalary
-            // 
-            lblSalary.AutoSize = true;
-            lblSalary.BackColor = Color.Transparent;
-            lblSalary.Font = new Font("Microsoft YaHei", 10F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            lblSalary.ForeColor = Color.MidnightBlue;
-            lblSalary.Location = new Point(39, 120);
-            lblSalary.Name = "lblSalary";
-            lblSalary.Size = new Size(51, 19);
-            lblSalary.TabIndex = 9;
-            lblSalary.Text = "Salary";
-            // 
-            // pictureBox2
-            // 
-            pictureBox2.BackgroundImageLayout = ImageLayout.Stretch;
-            pictureBox2.ErrorImage = null;
-            pictureBox2.Image = (Image)resources.GetObject("pictureBox2.Image");
-            pictureBox2.Location = new Point(13, 85);
-            pictureBox2.Name = "pictureBox2";
-            pictureBox2.Size = new Size(21, 21);
-            pictureBox2.SizeMode = PictureBoxSizeMode.StretchImage;
-            pictureBox2.TabIndex = 4;
-            pictureBox2.TabStop = false;
-            // 
-            // pictureBox4
-            // 
-            pictureBox4.BackgroundImageLayout = ImageLayout.Stretch;
-            pictureBox4.ErrorImage = null;
-            pictureBox4.Image = (Image)resources.GetObject("pictureBox4.Image");
-            pictureBox4.Location = new Point(13, 120);
-            pictureBox4.Name = "pictureBox4";
-            pictureBox4.Size = new Size(21, 21);
-            pictureBox4.SizeMode = PictureBoxSizeMode.StretchImage;
-            pictureBox4.TabIndex = 8;
-            pictureBox4.TabStop = false;
-            // 
-            // lblDashboard
-            // 
-            lblDashboard.AutoSize = true;
-            lblDashboard.BackColor = Color.Transparent;
-            lblDashboard.Font = new Font("Microsoft YaHei", 10F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            lblDashboard.ForeColor = Color.MidnightBlue;
-            lblDashboard.Location = new Point(37, 45);
-            lblDashboard.Name = "lblDashboard";
-            lblDashboard.Size = new Size(85, 19);
-            lblDashboard.TabIndex = 5;
-            lblDashboard.Text = "Dashboard";
-            lblDashboard.Click += lblDashboard_Click;
-            // 
-            // lblEmployees
-            // 
-            lblEmployees.AutoSize = true;
-            lblEmployees.BackColor = Color.Transparent;
-            lblEmployees.Font = new Font("Microsoft YaHei", 10F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            lblEmployees.ForeColor = Color.MidnightBlue;
-            lblEmployees.Location = new Point(37, 85);
-            lblEmployees.Name = "lblEmployees";
-            lblEmployees.Size = new Size(84, 19);
-            lblEmployees.TabIndex = 6;
-            lblEmployees.Text = "Employees";
-            lblEmployees.Click += lblEmployees_Click;
-            // 
-            // pictureBox3
-            // 
-            pictureBox3.BackColor = Color.Transparent;
-            pictureBox3.BackgroundImage = (Image)resources.GetObject("pictureBox3.BackgroundImage");
-            pictureBox3.BackgroundImageLayout = ImageLayout.Stretch;
-            pictureBox3.Location = new Point(12, 26);
-            pictureBox3.Margin = new Padding(3, 2, 3, 2);
-            pictureBox3.Name = "pictureBox3";
-            pictureBox3.Size = new Size(46, 46);
-            pictureBox3.TabIndex = 7;
-            pictureBox3.TabStop = false;
+            mainPanel.AutoSize = true;
+            mainPanel.BackColor = Color.WhiteSmoke;
+            mainPanel.BorderStyle = BorderStyle.FixedSingle;
+            mainPanel.Dock = DockStyle.Fill;
+            mainPanel.Location = new Point(250, 0);
+            mainPanel.Name = "mainPanel";
+            mainPanel.Size = new Size(1120, 729);
+            mainPanel.TabIndex = 3;
             // 
             // lblStaffroom
             // 
             lblStaffroom.AutoSize = true;
             lblStaffroom.BackColor = Color.Transparent;
-            lblStaffroom.Font = new Font("Microsoft YaHei", 14.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            lblStaffroom.ForeColor = Color.MidnightBlue;
-            lblStaffroom.Location = new Point(64, 33);
+            lblStaffroom.Font = new Font("Segoe UI", 18F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            lblStaffroom.ForeColor = Color.White;
+            lblStaffroom.Location = new Point(94, 36);
             lblStaffroom.Name = "lblStaffroom";
-            lblStaffroom.Size = new Size(136, 26);
+            lblStaffroom.Size = new Size(155, 32);
             lblStaffroom.TabIndex = 0;
             lblStaffroom.Text = "STAFFROOM";
             lblStaffroom.Click += lblStaffroom_Click;
             // 
-            // mainPanel
+            // guna2CirclePictureBox1
             // 
-            mainPanel.Dock = DockStyle.Fill;
-            mainPanel.Location = new Point(209, 0);
-            mainPanel.Name = "mainPanel";
-            mainPanel.Size = new Size(1248, 610);
-            mainPanel.TabIndex = 3;
+            guna2CirclePictureBox1.Image = (Image)resources.GetObject("guna2CirclePictureBox1.Image");
+            guna2CirclePictureBox1.ImageRotate = 0F;
+            guna2CirclePictureBox1.Location = new Point(25, 25);
+            guna2CirclePictureBox1.Name = "guna2CirclePictureBox1";
+            guna2CirclePictureBox1.ShadowDecoration.CustomizableEdges = customizableEdges1;
+            guna2CirclePictureBox1.ShadowDecoration.Mode = Guna.UI2.WinForms.Enums.ShadowMode.Circle;
+            guna2CirclePictureBox1.Size = new Size(70, 70);
+            guna2CirclePictureBox1.SizeMode = PictureBoxSizeMode.Zoom;
+            guna2CirclePictureBox1.TabIndex = 2;
+            guna2CirclePictureBox1.TabStop = false;
+            // 
+            // lblSubtitle
+            // 
+            lblSubtitle.AutoSize = true;
+            lblSubtitle.Font = new Font("Segoe UI Semibold", 9.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            lblSubtitle.ForeColor = Color.White;
+            lblSubtitle.Location = new Point(96, 68);
+            lblSubtitle.Name = "lblSubtitle";
+            lblSubtitle.Size = new Size(152, 17);
+            lblSubtitle.TabIndex = 3;
+            lblSubtitle.Text = "Employee Management";
+            // 
+            // label2
+            // 
+            label2.AutoSize = true;
+            label2.BackColor = Color.Transparent;
+            label2.Font = new Font("Segoe UI", 9.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label2.ForeColor = Color.CornflowerBlue;
+            label2.Location = new Point(42, 138);
+            label2.Name = "label2";
+            label2.Size = new Size(85, 17);
+            label2.TabIndex = 1;
+            label2.Text = "MAIN MENU";
+            // 
+            // panel1
+            // 
+            panel1.BackColor = Color.RoyalBlue;
+            panel1.Location = new Point(20, 110);
+            panel1.Name = "panel1";
+            panel1.Size = new Size(210, 1);
+            panel1.TabIndex = 4;
+            // 
+            // lblDashboard
+            // 
+            lblDashboard.BorderRadius = 12;
+            lblDashboard.CustomizableEdges = customizableEdges2;
+            lblDashboard.DisabledState.BorderColor = Color.DarkGray;
+            lblDashboard.DisabledState.CustomBorderColor = Color.DarkGray;
+            lblDashboard.DisabledState.FillColor = Color.FromArgb(169, 169, 169);
+            lblDashboard.DisabledState.ForeColor = Color.FromArgb(141, 141, 141);
+            lblDashboard.FillColor = Color.RoyalBlue;
+            lblDashboard.Font = new Font("Segoe UI", 11.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            lblDashboard.ForeColor = Color.White;
+            lblDashboard.Image = (Image)resources.GetObject("lblDashboard.Image");
+            lblDashboard.ImageAlign = HorizontalAlignment.Left;
+            lblDashboard.Location = new Point(20, 170);
+            lblDashboard.Name = "lblDashboard";
+            lblDashboard.Padding = new Padding(15, 0, 0, 0);
+            lblDashboard.ShadowDecoration.CustomizableEdges = customizableEdges3;
+            lblDashboard.Size = new Size(200, 50);
+            lblDashboard.TabIndex = 10;
+            lblDashboard.Text = "Dashboard";
+            lblDashboard.TextAlign = HorizontalAlignment.Left;
+            // 
+            // lblEmployees
+            // 
+            lblEmployees.BorderColor = Color.FromArgb(49, 74, 138);
+            lblEmployees.BorderRadius = 12;
+            lblEmployees.BorderThickness = 1;
+            lblEmployees.CustomizableEdges = customizableEdges4;
+            lblEmployees.DisabledState.BorderColor = Color.DarkGray;
+            lblEmployees.DisabledState.CustomBorderColor = Color.DarkGray;
+            lblEmployees.DisabledState.FillColor = Color.FromArgb(169, 169, 169);
+            lblEmployees.DisabledState.ForeColor = Color.FromArgb(141, 141, 141);
+            lblEmployees.FillColor = Color.Transparent;
+            lblEmployees.Font = new Font("Segoe UI", 11.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            lblEmployees.ForeColor = Color.White;
+            lblEmployees.Image = (Image)resources.GetObject("lblEmployees.Image");
+            lblEmployees.ImageAlign = HorizontalAlignment.Left;
+            lblEmployees.Location = new Point(20, 235);
+            lblEmployees.Name = "lblEmployees";
+            lblEmployees.Padding = new Padding(15, 0, 0, 0);
+            lblEmployees.ShadowDecoration.CustomizableEdges = customizableEdges5;
+            lblEmployees.Size = new Size(200, 50);
+            lblEmployees.TabIndex = 11;
+            lblEmployees.Text = "Employees";
+            lblEmployees.TextAlign = HorizontalAlignment.Left;
+            // 
+            // lblSalary
+            // 
+            lblSalary.BorderColor = Color.FromArgb(49, 74, 138);
+            lblSalary.BorderRadius = 12;
+            lblSalary.BorderThickness = 1;
+            lblSalary.CustomizableEdges = customizableEdges6;
+            lblSalary.DisabledState.BorderColor = Color.DarkGray;
+            lblSalary.DisabledState.CustomBorderColor = Color.DarkGray;
+            lblSalary.DisabledState.FillColor = Color.FromArgb(169, 169, 169);
+            lblSalary.DisabledState.ForeColor = Color.FromArgb(141, 141, 141);
+            lblSalary.FillColor = Color.Transparent;
+            lblSalary.Font = new Font("Segoe UI", 11.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            lblSalary.ForeColor = Color.White;
+            lblSalary.Image = (Image)resources.GetObject("lblSalary.Image");
+            lblSalary.ImageAlign = HorizontalAlignment.Left;
+            lblSalary.Location = new Point(20, 300);
+            lblSalary.Name = "lblSalary";
+            lblSalary.Padding = new Padding(15, 0, 0, 0);
+            lblSalary.ShadowDecoration.CustomizableEdges = customizableEdges7;
+            lblSalary.Size = new Size(200, 50);
+            lblSalary.TabIndex = 12;
+            lblSalary.Text = "Salary";
+            lblSalary.TextAlign = HorizontalAlignment.Left;
+            // 
+            // panel2
+            // 
+            panel2.BackColor = Color.RoyalBlue;
+            panel2.Location = new Point(20, 610);
+            panel2.Name = "panel2";
+            panel2.Size = new Size(210, 1);
+            panel2.TabIndex = 13;
+            // 
+            // panelMainInterface
+            // 
+            panelMainInterface.BackColor = Color.FromArgb(10, 35, 90);
+            panelMainInterface.BorderStyle = BorderStyle.FixedSingle;
+            panelMainInterface.Controls.Add(pictureBox5);
+            panelMainInterface.Controls.Add(panel2);
+            panelMainInterface.Controls.Add(lblSalary);
+            panelMainInterface.Controls.Add(lblEmployees);
+            panelMainInterface.Controls.Add(lblDashboard);
+            panelMainInterface.Controls.Add(panel1);
+            panelMainInterface.Controls.Add(label2);
+            panelMainInterface.Controls.Add(lblSubtitle);
+            panelMainInterface.Controls.Add(guna2CirclePictureBox1);
+            panelMainInterface.Controls.Add(lblStaffroom);
+            panelMainInterface.Dock = DockStyle.Left;
+            panelMainInterface.Location = new Point(0, 0);
+            panelMainInterface.Name = "panelMainInterface";
+            panelMainInterface.Size = new Size(250, 729);
+            panelMainInterface.TabIndex = 2;
+            panelMainInterface.Paint += panel1_Paint;
+            // 
+            // pictureBox5
+            // 
+            pictureBox5.BorderColor = Color.Red;
+            pictureBox5.BorderRadius = 12;
+            pictureBox5.BorderThickness = 1;
+            pictureBox5.CustomizableEdges = customizableEdges8;
+            pictureBox5.DisabledState.BorderColor = Color.DarkGray;
+            pictureBox5.DisabledState.CustomBorderColor = Color.DarkGray;
+            pictureBox5.DisabledState.FillColor = Color.FromArgb(169, 169, 169);
+            pictureBox5.DisabledState.ForeColor = Color.FromArgb(141, 141, 141);
+            pictureBox5.FillColor = Color.Transparent;
+            pictureBox5.Font = new Font("Segoe UI", 11.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            pictureBox5.ForeColor = Color.White;
+            pictureBox5.Image = (Image)resources.GetObject("pictureBox5.Image");
+            pictureBox5.ImageAlign = HorizontalAlignment.Left;
+            pictureBox5.Location = new Point(25, 652);
+            pictureBox5.Name = "pictureBox5";
+            pictureBox5.Padding = new Padding(15, 0, 0, 0);
+            pictureBox5.ShadowDecoration.CustomizableEdges = customizableEdges9;
+            pictureBox5.Size = new Size(200, 50);
+            pictureBox5.TabIndex = 14;
+            pictureBox5.Text = "Exit";
+            pictureBox5.TextAlign = HorizontalAlignment.Left;
             // 
             // MainInterface
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1457, 610);
+            ClientSize = new Size(1370, 729);
             Controls.Add(mainPanel);
             Controls.Add(panelMainInterface);
+            Location = new Point(25, 130);
             Name = "MainInterface";
             Text = "MainInterface";
             Load += MainInterface_Load;
+            ((System.ComponentModel.ISupportInitialize)guna2CirclePictureBox1).EndInit();
             panelMainInterface.ResumeLayout(false);
             panelMainInterface.PerformLayout();
-            sigOutContainerPanel.ResumeLayout(false);
-            sigOutContainerPanel.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)pictureBox5).EndInit();
-            menuContainerPanel.ResumeLayout(false);
-            menuContainerPanel.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
-            ((System.ComponentModel.ISupportInitialize)pictureBox2).EndInit();
-            ((System.ComponentModel.ISupportInitialize)pictureBox4).EndInit();
-            ((System.ComponentModel.ISupportInitialize)pictureBox3).EndInit();
             ResumeLayout(false);
+            PerformLayout();
         }
 
         #endregion
-
-        private Panel panelMainInterface;
-        private Label label2;
-        private Label lblStaffroom;
-        private PictureBox pictureBox1;
-        private PictureBox pictureBox2;
         private Label lblEmployees;
         private Label lblDashboard;
-        private PictureBox pictureBox3;
         private Label lblSalary;
-        private PictureBox pictureBox4;
-        private Label lblSignOut;
-        private PictureBox pictureBox5;
         private Panel mainPanel;
-        private Panel menuContainerPanel;
-        private Panel sigOutContainerPanel;
+        private Label lblStaffroom;
+        private Guna.UI2.WinForms.Guna2CirclePictureBox guna2CirclePictureBox1;
+        private Label lblSubtitle;
+        private Label label2;
+        private Panel panel1;
+        private Guna.UI2.WinForms.Guna2Button lblDashboard;
+        private Guna.UI2.WinForms.Guna2Button lblEmployees;
+        private Guna.UI2.WinForms.Guna2Button lblSalary;
+        private PictureBox pictureBox5;
+        private Panel panel2;
+        private Panel panelMainInterface;
+        private Guna.UI2.WinForms.Guna2Button pictureBox5;
     }
 }
