@@ -75,6 +75,7 @@
             lblNetPay = new Label();
             lblNetTitle = new Label();
             panelSalaryDetails = new Panel();
+            cmbPosition = new Guna.UI2.WinForms.Guna2ComboBox();
             btnClear = new Button();
             btnUpdate = new Button();
             btnSave = new Button();
@@ -85,7 +86,6 @@
             txtDeductions = new Guna.UI2.WinForms.Guna2TextBox();
             txtAllowances = new Guna.UI2.WinForms.Guna2TextBox();
             txtBasicSalary = new Guna.UI2.WinForms.Guna2TextBox();
-            txtPosition = new Guna.UI2.WinForms.Guna2TextBox();
             txtEmpName = new Guna.UI2.WinForms.Guna2TextBox();
             txtEmpID = new Guna.UI2.WinForms.Guna2TextBox();
             lblPaymentDate = new Label();
@@ -424,6 +424,7 @@
             // panelSalaryDetails
             // 
             panelSalaryDetails.BorderStyle = BorderStyle.FixedSingle;
+            panelSalaryDetails.Controls.Add(cmbPosition);
             panelSalaryDetails.Controls.Add(btnClear);
             panelSalaryDetails.Controls.Add(btnUpdate);
             panelSalaryDetails.Controls.Add(btnSave);
@@ -434,7 +435,6 @@
             panelSalaryDetails.Controls.Add(txtDeductions);
             panelSalaryDetails.Controls.Add(txtAllowances);
             panelSalaryDetails.Controls.Add(txtBasicSalary);
-            panelSalaryDetails.Controls.Add(txtPosition);
             panelSalaryDetails.Controls.Add(txtEmpName);
             panelSalaryDetails.Controls.Add(txtEmpID);
             panelSalaryDetails.Controls.Add(lblPaymentDate);
@@ -451,6 +451,24 @@
             panelSalaryDetails.Name = "panelSalaryDetails";
             panelSalaryDetails.Size = new Size(491, 627);
             panelSalaryDetails.TabIndex = 5;
+            // 
+            // cmbPosition
+            // 
+            cmbPosition.BackColor = Color.Transparent;
+            cmbPosition.CustomizableEdges = customizableEdges5;
+            cmbPosition.DrawMode = DrawMode.OwnerDrawFixed;
+            cmbPosition.DropDownStyle = ComboBoxStyle.DropDownList;
+            cmbPosition.FocusedColor = Color.FromArgb(94, 148, 255);
+            cmbPosition.FocusedState.BorderColor = Color.FromArgb(94, 148, 255);
+            cmbPosition.Font = new Font("Segoe UI", 10F);
+            cmbPosition.ForeColor = Color.FromArgb(68, 88, 112);
+            cmbPosition.ItemHeight = 30;
+            cmbPosition.Items.AddRange(new object[] { "Developer", "Designer", "HR", "Sales", "Accountant" });
+            cmbPosition.Location = new Point(175, 212);
+            cmbPosition.Name = "cmbPosition";
+            cmbPosition.ShadowDecoration.CustomizableEdges = customizableEdges6;
+            cmbPosition.Size = new Size(296, 36);
+            cmbPosition.TabIndex = 22;
             // 
             // btnClear
             // 
@@ -533,7 +551,7 @@
             // 
             // txtNetSalary
             // 
-            txtNetSalary.CustomizableEdges = customizableEdges5;
+            txtNetSalary.CustomizableEdges = customizableEdges7;
             txtNetSalary.DefaultText = "";
             txtNetSalary.DisabledState.BorderColor = Color.FromArgb(208, 208, 208);
             txtNetSalary.DisabledState.FillColor = Color.FromArgb(226, 226, 226);
@@ -547,13 +565,13 @@
             txtNetSalary.Name = "txtNetSalary";
             txtNetSalary.PlaceholderText = "₱";
             txtNetSalary.SelectedText = "";
-            txtNetSalary.ShadowDecoration.CustomizableEdges = customizableEdges6;
+            txtNetSalary.ShadowDecoration.CustomizableEdges = customizableEdges8;
             txtNetSalary.Size = new Size(151, 48);
             txtNetSalary.TabIndex = 15;
             // 
             // txtDeductions
             // 
-            txtDeductions.CustomizableEdges = customizableEdges7;
+            txtDeductions.CustomizableEdges = customizableEdges9;
             txtDeductions.DefaultText = "";
             txtDeductions.DisabledState.BorderColor = Color.FromArgb(208, 208, 208);
             txtDeductions.DisabledState.FillColor = Color.FromArgb(226, 226, 226);
@@ -567,13 +585,13 @@
             txtDeductions.Name = "txtDeductions";
             txtDeductions.PlaceholderText = "₱";
             txtDeductions.SelectedText = "";
-            txtDeductions.ShadowDecoration.CustomizableEdges = customizableEdges8;
+            txtDeductions.ShadowDecoration.CustomizableEdges = customizableEdges10;
             txtDeductions.Size = new Size(151, 48);
             txtDeductions.TabIndex = 14;
             // 
             // txtAllowances
             // 
-            txtAllowances.CustomizableEdges = customizableEdges9;
+            txtAllowances.CustomizableEdges = customizableEdges11;
             txtAllowances.DefaultText = "";
             txtAllowances.DisabledState.BorderColor = Color.FromArgb(208, 208, 208);
             txtAllowances.DisabledState.FillColor = Color.FromArgb(226, 226, 226);
@@ -587,13 +605,13 @@
             txtAllowances.Name = "txtAllowances";
             txtAllowances.PlaceholderText = "₱";
             txtAllowances.SelectedText = "";
-            txtAllowances.ShadowDecoration.CustomizableEdges = customizableEdges10;
+            txtAllowances.ShadowDecoration.CustomizableEdges = customizableEdges12;
             txtAllowances.Size = new Size(151, 48);
             txtAllowances.TabIndex = 13;
             // 
             // txtBasicSalary
             // 
-            txtBasicSalary.CustomizableEdges = customizableEdges11;
+            txtBasicSalary.CustomizableEdges = customizableEdges13;
             txtBasicSalary.DefaultText = "";
             txtBasicSalary.DisabledState.BorderColor = Color.FromArgb(208, 208, 208);
             txtBasicSalary.DisabledState.FillColor = Color.FromArgb(226, 226, 226);
@@ -608,29 +626,9 @@
             txtBasicSalary.PlaceholderText = "₱";
             txtBasicSalary.RightToLeft = RightToLeft.No;
             txtBasicSalary.SelectedText = "";
-            txtBasicSalary.ShadowDecoration.CustomizableEdges = customizableEdges12;
+            txtBasicSalary.ShadowDecoration.CustomizableEdges = customizableEdges14;
             txtBasicSalary.Size = new Size(151, 48);
             txtBasicSalary.TabIndex = 12;
-            // 
-            // txtPosition
-            // 
-            txtPosition.CustomizableEdges = customizableEdges13;
-            txtPosition.DefaultText = "";
-            txtPosition.DisabledState.BorderColor = Color.FromArgb(208, 208, 208);
-            txtPosition.DisabledState.FillColor = Color.FromArgb(226, 226, 226);
-            txtPosition.DisabledState.ForeColor = Color.FromArgb(138, 138, 138);
-            txtPosition.DisabledState.PlaceholderForeColor = Color.FromArgb(138, 138, 138);
-            txtPosition.FocusedState.BorderColor = Color.FromArgb(94, 148, 255);
-            txtPosition.Font = new Font("Segoe UI", 9F);
-            txtPosition.HoverState.BorderColor = Color.FromArgb(94, 148, 255);
-            txtPosition.Location = new Point(175, 200);
-            txtPosition.Margin = new Padding(3, 5, 3, 5);
-            txtPosition.Name = "txtPosition";
-            txtPosition.PlaceholderText = "Enter Employee Position";
-            txtPosition.SelectedText = "";
-            txtPosition.ShadowDecoration.CustomizableEdges = customizableEdges14;
-            txtPosition.Size = new Size(296, 48);
-            txtPosition.TabIndex = 11;
             // 
             // txtEmpName
             // 
@@ -686,7 +684,7 @@
             // 
             lblNetSalary.AutoSize = true;
             lblNetSalary.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            lblNetSalary.Location = new Point(16, 443);
+            lblNetSalary.Location = new Point(6, 435);
             lblNetSalary.Name = "lblNetSalary";
             lblNetSalary.Size = new Size(110, 28);
             lblNetSalary.TabIndex = 7;
@@ -696,17 +694,18 @@
             // 
             lblDeductions.AutoSize = true;
             lblDeductions.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            lblDeductions.Location = new Point(16, 387);
+            lblDeductions.Location = new Point(6, 379);
             lblDeductions.Name = "lblDeductions";
             lblDeductions.Size = new Size(120, 28);
             lblDeductions.TabIndex = 6;
             lblDeductions.Text = "Deductions:";
+            lblDeductions.Click += lblDeductions_Click;
             // 
             // lblAllowances
             // 
             lblAllowances.AutoSize = true;
             lblAllowances.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            lblAllowances.Location = new Point(16, 329);
+            lblAllowances.Location = new Point(6, 322);
             lblAllowances.Name = "lblAllowances";
             lblAllowances.Size = new Size(118, 28);
             lblAllowances.TabIndex = 5;
@@ -716,7 +715,7 @@
             // 
             lblBasicSalary.AutoSize = true;
             lblBasicSalary.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            lblBasicSalary.Location = new Point(16, 273);
+            lblBasicSalary.Location = new Point(6, 267);
             lblBasicSalary.Name = "lblBasicSalary";
             lblBasicSalary.Size = new Size(122, 28);
             lblBasicSalary.TabIndex = 4;
@@ -726,7 +725,7 @@
             // 
             lblPosition.AutoSize = true;
             lblPosition.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            lblPosition.Location = new Point(16, 219);
+            lblPosition.Location = new Point(6, 212);
             lblPosition.Name = "lblPosition";
             lblPosition.Size = new Size(90, 28);
             lblPosition.TabIndex = 3;
@@ -736,17 +735,18 @@
             // 
             lblEmployeeName.AutoSize = true;
             lblEmployeeName.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            lblEmployeeName.Location = new Point(16, 164);
+            lblEmployeeName.Location = new Point(6, 155);
             lblEmployeeName.Name = "lblEmployeeName";
             lblEmployeeName.Size = new Size(166, 28);
             lblEmployeeName.TabIndex = 2;
             lblEmployeeName.Text = "Employee Name:";
+            lblEmployeeName.Click += lblEmployeeName_Click;
             // 
             // lblEmployeeID
             // 
             lblEmployeeID.AutoSize = true;
             lblEmployeeID.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            lblEmployeeID.Location = new Point(16, 108);
+            lblEmployeeID.Location = new Point(6, 99);
             lblEmployeeID.Name = "lblEmployeeID";
             lblEmployeeID.Size = new Size(132, 28);
             lblEmployeeID.TabIndex = 1;
@@ -914,6 +914,7 @@
             Name = "Salary1";
             SizeGripStyle = SizeGripStyle.Show;
             Text = "Salary";
+            Load += Salary1_Load;
             panelHeader.ResumeLayout(false);
             panelHeader.PerformLayout();
             panelEmployees.ResumeLayout(false);
@@ -991,7 +992,6 @@
         private Guna.UI2.WinForms.Guna2TextBox txtDeductions;
         private Guna.UI2.WinForms.Guna2TextBox txtAllowances;
         private Guna.UI2.WinForms.Guna2TextBox txtBasicSalary;
-        private Guna.UI2.WinForms.Guna2TextBox txtPosition;
         private Guna.UI2.WinForms.Guna2TextBox txtEmpName;
         private Button btnClear;
         private Button btnUpdate;
@@ -1005,5 +1005,6 @@
         private Label lblTotalRecord;
         private Label lblTotalRecords;
         private DataGridView dgvSalaryRecords;
+        private Guna.UI2.WinForms.Guna2ComboBox cmbPosition;
     }
 }
