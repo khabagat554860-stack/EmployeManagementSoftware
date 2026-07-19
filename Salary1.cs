@@ -81,7 +81,7 @@ namespace EmployeManagementSoftware
             using (SQLiteConnection conn = new SQLiteConnection(DatabaseHelper.ConnectionString))
             {
                 conn.Open();
-                string query = @"SELECT s.RecordID, s.EmployeeID, e.EmployeeName, e.Position, 
+                string query = @"SELECT s.RecordID, s.EmployeeID, e.FullName, e.Position, 
                                  s.BasicSalary, s.Allowances, s.Deductions, s.NetSalary, s.PaymentDate 
                                  FROM SalaryRecords s
                                  JOIN Employees e ON s.EmployeeID = e.EmployeeID";
@@ -161,7 +161,7 @@ namespace EmployeManagementSoftware
                     {
                         if (reader.Read())
                         {
-                            txtEmpName.Text = reader["EmployeeName"].ToString();
+                            txtEmpName.Text = reader["FullName"].ToString();
                             cmbPosition.Text = reader["Position"].ToString();
 
                             LoadSalaryRecords(txtEmpID.Text.Trim()); // Filter grid view
@@ -248,12 +248,32 @@ namespace EmployeManagementSoftware
 
         }
 
-        private void lblDeductions_Click(object sender, EventArgs e)
+        private void txtBasicSalary_TextChanged(object sender, EventArgs e)
+        {
+            CalculateNetPayOnTheFly();
+        }
+
+        private void CalculateNetPayOnTheFly()
+        {
+            // Safely parse the text inputs, defaulting to 0 if empty or invalid
+            decimal.TryParse(txtBasicSalary.Text, out decimal basicSalary);
+            decimal.TryParse(txtAllowances.Text, out decimal allowances);
+            decimal.TryParse(txtDeductions.Text, out decimal deductions);
+
+            // Business Logic
+            decimal grossPay = basicSalary + allowances;
+            decimal netSalary = grossPay - deductions;
+
+            // Display the calculation in your Net Salary textbox (formatted to 2 decimal places)
+            txtNetSalary.Text = netSalary.ToString("N2");
+        }
+
+        private void txtAllowances_TextChanged(object sender, EventArgs e)
         {
 
         }
 
-        private void lblEmployeeName_Click(object sender, EventArgs e)
+        private void txtDeductions_TextChanged(object sender, EventArgs e)
         {
 
         }
