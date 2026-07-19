@@ -70,6 +70,20 @@
             this.Close();
         }
 
-        
+        private void lblSalary_Click(object sender, EventArgs e)
+        {
+            mainPanel.Controls.Clear();
+
+
+            Salary1 salaryForm = new Salary1();
+
+            salaryForm.TopLevel = false;
+
+            salaryForm.FormBorderStyle = FormBorderStyle.None;
+            salaryForm.Dock = DockStyle.Fill;
+
+            mainPanel.Controls.Add(salaryForm);
+            salaryForm.Show();
+        }
     }
 }

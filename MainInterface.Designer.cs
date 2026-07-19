@@ -161,7 +161,7 @@
             lblSalary.Size = new Size(62, 24);
             lblSalary.TabIndex = 9;
             lblSalary.Text = "Salary";
-     
+            lblSalary.Click += lblSalary_Click;
             // 
             // pictureBox2
             // 

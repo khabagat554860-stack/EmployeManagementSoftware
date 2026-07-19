@@ -129,25 +129,27 @@
             // 
             // panelHeader
             // 
+            panelHeader.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
             panelHeader.BackColor = Color.White;
             panelHeader.BorderStyle = BorderStyle.FixedSingle;
             panelHeader.Controls.Add(dtpPayPeriod);
             panelHeader.Controls.Add(lblPayPeriod);
             panelHeader.Controls.Add(lblWelcome);
             panelHeader.Controls.Add(lblTitle);
-            panelHeader.Dock = DockStyle.Top;
-            panelHeader.Location = new Point(0, 0);
+            panelHeader.Location = new Point(24, 0);
+            panelHeader.Margin = new Padding(3, 4, 3, 4);
             panelHeader.Name = "panelHeader";
-            panelHeader.Size = new Size(1350, 80);
+            panelHeader.Size = new Size(1504, 106);
             panelHeader.TabIndex = 0;
             // 
             // dtpPayPeriod
             // 
             dtpPayPeriod.CustomFormat = "MMMM yyyy";
             dtpPayPeriod.Format = DateTimePickerFormat.Custom;
-            dtpPayPeriod.Location = new Point(1181, 33);
+            dtpPayPeriod.Location = new Point(1350, 44);
+            dtpPayPeriod.Margin = new Padding(3, 4, 3, 4);
             dtpPayPeriod.Name = "dtpPayPeriod";
-            dtpPayPeriod.Size = new Size(124, 23);
+            dtpPayPeriod.Size = new Size(141, 27);
             dtpPayPeriod.TabIndex = 3;
             dtpPayPeriod.ValueChanged += dtpPayPeriod_ValueChanged;
             // 
@@ -155,9 +157,9 @@
             // 
             lblPayPeriod.AutoSize = true;
             lblPayPeriod.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            lblPayPeriod.Location = new Point(1085, 35);
+            lblPayPeriod.Location = new Point(1240, 47);
             lblPayPeriod.Name = "lblPayPeriod";
-            lblPayPeriod.Size = new Size(90, 21);
+            lblPayPeriod.Size = new Size(112, 28);
             lblPayPeriod.TabIndex = 2;
             lblPayPeriod.Text = "Pay Period:";
             // 
@@ -166,9 +168,9 @@
             lblWelcome.AutoSize = true;
             lblWelcome.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
             lblWelcome.ForeColor = Color.FromArgb(10, 35, 90);
-            lblWelcome.Location = new Point(19, 40);
+            lblWelcome.Location = new Point(22, 53);
             lblWelcome.Name = "lblWelcome";
-            lblWelcome.Size = new Size(140, 21);
+            lblWelcome.Size = new Size(173, 28);
             lblWelcome.TabIndex = 1;
             lblWelcome.Text = "Welcome, Admin!";
             // 
@@ -177,9 +179,9 @@
             lblTitle.AutoSize = true;
             lblTitle.Font = new Font("Segoe UI", 21.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
             lblTitle.ForeColor = Color.FromArgb(10, 35, 90);
-            lblTitle.Location = new Point(11, 0);
+            lblTitle.Location = new Point(13, 0);
             lblTitle.Name = "lblTitle";
-            lblTitle.Size = new Size(314, 40);
+            lblTitle.Size = new Size(400, 50);
             lblTitle.TabIndex = 0;
             lblTitle.Text = "SALARY DASHBOARD";
             // 
@@ -190,20 +192,22 @@
             panelEmployees.Controls.Add(lblEmployeeDesc);
             panelEmployees.Controls.Add(lblTotalEmployees);
             panelEmployees.Controls.Add(lblEmployeeTitle);
-            panelEmployees.Location = new Point(46, 100);
+            panelEmployees.Location = new Point(23, 133);
+            panelEmployees.Margin = new Padding(3, 4, 3, 4);
             panelEmployees.Name = "panelEmployees";
-            panelEmployees.Size = new Size(280, 110);
+            panelEmployees.Size = new Size(353, 146);
             panelEmployees.TabIndex = 1;
             // 
             // guna2CirclePictureBox1
             // 
             guna2CirclePictureBox1.Image = (Image)resources.GetObject("guna2CirclePictureBox1.Image");
             guna2CirclePictureBox1.ImageRotate = 0F;
-            guna2CirclePictureBox1.Location = new Point(14, 14);
+            guna2CirclePictureBox1.Location = new Point(16, 19);
+            guna2CirclePictureBox1.Margin = new Padding(3, 4, 3, 4);
             guna2CirclePictureBox1.Name = "guna2CirclePictureBox1";
             guna2CirclePictureBox1.ShadowDecoration.CustomizableEdges = customizableEdges1;
             guna2CirclePictureBox1.ShadowDecoration.Mode = Guna.UI2.WinForms.Enums.ShadowMode.Circle;
-            guna2CirclePictureBox1.Size = new Size(80, 80);
+            guna2CirclePictureBox1.Size = new Size(91, 107);
             guna2CirclePictureBox1.SizeMode = PictureBoxSizeMode.StretchImage;
             guna2CirclePictureBox1.TabIndex = 3;
             guna2CirclePictureBox1.TabStop = false;
@@ -213,9 +217,9 @@
             lblEmployeeDesc.AutoSize = true;
             lblEmployeeDesc.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
             lblEmployeeDesc.ForeColor = Color.Gray;
-            lblEmployeeDesc.Location = new Point(100, 79);
+            lblEmployeeDesc.Location = new Point(114, 105);
             lblEmployeeDesc.Name = "lblEmployeeDesc";
-            lblEmployeeDesc.Size = new Size(100, 15);
+            lblEmployeeDesc.Size = new Size(126, 20);
             lblEmployeeDesc.TabIndex = 2;
             lblEmployeeDesc.Text = "Active Employees";
             // 
@@ -224,9 +228,9 @@
             lblTotalEmployees.AutoSize = true;
             lblTotalEmployees.Font = new Font("Segoe UI", 18F, FontStyle.Bold, GraphicsUnit.Point, 0);
             lblTotalEmployees.ForeColor = Color.FromArgb(10, 35, 90);
-            lblTotalEmployees.Location = new Point(100, 39);
+            lblTotalEmployees.Location = new Point(114, 52);
             lblTotalEmployees.Name = "lblTotalEmployees";
-            lblTotalEmployees.Size = new Size(42, 32);
+            lblTotalEmployees.Size = new Size(52, 41);
             lblTotalEmployees.TabIndex = 1;
             lblTotalEmployees.Text = "25";
             // 
@@ -234,9 +238,9 @@
             // 
             lblEmployeeTitle.AutoSize = true;
             lblEmployeeTitle.Font = new Font("Segoe UI", 14.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            lblEmployeeTitle.Location = new Point(97, 14);
+            lblEmployeeTitle.Location = new Point(111, 19);
             lblEmployeeTitle.Name = "lblEmployeeTitle";
-            lblEmployeeTitle.Size = new Size(180, 25);
+            lblEmployeeTitle.Size = new Size(226, 32);
             lblEmployeeTitle.TabIndex = 0;
             lblEmployeeTitle.Text = "TOTAL EMPLOYEES";
             // 
@@ -247,20 +251,22 @@
             panelGrossPay.Controls.Add(lblGrossMonth);
             panelGrossPay.Controls.Add(lblGrossPay);
             panelGrossPay.Controls.Add(lblGrossTitle);
-            panelGrossPay.Location = new Point(373, 100);
+            panelGrossPay.Location = new Point(407, 133);
+            panelGrossPay.Margin = new Padding(3, 4, 3, 4);
             panelGrossPay.Name = "panelGrossPay";
-            panelGrossPay.Size = new Size(280, 110);
+            panelGrossPay.Size = new Size(353, 146);
             panelGrossPay.TabIndex = 2;
             // 
             // guna2CirclePictureBox2
             // 
             guna2CirclePictureBox2.Image = (Image)resources.GetObject("guna2CirclePictureBox2.Image");
             guna2CirclePictureBox2.ImageRotate = 0F;
-            guna2CirclePictureBox2.Location = new Point(14, 14);
+            guna2CirclePictureBox2.Location = new Point(16, 19);
+            guna2CirclePictureBox2.Margin = new Padding(3, 4, 3, 4);
             guna2CirclePictureBox2.Name = "guna2CirclePictureBox2";
             guna2CirclePictureBox2.ShadowDecoration.CustomizableEdges = customizableEdges2;
             guna2CirclePictureBox2.ShadowDecoration.Mode = Guna.UI2.WinForms.Enums.ShadowMode.Circle;
-            guna2CirclePictureBox2.Size = new Size(80, 80);
+            guna2CirclePictureBox2.Size = new Size(91, 107);
             guna2CirclePictureBox2.SizeMode = PictureBoxSizeMode.StretchImage;
             guna2CirclePictureBox2.TabIndex = 3;
             guna2CirclePictureBox2.TabStop = false;
@@ -270,9 +276,9 @@
             lblGrossMonth.AutoSize = true;
             lblGrossMonth.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
             lblGrossMonth.ForeColor = Color.Gray;
-            lblGrossMonth.Location = new Point(100, 79);
+            lblGrossMonth.Location = new Point(114, 105);
             lblGrossMonth.Name = "lblGrossMonth";
-            lblGrossMonth.Size = new Size(74, 15);
+            lblGrossMonth.Size = new Size(94, 20);
             lblGrossMonth.TabIndex = 2;
             lblGrossMonth.Text = "For July 2026";
             // 
@@ -281,9 +287,9 @@
             lblGrossPay.AutoSize = true;
             lblGrossPay.Font = new Font("Segoe UI", 18F, FontStyle.Bold, GraphicsUnit.Point, 0);
             lblGrossPay.ForeColor = Color.FromArgb(22, 138, 77);
-            lblGrossPay.Location = new Point(100, 39);
+            lblGrossPay.Location = new Point(114, 52);
             lblGrossPay.Name = "lblGrossPay";
-            lblGrossPay.Size = new Size(155, 32);
+            lblGrossPay.Size = new Size(189, 41);
             lblGrossPay.TabIndex = 1;
             lblGrossPay.Text = "₱650,000.00";
             // 
@@ -291,9 +297,9 @@
             // 
             lblGrossTitle.AutoSize = true;
             lblGrossTitle.Font = new Font("Segoe UI", 14.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            lblGrossTitle.Location = new Point(97, 14);
+            lblGrossTitle.Location = new Point(111, 19);
             lblGrossTitle.Name = "lblGrossTitle";
-            lblGrossTitle.Size = new Size(175, 25);
+            lblGrossTitle.Size = new Size(220, 32);
             lblGrossTitle.TabIndex = 0;
             lblGrossTitle.Text = "TOTAL GROSS PAY";
             // 
@@ -304,20 +310,22 @@
             panelDeductions.Controls.Add(lblDeductionMonth);
             panelDeductions.Controls.Add(lblDeduction);
             panelDeductions.Controls.Add(lblDeductionTitle);
-            panelDeductions.Location = new Point(699, 100);
+            panelDeductions.Location = new Point(791, 133);
+            panelDeductions.Margin = new Padding(3, 4, 3, 4);
             panelDeductions.Name = "panelDeductions";
-            panelDeductions.Size = new Size(280, 110);
+            panelDeductions.Size = new Size(353, 146);
             panelDeductions.TabIndex = 3;
             // 
             // guna2CirclePictureBox3
             // 
             guna2CirclePictureBox3.Image = (Image)resources.GetObject("guna2CirclePictureBox3.Image");
             guna2CirclePictureBox3.ImageRotate = 0F;
-            guna2CirclePictureBox3.Location = new Point(14, 14);
+            guna2CirclePictureBox3.Location = new Point(16, 19);
+            guna2CirclePictureBox3.Margin = new Padding(3, 4, 3, 4);
             guna2CirclePictureBox3.Name = "guna2CirclePictureBox3";
             guna2CirclePictureBox3.ShadowDecoration.CustomizableEdges = customizableEdges3;
             guna2CirclePictureBox3.ShadowDecoration.Mode = Guna.UI2.WinForms.Enums.ShadowMode.Circle;
-            guna2CirclePictureBox3.Size = new Size(80, 80);
+            guna2CirclePictureBox3.Size = new Size(91, 107);
             guna2CirclePictureBox3.SizeMode = PictureBoxSizeMode.StretchImage;
             guna2CirclePictureBox3.TabIndex = 3;
             guna2CirclePictureBox3.TabStop = false;
@@ -327,9 +335,9 @@
             lblDeductionMonth.AutoSize = true;
             lblDeductionMonth.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
             lblDeductionMonth.ForeColor = Color.Gray;
-            lblDeductionMonth.Location = new Point(104, 79);
+            lblDeductionMonth.Location = new Point(119, 105);
             lblDeductionMonth.Name = "lblDeductionMonth";
-            lblDeductionMonth.Size = new Size(74, 15);
+            lblDeductionMonth.Size = new Size(94, 20);
             lblDeductionMonth.TabIndex = 2;
             lblDeductionMonth.Text = "For July 2026";
             // 
@@ -338,9 +346,9 @@
             lblDeduction.AutoSize = true;
             lblDeduction.Font = new Font("Segoe UI", 18F, FontStyle.Bold, GraphicsUnit.Point, 0);
             lblDeduction.ForeColor = Color.FromArgb(244, 196, 48);
-            lblDeduction.Location = new Point(100, 39);
+            lblDeduction.Location = new Point(114, 52);
             lblDeduction.Name = "lblDeduction";
-            lblDeduction.Size = new Size(155, 32);
+            lblDeduction.Size = new Size(189, 41);
             lblDeduction.TabIndex = 1;
             lblDeduction.Text = "₱112,500.00";
             // 
@@ -348,9 +356,9 @@
             // 
             lblDeductionTitle.AutoSize = true;
             lblDeductionTitle.Font = new Font("Segoe UI", 12.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            lblDeductionTitle.Location = new Point(104, 14);
+            lblDeductionTitle.Location = new Point(119, 19);
             lblDeductionTitle.Name = "lblDeductionTitle";
-            lblDeductionTitle.Size = new Size(175, 23);
+            lblDeductionTitle.Size = new Size(224, 30);
             lblDeductionTitle.TabIndex = 0;
             lblDeductionTitle.Text = "TOTAL DEDUCTIONS";
             // 
@@ -361,20 +369,22 @@
             panelNetPay.Controls.Add(lblNetMonth);
             panelNetPay.Controls.Add(lblNetPay);
             panelNetPay.Controls.Add(lblNetTitle);
-            panelNetPay.Location = new Point(1026, 100);
+            panelNetPay.Location = new Point(1175, 133);
+            panelNetPay.Margin = new Padding(3, 4, 3, 4);
             panelNetPay.Name = "panelNetPay";
-            panelNetPay.Size = new Size(280, 110);
+            panelNetPay.Size = new Size(353, 146);
             panelNetPay.TabIndex = 4;
             // 
             // guna2CirclePictureBox4
             // 
             guna2CirclePictureBox4.Image = (Image)resources.GetObject("guna2CirclePictureBox4.Image");
             guna2CirclePictureBox4.ImageRotate = 0F;
-            guna2CirclePictureBox4.Location = new Point(14, 14);
+            guna2CirclePictureBox4.Location = new Point(16, 19);
+            guna2CirclePictureBox4.Margin = new Padding(3, 4, 3, 4);
             guna2CirclePictureBox4.Name = "guna2CirclePictureBox4";
             guna2CirclePictureBox4.ShadowDecoration.CustomizableEdges = customizableEdges4;
             guna2CirclePictureBox4.ShadowDecoration.Mode = Guna.UI2.WinForms.Enums.ShadowMode.Circle;
-            guna2CirclePictureBox4.Size = new Size(80, 80);
+            guna2CirclePictureBox4.Size = new Size(91, 107);
             guna2CirclePictureBox4.SizeMode = PictureBoxSizeMode.StretchImage;
             guna2CirclePictureBox4.TabIndex = 3;
             guna2CirclePictureBox4.TabStop = false;
@@ -384,9 +394,9 @@
             lblNetMonth.AutoSize = true;
             lblNetMonth.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
             lblNetMonth.ForeColor = Color.Gray;
-            lblNetMonth.Location = new Point(100, 79);
+            lblNetMonth.Location = new Point(114, 105);
             lblNetMonth.Name = "lblNetMonth";
-            lblNetMonth.Size = new Size(74, 15);
+            lblNetMonth.Size = new Size(94, 20);
             lblNetMonth.TabIndex = 2;
             lblNetMonth.Text = "For July 2026";
             // 
@@ -395,9 +405,9 @@
             lblNetPay.AutoSize = true;
             lblNetPay.Font = new Font("Segoe UI", 18F, FontStyle.Bold, GraphicsUnit.Point, 0);
             lblNetPay.ForeColor = Color.FromArgb(106, 13, 173);
-            lblNetPay.Location = new Point(100, 39);
+            lblNetPay.Location = new Point(114, 52);
             lblNetPay.Name = "lblNetPay";
-            lblNetPay.Size = new Size(155, 32);
+            lblNetPay.Size = new Size(189, 41);
             lblNetPay.TabIndex = 1;
             lblNetPay.Text = "₱537,500.00";
             // 
@@ -405,9 +415,9 @@
             // 
             lblNetTitle.AutoSize = true;
             lblNetTitle.Font = new Font("Segoe UI", 14.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            lblNetTitle.Location = new Point(100, 12);
+            lblNetTitle.Location = new Point(114, 16);
             lblNetTitle.Name = "lblNetTitle";
-            lblNetTitle.Size = new Size(149, 25);
+            lblNetTitle.Size = new Size(189, 32);
             lblNetTitle.TabIndex = 0;
             lblNetTitle.Text = "TOTAL NET PAY";
             // 
@@ -436,9 +446,10 @@
             panelSalaryDetails.Controls.Add(lblEmployeeName);
             panelSalaryDetails.Controls.Add(lblEmployeeID);
             panelSalaryDetails.Controls.Add(pnlTopSalaryDetails);
-            panelSalaryDetails.Location = new Point(20, 230);
+            panelSalaryDetails.Location = new Point(23, 307);
+            panelSalaryDetails.Margin = new Padding(3, 4, 3, 4);
             panelSalaryDetails.Name = "panelSalaryDetails";
-            panelSalaryDetails.Size = new Size(430, 471);
+            panelSalaryDetails.Size = new Size(491, 627);
             panelSalaryDetails.TabIndex = 5;
             // 
             // btnClear
@@ -446,9 +457,10 @@
             btnClear.BackColor = Color.FromArgb(212, 61, 60);
             btnClear.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
             btnClear.ForeColor = Color.White;
-            btnClear.Location = new Point(318, 419);
+            btnClear.Location = new Point(363, 559);
+            btnClear.Margin = new Padding(3, 4, 3, 4);
             btnClear.Name = "btnClear";
-            btnClear.Size = new Size(94, 34);
+            btnClear.Size = new Size(107, 45);
             btnClear.TabIndex = 21;
             btnClear.Text = "Clear";
             btnClear.UseVisualStyleBackColor = false;
@@ -459,9 +471,10 @@
             btnUpdate.BackColor = Color.FromArgb(244, 196, 48);
             btnUpdate.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
             btnUpdate.ForeColor = Color.White;
-            btnUpdate.Location = new Point(218, 419);
+            btnUpdate.Location = new Point(249, 559);
+            btnUpdate.Margin = new Padding(3, 4, 3, 4);
             btnUpdate.Name = "btnUpdate";
-            btnUpdate.Size = new Size(94, 34);
+            btnUpdate.Size = new Size(107, 45);
             btnUpdate.TabIndex = 20;
             btnUpdate.Text = "Update";
             btnUpdate.UseVisualStyleBackColor = false;
@@ -472,9 +485,10 @@
             btnSave.BackColor = Color.FromArgb(22, 138, 77);
             btnSave.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
             btnSave.ForeColor = Color.White;
-            btnSave.Location = new Point(114, 419);
+            btnSave.Location = new Point(130, 559);
+            btnSave.Margin = new Padding(3, 4, 3, 4);
             btnSave.Name = "btnSave";
-            btnSave.Size = new Size(94, 34);
+            btnSave.Size = new Size(107, 45);
             btnSave.TabIndex = 19;
             btnSave.Text = "Save";
             btnSave.UseVisualStyleBackColor = false;
@@ -485,9 +499,10 @@
             btnAddNew.BackColor = Color.FromArgb(10, 35, 90);
             btnAddNew.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
             btnAddNew.ForeColor = Color.White;
-            btnAddNew.Location = new Point(14, 419);
+            btnAddNew.Location = new Point(16, 559);
+            btnAddNew.Margin = new Padding(3, 4, 3, 4);
             btnAddNew.Name = "btnAddNew";
-            btnAddNew.Size = new Size(94, 34);
+            btnAddNew.Size = new Size(107, 45);
             btnAddNew.TabIndex = 18;
             btnAddNew.Text = "Add New";
             btnAddNew.UseVisualStyleBackColor = false;
@@ -498,9 +513,10 @@
             btnSearch.BackColor = Color.FromArgb(10, 35, 90);
             btnSearch.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
             btnSearch.ForeColor = Color.White;
-            btnSearch.Location = new Point(299, 68);
+            btnSearch.Location = new Point(342, 91);
+            btnSearch.Margin = new Padding(3, 4, 3, 4);
             btnSearch.Name = "btnSearch";
-            btnSearch.Size = new Size(113, 34);
+            btnSearch.Size = new Size(129, 45);
             btnSearch.TabIndex = 17;
             btnSearch.Text = "Search";
             btnSearch.UseVisualStyleBackColor = false;
@@ -509,9 +525,10 @@
             // dtpPaymentDate
             // 
             dtpPaymentDate.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            dtpPaymentDate.Location = new Point(153, 367);
+            dtpPaymentDate.Location = new Point(175, 489);
+            dtpPaymentDate.Margin = new Padding(3, 4, 3, 4);
             dtpPaymentDate.Name = "dtpPaymentDate";
-            dtpPaymentDate.Size = new Size(259, 29);
+            dtpPaymentDate.Size = new Size(295, 34);
             dtpPaymentDate.TabIndex = 16;
             // 
             // txtNetSalary
@@ -525,12 +542,13 @@
             txtNetSalary.FocusedState.BorderColor = Color.FromArgb(94, 148, 255);
             txtNetSalary.Font = new Font("Segoe UI", 9F);
             txtNetSalary.HoverState.BorderColor = Color.FromArgb(94, 148, 255);
-            txtNetSalary.Location = new Point(153, 318);
+            txtNetSalary.Location = new Point(175, 424);
+            txtNetSalary.Margin = new Padding(3, 5, 3, 5);
             txtNetSalary.Name = "txtNetSalary";
             txtNetSalary.PlaceholderText = "₱";
             txtNetSalary.SelectedText = "";
             txtNetSalary.ShadowDecoration.CustomizableEdges = customizableEdges6;
-            txtNetSalary.Size = new Size(132, 36);
+            txtNetSalary.Size = new Size(151, 48);
             txtNetSalary.TabIndex = 15;
             // 
             // txtDeductions
@@ -544,12 +562,13 @@
             txtDeductions.FocusedState.BorderColor = Color.FromArgb(94, 148, 255);
             txtDeductions.Font = new Font("Segoe UI", 9F);
             txtDeductions.HoverState.BorderColor = Color.FromArgb(94, 148, 255);
-            txtDeductions.Location = new Point(153, 276);
+            txtDeductions.Location = new Point(175, 368);
+            txtDeductions.Margin = new Padding(3, 5, 3, 5);
             txtDeductions.Name = "txtDeductions";
             txtDeductions.PlaceholderText = "₱";
             txtDeductions.SelectedText = "";
             txtDeductions.ShadowDecoration.CustomizableEdges = customizableEdges8;
-            txtDeductions.Size = new Size(132, 36);
+            txtDeductions.Size = new Size(151, 48);
             txtDeductions.TabIndex = 14;
             // 
             // txtAllowances
@@ -563,12 +582,13 @@
             txtAllowances.FocusedState.BorderColor = Color.FromArgb(94, 148, 255);
             txtAllowances.Font = new Font("Segoe UI", 9F);
             txtAllowances.HoverState.BorderColor = Color.FromArgb(94, 148, 255);
-            txtAllowances.Location = new Point(153, 234);
+            txtAllowances.Location = new Point(175, 312);
+            txtAllowances.Margin = new Padding(3, 5, 3, 5);
             txtAllowances.Name = "txtAllowances";
             txtAllowances.PlaceholderText = "₱";
             txtAllowances.SelectedText = "";
             txtAllowances.ShadowDecoration.CustomizableEdges = customizableEdges10;
-            txtAllowances.Size = new Size(132, 36);
+            txtAllowances.Size = new Size(151, 48);
             txtAllowances.TabIndex = 13;
             // 
             // txtBasicSalary
@@ -582,13 +602,14 @@
             txtBasicSalary.FocusedState.BorderColor = Color.FromArgb(94, 148, 255);
             txtBasicSalary.Font = new Font("Segoe UI", 9F);
             txtBasicSalary.HoverState.BorderColor = Color.FromArgb(94, 148, 255);
-            txtBasicSalary.Location = new Point(153, 192);
+            txtBasicSalary.Location = new Point(175, 256);
+            txtBasicSalary.Margin = new Padding(3, 5, 3, 5);
             txtBasicSalary.Name = "txtBasicSalary";
             txtBasicSalary.PlaceholderText = "₱";
             txtBasicSalary.RightToLeft = RightToLeft.No;
             txtBasicSalary.SelectedText = "";
             txtBasicSalary.ShadowDecoration.CustomizableEdges = customizableEdges12;
-            txtBasicSalary.Size = new Size(132, 36);
+            txtBasicSalary.Size = new Size(151, 48);
             txtBasicSalary.TabIndex = 12;
             // 
             // txtPosition
@@ -602,12 +623,13 @@
             txtPosition.FocusedState.BorderColor = Color.FromArgb(94, 148, 255);
             txtPosition.Font = new Font("Segoe UI", 9F);
             txtPosition.HoverState.BorderColor = Color.FromArgb(94, 148, 255);
-            txtPosition.Location = new Point(153, 150);
+            txtPosition.Location = new Point(175, 200);
+            txtPosition.Margin = new Padding(3, 5, 3, 5);
             txtPosition.Name = "txtPosition";
             txtPosition.PlaceholderText = "Enter Employee Position";
             txtPosition.SelectedText = "";
             txtPosition.ShadowDecoration.CustomizableEdges = customizableEdges14;
-            txtPosition.Size = new Size(259, 36);
+            txtPosition.Size = new Size(296, 48);
             txtPosition.TabIndex = 11;
             // 
             // txtEmpName
@@ -621,12 +643,13 @@
             txtEmpName.FocusedState.BorderColor = Color.FromArgb(94, 148, 255);
             txtEmpName.Font = new Font("Segoe UI", 9F);
             txtEmpName.HoverState.BorderColor = Color.FromArgb(94, 148, 255);
-            txtEmpName.Location = new Point(153, 108);
+            txtEmpName.Location = new Point(175, 144);
+            txtEmpName.Margin = new Padding(3, 5, 3, 5);
             txtEmpName.Name = "txtEmpName";
             txtEmpName.PlaceholderText = "Enter Employee Name";
             txtEmpName.SelectedText = "";
             txtEmpName.ShadowDecoration.CustomizableEdges = customizableEdges16;
-            txtEmpName.Size = new Size(259, 36);
+            txtEmpName.Size = new Size(296, 48);
             txtEmpName.TabIndex = 10;
             // 
             // txtEmpID
@@ -640,21 +663,22 @@
             txtEmpID.FocusedState.BorderColor = Color.FromArgb(94, 148, 255);
             txtEmpID.Font = new Font("Segoe UI", 9F);
             txtEmpID.HoverState.BorderColor = Color.FromArgb(94, 148, 255);
-            txtEmpID.Location = new Point(153, 66);
+            txtEmpID.Location = new Point(175, 88);
+            txtEmpID.Margin = new Padding(3, 5, 3, 5);
             txtEmpID.Name = "txtEmpID";
             txtEmpID.PlaceholderText = "Enter Employee ID";
             txtEmpID.SelectedText = "";
             txtEmpID.ShadowDecoration.CustomizableEdges = customizableEdges18;
-            txtEmpID.Size = new Size(132, 36);
+            txtEmpID.Size = new Size(151, 48);
             txtEmpID.TabIndex = 9;
             // 
             // lblPaymentDate
             // 
             lblPaymentDate.AutoSize = true;
             lblPaymentDate.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            lblPaymentDate.Location = new Point(14, 375);
+            lblPaymentDate.Location = new Point(16, 500);
             lblPaymentDate.Name = "lblPaymentDate";
-            lblPaymentDate.Size = new Size(115, 21);
+            lblPaymentDate.Size = new Size(144, 28);
             lblPaymentDate.TabIndex = 8;
             lblPaymentDate.Text = "Payment Date:";
             // 
@@ -662,9 +686,9 @@
             // 
             lblNetSalary.AutoSize = true;
             lblNetSalary.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            lblNetSalary.Location = new Point(14, 332);
+            lblNetSalary.Location = new Point(16, 443);
             lblNetSalary.Name = "lblNetSalary";
-            lblNetSalary.Size = new Size(89, 21);
+            lblNetSalary.Size = new Size(110, 28);
             lblNetSalary.TabIndex = 7;
             lblNetSalary.Text = "Net Salary:";
             // 
@@ -672,9 +696,9 @@
             // 
             lblDeductions.AutoSize = true;
             lblDeductions.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            lblDeductions.Location = new Point(14, 290);
+            lblDeductions.Location = new Point(16, 387);
             lblDeductions.Name = "lblDeductions";
-            lblDeductions.Size = new Size(97, 21);
+            lblDeductions.Size = new Size(120, 28);
             lblDeductions.TabIndex = 6;
             lblDeductions.Text = "Deductions:";
             // 
@@ -682,9 +706,9 @@
             // 
             lblAllowances.AutoSize = true;
             lblAllowances.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            lblAllowances.Location = new Point(14, 247);
+            lblAllowances.Location = new Point(16, 329);
             lblAllowances.Name = "lblAllowances";
-            lblAllowances.Size = new Size(96, 21);
+            lblAllowances.Size = new Size(118, 28);
             lblAllowances.TabIndex = 5;
             lblAllowances.Text = "Allowances:";
             // 
@@ -692,9 +716,9 @@
             // 
             lblBasicSalary.AutoSize = true;
             lblBasicSalary.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            lblBasicSalary.Location = new Point(14, 205);
+            lblBasicSalary.Location = new Point(16, 273);
             lblBasicSalary.Name = "lblBasicSalary";
-            lblBasicSalary.Size = new Size(99, 21);
+            lblBasicSalary.Size = new Size(122, 28);
             lblBasicSalary.TabIndex = 4;
             lblBasicSalary.Text = "Basic Salary:";
             // 
@@ -702,9 +726,9 @@
             // 
             lblPosition.AutoSize = true;
             lblPosition.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            lblPosition.Location = new Point(14, 164);
+            lblPosition.Location = new Point(16, 219);
             lblPosition.Name = "lblPosition";
-            lblPosition.Size = new Size(72, 21);
+            lblPosition.Size = new Size(90, 28);
             lblPosition.TabIndex = 3;
             lblPosition.Text = "Position:";
             // 
@@ -712,9 +736,9 @@
             // 
             lblEmployeeName.AutoSize = true;
             lblEmployeeName.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            lblEmployeeName.Location = new Point(14, 123);
+            lblEmployeeName.Location = new Point(16, 164);
             lblEmployeeName.Name = "lblEmployeeName";
-            lblEmployeeName.Size = new Size(133, 21);
+            lblEmployeeName.Size = new Size(166, 28);
             lblEmployeeName.TabIndex = 2;
             lblEmployeeName.Text = "Employee Name:";
             // 
@@ -722,9 +746,9 @@
             // 
             lblEmployeeID.AutoSize = true;
             lblEmployeeID.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            lblEmployeeID.Location = new Point(14, 81);
+            lblEmployeeID.Location = new Point(16, 108);
             lblEmployeeID.Name = "lblEmployeeID";
-            lblEmployeeID.Size = new Size(106, 21);
+            lblEmployeeID.Size = new Size(132, 28);
             lblEmployeeID.TabIndex = 1;
             lblEmployeeID.Text = "Employee ID:";
             // 
@@ -736,19 +760,21 @@
             pnlTopSalaryDetails.Controls.Add(lblSalaryDetails);
             pnlTopSalaryDetails.Dock = DockStyle.Top;
             pnlTopSalaryDetails.Location = new Point(0, 0);
+            pnlTopSalaryDetails.Margin = new Padding(3, 4, 3, 4);
             pnlTopSalaryDetails.Name = "pnlTopSalaryDetails";
-            pnlTopSalaryDetails.Size = new Size(428, 62);
+            pnlTopSalaryDetails.Size = new Size(489, 82);
             pnlTopSalaryDetails.TabIndex = 0;
             // 
             // guna2CirclePictureBox5
             // 
             guna2CirclePictureBox5.Image = (Image)resources.GetObject("guna2CirclePictureBox5.Image");
             guna2CirclePictureBox5.ImageRotate = 0F;
-            guna2CirclePictureBox5.Location = new Point(13, -1);
+            guna2CirclePictureBox5.Location = new Point(15, -1);
+            guna2CirclePictureBox5.Margin = new Padding(3, 4, 3, 4);
             guna2CirclePictureBox5.Name = "guna2CirclePictureBox5";
             guna2CirclePictureBox5.ShadowDecoration.CustomizableEdges = customizableEdges19;
             guna2CirclePictureBox5.ShadowDecoration.Mode = Guna.UI2.WinForms.Enums.ShadowMode.Circle;
-            guna2CirclePictureBox5.Size = new Size(60, 60);
+            guna2CirclePictureBox5.Size = new Size(69, 80);
             guna2CirclePictureBox5.SizeMode = PictureBoxSizeMode.StretchImage;
             guna2CirclePictureBox5.TabIndex = 1;
             guna2CirclePictureBox5.TabStop = false;
@@ -758,9 +784,9 @@
             lblSalaryDetails.AutoSize = true;
             lblSalaryDetails.Font = new Font("Segoe UI", 18F, FontStyle.Bold, GraphicsUnit.Point, 0);
             lblSalaryDetails.ForeColor = Color.White;
-            lblSalaryDetails.Location = new Point(79, 13);
+            lblSalaryDetails.Location = new Point(90, 17);
             lblSalaryDetails.Name = "lblSalaryDetails";
-            lblSalaryDetails.Size = new Size(205, 32);
+            lblSalaryDetails.Size = new Size(256, 41);
             lblSalaryDetails.TabIndex = 0;
             lblSalaryDetails.Text = "SALARY DETAILS";
             // 
@@ -770,9 +796,10 @@
             panelSalaryRecords.Controls.Add(dgvSalaryRecords);
             panelSalaryRecords.Controls.Add(panel2);
             panelSalaryRecords.Controls.Add(panel1);
-            panelSalaryRecords.Location = new Point(478, 231);
+            panelSalaryRecords.Location = new Point(546, 308);
+            panelSalaryRecords.Margin = new Padding(3, 4, 3, 4);
             panelSalaryRecords.Name = "panelSalaryRecords";
-            panelSalaryRecords.Size = new Size(860, 470);
+            panelSalaryRecords.Size = new Size(983, 626);
             panelSalaryRecords.TabIndex = 6;
             // 
             // dgvSalaryRecords
@@ -780,11 +807,13 @@
             dgvSalaryRecords.BackgroundColor = Color.LightGray;
             dgvSalaryRecords.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dgvSalaryRecords.Dock = DockStyle.Fill;
-            dgvSalaryRecords.Location = new Point(0, 62);
+            dgvSalaryRecords.Location = new Point(0, 82);
+            dgvSalaryRecords.Margin = new Padding(3, 4, 3, 4);
             dgvSalaryRecords.Name = "dgvSalaryRecords";
             dgvSalaryRecords.ReadOnly = true;
+            dgvSalaryRecords.RowHeadersWidth = 51;
             dgvSalaryRecords.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            dgvSalaryRecords.Size = new Size(858, 376);
+            dgvSalaryRecords.Size = new Size(981, 503);
             dgvSalaryRecords.TabIndex = 2;
             dgvSalaryRecords.CellContentClick += dgvSalaryRecords_CellContentClick;
             // 
@@ -794,18 +823,19 @@
             panel2.Controls.Add(lblTotalRecord);
             panel2.Controls.Add(lblTotalRecords);
             panel2.Dock = DockStyle.Bottom;
-            panel2.Location = new Point(0, 438);
+            panel2.Location = new Point(0, 585);
+            panel2.Margin = new Padding(3, 4, 3, 4);
             panel2.Name = "panel2";
-            panel2.Size = new Size(858, 30);
+            panel2.Size = new Size(981, 39);
             panel2.TabIndex = 1;
             // 
             // lblTotalRecord
             // 
             lblTotalRecord.AutoSize = true;
             lblTotalRecord.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            lblTotalRecord.Location = new Point(7, 0);
+            lblTotalRecord.Location = new Point(8, 0);
             lblTotalRecord.Name = "lblTotalRecord";
-            lblTotalRecord.Size = new Size(113, 21);
+            lblTotalRecord.Size = new Size(137, 28);
             lblTotalRecord.TabIndex = 1;
             lblTotalRecord.Text = "Total Records:";
             // 
@@ -813,9 +843,9 @@
             // 
             lblTotalRecords.AutoSize = true;
             lblTotalRecords.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            lblTotalRecords.Location = new Point(126, 0);
+            lblTotalRecords.Location = new Point(144, 0);
             lblTotalRecords.Name = "lblTotalRecords";
-            lblTotalRecords.Size = new Size(28, 21);
+            lblTotalRecords.Size = new Size(34, 28);
             lblTotalRecords.TabIndex = 0;
             lblTotalRecords.Text = "25";
             // 
@@ -827,19 +857,21 @@
             panel1.Controls.Add(lblSalaryRecords);
             panel1.Dock = DockStyle.Top;
             panel1.Location = new Point(0, 0);
+            panel1.Margin = new Padding(3, 4, 3, 4);
             panel1.Name = "panel1";
-            panel1.Size = new Size(858, 62);
+            panel1.Size = new Size(981, 82);
             panel1.TabIndex = 0;
             // 
             // guna2CirclePictureBox6
             // 
             guna2CirclePictureBox6.Image = (Image)resources.GetObject("guna2CirclePictureBox6.Image");
             guna2CirclePictureBox6.ImageRotate = 0F;
-            guna2CirclePictureBox6.Location = new Point(21, -1);
+            guna2CirclePictureBox6.Location = new Point(24, -1);
+            guna2CirclePictureBox6.Margin = new Padding(3, 4, 3, 4);
             guna2CirclePictureBox6.Name = "guna2CirclePictureBox6";
             guna2CirclePictureBox6.ShadowDecoration.CustomizableEdges = customizableEdges20;
             guna2CirclePictureBox6.ShadowDecoration.Mode = Guna.UI2.WinForms.Enums.ShadowMode.Circle;
-            guna2CirclePictureBox6.Size = new Size(60, 60);
+            guna2CirclePictureBox6.Size = new Size(69, 80);
             guna2CirclePictureBox6.SizeMode = PictureBoxSizeMode.StretchImage;
             guna2CirclePictureBox6.TabIndex = 2;
             guna2CirclePictureBox6.TabStop = false;
@@ -849,27 +881,27 @@
             lblSalaryRecords.AutoSize = true;
             lblSalaryRecords.Font = new Font("Segoe UI", 18F, FontStyle.Bold, GraphicsUnit.Point, 0);
             lblSalaryRecords.ForeColor = Color.White;
-            lblSalaryRecords.Location = new Point(98, 12);
+            lblSalaryRecords.Location = new Point(112, 16);
             lblSalaryRecords.Name = "lblSalaryRecords";
-            lblSalaryRecords.Size = new Size(221, 32);
+            lblSalaryRecords.Size = new Size(276, 41);
             lblSalaryRecords.TabIndex = 1;
             lblSalaryRecords.Text = "SALARY RECORDS";
             // 
             // lblFooter
             // 
             lblFooter.AutoSize = true;
-            lblFooter.Location = new Point(567, 705);
+            lblFooter.Location = new Point(648, 940);
             lblFooter.Name = "lblFooter";
-            lblFooter.Size = new Size(297, 15);
+            lblFooter.Size = new Size(374, 20);
             lblFooter.TabIndex = 7;
             lblFooter.Text = "© 2026 Salary Management System. All rights reserved.";
             // 
-            // DashboardForm
+            // Salary1
             // 
-            AutoScaleDimensions = new SizeF(7F, 15F);
+            AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.WhiteSmoke;
-            ClientSize = new Size(1350, 729);
+            ClientSize = new Size(1543, 972);
             Controls.Add(lblFooter);
             Controls.Add(panelSalaryRecords);
             Controls.Add(panelSalaryDetails);
@@ -878,7 +910,8 @@
             Controls.Add(panelGrossPay);
             Controls.Add(panelEmployees);
             Controls.Add(panelHeader);
-            Name = "DashboardForm";
+            Margin = new Padding(3, 4, 3, 4);
+            Name = "Salary1";
             SizeGripStyle = SizeGripStyle.Show;
             Text = "Salary";
             panelHeader.ResumeLayout(false);
