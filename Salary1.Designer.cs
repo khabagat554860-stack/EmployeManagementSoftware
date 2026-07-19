@@ -816,6 +816,7 @@
             dgvSalaryRecords.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             dgvSalaryRecords.Size = new Size(981, 503);
             dgvSalaryRecords.TabIndex = 2;
+            dgvSalaryRecords.CellClick += dgvSalaryRecords_CellContentClick;
             dgvSalaryRecords.CellContentClick += dgvSalaryRecords_CellContentClick;
             // 
             // panel2
