@@ -107,9 +107,10 @@
             panel2.Controls.Add(label3);
             panel2.Controls.Add(txtEmployeeID);
             panel2.Controls.Add(label2);
-            panel2.Location = new Point(12, 278);
+            panel2.Location = new Point(14, 371);
+            panel2.Margin = new Padding(3, 4, 3, 4);
             panel2.Name = "panel2";
-            panel2.Size = new Size(1481, 243);
+            panel2.Size = new Size(1692, 323);
             panel2.TabIndex = 5;
             // 
             // guna2PictureBox5
@@ -120,10 +121,11 @@
             guna2PictureBox5.CustomizableEdges = customizableEdges1;
             guna2PictureBox5.Image = (Image)resources.GetObject("guna2PictureBox5.Image");
             guna2PictureBox5.ImageRotate = 0F;
-            guna2PictureBox5.Location = new Point(756, 132);
+            guna2PictureBox5.Location = new Point(864, 176);
+            guna2PictureBox5.Margin = new Padding(3, 4, 3, 4);
             guna2PictureBox5.Name = "guna2PictureBox5";
             guna2PictureBox5.ShadowDecoration.CustomizableEdges = customizableEdges2;
-            guna2PictureBox5.Size = new Size(138, 107);
+            guna2PictureBox5.Size = new Size(158, 143);
             guna2PictureBox5.TabIndex = 23;
             guna2PictureBox5.TabStop = false;
             // 
@@ -136,10 +138,11 @@
             guna2PictureBox4.CustomizableEdges = customizableEdges3;
             guna2PictureBox4.Image = (Image)resources.GetObject("guna2PictureBox4.Image");
             guna2PictureBox4.ImageRotate = 0F;
-            guna2PictureBox4.Location = new Point(1111, 162);
+            guna2PictureBox4.Location = new Point(1270, 216);
+            guna2PictureBox4.Margin = new Padding(3, 4, 3, 4);
             guna2PictureBox4.Name = "guna2PictureBox4";
             guna2PictureBox4.ShadowDecoration.CustomizableEdges = customizableEdges4;
-            guna2PictureBox4.Size = new Size(59, 47);
+            guna2PictureBox4.Size = new Size(67, 63);
             guna2PictureBox4.TabIndex = 22;
             guna2PictureBox4.TabStop = false;
             // 
@@ -151,10 +154,11 @@
             guna2PictureBox3.CustomizableEdges = customizableEdges5;
             guna2PictureBox3.Image = (Image)resources.GetObject("guna2PictureBox3.Image");
             guna2PictureBox3.ImageRotate = 0F;
-            guna2PictureBox3.Location = new Point(369, 161);
+            guna2PictureBox3.Location = new Point(422, 215);
+            guna2PictureBox3.Margin = new Padding(3, 4, 3, 4);
             guna2PictureBox3.Name = "guna2PictureBox3";
             guna2PictureBox3.ShadowDecoration.CustomizableEdges = customizableEdges6;
-            guna2PictureBox3.Size = new Size(59, 47);
+            guna2PictureBox3.Size = new Size(67, 63);
             guna2PictureBox3.TabIndex = 21;
             guna2PictureBox3.TabStop = false;
             // 
@@ -167,10 +171,11 @@
             guna2PictureBox2.CustomizableEdges = customizableEdges7;
             guna2PictureBox2.Image = (Image)resources.GetObject("guna2PictureBox2.Image");
             guna2PictureBox2.ImageRotate = 0F;
-            guna2PictureBox2.Location = new Point(773, 162);
+            guna2PictureBox2.Location = new Point(883, 216);
+            guna2PictureBox2.Margin = new Padding(3, 4, 3, 4);
             guna2PictureBox2.Name = "guna2PictureBox2";
             guna2PictureBox2.ShadowDecoration.CustomizableEdges = customizableEdges8;
-            guna2PictureBox2.Size = new Size(59, 47);
+            guna2PictureBox2.Size = new Size(67, 63);
             guna2PictureBox2.TabIndex = 20;
             guna2PictureBox2.TabStop = false;
             // 
@@ -182,26 +187,29 @@
             guna2PictureBox1.CustomizableEdges = customizableEdges9;
             guna2PictureBox1.Image = (Image)resources.GetObject("guna2PictureBox1.Image");
             guna2PictureBox1.ImageRotate = 0F;
-            guna2PictureBox1.Location = new Point(31, 162);
+            guna2PictureBox1.Location = new Point(35, 216);
+            guna2PictureBox1.Margin = new Padding(3, 4, 3, 4);
             guna2PictureBox1.Name = "guna2PictureBox1";
             guna2PictureBox1.ShadowDecoration.CustomizableEdges = customizableEdges10;
-            guna2PictureBox1.Size = new Size(59, 47);
+            guna2PictureBox1.Size = new Size(67, 63);
             guna2PictureBox1.TabIndex = 19;
             guna2PictureBox1.TabStop = false;
             // 
             // txtEmail
             // 
-            txtEmail.Location = new Point(429, 13);
+            txtEmail.Location = new Point(490, 17);
+            txtEmail.Margin = new Padding(3, 4, 3, 4);
             txtEmail.Name = "txtEmail";
-            txtEmail.Size = new Size(150, 23);
+            txtEmail.Size = new Size(171, 27);
             txtEmail.TabIndex = 18;
             txtEmail.KeyPress += txtEmail_KeyPress;
             // 
             // txtPhoneNumber
             // 
-            txtPhoneNumber.Location = new Point(429, 59);
+            txtPhoneNumber.Location = new Point(490, 79);
+            txtPhoneNumber.Margin = new Padding(3, 4, 3, 4);
             txtPhoneNumber.Name = "txtPhoneNumber";
-            txtPhoneNumber.Size = new Size(150, 23);
+            txtPhoneNumber.Size = new Size(171, 27);
             txtPhoneNumber.TabIndex = 17;
             txtPhoneNumber.KeyPress += txtPhoneNumber_KeyPress;
             // 
@@ -210,9 +218,10 @@
             label7.AutoSize = true;
             label7.BackColor = Color.Transparent;
             label7.Font = new Font("Microsoft Sans Serif", 9F, FontStyle.Bold);
-            label7.Location = new Point(320, 60);
+            label7.ForeColor = SystemColors.ButtonHighlight;
+            label7.Location = new Point(366, 80);
             label7.Name = "label7";
-            label7.Size = new Size(107, 15);
+            label7.Size = new Size(125, 18);
             label7.TabIndex = 16;
             label7.Text = "Phone Number:";
             // 
@@ -227,9 +236,10 @@
             btnClear.FlatAppearance.MouseOverBackColor = Color.FromArgb(0, 150, 200);
             btnClear.FlatStyle = FlatStyle.Flat;
             btnClear.Font = new Font("Segoe UI Semibold", 14.25F, FontStyle.Bold);
-            btnClear.Location = new Point(1109, 160);
+            btnClear.Location = new Point(1267, 213);
+            btnClear.Margin = new Padding(3, 4, 3, 4);
             btnClear.Name = "btnClear";
-            btnClear.Size = new Size(287, 50);
+            btnClear.Size = new Size(328, 67);
             btnClear.TabIndex = 15;
             btnClear.Text = "CLEAR";
             btnClear.UseVisualStyleBackColor = false;
@@ -246,9 +256,10 @@
             btnLoad.FlatAppearance.MouseOverBackColor = Color.FromArgb(0, 150, 200);
             btnLoad.FlatStyle = FlatStyle.Flat;
             btnLoad.Font = new Font("Segoe UI Semibold", 14.25F, FontStyle.Bold);
-            btnLoad.Location = new Point(769, 160);
+            btnLoad.Location = new Point(879, 213);
+            btnLoad.Margin = new Padding(3, 4, 3, 4);
             btnLoad.Name = "btnLoad";
-            btnLoad.Size = new Size(287, 50);
+            btnLoad.Size = new Size(328, 67);
             btnLoad.TabIndex = 14;
             btnLoad.Text = "LOAD";
             btnLoad.UseVisualStyleBackColor = false;
@@ -265,9 +276,10 @@
             btnDelete.FlatAppearance.MouseOverBackColor = Color.FromArgb(0, 150, 200);
             btnDelete.FlatStyle = FlatStyle.Flat;
             btnDelete.Font = new Font("Segoe UI Semibold", 14.25F, FontStyle.Bold);
-            btnDelete.Location = new Point(369, 160);
+            btnDelete.Location = new Point(422, 213);
+            btnDelete.Margin = new Padding(3, 4, 3, 4);
             btnDelete.Name = "btnDelete";
-            btnDelete.Size = new Size(287, 50);
+            btnDelete.Size = new Size(328, 67);
             btnDelete.TabIndex = 13;
             btnDelete.Text = "DELETE";
             btnDelete.UseVisualStyleBackColor = false;
@@ -276,9 +288,10 @@
             // cbPosition
             // 
             cbPosition.FormattingEnabled = true;
-            cbPosition.Location = new Point(429, 99);
+            cbPosition.Location = new Point(490, 132);
+            cbPosition.Margin = new Padding(3, 4, 3, 4);
             cbPosition.Name = "cbPosition";
-            cbPosition.Size = new Size(150, 23);
+            cbPosition.Size = new Size(171, 28);
             cbPosition.TabIndex = 12;
             // 
             // label6
@@ -286,9 +299,10 @@
             label6.AutoSize = true;
             label6.BackColor = Color.Transparent;
             label6.Font = new Font("Microsoft Sans Serif", 9F, FontStyle.Bold);
-            label6.Location = new Point(343, 98);
+            label6.ForeColor = SystemColors.ButtonHighlight;
+            label6.Location = new Point(366, 132);
             label6.Name = "label6";
-            label6.Size = new Size(63, 15);
+            label6.Size = new Size(75, 18);
             label6.TabIndex = 11;
             label6.Text = "Position:";
             // 
@@ -304,9 +318,10 @@
             btnAdd.FlatStyle = FlatStyle.Flat;
             btnAdd.Font = new Font("Segoe UI Semibold", 14.25F, FontStyle.Bold);
             btnAdd.ImageAlign = ContentAlignment.MiddleLeft;
-            btnAdd.Location = new Point(25, 160);
+            btnAdd.Location = new Point(29, 213);
+            btnAdd.Margin = new Padding(3, 4, 3, 4);
             btnAdd.Name = "btnAdd";
-            btnAdd.Size = new Size(287, 50);
+            btnAdd.Size = new Size(328, 67);
             btnAdd.TabIndex = 10;
             btnAdd.Text = "ADD";
             btnAdd.UseVisualStyleBackColor = false;
@@ -319,9 +334,10 @@
             btnImport.Cursor = Cursors.Hand;
             btnImport.FlatStyle = FlatStyle.Flat;
             btnImport.Font = new Font("Microsoft Sans Serif", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            btnImport.Location = new Point(1344, 115);
+            btnImport.Location = new Point(1536, 153);
+            btnImport.Margin = new Padding(3, 4, 3, 4);
             btnImport.Name = "btnImport";
-            btnImport.Size = new Size(118, 25);
+            btnImport.Size = new Size(135, 33);
             btnImport.TabIndex = 9;
             btnImport.Text = "Import";
             btnImport.UseVisualStyleBackColor = false;
@@ -333,9 +349,10 @@
             pbPicture.BackColor = Color.Transparent;
             pbPicture.BackgroundImage = Properties.Resources.no_profile_picture_15257_128;
             pbPicture.BackgroundImageLayout = ImageLayout.Stretch;
-            pbPicture.Location = new Point(1344, 11);
+            pbPicture.Location = new Point(1536, 15);
+            pbPicture.Margin = new Padding(3, 4, 3, 4);
             pbPicture.Name = "pbPicture";
-            pbPicture.Size = new Size(118, 101);
+            pbPicture.Size = new Size(135, 135);
             pbPicture.TabIndex = 8;
             pbPicture.TabStop = false;
             // 
@@ -344,18 +361,20 @@
             label5.AutoSize = true;
             label5.BackColor = Color.Transparent;
             label5.Font = new Font("Microsoft Sans Serif", 9F, FontStyle.Bold);
-            label5.Location = new Point(320, 15);
+            label5.ForeColor = SystemColors.ButtonHighlight;
+            label5.Location = new Point(366, 20);
             label5.Name = "label5";
-            label5.Size = new Size(103, 15);
+            label5.Size = new Size(121, 18);
             label5.TabIndex = 6;
             label5.Text = "Email Address:";
             // 
             // cbGender
             // 
             cbGender.FormattingEnabled = true;
-            cbGender.Location = new Point(118, 99);
+            cbGender.Location = new Point(135, 132);
+            cbGender.Margin = new Padding(3, 4, 3, 4);
             cbGender.Name = "cbGender";
-            cbGender.Size = new Size(150, 23);
+            cbGender.Size = new Size(171, 28);
             cbGender.TabIndex = 5;
             // 
             // label4
@@ -363,17 +382,19 @@
             label4.AutoSize = true;
             label4.BackColor = Color.Transparent;
             label4.Font = new Font("Microsoft Sans Serif", 9F, FontStyle.Bold);
-            label4.Location = new Point(10, 99);
+            label4.ForeColor = SystemColors.ButtonHighlight;
+            label4.Location = new Point(11, 132);
             label4.Name = "label4";
-            label4.Size = new Size(58, 15);
+            label4.Size = new Size(68, 18);
             label4.TabIndex = 4;
             label4.Text = "Gender:";
             // 
             // txtFullName
             // 
-            txtFullName.Location = new Point(118, 57);
+            txtFullName.Location = new Point(135, 76);
+            txtFullName.Margin = new Padding(3, 4, 3, 4);
             txtFullName.Name = "txtFullName";
-            txtFullName.Size = new Size(150, 23);
+            txtFullName.Size = new Size(171, 27);
             txtFullName.TabIndex = 3;
             // 
             // label3
@@ -381,17 +402,19 @@
             label3.AutoSize = true;
             label3.BackColor = Color.Transparent;
             label3.Font = new Font("Microsoft Sans Serif", 9F, FontStyle.Bold);
-            label3.Location = new Point(10, 59);
+            label3.ForeColor = SystemColors.ButtonHighlight;
+            label3.Location = new Point(11, 79);
             label3.Name = "label3";
-            label3.Size = new Size(77, 15);
+            label3.Size = new Size(89, 18);
             label3.TabIndex = 2;
             label3.Text = "Full Name:";
             // 
             // txtEmployeeID
             // 
-            txtEmployeeID.Location = new Point(118, 13);
+            txtEmployeeID.Location = new Point(135, 17);
+            txtEmployeeID.Margin = new Padding(3, 4, 3, 4);
             txtEmployeeID.Name = "txtEmployeeID";
-            txtEmployeeID.Size = new Size(150, 23);
+            txtEmployeeID.Size = new Size(171, 27);
             txtEmployeeID.TabIndex = 1;
             // 
             // label2
@@ -399,9 +422,10 @@
             label2.AutoSize = true;
             label2.BackColor = Color.Transparent;
             label2.Font = new Font("Microsoft Sans Serif", 9F, FontStyle.Bold);
-            label2.Location = new Point(10, 15);
+            label2.ForeColor = SystemColors.ButtonHighlight;
+            label2.Location = new Point(11, 20);
             label2.Name = "label2";
-            label2.Size = new Size(92, 15);
+            label2.Size = new Size(108, 18);
             label2.TabIndex = 0;
             label2.Text = "Employee ID:";
             // 
@@ -412,9 +436,10 @@
             panel1.BorderStyle = BorderStyle.FixedSingle;
             panel1.Controls.Add(dataGridView1);
             panel1.Controls.Add(label1);
-            panel1.Location = new Point(12, 6);
+            panel1.Location = new Point(14, 8);
+            panel1.Margin = new Padding(3, 4, 3, 4);
             panel1.Name = "panel1";
-            panel1.Size = new Size(1481, 231);
+            panel1.Size = new Size(1692, 307);
             panel1.TabIndex = 4;
             // 
             // dataGridView1
@@ -423,9 +448,11 @@
             dataGridView1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             dataGridView1.BackgroundColor = Color.White;
             dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridView1.Location = new Point(10, 31);
+            dataGridView1.Location = new Point(11, 41);
+            dataGridView1.Margin = new Padding(3, 4, 3, 4);
             dataGridView1.Name = "dataGridView1";
-            dataGridView1.Size = new Size(1460, 179);
+            dataGridView1.RowHeadersWidth = 51;
+            dataGridView1.Size = new Size(1669, 239);
             dataGridView1.TabIndex = 1;
             dataGridView1.CellContentClick += dataGridView1_CellContentClick;
             // 
@@ -435,21 +462,22 @@
             label1.BackColor = Color.Transparent;
             label1.Font = new Font("Tahoma", 14.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
             label1.ForeColor = Color.White;
-            label1.Location = new Point(10, 5);
+            label1.Location = new Point(11, 7);
             label1.Name = "label1";
-            label1.Size = new Size(148, 23);
+            label1.Size = new Size(189, 29);
             label1.TabIndex = 0;
             label1.Text = "Employee's Data";
             // 
             // AddEmployee
             // 
-            AutoScaleDimensions = new SizeF(7F, 15F);
+            AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             BackgroundImage = Properties.Resources.ChatGPT_Image_Jul_17__2026__02_33_58_PM;
             BackgroundImageLayout = ImageLayout.Stretch;
-            ClientSize = new Size(1505, 526);
+            ClientSize = new Size(1720, 701);
             Controls.Add(panel2);
             Controls.Add(panel1);
+            Margin = new Padding(3, 4, 3, 4);
             Name = "AddEmployee";
             Text = "AddEmployee";
             panel2.ResumeLayout(false);

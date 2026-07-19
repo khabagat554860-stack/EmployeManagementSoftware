@@ -588,6 +588,7 @@
             txtDeductions.ShadowDecoration.CustomizableEdges = customizableEdges10;
             txtDeductions.Size = new Size(151, 48);
             txtDeductions.TabIndex = 14;
+            txtDeductions.TextChanged += txtDeductions_TextChanged;
             // 
             // txtAllowances
             // 
@@ -608,6 +609,7 @@
             txtAllowances.ShadowDecoration.CustomizableEdges = customizableEdges12;
             txtAllowances.Size = new Size(151, 48);
             txtAllowances.TabIndex = 13;
+            txtAllowances.TextChanged += txtAllowances_TextChanged;
             // 
             // txtBasicSalary
             // 
@@ -629,6 +631,7 @@
             txtBasicSalary.ShadowDecoration.CustomizableEdges = customizableEdges14;
             txtBasicSalary.Size = new Size(151, 48);
             txtBasicSalary.TabIndex = 12;
+            txtBasicSalary.TextChanged += txtBasicSalary_TextChanged;
             // 
             // txtEmpName
             // 
@@ -699,7 +702,6 @@
             lblDeductions.Size = new Size(120, 28);
             lblDeductions.TabIndex = 6;
             lblDeductions.Text = "Deductions:";
-            lblDeductions.Click += lblDeductions_Click;
             // 
             // lblAllowances
             // 
@@ -740,7 +742,6 @@
             lblEmployeeName.Size = new Size(166, 28);
             lblEmployeeName.TabIndex = 2;
             lblEmployeeName.Text = "Employee Name:";
-            lblEmployeeName.Click += lblEmployeeName_Click;
             // 
             // lblEmployeeID
             // 
