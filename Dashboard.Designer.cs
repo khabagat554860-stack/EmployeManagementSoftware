@@ -61,7 +61,6 @@
             panel1.Location = new Point(10, 0);
             panel1.Margin = new Padding(3, 2, 3, 2);
             panel1.Name = "panel1";
-            panel1.Size = new Size(1327, 219);
             panel1.Size = new Size(1211, 219);
             panel1.TabIndex = 0;
             // 
@@ -98,7 +97,7 @@
             // 
             // panel7
             // 
-            panel7.BackColor = SystemColors.ButtonHighlight;
+            panel7.BackColor = Color.MidnightBlue;
             panel7.Controls.Add(lblTotalEmployees);
             panel7.Controls.Add(panel8);
             panel7.Location = new Point(25, 73);
@@ -110,11 +109,8 @@
             // lblTotalEmployees
             // 
             lblTotalEmployees.AutoSize = true;
-            lblTotalEmployees.BackColor = SystemColors.ButtonHighlight;
             lblTotalEmployees.Font = new Font("Microsoft YaHei", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
             lblTotalEmployees.ForeColor = SystemColors.ButtonHighlight;
-            lblTotalEmployees.Location = new Point(136, 10);
-            lblTotalEmployees.ForeColor = Color.MidnightBlue;
             lblTotalEmployees.Location = new Point(136, 10);
             lblTotalEmployees.Name = "lblTotalEmployees";
             lblTotalEmployees.Size = new Size(144, 22);
@@ -194,7 +190,6 @@
             panel2.Margin = new Padding(3, 2, 3, 2);
             panel2.Name = "panel2";
             panel2.Size = new Size(1211, 307);
-            panel2.Size = new Size(1327, 320);
             panel2.TabIndex = 1;
             // 
             // Dashboard
@@ -202,7 +197,6 @@
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(1232, 571);
-            ClientSize = new Size(1348, 584);
             Controls.Add(panel2);
             Controls.Add(panel1);
             Margin = new Padding(3, 2, 3, 2);

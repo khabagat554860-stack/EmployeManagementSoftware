@@ -23,12 +23,5 @@ namespace EmployeManagementSoftware
         }
 
       
-    
-
-        public void LoadDashboardData()
-        {
-           
-
-        }
     }
 }

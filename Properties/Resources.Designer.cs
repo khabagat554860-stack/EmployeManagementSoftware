@@ -63,46 +63,6 @@ namespace EmployeManagementSoftware.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap _743261398_2127535481451354_2975866883060107076_n {
-            get {
-                object obj = ResourceManager.GetObject("743261398_2127535481451354_2975866883060107076_n", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap ChatGPT_Image_Jul_17__2026__02_33_58_PM {
-            get {
-                object obj = ResourceManager.GetObject("ChatGPT Image Jul 17, 2026, 02_33_58 PM", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap ChatGPT_Image_Jul_17__2026__02_39_35_PM {
-            get {
-                object obj = ResourceManager.GetObject("ChatGPT Image Jul 17, 2026, 02_39_35 PM", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap no_profile_picture_15257_128 {
-            get {
-                object obj = ResourceManager.GetObject("no-profile-picture-15257_128", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
         internal static System.Drawing.Bitmap Screenshot_2026_07_07_145339 {
             get {
                 object obj = ResourceManager.GetObject("Screenshot 2026-07-07 145339", resourceCulture);
