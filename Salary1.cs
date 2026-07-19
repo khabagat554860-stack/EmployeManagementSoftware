@@ -17,6 +17,7 @@ namespace EmployeManagementSoftware
         public Salary1()
         {
             InitializeComponent();
+            UpdateSalaryDashboardMetrics();
             //InitializePlaceholders(); //Commened out temporarily
         }
 
@@ -113,7 +114,7 @@ namespace EmployeManagementSoftware
             {
                 conn.Open();
 
-                string insertEmp = "INSERT OR IGNORE INTO Employees (EmployeeID, EmployeeName, Position) VALUES (@ID, @Name, @Pos)";
+                string insertEmp = "INSERT OR IGNORE INTO Employees (EmployeeID, FullName, Position) VALUES (@ID, @Name, @Pos)";
                 using (SQLiteCommand cmd = new SQLiteCommand(insertEmp, conn))
                 {
                     cmd.Parameters.AddWithValue("@ID", txtEmpID.Text.Trim());
@@ -143,6 +144,7 @@ namespace EmployeManagementSoftware
 
             MessageBox.Show("Record Saved Successfully!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
             UpdateDashboard(); // FIXED: Called the correct method name
+            UpdateSalaryDashboardMetrics(); // Update the salary metrics on the dashboard
             LoadSalaryRecords();
         }
 
@@ -276,6 +278,31 @@ namespace EmployeManagementSoftware
         private void txtDeductions_TextChanged(object sender, EventArgs e)
         {
 
+        }
+
+        public void UpdateSalaryDashboardMetrics()
+        {
+            try
+            {
+                // 1. Fetch the combined payroll data from our DatabaseHelper
+                System.Data.DataTable dt = DatabaseHelper.GetDashboardMetrics();
+
+                if (dt.Rows.Count > 0)
+                {
+                    System.Data.DataRow row = dt.Rows[0];
+
+                    // 2. Assign the database values directly to the labels at the top of your screen
+                    // ⚠️ Double-check your Salary1.cs [Design] tab to make sure these match your exact Label names!
+                    lblTotalEmployees.Text = row["TotalEmployees"].ToString();
+                    lblGrossPay.Text = "₱" + Convert.ToDecimal(row["TotalGross"]).ToString("#,##0.00");
+                    lblDeduction.Text = "₱" + Convert.ToDecimal(row["TotalDeductions"]).ToString("#,##0.00");
+                    lblNetPay.Text = "₱" + Convert.ToDecimal(row["TotalNet"]).ToString("#,##0.00");
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Failed to load salary dashboard metrics: " + ex.Message, "Database Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
     }
 }
