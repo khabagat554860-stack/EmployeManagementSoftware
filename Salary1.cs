@@ -22,9 +22,9 @@ namespace EmployeManagementSoftware
 
         private void InitializePlaceholders()
         {
-            
+
             throw new NotImplementedException();
-            
+
         }
         private double GetDecimalValue(Guna.UI2.WinForms.Guna2TextBox tb)
         {
@@ -118,7 +118,7 @@ namespace EmployeManagementSoftware
                 {
                     cmd.Parameters.AddWithValue("@ID", txtEmpID.Text.Trim());
                     cmd.Parameters.AddWithValue("@Name", txtEmpName.Text.Trim());
-                    cmd.Parameters.AddWithValue("@Pos", txtPosition.Text.Trim());
+                    cmd.Parameters.AddWithValue("@Pos", cmbPosition.Text.Trim());
                     cmd.ExecuteNonQuery();
                 }
 
@@ -162,7 +162,7 @@ namespace EmployeManagementSoftware
                         if (reader.Read())
                         {
                             txtEmpName.Text = reader["EmployeeName"].ToString();
-                            txtPosition.Text = reader["Position"].ToString();
+                            cmbPosition.Text = reader["Position"].ToString();
 
                             LoadSalaryRecords(txtEmpID.Text.Trim()); // Filter grid view
                         }
@@ -189,7 +189,7 @@ namespace EmployeManagementSoftware
                 using (SQLiteCommand cmd = new SQLiteCommand(updateEmp, conn))
                 {
                     cmd.Parameters.AddWithValue("@Name", txtEmpName.Text.Trim());
-                    cmd.Parameters.AddWithValue("@Pos", txtPosition.Text.Trim());
+                    cmd.Parameters.AddWithValue("@Pos", cmbPosition.Text.Trim());
                     cmd.Parameters.AddWithValue("@ID", txtEmpID.Text.Trim());
                     cmd.ExecuteNonQuery();
                 }
@@ -205,8 +205,8 @@ namespace EmployeManagementSoftware
             {
                 DataGridViewRow row = dgvSalaryRecords.Rows[e.RowIndex];
                 txtEmpID.Text = row.Cells["EmployeeID"].Value.ToString();
-                txtEmpName.Text = row.Cells["EmployeeName"].Value?.ToString() ??"";
-                txtPosition.Text = row.Cells["Position"].Value.ToString();
+                txtEmpName.Text = row.Cells["EmployeeName"].Value?.ToString() ?? "";
+                cmbPosition.Text = row.Cells["Position"].Value.ToString();
                 txtBasicSalary.Text = row.Cells["BasicSalary"].Value.ToString();
                 txtAllowances.Text = row.Cells["Allowances"].Value.ToString();
                 txtDeductions.Text = row.Cells["Deductions"].Value.ToString();
@@ -235,12 +235,27 @@ namespace EmployeManagementSoftware
         {
             txtEmpID.Clear();
             txtEmpName.Clear();
-            txtPosition.Clear();
+            cmbPosition.SelectedIndex = -1;
             txtBasicSalary.Text = "0.00"; txtBasicSalary.ForeColor = Color.Gray;
             txtAllowances.Text = "0.00"; txtAllowances.ForeColor = Color.Gray;
             txtDeductions.Text = "0.00"; txtDeductions.ForeColor = Color.Gray;
             txtNetSalary.Text = "0.00"; txtNetSalary.ForeColor = Color.Gray;
             dtpPaymentDate.Value = DateTime.Now;
+        }
+
+        private void Salary1_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void lblDeductions_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void lblEmployeeName_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }
