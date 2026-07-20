@@ -12,7 +12,7 @@ namespace EmployeManagementSoftware
             // see https://aka.ms/applicationconfiguration.
             ApplicationConfiguration.Initialize();
             DatabaseHelper.InitializeDatabase();
-            Application.Run(new MainInterface());
+            Application.Run(new Dashboard());
         }
     }
 }
