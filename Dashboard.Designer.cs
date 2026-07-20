@@ -30,13 +30,24 @@
         {
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges1 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges2 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Dashboard));
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges3 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges4 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges5 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges6 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges7 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges8 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges6 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             pnlDashboard = new Panel();
+            panel6 = new Panel();
+            label8 = new Label();
+            label9 = new Label();
+            panel4 = new Panel();
+            label10 = new Label();
+            label3 = new Label();
+            label4 = new Label();
+            panel3 = new Panel();
+            label1 = new Label();
+            label2 = new Label();
             pnlUpcomingEvents = new Panel();
             lblReviewDate = new Label();
             lblPerformanceReview = new Label();
@@ -49,7 +60,13 @@
             pnlTopUpcomingEvents = new Panel();
             lblUpcomingEvents = new Label();
             pnlRecentActivities = new Panel();
-            flowLayoutPanel1 = new FlowLayoutPanel();
+            panel2 = new Panel();
+            panel5 = new Panel();
+            label6 = new Label();
+            label7 = new Label();
+            pnlActivity = new Panel();
+            lblTime = new Label();
+            lblActivity = new Label();
             pnlTopRecentActivities = new Panel();
             lblRecentActivities = new Label();
             pnlEmployeeStatus = new Panel();
@@ -65,11 +82,10 @@
             pnlTopEmployeeStatus = new Panel();
             lblEmployeeStatus = new Label();
             pnlRecentEmployees = new Panel();
-            dataGridView1 = new DataGridView();
+            dgvEmployees = new DataGridView();
             pnlTopRecentEmployees = new Panel();
+            txtRecentEmployees = new Guna.UI2.WinForms.Guna2TextBox();
             lblRecentEmployees = new Label();
-            txtSearchEmployee = new Guna.UI2.WinForms.Guna2TextBox();
-            btnSearch = new Button();
             pnlDepartments = new Panel();
             lblDepartmentsInfo = new Label();
             picDepartments = new Guna.UI2.WinForms.Guna2CirclePictureBox();
@@ -89,22 +105,28 @@
             lblTotalEmployeesInfo = new Label();
             lblTotalEmployeesCount = new Label();
             lblTotalEmployeesTitle = new Label();
-            picTotalEmployees = new Guna.UI2.WinForms.Guna2CirclePictureBox();
             pnlHeader = new Panel();
             dtpTime = new DateTimePicker();
             dtpDate = new Guna.UI2.WinForms.Guna2DateTimePicker();
             lblWelcome = new Label();
             lblTitle = new Label();
+            guna2CirclePictureBox1 = new Guna.UI2.WinForms.Guna2CirclePictureBox();
             pnlDashboard.SuspendLayout();
+            panel6.SuspendLayout();
+            panel4.SuspendLayout();
+            panel3.SuspendLayout();
             pnlUpcomingEvents.SuspendLayout();
             pnlTopUpcomingEvents.SuspendLayout();
             pnlRecentActivities.SuspendLayout();
+            panel2.SuspendLayout();
+            panel5.SuspendLayout();
+            pnlActivity.SuspendLayout();
             pnlTopRecentActivities.SuspendLayout();
             pnlEmployeeStatus.SuspendLayout();
             panel1.SuspendLayout();
             pnlTopEmployeeStatus.SuspendLayout();
             pnlRecentEmployees.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)dgvEmployees).BeginInit();
             pnlTopRecentEmployees.SuspendLayout();
             pnlDepartments.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)picDepartments).BeginInit();
@@ -113,13 +135,16 @@
             pnlActiveEmployees.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)picActiveEmployees).BeginInit();
             pnlTotalEmployees.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)picTotalEmployees).BeginInit();
             pnlHeader.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)guna2CirclePictureBox1).BeginInit();
             SuspendLayout();
             // 
             // pnlDashboard
             // 
             pnlDashboard.BorderStyle = BorderStyle.FixedSingle;
+            pnlDashboard.Controls.Add(panel6);
+            pnlDashboard.Controls.Add(panel4);
+            pnlDashboard.Controls.Add(panel3);
             pnlDashboard.Controls.Add(pnlUpcomingEvents);
             pnlDashboard.Controls.Add(pnlRecentActivities);
             pnlDashboard.Controls.Add(pnlEmployeeStatus);
@@ -134,6 +159,107 @@
             pnlDashboard.Name = "pnlDashboard";
             pnlDashboard.Size = new Size(1350, 729);
             pnlDashboard.TabIndex = 0;
+            // 
+            // panel6
+            // 
+            panel6.BorderStyle = BorderStyle.FixedSingle;
+            panel6.Controls.Add(label8);
+            panel6.Controls.Add(label9);
+            panel6.Location = new Point(11, 576);
+            panel6.Name = "panel6";
+            panel6.Size = new Size(653, 35);
+            panel6.TabIndex = 2;
+            // 
+            // label8
+            // 
+            label8.AutoSize = true;
+            label8.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label8.Location = new Point(504, 4);
+            label8.Name = "label8";
+            label8.Size = new Size(86, 21);
+            label8.TabIndex = 1;
+            label8.Text = "1 hour ago";
+            // 
+            // label9
+            // 
+            label9.AutoSize = true;
+            label9.Font = new Font("Segoe UI Semibold", 14.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label9.Location = new Point(12, 1);
+            label9.Name = "label9";
+            label9.Size = new Size(406, 25);
+            label9.TabIndex = 0;
+            label9.Text = "Maria Santos updated her profile information.";
+            // 
+            // panel4
+            // 
+            panel4.BorderStyle = BorderStyle.FixedSingle;
+            panel4.Controls.Add(label10);
+            panel4.Controls.Add(label3);
+            panel4.Controls.Add(label4);
+            panel4.Location = new Point(12, 645);
+            panel4.Name = "panel4";
+            panel4.Size = new Size(652, 35);
+            panel4.TabIndex = 1;
+            // 
+            // label10
+            // 
+            label10.AutoSize = true;
+            label10.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label10.Location = new Point(503, 1);
+            label10.Name = "label10";
+            label10.Size = new Size(96, 21);
+            label10.TabIndex = 2;
+            label10.Text = "3 hours ago";
+            // 
+            // label3
+            // 
+            label3.AutoSize = true;
+            label3.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label3.Location = new Point(527, 4);
+            label3.Name = "label3";
+            label3.Size = new Size(14, 21);
+            label3.TabIndex = 1;
+            label3.Text = " ";
+            // 
+            // label4
+            // 
+            label4.AutoSize = true;
+            label4.Font = new Font("Segoe UI Semibold", 14.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label4.Location = new Point(12, 1);
+            label4.Name = "label4";
+            label4.Size = new Size(327, 25);
+            label4.TabIndex = 0;
+            label4.Text = "Monthly payroll has been generated.";
+            // 
+            // panel3
+            // 
+            panel3.BorderStyle = BorderStyle.FixedSingle;
+            panel3.Controls.Add(label1);
+            panel3.Controls.Add(label2);
+            panel3.Location = new Point(12, 681);
+            panel3.Name = "panel3";
+            panel3.Size = new Size(652, 35);
+            panel3.TabIndex = 1;
+            // 
+            // label1
+            // 
+            label1.AutoSize = true;
+            label1.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label1.Location = new Point(504, 4);
+            label1.Name = "label1";
+            label1.Size = new Size(118, 21);
+            label1.TabIndex = 1;
+            label1.Text = "Today, 8:15 AM";
+            // 
+            // label2
+            // 
+            label2.AutoSize = true;
+            label2.Font = new Font("Segoe UI Semibold", 14.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label2.Location = new Point(12, 1);
+            label2.Name = "label2";
+            label2.Size = new Size(337, 25);
+            label2.TabIndex = 0;
+            label2.Text = "Administrator logged into the system.";
             // 
             // pnlUpcomingEvents
             // 
@@ -258,21 +384,84 @@
             // pnlRecentActivities
             // 
             pnlRecentActivities.BorderStyle = BorderStyle.FixedSingle;
-            pnlRecentActivities.Controls.Add(flowLayoutPanel1);
+            pnlRecentActivities.Controls.Add(panel2);
             pnlRecentActivities.Controls.Add(pnlTopRecentActivities);
             pnlRecentActivities.Location = new Point(11, 495);
             pnlRecentActivities.Name = "pnlRecentActivities";
             pnlRecentActivities.Size = new Size(654, 221);
             pnlRecentActivities.TabIndex = 5;
             // 
-            // flowLayoutPanel1
+            // panel2
             // 
-            flowLayoutPanel1.BorderStyle = BorderStyle.FixedSingle;
-            flowLayoutPanel1.Dock = DockStyle.Fill;
-            flowLayoutPanel1.Location = new Point(0, 41);
-            flowLayoutPanel1.Name = "flowLayoutPanel1";
-            flowLayoutPanel1.Size = new Size(652, 178);
-            flowLayoutPanel1.TabIndex = 7;
+            panel2.BackColor = Color.White;
+            panel2.BorderStyle = BorderStyle.FixedSingle;
+            panel2.Controls.Add(panel5);
+            panel2.Controls.Add(pnlActivity);
+            panel2.Dock = DockStyle.Fill;
+            panel2.Location = new Point(0, 41);
+            panel2.Name = "panel2";
+            panel2.Size = new Size(652, 178);
+            panel2.TabIndex = 7;
+            // 
+            // panel5
+            // 
+            panel5.BorderStyle = BorderStyle.FixedSingle;
+            panel5.Controls.Add(label6);
+            panel5.Controls.Add(label7);
+            panel5.Location = new Point(-2, 71);
+            panel5.Name = "panel5";
+            panel5.Size = new Size(654, 35);
+            panel5.TabIndex = 1;
+            // 
+            // label6
+            // 
+            label6.AutoSize = true;
+            label6.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label6.Location = new Point(504, 5);
+            label6.Name = "label6";
+            label6.Size = new Size(96, 21);
+            label6.TabIndex = 1;
+            label6.Text = "2 hours ago";
+            // 
+            // label7
+            // 
+            label7.AutoSize = true;
+            label7.Font = new Font("Segoe UI Semibold", 14.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label7.Location = new Point(12, 1);
+            label7.Name = "label7";
+            label7.Size = new Size(293, 25);
+            label7.TabIndex = 0;
+            label7.Text = "Anna Reyes filed a leave request.";
+            // 
+            // pnlActivity
+            // 
+            pnlActivity.BorderStyle = BorderStyle.FixedSingle;
+            pnlActivity.Controls.Add(lblTime);
+            pnlActivity.Controls.Add(lblActivity);
+            pnlActivity.Location = new Point(-1, 5);
+            pnlActivity.Name = "pnlActivity";
+            pnlActivity.Size = new Size(654, 35);
+            pnlActivity.TabIndex = 0;
+            // 
+            // lblTime
+            // 
+            lblTime.AutoSize = true;
+            lblTime.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            lblTime.Location = new Point(503, 4);
+            lblTime.Name = "lblTime";
+            lblTime.Size = new Size(119, 21);
+            lblTime.TabIndex = 1;
+            lblTime.Text = "10 minutes ago";
+            // 
+            // lblActivity
+            // 
+            lblActivity.AutoSize = true;
+            lblActivity.Font = new Font("Segoe UI Semibold", 14.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            lblActivity.Location = new Point(12, 1);
+            lblActivity.Name = "lblActivity";
+            lblActivity.Size = new Size(407, 25);
+            lblActivity.TabIndex = 0;
+            lblActivity.Text = "Juan Dela Cruz was added as a new employee.";
             // 
             // pnlTopRecentActivities
             // 
@@ -428,35 +617,66 @@
             // pnlRecentEmployees
             // 
             pnlRecentEmployees.BorderStyle = BorderStyle.FixedSingle;
-            pnlRecentEmployees.Controls.Add(dataGridView1);
+            pnlRecentEmployees.Controls.Add(dgvEmployees);
             pnlRecentEmployees.Controls.Add(pnlTopRecentEmployees);
             pnlRecentEmployees.Location = new Point(11, 222);
             pnlRecentEmployees.Name = "pnlRecentEmployees";
             pnlRecentEmployees.Size = new Size(654, 251);
             pnlRecentEmployees.TabIndex = 3;
             // 
-            // dataGridView1
+            // dgvEmployees
             // 
-            dataGridView1.BackgroundColor = SystemColors.ControlLight;
-            dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridView1.Dock = DockStyle.Fill;
-            dataGridView1.Location = new Point(0, 41);
-            dataGridView1.Name = "dataGridView1";
-            dataGridView1.Size = new Size(652, 208);
-            dataGridView1.TabIndex = 5;
+            dgvEmployees.AllowUserToAddRows = false;
+            dgvEmployees.AllowUserToDeleteRows = false;
+            dgvEmployees.AllowUserToResizeColumns = false;
+            dgvEmployees.AllowUserToResizeRows = false;
+            dgvEmployees.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            dgvEmployees.BackgroundColor = SystemColors.ControlLight;
+            dgvEmployees.CellBorderStyle = DataGridViewCellBorderStyle.SingleHorizontal;
+            dgvEmployees.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dgvEmployees.Dock = DockStyle.Fill;
+            dgvEmployees.EnableHeadersVisualStyles = false;
+            dgvEmployees.GridColor = Color.LightGray;
+            dgvEmployees.Location = new Point(0, 41);
+            dgvEmployees.Name = "dgvEmployees";
+            dgvEmployees.ReadOnly = true;
+            dgvEmployees.RowHeadersVisible = false;
+            dgvEmployees.ScrollBars = ScrollBars.Vertical;
+            dgvEmployees.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+            dgvEmployees.Size = new Size(652, 208);
+            dgvEmployees.TabIndex = 5;
             // 
             // pnlTopRecentEmployees
             // 
             pnlTopRecentEmployees.BackColor = Color.FromArgb(10, 35, 90);
             pnlTopRecentEmployees.BorderStyle = BorderStyle.FixedSingle;
+            pnlTopRecentEmployees.Controls.Add(txtRecentEmployees);
             pnlTopRecentEmployees.Controls.Add(lblRecentEmployees);
-            pnlTopRecentEmployees.Controls.Add(txtSearchEmployee);
-            pnlTopRecentEmployees.Controls.Add(btnSearch);
             pnlTopRecentEmployees.Dock = DockStyle.Top;
             pnlTopRecentEmployees.Location = new Point(0, 0);
             pnlTopRecentEmployees.Name = "pnlTopRecentEmployees";
             pnlTopRecentEmployees.Size = new Size(652, 41);
             pnlTopRecentEmployees.TabIndex = 4;
+            // 
+            // txtRecentEmployees
+            // 
+            txtRecentEmployees.CustomizableEdges = customizableEdges1;
+            txtRecentEmployees.DefaultText = "";
+            txtRecentEmployees.DisabledState.BorderColor = Color.FromArgb(208, 208, 208);
+            txtRecentEmployees.DisabledState.FillColor = Color.FromArgb(226, 226, 226);
+            txtRecentEmployees.DisabledState.ForeColor = Color.FromArgb(138, 138, 138);
+            txtRecentEmployees.DisabledState.PlaceholderForeColor = Color.FromArgb(138, 138, 138);
+            txtRecentEmployees.FocusedState.BorderColor = Color.FromArgb(94, 148, 255);
+            txtRecentEmployees.Font = new Font("Segoe UI", 9F);
+            txtRecentEmployees.HoverState.BorderColor = Color.FromArgb(94, 148, 255);
+            txtRecentEmployees.Location = new Point(415, 7);
+            txtRecentEmployees.Name = "txtRecentEmployees";
+            txtRecentEmployees.PlaceholderText = "Search employee...";
+            txtRecentEmployees.SelectedText = "";
+            txtRecentEmployees.ShadowDecoration.CustomizableEdges = customizableEdges2;
+            txtRecentEmployees.Size = new Size(207, 25);
+            txtRecentEmployees.TabIndex = 3;
+            txtRecentEmployees.TextChanged += txtRecentEmployees_TextChanged;
             // 
             // lblRecentEmployees
             // 
@@ -468,34 +688,6 @@
             lblRecentEmployees.Size = new Size(220, 32);
             lblRecentEmployees.TabIndex = 0;
             lblRecentEmployees.Text = "Recent Employees";
-            // 
-            // txtSearchEmployee
-            // 
-            txtSearchEmployee.CustomizableEdges = customizableEdges1;
-            txtSearchEmployee.DefaultText = "";
-            txtSearchEmployee.DisabledState.BorderColor = Color.FromArgb(208, 208, 208);
-            txtSearchEmployee.DisabledState.FillColor = Color.FromArgb(226, 226, 226);
-            txtSearchEmployee.DisabledState.ForeColor = Color.FromArgb(138, 138, 138);
-            txtSearchEmployee.DisabledState.PlaceholderForeColor = Color.FromArgb(138, 138, 138);
-            txtSearchEmployee.FocusedState.BorderColor = Color.FromArgb(94, 148, 255);
-            txtSearchEmployee.Font = new Font("Segoe UI", 9F);
-            txtSearchEmployee.HoverState.BorderColor = Color.FromArgb(94, 148, 255);
-            txtSearchEmployee.Location = new Point(357, 8);
-            txtSearchEmployee.Name = "txtSearchEmployee";
-            txtSearchEmployee.PlaceholderText = "";
-            txtSearchEmployee.SelectedText = "";
-            txtSearchEmployee.ShadowDecoration.CustomizableEdges = customizableEdges2;
-            txtSearchEmployee.Size = new Size(200, 28);
-            txtSearchEmployee.TabIndex = 1;
-            // 
-            // btnSearch
-            // 
-            btnSearch.Location = new Point(563, 7);
-            btnSearch.Name = "btnSearch";
-            btnSearch.Size = new Size(82, 28);
-            btnSearch.TabIndex = 2;
-            btnSearch.Text = "button1";
-            btnSearch.UseVisualStyleBackColor = true;
             // 
             // pnlDepartments
             // 
@@ -523,6 +715,7 @@
             // 
             // picDepartments
             // 
+            picDepartments.Image = (Image)resources.GetObject("picDepartments.Image");
             picDepartments.ImageRotate = 0F;
             picDepartments.Location = new Point(28, 24);
             picDepartments.Name = "picDepartments";
@@ -580,6 +773,7 @@
             // 
             // picOnLeave
             // 
+            picOnLeave.Image = (Image)resources.GetObject("picOnLeave.Image");
             picOnLeave.ImageRotate = 0F;
             picOnLeave.Location = new Point(32, 24);
             picOnLeave.Name = "picOnLeave";
@@ -659,6 +853,7 @@
             // 
             // picActiveEmployees
             // 
+            picActiveEmployees.Image = (Image)resources.GetObject("picActiveEmployees.Image");
             picActiveEmployees.ImageRotate = 0F;
             picActiveEmployees.Location = new Point(27, 24);
             picActiveEmployees.Name = "picActiveEmployees";
@@ -672,10 +867,10 @@
             // 
             pnlTotalEmployees.BackColor = Color.FromArgb(10, 35, 90);
             pnlTotalEmployees.BorderStyle = BorderStyle.FixedSingle;
+            pnlTotalEmployees.Controls.Add(guna2CirclePictureBox1);
             pnlTotalEmployees.Controls.Add(lblTotalEmployeesInfo);
             pnlTotalEmployees.Controls.Add(lblTotalEmployeesCount);
             pnlTotalEmployees.Controls.Add(lblTotalEmployeesTitle);
-            pnlTotalEmployees.Controls.Add(picTotalEmployees);
             pnlTotalEmployees.Location = new Point(11, 76);
             pnlTotalEmployees.Name = "pnlTotalEmployees";
             pnlTotalEmployees.Size = new Size(315, 130);
@@ -714,20 +909,9 @@
             lblTotalEmployeesTitle.TabIndex = 1;
             lblTotalEmployeesTitle.Text = "Total Employees";
             // 
-            // picTotalEmployees
-            // 
-            picTotalEmployees.ImageRotate = 0F;
-            picTotalEmployees.Location = new Point(24, 24);
-            picTotalEmployees.Name = "picTotalEmployees";
-            picTotalEmployees.ShadowDecoration.CustomizableEdges = customizableEdges6;
-            picTotalEmployees.ShadowDecoration.Mode = Guna.UI2.WinForms.Enums.ShadowMode.Circle;
-            picTotalEmployees.Size = new Size(80, 80);
-            picTotalEmployees.TabIndex = 0;
-            picTotalEmployees.TabStop = false;
-            // 
             // pnlHeader
             // 
-            pnlHeader.BackColor = Color.White;
+            pnlHeader.BackColor = Color.WhiteSmoke;
             pnlHeader.BorderStyle = BorderStyle.FixedSingle;
             pnlHeader.Controls.Add(dtpTime);
             pnlHeader.Controls.Add(dtpDate);
@@ -787,6 +971,19 @@
             lblTitle.TabIndex = 0;
             lblTitle.Text = "Dashboard Overview";
             // 
+            // guna2CirclePictureBox1
+            // 
+            guna2CirclePictureBox1.Image = (Image)resources.GetObject("guna2CirclePictureBox1.Image");
+            guna2CirclePictureBox1.ImageRotate = 0F;
+            guna2CirclePictureBox1.Location = new Point(29, 24);
+            guna2CirclePictureBox1.Name = "guna2CirclePictureBox1";
+            guna2CirclePictureBox1.ShadowDecoration.CustomizableEdges = customizableEdges6;
+            guna2CirclePictureBox1.ShadowDecoration.Mode = Guna.UI2.WinForms.Enums.ShadowMode.Circle;
+            guna2CirclePictureBox1.Size = new Size(80, 80);
+            guna2CirclePictureBox1.SizeMode = PictureBoxSizeMode.StretchImage;
+            guna2CirclePictureBox1.TabIndex = 4;
+            guna2CirclePictureBox1.TabStop = false;
+            // 
             // Dashboard
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -800,11 +997,22 @@
             Text = "Dashboard";
             Load += Dashboard_Load;
             pnlDashboard.ResumeLayout(false);
+            panel6.ResumeLayout(false);
+            panel6.PerformLayout();
+            panel4.ResumeLayout(false);
+            panel4.PerformLayout();
+            panel3.ResumeLayout(false);
+            panel3.PerformLayout();
             pnlUpcomingEvents.ResumeLayout(false);
             pnlUpcomingEvents.PerformLayout();
             pnlTopUpcomingEvents.ResumeLayout(false);
             pnlTopUpcomingEvents.PerformLayout();
             pnlRecentActivities.ResumeLayout(false);
+            panel2.ResumeLayout(false);
+            panel5.ResumeLayout(false);
+            panel5.PerformLayout();
+            pnlActivity.ResumeLayout(false);
+            pnlActivity.PerformLayout();
             pnlTopRecentActivities.ResumeLayout(false);
             pnlTopRecentActivities.PerformLayout();
             pnlEmployeeStatus.ResumeLayout(false);
@@ -814,7 +1022,7 @@
             pnlTopEmployeeStatus.ResumeLayout(false);
             pnlTopEmployeeStatus.PerformLayout();
             pnlRecentEmployees.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
+            ((System.ComponentModel.ISupportInitialize)dgvEmployees).EndInit();
             pnlTopRecentEmployees.ResumeLayout(false);
             pnlTopRecentEmployees.PerformLayout();
             pnlDepartments.ResumeLayout(false);
@@ -828,9 +1036,9 @@
             ((System.ComponentModel.ISupportInitialize)picActiveEmployees).EndInit();
             pnlTotalEmployees.ResumeLayout(false);
             pnlTotalEmployees.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)picTotalEmployees).EndInit();
             pnlHeader.ResumeLayout(false);
             pnlHeader.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)guna2CirclePictureBox1).EndInit();
             ResumeLayout(false);
         }
 
@@ -846,7 +1054,6 @@
         private Panel pnlDepartments;
         private Panel pnlActiveEmployees;
         private Panel pnlTotalEmployees;
-        private Guna.UI2.WinForms.Guna2CirclePictureBox picTotalEmployees;
         private Guna.UI2.WinForms.Guna2CirclePictureBox picDepartments;
         private Guna.UI2.WinForms.Guna2CirclePictureBox picOnLeave;
         private Guna.UI2.WinForms.Guna2CirclePictureBox picActiveEmployees;
@@ -866,16 +1073,13 @@
         private Panel pnlEmployeeStatus;
         private Panel pnlRecentEmployees;
         private Panel pnlUpcomingEvents;
-        private Guna.UI2.WinForms.Guna2TextBox txtSearchEmployee;
         private Label lblRecentEmployees;
-        private DataGridView dataGridView1;
+        private DataGridView dgvEmployees;
         private Panel pnlTopRecentEmployees;
-        private Button btnSearch;
         private Panel pnlTopEmployeeStatus;
         private Label lblEmployeeStatus;
         private Panel pnlTopUpcomingEvents;
         private Label lblUpcomingEvents;
-        private FlowLayoutPanel flowLayoutPanel1;
         private Panel pnlTopRecentActivities;
         private Label lblRecentActivities;
         private Label lblReviewDate;
@@ -895,5 +1099,24 @@
         private Label lblInactiveEmployees;
         private Label lblOnLeave;
         private Label lblActiveEmployees;
+        private Guna.UI2.WinForms.Guna2TextBox txtRecentEmployees;
+        private Panel pnlActivity;
+        private Label lblTime;
+        private Label lblActivity;
+        private Panel panel6;
+        private Label label8;
+        private Label label9;
+        private Panel panel4;
+        private Label label3;
+        private Label label4;
+        private Panel panel3;
+        private Label label1;
+        private Label label2;
+        private Panel panel2;
+        private Panel panel5;
+        private Label label6;
+        private Label label7;
+        private Label label10;
+        private Guna.UI2.WinForms.Guna2CirclePictureBox guna2CirclePictureBox1;
     }
 }
