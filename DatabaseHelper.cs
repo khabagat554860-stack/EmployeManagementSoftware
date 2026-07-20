@@ -11,7 +11,7 @@ namespace EmployeManagementSoftware
 {
     public static class DatabaseHelper
     {
-        // Unified database filename used across all forms
+        // Centralized database filename used across all application forms
         private const string DB_NAME = "employees.db";
 
         public static string ConnectionString { get; } = $"Data Source={DB_NAME};Version=3;";
@@ -26,20 +26,21 @@ namespace EmployeManagementSoftware
             using var conn = new SQLiteConnection(ConnectionString);
             conn.Open();
 
-            // 1. Create Users Table (For login credentials)
+            // 1. Create Users Table (Fixed: contains the Password column for Sign Up)
             const string createUsersQuery = @"CREATE TABLE IF NOT EXISTS Users (
                 Id INTEGER PRIMARY KEY AUTOINCREMENT,
                 FullName TEXT,
                 Email TEXT,
                 Username TEXT UNIQUE,
+                Password TEXT,
                 ContactNumber TEXT)";
 
             using var cmdUsers = new SQLiteCommand(createUsersQuery, conn);
             cmdUsers.ExecuteNonQuery();
 
-            // 2. Create Unified Employees Table (Matches AddEmployee form structural fields)
+            // 2. Create Unified Employees Table (Uses FullName to match the search/save fields)
             const string createEmployeesQuery = @"CREATE TABLE IF NOT EXISTS Employees (
-                EmployeeID INTEGER PRIMARY KEY AUTOINCREMENT,
+                EmployeeID TEXT PRIMARY KEY,
                 FullName TEXT NOT NULL,
                 PhoneNumber TEXT,
                 Email TEXT,
@@ -53,7 +54,7 @@ namespace EmployeManagementSoftware
             using var cmdEmployees = new SQLiteCommand(createEmployeesQuery, conn);
             cmdEmployees.ExecuteNonQuery();
 
-            // 3. Create SalaryRecords Table (Fixed: contains the missing Month & Year fields)
+            // 3. Create SalaryRecords Table (Fixed: contains the Month & Year fields)
             const string createSalaryRecordsQuery = @"CREATE TABLE IF NOT EXISTS SalaryRecords (
                 RecordID INTEGER PRIMARY KEY AUTOINCREMENT,
                 EmployeeID TEXT,
@@ -70,7 +71,7 @@ namespace EmployeManagementSoftware
         }
 
         /// <summary>
-        /// Calculates active totals to feed the dashboard metric cards at the top of the form.
+        /// Calculates active dashboard metrics to feed live updates to your cards.
         /// </summary>
         public static DataTable GetDashboardMetrics()
         {
@@ -80,8 +81,7 @@ namespace EmployeManagementSoftware
             {
                 conn.Open();
 
-                // Counts total workers from the registered list, 
-                // and aggregates real financial entries out of saved pay slips history.
+                // Aggregates total employee counts and calculates historical transaction costs
                 string query = @"SELECT 
                                     (SELECT COUNT(*) FROM Employees) as TotalEmployees, 
                                     COALESCE(SUM(BasicSalary + Allowances), 0) as TotalGross, 

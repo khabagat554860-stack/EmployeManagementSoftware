@@ -14,6 +14,9 @@ namespace EmployeManagementSoftware
 {
     public partial class Salary1 : Form
     {
+
+        private int selectedRecordID = -1;
+
         public Salary1()
         {
             InitializeComponent();
@@ -184,21 +187,45 @@ namespace EmployeManagementSoftware
 
         private void btnUpdate_Click(object sender, EventArgs e)
         {
+            if (selectedRecordID == -1)
+            {
+                MessageBox.Show("Please select a salary record from the table list first to update.", "Selection Required", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
             using (SQLiteConnection conn = new SQLiteConnection(DatabaseHelper.ConnectionString))
             {
                 conn.Open();
-                string updateEmp = "UPDATE Employees SET EmployeeName = @Name, Position = @Pos WHERE EmployeeID = @ID";
-                using (SQLiteCommand cmd = new SQLiteCommand(updateEmp, conn))
+                string updateQuery = @"UPDATE SalaryRecords 
+                               SET BasicSalary = @Basic, 
+                                   Allowances = @Allow, 
+                                   Deductions = @Ded, 
+                                   NetSalary = @Net, 
+                                   PaymentDate = @Date, 
+                                   PayPeriodMonth = @Month, 
+                                   PayPeriodYear = @Year 
+                               WHERE RecordID = @RecordID";
+
+                using (SQLiteCommand cmd = new SQLiteCommand(updateQuery, conn))
                 {
-                    cmd.Parameters.AddWithValue("@Name", txtEmpName.Text.Trim());
-                    cmd.Parameters.AddWithValue("@Pos", cmbPosition.Text.Trim());
-                    cmd.Parameters.AddWithValue("@ID", txtEmpID.Text.Trim());
+                    cmd.Parameters.AddWithValue("@Basic", GetDecimalValue(txtBasicSalary));
+                    cmd.Parameters.AddWithValue("@Allow", GetDecimalValue(txtAllowances));
+                    cmd.Parameters.AddWithValue("@Ded", GetDecimalValue(txtDeductions));
+                    cmd.Parameters.AddWithValue("@Net", GetDecimalValue(txtNetSalary));
+                    cmd.Parameters.AddWithValue("@Date", dtpPaymentDate.Value.ToString("yyyy-MM-dd"));
+                    cmd.Parameters.AddWithValue("@Month", dtpPayPeriod.Value.ToString("MMMM"));
+                    cmd.Parameters.AddWithValue("@Year", dtpPayPeriod.Value.ToString("yyyy"));
+                    cmd.Parameters.AddWithValue("@RecordID", selectedRecordID);
+
                     cmd.ExecuteNonQuery();
                 }
             }
-            MessageBox.Show("Employee Info Updated!", "Updated", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            LoadSalaryRecords();
-            UpdateDashboard();
+
+            MessageBox.Show("Salary Record Updated Successfully!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+            // Refresh the interface view components
+            LoadSalaryRecords(txtEmpID.Text.Trim());
+            UpdateSalaryDashboardMetrics();
         }
 
         private void dgvSalaryRecords_CellContentClick(object sender, DataGridViewCellEventArgs e)
@@ -207,7 +234,7 @@ namespace EmployeManagementSoftware
             {
                 DataGridViewRow row = dgvSalaryRecords.Rows[e.RowIndex];
                 txtEmpID.Text = row.Cells["EmployeeID"].Value.ToString();
-                txtEmpName.Text = row.Cells["EmployeeName"].Value?.ToString() ?? "";
+                txtEmpName.Text = row.Cells["FullName"].Value?.ToString() ?? "";
                 cmbPosition.Text = row.Cells["Position"].Value.ToString();
                 txtBasicSalary.Text = row.Cells["BasicSalary"].Value.ToString();
                 txtAllowances.Text = row.Cells["Allowances"].Value.ToString();
@@ -224,14 +251,35 @@ namespace EmployeManagementSoftware
 
         private void btnAddNew_Click(object sender, EventArgs e)
         {
-            ClearFields();
+            // Clear all the text boxes
+            txtEmpID.Clear();
+            txtEmpName.Clear();
+            cmbPosition.SelectedIndex = -1;
+            txtBasicSalary.Clear();
+            txtAllowances.Clear();
+            txtDeductions.Clear();
+            txtNetSalary.Clear();
+
+            // Reset date picker to today
+            dtpPaymentDate.Value = DateTime.Now;
+
+            // Reset our tracker tracking variable
+            selectedRecordID = -1;
+
+            // Place cursor right back at the ID prompt
             txtEmpID.Focus();
         }
 
         private void btnClear_Click(object sender, EventArgs e)
         {
-            ClearFields();
-            LoadSalaryRecords();
+            // 1. Wipe out only the financial input fields
+            txtBasicSalary.Clear();
+            txtAllowances.Clear();
+            txtDeductions.Clear();
+            txtNetSalary.Clear();
+
+            // 2. Put the typing cursor directly back into Basic Salary for fast re-entry
+            txtBasicSalary.Focus();
         }
         private void ClearFields()
         {
