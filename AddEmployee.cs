@@ -402,7 +402,8 @@ namespace EmployeManagementSoftware
         {
             if (selectedEmployeeId == null)
             {
-                MessageBox.Show("Please select a row first.", "No Selection");
+                MessageBox.Show("Please select an employee to edit first.", "No Selection",
+                                MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
 
@@ -412,38 +413,80 @@ namespace EmployeManagementSoftware
                 return;
             }
 
+            if (string.IsNullOrWhiteSpace(txtEmployeeID.Text) ||
+                !int.TryParse(txtEmployeeID.Text.Trim(), out int newEmployeeId))
+            {
+                MessageBox.Show("Valid Employee ID is required.");
+                return;
+            }
+
             try
             {
                 using (var connection = new SqliteConnection($"Data Source={dbPath}"))
                 {
                     connection.Open();
 
-                    string query = @"UPDATE Employees 
-                           SET FullName=@FullName, PhoneNumber=@PhoneNumber, Email=@Email,
-                               Position=@Position, Gender=@Gender, Photo=@Photo 
-                           WHERE EmployeeID = @ID";
+                    // Check if new ID already exists (except current employee)
+                    string checkQuery = @"
+                SELECT COUNT(*) FROM Employees 
+                WHERE (EmployeeID = @NewID AND EmployeeID != @OldID) 
+                   OR (Email = @Email AND EmployeeID != @OldID)";
 
-                    using (var cmd = new SqliteCommand(query, connection))
+                    using (var checkCmd = new SqliteCommand(checkQuery, connection))
                     {
+                        checkCmd.Parameters.AddWithValue("@NewID", newEmployeeId);
+                        checkCmd.Parameters.AddWithValue("@OldID", selectedEmployeeId.Value);
+                        checkCmd.Parameters.AddWithValue("@Email", txtEmail.Text?.Trim() ?? "");
+
+                        if ((long)checkCmd.ExecuteScalar() > 0)
+                        {
+                            MessageBox.Show("Employee ID or Email already exists!", "Duplicate",
+                                            MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                            return;
+                        }
+                    }
+
+                    // Update the employee
+                    string updateQuery = @"UPDATE Employees SET 
+                    EmployeeID = @NewID,
+                    FullName = @FullName,
+                    PhoneNumber = @PhoneNumber,
+                    Email = @Email,
+                    Position = @Position,
+                    Gender = @Gender,
+                    Photo = @Photo
+                WHERE EmployeeID = @OldID";
+
+                    using (var cmd = new SqliteCommand(updateQuery, connection))
+                    {
+                        cmd.Parameters.AddWithValue("@NewID", newEmployeeId);
+                        cmd.Parameters.AddWithValue("@OldID", selectedEmployeeId.Value);
                         cmd.Parameters.AddWithValue("@FullName", txtFullName.Text.Trim());
                         cmd.Parameters.AddWithValue("@PhoneNumber", txtPhoneNumber.Text?.Trim() ?? "");
                         cmd.Parameters.AddWithValue("@Email", txtEmail.Text?.Trim() ?? "");
                         cmd.Parameters.AddWithValue("@Position", cbPosition.Text ?? "");
                         cmd.Parameters.AddWithValue("@Gender", cbGender.Text ?? "");
                         cmd.Parameters.AddWithValue("@Photo", currentPhoto ?? (object)DBNull.Value);
-                        cmd.Parameters.AddWithValue("@ID", selectedEmployeeId.Value);
 
-                        cmd.ExecuteNonQuery();
+                        int rowsAffected = cmd.ExecuteNonQuery();
+
+                        if (rowsAffected > 0)
+                        {
+                            MessageBox.Show("Employee updated successfully!");
+                            ClearFields();
+                            LoadData();
+                        }
+                        else
+                        {
+                            MessageBox.Show("No changes were made.");
+                        }
                     }
                 }
-
-                MessageBox.Show("Employee updated successfully!");
-                ClearFields();
-                LoadData();
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Error: " + ex.Message);
+                MessageBox.Show("Error updating employee: " + ex.Message, "Error",
+                                MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
         }
