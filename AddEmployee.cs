@@ -124,10 +124,10 @@ namespace EmployeManagementSoftware
                 {
                     connection.Open();
 
-                    // Create table if it doesn't exist
+                    // Create table with Manual EmployeeID (No AUTOINCREMENT)
                     string createTable = @"
                 CREATE TABLE IF NOT EXISTS Employees (
-                    EmployeeID INTEGER PRIMARY KEY AUTOINCREMENT,
+                    EmployeeID INTEGER PRIMARY KEY,
                     FullName TEXT NOT NULL,
                     PhoneNumber TEXT,
                     Email TEXT,
@@ -137,20 +137,7 @@ namespace EmployeManagementSoftware
                 );";
 
                     using (var cmd = new SqliteCommand(createTable, connection))
-                    {
                         cmd.ExecuteNonQuery();
-                    }
-
-                    // Add Email column if it doesn't exist (for older databases)
-                    try
-                    {
-                        string alterTable = "ALTER TABLE Employees ADD COLUMN Email TEXT;";
-                        using (var alterCmd = new SqliteCommand(alterTable, connection))
-                        {
-                            alterCmd.ExecuteNonQuery();
-                        }
-                    }
-                    catch { } // Column already exists - ignore
                 }
             }
             catch (Exception ex)
@@ -164,90 +151,87 @@ namespace EmployeManagementSoftware
         private void btnAdd_Click(object sender, EventArgs e)
         {
             if (string.IsNullOrWhiteSpace(txtFullName.Text))
-    {
-        MessageBox.Show("Full Name is required.");
-        return;
-    }
-
-    // Validation
-    if (!string.IsNullOrWhiteSpace(txtPhoneNumber.Text))
-    {
-        string phone = txtPhoneNumber.Text.Trim();
-        if (!(phone.Length == 11 && phone.StartsWith("09")) && 
-            !(phone.Length == 13 && phone.StartsWith("+63")))
-        {
-            MessageBox.Show("Invalid Philippine number.");
-            return;
-        }
-    }
-
-    if (!string.IsNullOrWhiteSpace(txtEmail.Text))
-    {
-        if (!txtEmail.Text.Trim().ToLower().EndsWith("@gmail.com"))
-        {
-            MessageBox.Show("Only Gmail accounts allowed.");
-            return;
-        }
-    }
-
-    try
-    {
-        using (var connection = new SqliteConnection($"Data Source={dbPath}"))
-        {
-            connection.Open();
-
-            // === DUPLICATE CHECK ===
-            string checkQuery = @"
-                SELECT COUNT(*) FROM Employees 
-                WHERE EmployeeID = @ID 
-                   OR (FullName = @FullName AND PhoneNumber = @PhoneNumber)
-                   OR Email = @Email";
-
-            using (var checkCmd = new SqliteCommand(checkQuery, connection))
             {
-                checkCmd.Parameters.AddWithValue("@ID", txtEmployeeID.Text);
-                checkCmd.Parameters.AddWithValue("@FullName", txtFullName.Text.Trim());
-                checkCmd.Parameters.AddWithValue("@PhoneNumber", txtPhoneNumber.Text?.Trim() ?? "");
-                checkCmd.Parameters.AddWithValue("@Email", txtEmail.Text?.Trim() ?? "");
+                MessageBox.Show("Full Name is required.");
+                return;
+            }
 
-                long exists = (long)checkCmd.ExecuteScalar();
+            if (string.IsNullOrWhiteSpace(txtEmployeeID.Text))
+            {
+                MessageBox.Show("Employee ID is required.");
+                return;
+            }
 
-                if (exists > 0)
+            if (!int.TryParse(txtEmployeeID.Text.Trim(), out int employeeId))
+            {
+                MessageBox.Show("Employee ID must be a valid number.");
+                return;
+            }
+
+            // Validation for phone and email (keep your existing code)
+            if (!string.IsNullOrWhiteSpace(txtPhoneNumber.Text))
+            {
+                string phone = txtPhoneNumber.Text.Trim();
+                if (!(phone.Length == 11 && phone.StartsWith("09")) &&
+                    !(phone.Length == 13 && phone.StartsWith("+63")))
                 {
-                    MessageBox.Show("An employee with the same ID, Name+Phone, or Email already exists!", 
-                                    "Duplicate Found", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    MessageBox.Show("Invalid Philippine number.");
                     return;
                 }
             }
 
-                    
-
-                    // INSERT new employee
-                    string insertQuery = @"INSERT INTO Employees 
-                (FullName, PhoneNumber, Email, Position, Gender, Photo) 
-                VALUES (@FullName, @PhoneNumber, @Email, @Position, @Gender, @Photo)";
-
-            using (var cmd = new SqliteCommand(insertQuery, connection))
+            if (!string.IsNullOrWhiteSpace(txtEmail.Text) &&
+                !txtEmail.Text.Trim().ToLower().EndsWith("@gmail.com"))
             {
-                cmd.Parameters.AddWithValue("@FullName", txtFullName.Text.Trim());
-                cmd.Parameters.AddWithValue("@PhoneNumber", txtPhoneNumber.Text?.Trim() ?? "");
-                cmd.Parameters.AddWithValue("@Email", txtEmail.Text?.Trim() ?? "");
-                cmd.Parameters.AddWithValue("@Position", cbPosition.Text ?? "");
-                cmd.Parameters.AddWithValue("@Gender", cbGender.Text ?? "");
-                cmd.Parameters.AddWithValue("@Photo", currentPhoto ?? (object)DBNull.Value);
-
-                cmd.ExecuteNonQuery();
+                MessageBox.Show("Only Gmail accounts allowed.");
+                return;
             }
-        }
 
-        MessageBox.Show("Employee added successfully!");
-        ClearFields();
-        LoadData();
-    }
-    catch (Exception ex)
-    {
-        MessageBox.Show("Error: " + ex.Message);
-    }
+            try
+            {
+                using (var connection = new SqliteConnection($"Data Source={dbPath}"))
+                {
+                    connection.Open();
+
+                    // Check for duplicate ID or email
+                    string checkQuery = "SELECT COUNT(*) FROM Employees WHERE EmployeeID = @ID OR Email = @Email";
+                    using (var checkCmd = new SqliteCommand(checkQuery, connection))
+                    {
+                        checkCmd.Parameters.AddWithValue("@ID", employeeId);
+                        checkCmd.Parameters.AddWithValue("@Email", txtEmail.Text?.Trim() ?? "");
+                        if ((long)checkCmd.ExecuteScalar() > 0)
+                        {
+                            MessageBox.Show("Employee ID or Email already exists!");
+                            return;
+                        }
+                    }
+
+                    // Insert with manual ID
+                    string insertQuery = @"INSERT INTO Employees 
+                (EmployeeID, FullName, PhoneNumber, Email, Position, Gender, Photo)
+                VALUES (@ID, @FullName, @PhoneNumber, @Email, @Position, @Gender, @Photo)";
+
+                    using (var cmd = new SqliteCommand(insertQuery, connection))
+                    {
+                        cmd.Parameters.AddWithValue("@ID", employeeId);
+                        cmd.Parameters.AddWithValue("@FullName", txtFullName.Text.Trim());
+                        cmd.Parameters.AddWithValue("@PhoneNumber", txtPhoneNumber.Text?.Trim() ?? "");
+                        cmd.Parameters.AddWithValue("@Email", txtEmail.Text?.Trim() ?? "");
+                        cmd.Parameters.AddWithValue("@Position", cbPosition.Text ?? "");
+                        cmd.Parameters.AddWithValue("@Gender", cbGender.Text ?? "");
+                        cmd.Parameters.AddWithValue("@Photo", currentPhoto ?? (object)DBNull.Value);
+                        cmd.ExecuteNonQuery();
+                    }
+                }
+
+                MessageBox.Show("Employee added successfully!");
+                ClearFields();
+                LoadData();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error: " + ex.Message);
+            }
         }
 
         private void ClearFields()
