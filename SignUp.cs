@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Data.SQLite;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -16,6 +17,7 @@ namespace EmployeManagementSoftware
         {
             InitializeComponent();
         }
+
         private bool IsValidEmail(string email)
         {
             try
@@ -28,15 +30,18 @@ namespace EmployeManagementSoftware
                 return false;
             }
         }
+
         private bool IsValidPhoneNumber(string phone)
         {
-            return phone.Length == 11 && phone.All(char.IsDigit);
+            // 🔒 Limits the check: Must be up to 11 digits and contain only numbers
+            return phone.Length <= 11 && phone.All(char.IsDigit);
         }
 
         private bool IsValidUsername(string username)
         {
             return username.Length >= 5;
         }
+
         private void ClearForm()
         {
             txtFullName.Clear();
@@ -50,6 +55,7 @@ namespace EmployeManagementSoftware
             txtConfirm.PasswordChar = '*';
             txtFullName.Focus();
         }
+
         private void chkShowPassword_CheckedChanged(object sender, EventArgs e)
         {
             bool show = chkShowPassword.Checked;
@@ -57,37 +63,62 @@ namespace EmployeManagementSoftware
             txtConfirm.PasswordChar = show ? '\0' : '*';
         }
 
-
         private void linkLogin_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
-            DialogResult result = MessageBox.Show(
-              "Go to Login page?",
-              "Confirm",
-              MessageBoxButtons.YesNo,
-              MessageBoxIcon.Question);
+            // 1. Wipe the sign-up fields clean so they are fresh if the user comes back
+            ClearForm();
 
-            if (result == DialogResult.Yes)
+            // 2. Open the auto-closing popup timer (3 seconds)
+            using (Form redirectPopup = new Form())
             {
-                MessageBox.Show("Redirecting to Login page...", "Info",
-                    MessageBoxButtons.OK, MessageBoxIcon.Information);
-                ClearForm();
+                redirectPopup.Text = "Redirecting";
+                redirectPopup.Size = new Size(350, 150);
+                redirectPopup.FormBorderStyle = FormBorderStyle.FixedDialog;
+                redirectPopup.StartPosition = FormStartPosition.CenterParent;
+                redirectPopup.ControlBox = false; // Removes close, min, max buttons
+                redirectPopup.BackColor = Color.White;
+
+                Label msgLabel = new Label();
+                msgLabel.Text = "Redirecting to Login page in 3 seconds...";
+                msgLabel.Font = new Font("Segoe UI", 10F, FontStyle.Regular);
+                msgLabel.TextAlign = ContentAlignment.MiddleCenter;
+                msgLabel.Dock = DockStyle.Fill;
+                redirectPopup.Controls.Add(msgLabel);
+
+                int secondsRemaining = 3;
+
+                // 🔒 Explicitly using System.Windows.Forms.Timer to avoid the CS0104 ambiguity error!
+                System.Windows.Forms.Timer countdownTimer = new System.Windows.Forms.Timer();
+                countdownTimer.Interval = 1000; // Ticks every 1 second
+
+                countdownTimer.Tick += (s, args) =>
+                {
+                    secondsRemaining--;
+                    if (secondsRemaining > 0)
+                    {
+                        msgLabel.Text = $"Redirecting to Login page in {secondsRemaining} seconds...";
+                    }
+                    else
+                    {
+                        countdownTimer.Stop();
+                        redirectPopup.Close(); // Safely closes the popup on completion
+                    }
+                };
+
+                countdownTimer.Start();
+                redirectPopup.ShowDialog(this); // Opens popup centered over Sign Up form
+                countdownTimer.Dispose();
             }
 
-
-            
+            // 3. Once the popup automatically closes, hide Sign Up and show Login!
             this.Hide();
-
-           
             Form1 loginForm = new Form1();
             loginForm.Show();
-
-            
-
         }
+        
 
         private void btnCreateAccount_Click_1(object sender, EventArgs e)
         {
-            // Get all values
             string fullName = txtFullName.Text.Trim();
             string email = txtEmail.Text.Trim();
             string contactNumber = txtContactNumber.Text.Trim();
@@ -130,9 +161,10 @@ namespace EmployeManagementSoftware
                 return;
             }
 
-            if (!IsValidPhoneNumber(contactNumber))
+            // 🔒 Updated Phone number prompt and checks to match your rules!
+            if (!IsValidPhoneNumber(contactNumber) || contactNumber.Length > 11)
             {
-                MessageBox.Show("Please enter a valid 10-15 digit phone number.", "Validation Error",
+                MessageBox.Show("Please enter a valid phone number up to only 11 digits.", "Validation Error",
                     MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 txtContactNumber.Focus();
                 return;
@@ -157,8 +189,8 @@ namespace EmployeManagementSoftware
 
             if (!IsValidUsername(username))
             {
-                MessageBox.Show("Username can only contain letters, numbers, and underscore.",
-                    "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show("Username must be at least 5 characters.", "Validation Error",
+                    MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 txtUsername.Focus();
                 return;
             }
@@ -189,22 +221,93 @@ namespace EmployeManagementSoftware
                 return;
             }
 
-            // ============ SUCCESS MESSAGE ============
-            MessageBox.Show(
-                $"✅ Account created successfully!\n\n" +
-                $"👤 Full Name: {fullName}\n" +
-                $"📧 Email: {email}\n" +
-                $"📱 Contact: {contactNumber}\n" +
-                $"🔑 Username: {username}",
-                "Success",
-                MessageBoxButtons.OK,
-                MessageBoxIcon.Information);
+            // ==================== SAVE TO DATABASE ====================
+            string query = "INSERT INTO Users (FullName, Email, Username, ContactNumber, Password) VALUES (@FullName, @Email, @Username, @Contact, @Password)";
 
-            // Clear all fields
-            ClearForm();
+            using (SQLiteConnection conn = new SQLiteConnection(DatabaseHelper.ConnectionString))
+            {
+                using (SQLiteCommand cmd = new SQLiteCommand(query, conn))
+                {
+                    cmd.Parameters.AddWithValue("@FullName", fullName);
+                    cmd.Parameters.AddWithValue("@Email", email);
+                    cmd.Parameters.AddWithValue("@Username", username);
+                    cmd.Parameters.AddWithValue("@Contact", contactNumber);
+                    cmd.Parameters.AddWithValue("@Password", password);
 
+                    try
+                    {
+                        conn.Open();
+                        cmd.ExecuteNonQuery(); // This executes the insert!
+
+                        // Clear all fields
+                        ClearForm();
+
+                        // ⏱️ CREATE AUTO-CLOSING POPUP TIMER (3 Seconds)
+                        using (Form redirectPopup = new Form())
+                        {
+                            redirectPopup.Text = "Success";
+                            redirectPopup.Size = new Size(350, 150);
+                            redirectPopup.FormBorderStyle = FormBorderStyle.FixedDialog;
+                            redirectPopup.StartPosition = FormStartPosition.CenterParent;
+                            redirectPopup.ControlBox = false; // Removes close, min, max buttons
+                            redirectPopup.BackColor = Color.White;
+
+                            Label msgLabel = new Label();
+                            msgLabel.Text = "✔️ Account created successfully!\r\n\r\nRedirecting to Login page in 3 seconds...";
+                            msgLabel.Font = new Font("Segoe UI", 10F, FontStyle.Regular);
+                            msgLabel.TextAlign = ContentAlignment.MiddleCenter;
+                            msgLabel.Dock = DockStyle.Fill;
+                            redirectPopup.Controls.Add(msgLabel);
+
+                            int secondsRemaining = 3;
+                            System.Windows.Forms.Timer countdownTimer = new System.Windows.Forms.Timer();
+                            countdownTimer.Interval = 1000; // Ticks every 1 second
+
+                            countdownTimer.Tick += (s, args) =>
+                            {
+                                secondsRemaining--;
+                                if (secondsRemaining > 0)
+                                {
+                                    msgLabel.Text = $"✔️ Account created successfully!\r\n\r\nRedirecting to Login page in {secondsRemaining} seconds...";
+                                }
+                                else
+                                {
+                                    countdownTimer.Stop();
+                                    redirectPopup.Close(); // Safely closes the popup on completion
+                                }
+                            };
+
+                            countdownTimer.Start();
+                            redirectPopup.ShowDialog(this); // Opens popup centered over Sign Up form
+                            countdownTimer.Dispose();
+                        }
+
+                        // Redirect to Login form once the popup closes
+                        Form1 loginForm = new Form1();
+                        loginForm.Show();
+                        this.Hide(); // Closes/Hides the signup screen
+                    }
+                    catch (SQLiteException ex) when (ex.ResultCode == SQLiteErrorCode.Constraint)
+                    {
+                        // This will catch the error if someone tries to sign up with a username that already exists
+                        MessageBox.Show("This username is already taken. Please choose another one.", "Registration Failed", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        txtUsername.Focus();
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show("Error saving to database: " + ex.Message, "Database Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                }
+            }
         }
 
-
+        private void txtContactNumber_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            // 🔒 Blocks typing any keys that are NOT backspace/control or digit characters!
+            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar))
+            {
+                e.Handled = true; // Tells Windows to ignore the keypress completely
+            }
+        }
     }
 }
