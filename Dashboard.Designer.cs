@@ -34,9 +34,9 @@
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges3 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges4 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges5 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges6 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges7 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges8 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges6 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             pnlDashboard = new Panel();
             panel6 = new Panel();
             label8 = new Label();
@@ -64,9 +64,6 @@
             panel5 = new Panel();
             label6 = new Label();
             label7 = new Label();
-            pnlActivity = new Panel();
-            lblTime = new Label();
-            lblActivity = new Label();
             pnlTopRecentActivities = new Panel();
             lblRecentActivities = new Label();
             pnlEmployeeStatus = new Panel();
@@ -102,6 +99,7 @@
             lblActiveEmployeesTitle = new Label();
             picActiveEmployees = new Guna.UI2.WinForms.Guna2CirclePictureBox();
             pnlTotalEmployees = new Panel();
+            guna2CirclePictureBox1 = new Guna.UI2.WinForms.Guna2CirclePictureBox();
             lblTotalEmployeesInfo = new Label();
             lblTotalEmployeesCount = new Label();
             lblTotalEmployeesTitle = new Label();
@@ -110,7 +108,9 @@
             dtpDate = new Guna.UI2.WinForms.Guna2DateTimePicker();
             lblWelcome = new Label();
             lblTitle = new Label();
-            guna2CirclePictureBox1 = new Guna.UI2.WinForms.Guna2CirclePictureBox();
+            lblActivity = new Label();
+            lblTime = new Label();
+            pnlActivity = new Panel();
             pnlDashboard.SuspendLayout();
             panel6.SuspendLayout();
             panel4.SuspendLayout();
@@ -120,7 +120,6 @@
             pnlRecentActivities.SuspendLayout();
             panel2.SuspendLayout();
             panel5.SuspendLayout();
-            pnlActivity.SuspendLayout();
             pnlTopRecentActivities.SuspendLayout();
             pnlEmployeeStatus.SuspendLayout();
             panel1.SuspendLayout();
@@ -135,8 +134,9 @@
             pnlActiveEmployees.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)picActiveEmployees).BeginInit();
             pnlTotalEmployees.SuspendLayout();
-            pnlHeader.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)guna2CirclePictureBox1).BeginInit();
+            pnlHeader.SuspendLayout();
+            pnlActivity.SuspendLayout();
             SuspendLayout();
             // 
             // pnlDashboard
@@ -405,6 +405,7 @@
             // 
             // panel5
             // 
+            panel5.BackColor = Color.WhiteSmoke;
             panel5.BorderStyle = BorderStyle.FixedSingle;
             panel5.Controls.Add(label6);
             panel5.Controls.Add(label7);
@@ -432,36 +433,6 @@
             label7.Size = new Size(293, 25);
             label7.TabIndex = 0;
             label7.Text = "Anna Reyes filed a leave request.";
-            // 
-            // pnlActivity
-            // 
-            pnlActivity.BorderStyle = BorderStyle.FixedSingle;
-            pnlActivity.Controls.Add(lblTime);
-            pnlActivity.Controls.Add(lblActivity);
-            pnlActivity.Location = new Point(-1, 5);
-            pnlActivity.Name = "pnlActivity";
-            pnlActivity.Size = new Size(654, 35);
-            pnlActivity.TabIndex = 0;
-            // 
-            // lblTime
-            // 
-            lblTime.AutoSize = true;
-            lblTime.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            lblTime.Location = new Point(503, 4);
-            lblTime.Name = "lblTime";
-            lblTime.Size = new Size(119, 21);
-            lblTime.TabIndex = 1;
-            lblTime.Text = "10 minutes ago";
-            // 
-            // lblActivity
-            // 
-            lblActivity.AutoSize = true;
-            lblActivity.Font = new Font("Segoe UI Semibold", 14.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            lblActivity.Location = new Point(12, 1);
-            lblActivity.Name = "lblActivity";
-            lblActivity.Size = new Size(407, 25);
-            lblActivity.TabIndex = 0;
-            lblActivity.Text = "Juan Dela Cruz was added as a new employee.";
             // 
             // pnlTopRecentActivities
             // 
@@ -876,6 +847,19 @@
             pnlTotalEmployees.Size = new Size(315, 130);
             pnlTotalEmployees.TabIndex = 1;
             // 
+            // guna2CirclePictureBox1
+            // 
+            guna2CirclePictureBox1.Image = (Image)resources.GetObject("guna2CirclePictureBox1.Image");
+            guna2CirclePictureBox1.ImageRotate = 0F;
+            guna2CirclePictureBox1.Location = new Point(29, 24);
+            guna2CirclePictureBox1.Name = "guna2CirclePictureBox1";
+            guna2CirclePictureBox1.ShadowDecoration.CustomizableEdges = customizableEdges6;
+            guna2CirclePictureBox1.ShadowDecoration.Mode = Guna.UI2.WinForms.Enums.ShadowMode.Circle;
+            guna2CirclePictureBox1.Size = new Size(80, 80);
+            guna2CirclePictureBox1.SizeMode = PictureBoxSizeMode.StretchImage;
+            guna2CirclePictureBox1.TabIndex = 4;
+            guna2CirclePictureBox1.TabStop = false;
+            // 
             // lblTotalEmployeesInfo
             // 
             lblTotalEmployeesInfo.AutoSize = true;
@@ -971,18 +955,36 @@
             lblTitle.TabIndex = 0;
             lblTitle.Text = "Dashboard Overview";
             // 
-            // guna2CirclePictureBox1
+            // lblActivity
             // 
-            guna2CirclePictureBox1.Image = (Image)resources.GetObject("guna2CirclePictureBox1.Image");
-            guna2CirclePictureBox1.ImageRotate = 0F;
-            guna2CirclePictureBox1.Location = new Point(29, 24);
-            guna2CirclePictureBox1.Name = "guna2CirclePictureBox1";
-            guna2CirclePictureBox1.ShadowDecoration.CustomizableEdges = customizableEdges6;
-            guna2CirclePictureBox1.ShadowDecoration.Mode = Guna.UI2.WinForms.Enums.ShadowMode.Circle;
-            guna2CirclePictureBox1.Size = new Size(80, 80);
-            guna2CirclePictureBox1.SizeMode = PictureBoxSizeMode.StretchImage;
-            guna2CirclePictureBox1.TabIndex = 4;
-            guna2CirclePictureBox1.TabStop = false;
+            lblActivity.AutoSize = true;
+            lblActivity.Font = new Font("Segoe UI Semibold", 14.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            lblActivity.Location = new Point(12, 1);
+            lblActivity.Name = "lblActivity";
+            lblActivity.Size = new Size(407, 25);
+            lblActivity.TabIndex = 0;
+            lblActivity.Text = "Juan Dela Cruz was added as a new employee.";
+            // 
+            // lblTime
+            // 
+            lblTime.AutoSize = true;
+            lblTime.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            lblTime.Location = new Point(503, 4);
+            lblTime.Name = "lblTime";
+            lblTime.Size = new Size(119, 21);
+            lblTime.TabIndex = 1;
+            lblTime.Text = "10 minutes ago";
+            // 
+            // pnlActivity
+            // 
+            pnlActivity.BackColor = Color.WhiteSmoke;
+            pnlActivity.BorderStyle = BorderStyle.FixedSingle;
+            pnlActivity.Controls.Add(lblTime);
+            pnlActivity.Controls.Add(lblActivity);
+            pnlActivity.Location = new Point(-1, 5);
+            pnlActivity.Name = "pnlActivity";
+            pnlActivity.Size = new Size(654, 35);
+            pnlActivity.TabIndex = 0;
             // 
             // Dashboard
             // 
@@ -1011,8 +1013,6 @@
             panel2.ResumeLayout(false);
             panel5.ResumeLayout(false);
             panel5.PerformLayout();
-            pnlActivity.ResumeLayout(false);
-            pnlActivity.PerformLayout();
             pnlTopRecentActivities.ResumeLayout(false);
             pnlTopRecentActivities.PerformLayout();
             pnlEmployeeStatus.ResumeLayout(false);
@@ -1036,9 +1036,11 @@
             ((System.ComponentModel.ISupportInitialize)picActiveEmployees).EndInit();
             pnlTotalEmployees.ResumeLayout(false);
             pnlTotalEmployees.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)guna2CirclePictureBox1).EndInit();
             pnlHeader.ResumeLayout(false);
             pnlHeader.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)guna2CirclePictureBox1).EndInit();
+            pnlActivity.ResumeLayout(false);
+            pnlActivity.PerformLayout();
             ResumeLayout(false);
         }
 
@@ -1100,9 +1102,6 @@
         private Label lblOnLeave;
         private Label lblActiveEmployees;
         private Guna.UI2.WinForms.Guna2TextBox txtRecentEmployees;
-        private Panel pnlActivity;
-        private Label lblTime;
-        private Label lblActivity;
         private Panel panel6;
         private Label label8;
         private Label label9;
@@ -1118,5 +1117,8 @@
         private Label label7;
         private Label label10;
         private Guna.UI2.WinForms.Guna2CirclePictureBox guna2CirclePictureBox1;
+        private Panel pnlActivity;
+        private Label lblTime;
+        private Label lblActivity;
     }
 }
