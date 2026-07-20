@@ -41,6 +41,7 @@
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges10 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             panel2 = new Panel();
             guna2PictureBox5 = new Guna.UI2.WinForms.Guna2PictureBox();
+            btnEdit = new Button();
             guna2PictureBox4 = new Guna.UI2.WinForms.Guna2PictureBox();
             guna2PictureBox3 = new Guna.UI2.WinForms.Guna2PictureBox();
             guna2PictureBox2 = new Guna.UI2.WinForms.Guna2PictureBox();
@@ -85,6 +86,7 @@
             panel2.BackgroundImageLayout = ImageLayout.Stretch;
             panel2.BorderStyle = BorderStyle.FixedSingle;
             panel2.Controls.Add(guna2PictureBox5);
+            panel2.Controls.Add(btnEdit);
             panel2.Controls.Add(guna2PictureBox4);
             panel2.Controls.Add(guna2PictureBox3);
             panel2.Controls.Add(guna2PictureBox2);
@@ -109,23 +111,42 @@
             panel2.Controls.Add(label2);
             panel2.Location = new Point(12, 278);
             panel2.Name = "panel2";
-            panel2.Size = new Size(1481, 243);
+            panel2.Size = new Size(1713, 243);
             panel2.TabIndex = 5;
             // 
             // guna2PictureBox5
             // 
-            guna2PictureBox5.BackColor = Color.Transparent;
+            guna2PictureBox5.BackColor = Color.FromArgb(0, 150, 200);
             guna2PictureBox5.BackgroundImage = (Image)resources.GetObject("guna2PictureBox5.BackgroundImage");
             guna2PictureBox5.BackgroundImageLayout = ImageLayout.Stretch;
             guna2PictureBox5.CustomizableEdges = customizableEdges1;
             guna2PictureBox5.Image = (Image)resources.GetObject("guna2PictureBox5.Image");
             guna2PictureBox5.ImageRotate = 0F;
-            guna2PictureBox5.Location = new Point(756, 132);
+            guna2PictureBox5.Location = new Point(687, 161);
             guna2PictureBox5.Name = "guna2PictureBox5";
             guna2PictureBox5.ShadowDecoration.CustomizableEdges = customizableEdges2;
-            guna2PictureBox5.Size = new Size(138, 107);
-            guna2PictureBox5.TabIndex = 23;
+            guna2PictureBox5.Size = new Size(59, 47);
+            guna2PictureBox5.TabIndex = 24;
             guna2PictureBox5.TabStop = false;
+            // 
+            // btnEdit
+            // 
+            btnEdit.Anchor = AnchorStyles.Top | AnchorStyles.Bottom;
+            btnEdit.BackColor = Color.FromArgb(0, 150, 200);
+            btnEdit.Cursor = Cursors.Hand;
+            btnEdit.FlatAppearance.BorderColor = Color.FromArgb(0, 150, 200);
+            btnEdit.FlatAppearance.CheckedBackColor = Color.FromArgb(0, 150, 200);
+            btnEdit.FlatAppearance.MouseDownBackColor = Color.FromArgb(0, 150, 200);
+            btnEdit.FlatAppearance.MouseOverBackColor = Color.FromArgb(0, 150, 200);
+            btnEdit.FlatStyle = FlatStyle.Flat;
+            btnEdit.Font = new Font("Segoe UI Semibold", 14.25F, FontStyle.Bold);
+            btnEdit.Location = new Point(686, 160);
+            btnEdit.Name = "btnEdit";
+            btnEdit.Size = new Size(287, 50);
+            btnEdit.TabIndex = 23;
+            btnEdit.Text = "EDIT";
+            btnEdit.UseVisualStyleBackColor = false;
+            btnEdit.Click += btnEdit_Click;
             // 
             // guna2PictureBox4
             // 
@@ -136,7 +157,7 @@
             guna2PictureBox4.CustomizableEdges = customizableEdges3;
             guna2PictureBox4.Image = (Image)resources.GetObject("guna2PictureBox4.Image");
             guna2PictureBox4.ImageRotate = 0F;
-            guna2PictureBox4.Location = new Point(1111, 162);
+            guna2PictureBox4.Location = new Point(1343, 162);
             guna2PictureBox4.Name = "guna2PictureBox4";
             guna2PictureBox4.ShadowDecoration.CustomizableEdges = customizableEdges4;
             guna2PictureBox4.Size = new Size(59, 47);
@@ -151,7 +172,7 @@
             guna2PictureBox3.CustomizableEdges = customizableEdges5;
             guna2PictureBox3.Image = (Image)resources.GetObject("guna2PictureBox3.Image");
             guna2PictureBox3.ImageRotate = 0F;
-            guna2PictureBox3.Location = new Point(369, 161);
+            guna2PictureBox3.Location = new Point(356, 161);
             guna2PictureBox3.Name = "guna2PictureBox3";
             guna2PictureBox3.ShadowDecoration.CustomizableEdges = customizableEdges6;
             guna2PictureBox3.Size = new Size(59, 47);
@@ -167,7 +188,7 @@
             guna2PictureBox2.CustomizableEdges = customizableEdges7;
             guna2PictureBox2.Image = (Image)resources.GetObject("guna2PictureBox2.Image");
             guna2PictureBox2.ImageRotate = 0F;
-            guna2PictureBox2.Location = new Point(773, 162);
+            guna2PictureBox2.Location = new Point(1017, 162);
             guna2PictureBox2.Name = "guna2PictureBox2";
             guna2PictureBox2.ShadowDecoration.CustomizableEdges = customizableEdges8;
             guna2PictureBox2.Size = new Size(59, 47);
@@ -210,6 +231,7 @@
             label7.AutoSize = true;
             label7.BackColor = Color.Transparent;
             label7.Font = new Font("Microsoft Sans Serif", 9F, FontStyle.Bold);
+            label7.ForeColor = SystemColors.ButtonHighlight;
             label7.Location = new Point(320, 60);
             label7.Name = "label7";
             label7.Size = new Size(107, 15);
@@ -227,7 +249,7 @@
             btnClear.FlatAppearance.MouseOverBackColor = Color.FromArgb(0, 150, 200);
             btnClear.FlatStyle = FlatStyle.Flat;
             btnClear.Font = new Font("Segoe UI Semibold", 14.25F, FontStyle.Bold);
-            btnClear.Location = new Point(1109, 160);
+            btnClear.Location = new Point(1341, 160);
             btnClear.Name = "btnClear";
             btnClear.Size = new Size(287, 50);
             btnClear.TabIndex = 15;
@@ -246,7 +268,7 @@
             btnLoad.FlatAppearance.MouseOverBackColor = Color.FromArgb(0, 150, 200);
             btnLoad.FlatStyle = FlatStyle.Flat;
             btnLoad.Font = new Font("Segoe UI Semibold", 14.25F, FontStyle.Bold);
-            btnLoad.Location = new Point(769, 160);
+            btnLoad.Location = new Point(1013, 160);
             btnLoad.Name = "btnLoad";
             btnLoad.Size = new Size(287, 50);
             btnLoad.TabIndex = 14;
@@ -265,7 +287,7 @@
             btnDelete.FlatAppearance.MouseOverBackColor = Color.FromArgb(0, 150, 200);
             btnDelete.FlatStyle = FlatStyle.Flat;
             btnDelete.Font = new Font("Segoe UI Semibold", 14.25F, FontStyle.Bold);
-            btnDelete.Location = new Point(369, 160);
+            btnDelete.Location = new Point(356, 160);
             btnDelete.Name = "btnDelete";
             btnDelete.Size = new Size(287, 50);
             btnDelete.TabIndex = 13;
@@ -286,7 +308,8 @@
             label6.AutoSize = true;
             label6.BackColor = Color.Transparent;
             label6.Font = new Font("Microsoft Sans Serif", 9F, FontStyle.Bold);
-            label6.Location = new Point(343, 98);
+            label6.ForeColor = SystemColors.ButtonHighlight;
+            label6.Location = new Point(320, 99);
             label6.Name = "label6";
             label6.Size = new Size(63, 15);
             label6.TabIndex = 11;
@@ -319,7 +342,7 @@
             btnImport.Cursor = Cursors.Hand;
             btnImport.FlatStyle = FlatStyle.Flat;
             btnImport.Font = new Font("Microsoft Sans Serif", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            btnImport.Location = new Point(1344, 115);
+            btnImport.Location = new Point(1576, 115);
             btnImport.Name = "btnImport";
             btnImport.Size = new Size(118, 25);
             btnImport.TabIndex = 9;
@@ -333,9 +356,10 @@
             pbPicture.BackColor = Color.Transparent;
             pbPicture.BackgroundImage = Properties.Resources.no_profile_picture_15257_128;
             pbPicture.BackgroundImageLayout = ImageLayout.Stretch;
-            pbPicture.Location = new Point(1344, 11);
+            pbPicture.Location = new Point(1576, 11);
             pbPicture.Name = "pbPicture";
             pbPicture.Size = new Size(118, 101);
+            pbPicture.SizeMode = PictureBoxSizeMode.StretchImage;
             pbPicture.TabIndex = 8;
             pbPicture.TabStop = false;
             // 
@@ -344,6 +368,7 @@
             label5.AutoSize = true;
             label5.BackColor = Color.Transparent;
             label5.Font = new Font("Microsoft Sans Serif", 9F, FontStyle.Bold);
+            label5.ForeColor = SystemColors.ButtonHighlight;
             label5.Location = new Point(320, 15);
             label5.Name = "label5";
             label5.Size = new Size(103, 15);
@@ -363,6 +388,7 @@
             label4.AutoSize = true;
             label4.BackColor = Color.Transparent;
             label4.Font = new Font("Microsoft Sans Serif", 9F, FontStyle.Bold);
+            label4.ForeColor = SystemColors.ButtonHighlight;
             label4.Location = new Point(10, 99);
             label4.Name = "label4";
             label4.Size = new Size(58, 15);
@@ -381,6 +407,7 @@
             label3.AutoSize = true;
             label3.BackColor = Color.Transparent;
             label3.Font = new Font("Microsoft Sans Serif", 9F, FontStyle.Bold);
+            label3.ForeColor = SystemColors.ButtonHighlight;
             label3.Location = new Point(10, 59);
             label3.Name = "label3";
             label3.Size = new Size(77, 15);
@@ -399,6 +426,7 @@
             label2.AutoSize = true;
             label2.BackColor = Color.Transparent;
             label2.Font = new Font("Microsoft Sans Serif", 9F, FontStyle.Bold);
+            label2.ForeColor = SystemColors.ButtonHighlight;
             label2.Location = new Point(10, 15);
             label2.Name = "label2";
             label2.Size = new Size(92, 15);
@@ -414,7 +442,7 @@
             panel1.Controls.Add(label1);
             panel1.Location = new Point(12, 6);
             panel1.Name = "panel1";
-            panel1.Size = new Size(1481, 231);
+            panel1.Size = new Size(1713, 231);
             panel1.TabIndex = 4;
             // 
             // dataGridView1
@@ -425,9 +453,11 @@
             dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dataGridView1.Location = new Point(10, 31);
             dataGridView1.Name = "dataGridView1";
-            dataGridView1.Size = new Size(1460, 179);
+            dataGridView1.RowHeadersWidth = 51;
+            dataGridView1.Size = new Size(1692, 179);
             dataGridView1.TabIndex = 1;
             dataGridView1.CellContentClick += dataGridView1_CellContentClick;
+            dataGridView1.MouseClick += dataGridView1_MouseClick;
             // 
             // label1
             // 
@@ -447,7 +477,7 @@
             AutoScaleMode = AutoScaleMode.Font;
             BackgroundImage = Properties.Resources.ChatGPT_Image_Jul_17__2026__02_33_58_PM;
             BackgroundImageLayout = ImageLayout.Stretch;
-            ClientSize = new Size(1505, 526);
+            ClientSize = new Size(1737, 526);
             Controls.Add(panel2);
             Controls.Add(panel1);
             Name = "AddEmployee";
@@ -495,5 +525,6 @@
         private Guna.UI2.WinForms.Guna2PictureBox guna2PictureBox1;
         private Guna.UI2.WinForms.Guna2PictureBox guna2PictureBox4;
         private Guna.UI2.WinForms.Guna2PictureBox guna2PictureBox5;
+        private Button btnEdit;
     }
 }
