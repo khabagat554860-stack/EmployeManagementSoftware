@@ -145,6 +145,8 @@ namespace EmployeManagementSoftware
             }
         }
 
+
+
         private void btnAdd_Click(object sender, EventArgs e)
         {
             if (string.IsNullOrWhiteSpace(txtFullName.Text))
@@ -153,40 +155,36 @@ namespace EmployeManagementSoftware
                 return;
             }
 
-
-            if (!string.IsNullOrWhiteSpace(txtPhoneNumber.Text) && txtPhoneNumber.Text.Length != 11)
+            // Phone validation (Philippine number)
+            if (!string.IsNullOrWhiteSpace(txtPhoneNumber.Text))
             {
-                MessageBox.Show("Phone Number must be exactly 11 digits.", "Invalid Phone Number",
-                                MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                txtPhoneNumber.Focus();
-                return;
+                string phone = txtPhoneNumber.Text.Trim();
+                if (!(phone.Length == 11 && phone.StartsWith("09")) &&
+                    !(phone.Length == 13 && phone.StartsWith("+63")))
+                {
+                    MessageBox.Show("Please enter a valid Philippine number (09xxxxxxxxx or +63xxxxxxxxxx)");
+                    txtPhoneNumber.Focus();
+                    return;
+                }
             }
 
+            // Email validation (Gmail only)
             if (!string.IsNullOrWhiteSpace(txtEmail.Text))
             {
                 string email = txtEmail.Text.Trim().ToLower();
                 if (!email.EndsWith("@gmail.com"))
                 {
-                    MessageBox.Show("Email must be a valid Gmail address (example@gmail.com)",
-                                    "Invalid Email", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    MessageBox.Show("Only Gmail accounts are allowed (must end with @gmail.com)");
                     txtEmail.Focus();
                     return;
                 }
             }
 
             int? targetId = null;
-
             if (!string.IsNullOrWhiteSpace(txtEmployeeID.Text))
             {
                 if (int.TryParse(txtEmployeeID.Text, out int parsedId) && parsedId > 0)
-                {
                     targetId = parsedId;
-                }
-                else
-                {
-                    MessageBox.Show("Invalid Employee ID.");
-                    return;
-                }
             }
             else if (selectedEmployeeId.HasValue)
             {
@@ -197,61 +195,62 @@ namespace EmployeManagementSoftware
             {
                 connection.Open();
 
+                // === DUPLICATE CHECK ===
+                string duplicateQuery = @"
+                SELECT COUNT(*) FROM Employees 
+                WHERE (EmployeeID = @CheckID) 
+                   OR (FullName = @FullName AND PhoneNumber = @PhoneNumber) 
+                   OR (Email = @Email)";
+
+                long count = 0;
+                try
+                {
+                    using (var checkCmd = new SqliteCommand(duplicateQuery, connection))
+                    {
+                        checkCmd.Parameters.AddWithValue("@CheckID", targetId.HasValue ? targetId.Value : 0);
+                        checkCmd.Parameters.AddWithValue("@FullName", txtFullName.Text.Trim());
+                        checkCmd.Parameters.AddWithValue("@PhoneNumber", txtPhoneNumber.Text?.Trim() ?? "");
+                        checkCmd.Parameters.AddWithValue("@Email", txtEmail.Text?.Trim() ?? "");
+
+                        count = (long)checkCmd.ExecuteScalar();
+                    }
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Error checking duplicates: " + ex.Message);
+                    return;
+                }
+
+                if (count > 0)
+                {
+                    MessageBox.Show("An employee with the same ID, Name + Phone, or Email already exists!",
+                                  "Duplicate Entry Detected", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
+                }
+
+                // Proceed with Add/Update
                 if (targetId.HasValue)
                 {
-                    // Check if ID exists
-                    string checkQuery = "SELECT COUNT(*) FROM Employees WHERE EmployeeID = @ID";
-                    using (var checkCmd = new SqliteCommand(checkQuery, connection))
+                    string updateQuery = @"UPDATE Employees SET FullName=@FullName, PhoneNumber=@PhoneNumber, 
+                    Email=@Email, Position=@Position, Gender=@Gender, Photo=@Photo 
+                    WHERE EmployeeID=@ID";
+
+                    using (var cmd = new SqliteCommand(updateQuery, connection))
                     {
-                        checkCmd.Parameters.AddWithValue("@ID", targetId.Value);
-                        long count = (long)checkCmd.ExecuteScalar();
-
-                        if (count > 0)
-                        {
-                            // UPDATE
-                            string updateQuery = @"UPDATE Employees 
-                        SET FullName=@FullName, PhoneNumber=@PhoneNumber, Email=@Email,
-                            Position=@Position, Gender=@Gender, Photo=@Photo 
-                        WHERE EmployeeID=@ID";
-
-                            using (var cmd = new SqliteCommand(updateQuery, connection))
-                            {
-                                cmd.Parameters.AddWithValue("@FullName", txtFullName.Text.Trim());
-                                cmd.Parameters.AddWithValue("@PhoneNumber", txtPhoneNumber.Text?.Trim() ?? "");
-                                cmd.Parameters.AddWithValue("@Email", txtEmail.Text?.Trim() ?? "");
-                                cmd.Parameters.AddWithValue("@Position", cbPosition.Text ?? "");
-                                cmd.Parameters.AddWithValue("@Gender", cbGender.Text ?? "");
-                                cmd.Parameters.AddWithValue("@Photo", currentPhoto ?? (object)DBNull.Value);
-                                cmd.Parameters.AddWithValue("@ID", targetId.Value);
-                                cmd.ExecuteNonQuery();
-                            }
-                            MessageBox.Show("Employee updated successfully!");
-                        }
-                        else
-                        {
-                            // INSERT with manual ID
-                            string insertQuery = @"INSERT INTO Employees 
-                        (EmployeeID, FullName, PhoneNumber, Email, Position, Gender, Photo) 
-                        VALUES (@ID, @FullName, @PhoneNumber, @Email, @Position, @Gender, @Photo)";
-
-                            using (var cmd = new SqliteCommand(insertQuery, connection))
-                            {
-                                cmd.Parameters.AddWithValue("@ID", targetId.Value);
-                                cmd.Parameters.AddWithValue("@FullName", txtFullName.Text.Trim());
-                                cmd.Parameters.AddWithValue("@PhoneNumber", txtPhoneNumber.Text?.Trim() ?? "");
-                                cmd.Parameters.AddWithValue("@Email", txtEmail.Text?.Trim() ?? "");
-                                cmd.Parameters.AddWithValue("@Position", cbPosition.Text ?? "");
-                                cmd.Parameters.AddWithValue("@Gender", cbGender.Text ?? "");
-                                cmd.Parameters.AddWithValue("@Photo", currentPhoto ?? (object)DBNull.Value);
-                                cmd.ExecuteNonQuery();
-                            }
-                            MessageBox.Show("Employee added with ID " + targetId.Value);
-                        }
+                        cmd.Parameters.AddWithValue("@FullName", txtFullName.Text.Trim());
+                        cmd.Parameters.AddWithValue("@PhoneNumber", txtPhoneNumber.Text?.Trim() ?? "");
+                        cmd.Parameters.AddWithValue("@Email", txtEmail.Text?.Trim() ?? "");
+                        cmd.Parameters.AddWithValue("@Position", cbPosition.Text ?? "");
+                        cmd.Parameters.AddWithValue("@Gender", cbGender.Text ?? "");
+                        cmd.Parameters.AddWithValue("@Photo", currentPhoto ?? (object)DBNull.Value);
+                        cmd.Parameters.AddWithValue("@ID", targetId.Value);
+                        cmd.ExecuteNonQuery();
                     }
+                    MessageBox.Show("Employee updated successfully!");
                 }
                 else
                 {
-                    // Normal auto-increment INSERT
+                    // Insert new employee
                     string insertQuery = @"INSERT INTO Employees 
                 (FullName, PhoneNumber, Email, Position, Gender, Photo) 
                 VALUES (@FullName, @PhoneNumber, @Email, @Position, @Gender, @Photo)";
@@ -296,31 +295,39 @@ namespace EmployeManagementSoftware
         {
             if (dataGridView1.CurrentRow == null || dataGridView1.CurrentRow.IsNewRow)
             {
-                MessageBox.Show("Please select a row to delete.", "No Selection", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show("Please select a row in the table to delete.",
+                                "No Row Selected", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
 
-            int employeeId = Convert.ToInt32(dataGridView1.CurrentRow.Cells[0].Value);
+            int employeeId = Convert.ToInt32(dataGridView1.CurrentRow.Cells[1].Value); // Change index if needed
 
-            if (MessageBox.Show($"Are you sure you want to delete Employee ID {employeeId}?",
+            if (MessageBox.Show($"Delete Employee ID {employeeId}?",
                                 "Confirm Delete",
                                 MessageBoxButtons.YesNo,
                                 MessageBoxIcon.Question) == DialogResult.Yes)
             {
-                using (var connection = new SqliteConnection($"Data Source={dbPath}"))
+                try
                 {
-                    connection.Open();
-                    string query = "DELETE FROM Employees WHERE EmployeeID = @ID";
-                    using (var command = new SqliteCommand(query, connection))
+                    using (var connection = new SqliteConnection($"Data Source={dbPath}"))
                     {
-                        command.Parameters.AddWithValue("@ID", employeeId);
-                        command.ExecuteNonQuery();
+                        connection.Open();
+                        string query = "DELETE FROM Employees WHERE EmployeeID = @ID";
+                        using (var command = new SqliteCommand(query, connection))
+                        {
+                            command.Parameters.AddWithValue("@ID", employeeId);
+                            command.ExecuteNonQuery();
+                        }
                     }
-                }
 
-                MessageBox.Show("Employee deleted successfully!");
-                LoadData();        // Refresh the grid
-                ClearFields();     // Clear the form fields
+                    MessageBox.Show("Employee deleted successfully!");
+                    LoadData();        // Refresh grid
+                    ClearFields();     // Clear form
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Error: " + ex.Message);
+                }
             }
         }
 
@@ -337,14 +344,52 @@ namespace EmployeManagementSoftware
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
             if (e.RowIndex < 0) return;
-            selectedEmployeeId = Convert.ToInt32(dataGridView1.Rows[e.RowIndex].Cells[0].Value);
-            txtEmployeeID.Text = selectedEmployeeId.ToString();
-            txtFullName.Text = dataGridView1.Rows[e.RowIndex].Cells[1].Value?.ToString();
-            txtPhoneNumber.Text = dataGridView1.Rows[e.RowIndex].Cells[2].Value?.ToString();
-            txtEmail.Text = dataGridView1.Rows[e.RowIndex].Cells[3].Value?.ToString();
-            cbPosition.Text = dataGridView1.Rows[e.RowIndex].Cells[4].Value?.ToString();
-            cbGender.Text = dataGridView1.Rows[e.RowIndex].Cells[5].Value?.ToString();
-            // Photo loading can be extended later
+
+            try
+            {
+                var row = dataGridView1.Rows[e.RowIndex];
+
+                // Assuming column order: Photo(0), EmployeeID(1), FullName(2), Phone(3), Email(4), Position(5), Gender(6)
+                selectedEmployeeId = Convert.ToInt32(row.Cells[1].Value);
+
+                txtEmployeeID.Text = selectedEmployeeId.ToString();
+                txtFullName.Text = row.Cells[2].Value?.ToString() ?? "";
+                txtPhoneNumber.Text = row.Cells[3].Value?.ToString() ?? "";
+                txtEmail.Text = row.Cells[4].Value?.ToString() ?? "";
+                cbPosition.Text = row.Cells[5].Value?.ToString() ?? "";
+                cbGender.Text = row.Cells[6].Value?.ToString() ?? "";
+
+                // Load photo preview if possible
+                if (row.Cells[0].Value is Image photoImage)
+                {
+                    pbPicture.Image = photoImage;
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error loading employee data: " + ex.Message);
+            }
+
+            if (e.RowIndex < 0) return;
+
+            try
+            {
+                var row = dataGridView1.Rows[e.RowIndex];
+
+                selectedEmployeeId = Convert.ToInt32(row.Cells[1].Value); // Employee ID column
+
+                txtEmployeeID.Text = selectedEmployeeId.ToString();
+                txtFullName.Text = row.Cells[2].Value?.ToString() ?? "";
+                txtPhoneNumber.Text = row.Cells[3].Value?.ToString() ?? "";
+                txtEmail.Text = row.Cells[4].Value?.ToString() ?? "";
+                cbPosition.Text = row.Cells[5].Value?.ToString() ?? "";
+                cbGender.Text = row.Cells[6].Value?.ToString() ?? "";
+
+                // Load photo preview
+                if (row.Cells[0].Value is Image img)
+                    pbPicture.Image = img;
+            }
+            catch { }
         }
 
         private void btnLoad_Click(object sender, EventArgs e) => LoadData();
@@ -377,5 +422,68 @@ namespace EmployeManagementSoftware
                 e.Handled = true;
             }
         }
-    }
+
+        private void dataGridView1_MouseClick(object sender, MouseEventArgs e)
+        {
+            if (e.Button == MouseButtons.Right)
+            {
+                var hit = dataGridView1.HitTest(e.X, e.Y);
+                if (hit.RowIndex >= 0)
+                {
+                    dataGridView1.ClearSelection();
+                    dataGridView1.Rows[hit.RowIndex].Selected = true;
+                    dataGridView1.CurrentCell = dataGridView1.Rows[hit.RowIndex].Cells[0];
+                }
+            }
+        }
+
+        private void btnEdit_Click(object sender, EventArgs e)
+        {
+            if (selectedEmployeeId == null)
+            {
+                MessageBox.Show("Please select a row first.", "No Selection");
+                return;
+            }
+
+            if (string.IsNullOrWhiteSpace(txtFullName.Text))
+            {
+                MessageBox.Show("Full Name is required.");
+                return;
+            }
+
+            try
+            {
+                using (var connection = new SqliteConnection($"Data Source={dbPath}"))
+                {
+                    connection.Open();
+
+                    string query = @"UPDATE Employees 
+                           SET FullName=@FullName, PhoneNumber=@PhoneNumber, Email=@Email,
+                               Position=@Position, Gender=@Gender, Photo=@Photo 
+                           WHERE EmployeeID = @ID";
+
+                    using (var cmd = new SqliteCommand(query, connection))
+                    {
+                        cmd.Parameters.AddWithValue("@FullName", txtFullName.Text.Trim());
+                        cmd.Parameters.AddWithValue("@PhoneNumber", txtPhoneNumber.Text?.Trim() ?? "");
+                        cmd.Parameters.AddWithValue("@Email", txtEmail.Text?.Trim() ?? "");
+                        cmd.Parameters.AddWithValue("@Position", cbPosition.Text ?? "");
+                        cmd.Parameters.AddWithValue("@Gender", cbGender.Text ?? "");
+                        cmd.Parameters.AddWithValue("@Photo", currentPhoto ?? (object)DBNull.Value);
+                        cmd.Parameters.AddWithValue("@ID", selectedEmployeeId.Value);
+
+                        cmd.ExecuteNonQuery();
+                    }
+                }
+
+                MessageBox.Show("Employee updated successfully!");
+                ClearFields();
+                LoadData();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error: " + ex.Message);
+            }
+        }
+        }
 }
