@@ -98,6 +98,68 @@ namespace EmployeManagementSoftware
                 }
             }
 
+
+            return dt;
+        }
+        public static DataTable GetEmployees()
+        {
+            DataTable dt = new DataTable();
+
+            using (var conn = new SQLiteConnection(ConnectionString))
+            {
+                conn.Open();
+
+                string query = @"SELECT
+                            EmployeeID,
+                            FullName,
+                            PhoneNumber,
+                            Email,
+                            Position,
+                            Gender
+                         FROM Employees
+                         ORDER BY EmployeeID DESC";
+
+                using (var cmd = new SQLiteCommand(query, conn))
+                {
+                    using (var reader = cmd.ExecuteReader())
+                    {
+                        dt.Load(reader);
+                    }
+                }
+            }
+
+            return dt;
+        }
+        public static DataTable SearchEmployees(string keyword)
+        {
+            DataTable dt = new DataTable();
+
+            using (var conn = new SQLiteConnection(ConnectionString))
+            {
+                conn.Open();
+
+                string query = @"SELECT EmployeeID,
+                                FullName,
+                                PhoneNumber,
+                                Email,
+                                Position,
+                                Gender
+                         FROM Employees
+                         WHERE FullName LIKE @keyword
+                            OR Position LIKE @keyword
+                            OR EmployeeID LIKE @keyword";
+
+                using (var cmd = new SQLiteCommand(query, conn))
+                {
+                    cmd.Parameters.AddWithValue("@keyword", "%" + keyword + "%");
+
+                    using (var reader = cmd.ExecuteReader())
+                    {
+                        dt.Load(reader);
+                    }
+                }
+            }
+
             return dt;
         }
     }

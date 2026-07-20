@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Microsoft.Data.Sqlite;
 
 namespace EmployeManagementSoftware
 {
@@ -19,16 +20,25 @@ namespace EmployeManagementSoftware
 
         private void Dashboard_Load(object sender, EventArgs e)
         {
-
+            LoadEmployees();
+        }
+        private void LoadEmployees()
+        {
+            dgvEmployees.DataSource = DatabaseHelper.GetEmployees();
         }
 
-      
-    
-
-        public void LoadDashboardData()
+        private void txtRecentEmployees_TextChanged(object sender, EventArgs e)
         {
-           
+            string keyword = txtSearch.Text.Trim();
 
+            if (string.IsNullOrWhiteSpace(keyword))
+            {
+                LoadEmployees();   // Show all employees
+            }
+            else
+            {
+                dgvEmployees.DataSource = DatabaseHelper.SearchEmployees(keyword);
+            }
         }
     }
 }

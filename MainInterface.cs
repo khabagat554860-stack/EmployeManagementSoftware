@@ -5,6 +5,7 @@
         public MainInterface()
         {
             InitializeComponent();
+            this.WindowState = FormWindowState.Maximized;
         }
 
         private void panel1_Paint(object sender, PaintEventArgs e)
