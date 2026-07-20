@@ -73,9 +73,19 @@ namespace EmployeManagementSoftware
                             byte[] bytes = reader.GetValue(6) as byte[];
                             if (bytes != null && bytes.Length > 0)
                             {
-                                using (var ms = new MemoryStream(bytes))
+                                try
                                 {
-                                    photo = Image.FromStream(ms);
+                                    using (var ms = new MemoryStream(bytes))
+                                    {
+                                        Image img = Image.FromStream(ms);
+                                        // Simple resize - this fixes most corruption issues
+                                        photo = new Bitmap(img, new Size(60, 60));
+                                        img.Dispose();
+                                    }
+                                }
+                                catch
+                                {
+                                    photo = null;
                                 }
                             }
                         }
@@ -114,15 +124,9 @@ namespace EmployeManagementSoftware
                 {
                     connection.Open();
 
-                    // Drop old table if it exists (to force correct structure)
-                    using (var dropCmd = new SqliteCommand("DROP TABLE IF EXISTS Employees", connection))
-                    {
-                        dropCmd.ExecuteNonQuery();
-                    }
-
-                    // Create new table with proper AUTOINCREMENT
+                    // Create table if it doesn't exist
                     string createTable = @"
-                CREATE TABLE Employees (
+                CREATE TABLE IF NOT EXISTS Employees (
                     EmployeeID INTEGER PRIMARY KEY AUTOINCREMENT,
                     FullName TEXT NOT NULL,
                     PhoneNumber TEXT,
@@ -136,13 +140,22 @@ namespace EmployeManagementSoftware
                     {
                         cmd.ExecuteNonQuery();
                     }
-                }
 
-                MessageBox.Show("Database recreated successfully!");
+                    // Add Email column if it doesn't exist (for older databases)
+                    try
+                    {
+                        string alterTable = "ALTER TABLE Employees ADD COLUMN Email TEXT;";
+                        using (var alterCmd = new SqliteCommand(alterTable, connection))
+                        {
+                            alterCmd.ExecuteNonQuery();
+                        }
+                    }
+                    catch { } // Column already exists - ignore
+                }
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Database Error: " + ex.Message);
+                MessageBox.Show("Database initialization error: " + ex.Message);
             }
         }
 
