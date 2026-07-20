@@ -28,15 +28,15 @@
         /// </summary>
         private void InitializeComponent()
         {
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges1 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges2 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges9 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges10 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Dashboard));
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges3 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges4 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges5 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges6 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges7 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges8 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges11 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges12 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges13 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges14 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges15 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges16 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             pnlDashboard = new Panel();
             panel6 = new Panel();
             label8 = new Label();
@@ -64,6 +64,9 @@
             panel5 = new Panel();
             label6 = new Label();
             label7 = new Label();
+            pnlActivity = new Panel();
+            lblTime = new Label();
+            lblActivity = new Label();
             pnlTopRecentActivities = new Panel();
             lblRecentActivities = new Label();
             pnlEmployeeStatus = new Panel();
@@ -81,7 +84,7 @@
             pnlRecentEmployees = new Panel();
             dgvEmployees = new DataGridView();
             pnlTopRecentEmployees = new Panel();
-            txtRecentEmployees = new Guna.UI2.WinForms.Guna2TextBox();
+            txtSearch = new Guna.UI2.WinForms.Guna2TextBox();
             lblRecentEmployees = new Label();
             pnlDepartments = new Panel();
             lblDepartmentsInfo = new Label();
@@ -108,9 +111,6 @@
             dtpDate = new Guna.UI2.WinForms.Guna2DateTimePicker();
             lblWelcome = new Label();
             lblTitle = new Label();
-            lblActivity = new Label();
-            lblTime = new Label();
-            pnlActivity = new Panel();
             pnlDashboard.SuspendLayout();
             panel6.SuspendLayout();
             panel4.SuspendLayout();
@@ -120,6 +120,7 @@
             pnlRecentActivities.SuspendLayout();
             panel2.SuspendLayout();
             panel5.SuspendLayout();
+            pnlActivity.SuspendLayout();
             pnlTopRecentActivities.SuspendLayout();
             pnlEmployeeStatus.SuspendLayout();
             panel1.SuspendLayout();
@@ -136,7 +137,6 @@
             pnlTotalEmployees.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)guna2CirclePictureBox1).BeginInit();
             pnlHeader.SuspendLayout();
-            pnlActivity.SuspendLayout();
             SuspendLayout();
             // 
             // pnlDashboard
@@ -434,6 +434,37 @@
             label7.TabIndex = 0;
             label7.Text = "Anna Reyes filed a leave request.";
             // 
+            // pnlActivity
+            // 
+            pnlActivity.BackColor = Color.WhiteSmoke;
+            pnlActivity.BorderStyle = BorderStyle.FixedSingle;
+            pnlActivity.Controls.Add(lblTime);
+            pnlActivity.Controls.Add(lblActivity);
+            pnlActivity.Location = new Point(-1, 5);
+            pnlActivity.Name = "pnlActivity";
+            pnlActivity.Size = new Size(654, 35);
+            pnlActivity.TabIndex = 0;
+            // 
+            // lblTime
+            // 
+            lblTime.AutoSize = true;
+            lblTime.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            lblTime.Location = new Point(503, 4);
+            lblTime.Name = "lblTime";
+            lblTime.Size = new Size(119, 21);
+            lblTime.TabIndex = 1;
+            lblTime.Text = "10 minutes ago";
+            // 
+            // lblActivity
+            // 
+            lblActivity.AutoSize = true;
+            lblActivity.Font = new Font("Segoe UI Semibold", 14.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            lblActivity.Location = new Point(12, 1);
+            lblActivity.Name = "lblActivity";
+            lblActivity.Size = new Size(407, 25);
+            lblActivity.TabIndex = 0;
+            lblActivity.Text = "Juan Dela Cruz was added as a new employee.";
+            // 
             // pnlTopRecentActivities
             // 
             pnlTopRecentActivities.BackColor = Color.FromArgb(10, 35, 90);
@@ -621,7 +652,7 @@
             // 
             pnlTopRecentEmployees.BackColor = Color.FromArgb(10, 35, 90);
             pnlTopRecentEmployees.BorderStyle = BorderStyle.FixedSingle;
-            pnlTopRecentEmployees.Controls.Add(txtRecentEmployees);
+            pnlTopRecentEmployees.Controls.Add(txtSearch);
             pnlTopRecentEmployees.Controls.Add(lblRecentEmployees);
             pnlTopRecentEmployees.Dock = DockStyle.Top;
             pnlTopRecentEmployees.Location = new Point(0, 0);
@@ -629,25 +660,25 @@
             pnlTopRecentEmployees.Size = new Size(652, 41);
             pnlTopRecentEmployees.TabIndex = 4;
             // 
-            // txtRecentEmployees
+            // txtSearch
             // 
-            txtRecentEmployees.CustomizableEdges = customizableEdges1;
-            txtRecentEmployees.DefaultText = "";
-            txtRecentEmployees.DisabledState.BorderColor = Color.FromArgb(208, 208, 208);
-            txtRecentEmployees.DisabledState.FillColor = Color.FromArgb(226, 226, 226);
-            txtRecentEmployees.DisabledState.ForeColor = Color.FromArgb(138, 138, 138);
-            txtRecentEmployees.DisabledState.PlaceholderForeColor = Color.FromArgb(138, 138, 138);
-            txtRecentEmployees.FocusedState.BorderColor = Color.FromArgb(94, 148, 255);
-            txtRecentEmployees.Font = new Font("Segoe UI", 9F);
-            txtRecentEmployees.HoverState.BorderColor = Color.FromArgb(94, 148, 255);
-            txtRecentEmployees.Location = new Point(415, 7);
-            txtRecentEmployees.Name = "txtRecentEmployees";
-            txtRecentEmployees.PlaceholderText = "Search employee...";
-            txtRecentEmployees.SelectedText = "";
-            txtRecentEmployees.ShadowDecoration.CustomizableEdges = customizableEdges2;
-            txtRecentEmployees.Size = new Size(207, 25);
-            txtRecentEmployees.TabIndex = 3;
-            txtRecentEmployees.TextChanged += txtRecentEmployees_TextChanged;
+            txtSearch.CustomizableEdges = customizableEdges9;
+            txtSearch.DefaultText = "";
+            txtSearch.DisabledState.BorderColor = Color.FromArgb(208, 208, 208);
+            txtSearch.DisabledState.FillColor = Color.FromArgb(226, 226, 226);
+            txtSearch.DisabledState.ForeColor = Color.FromArgb(138, 138, 138);
+            txtSearch.DisabledState.PlaceholderForeColor = Color.FromArgb(138, 138, 138);
+            txtSearch.FocusedState.BorderColor = Color.FromArgb(94, 148, 255);
+            txtSearch.Font = new Font("Segoe UI", 9F);
+            txtSearch.HoverState.BorderColor = Color.FromArgb(94, 148, 255);
+            txtSearch.Location = new Point(415, 7);
+            txtSearch.Name = "txtSearch";
+            txtSearch.PlaceholderText = "Search employee...";
+            txtSearch.SelectedText = "";
+            txtSearch.ShadowDecoration.CustomizableEdges = customizableEdges10;
+            txtSearch.Size = new Size(207, 25);
+            txtSearch.TabIndex = 3;
+            txtSearch.TextChanged += txtRecentEmployees_TextChanged;
             // 
             // lblRecentEmployees
             // 
@@ -690,7 +721,7 @@
             picDepartments.ImageRotate = 0F;
             picDepartments.Location = new Point(28, 24);
             picDepartments.Name = "picDepartments";
-            picDepartments.ShadowDecoration.CustomizableEdges = customizableEdges3;
+            picDepartments.ShadowDecoration.CustomizableEdges = customizableEdges11;
             picDepartments.ShadowDecoration.Mode = Guna.UI2.WinForms.Enums.ShadowMode.Circle;
             picDepartments.Size = new Size(80, 80);
             picDepartments.TabIndex = 1;
@@ -748,7 +779,7 @@
             picOnLeave.ImageRotate = 0F;
             picOnLeave.Location = new Point(32, 24);
             picOnLeave.Name = "picOnLeave";
-            picOnLeave.ShadowDecoration.CustomizableEdges = customizableEdges4;
+            picOnLeave.ShadowDecoration.CustomizableEdges = customizableEdges12;
             picOnLeave.ShadowDecoration.Mode = Guna.UI2.WinForms.Enums.ShadowMode.Circle;
             picOnLeave.Size = new Size(80, 80);
             picOnLeave.TabIndex = 1;
@@ -828,7 +859,7 @@
             picActiveEmployees.ImageRotate = 0F;
             picActiveEmployees.Location = new Point(27, 24);
             picActiveEmployees.Name = "picActiveEmployees";
-            picActiveEmployees.ShadowDecoration.CustomizableEdges = customizableEdges5;
+            picActiveEmployees.ShadowDecoration.CustomizableEdges = customizableEdges13;
             picActiveEmployees.ShadowDecoration.Mode = Guna.UI2.WinForms.Enums.ShadowMode.Circle;
             picActiveEmployees.Size = new Size(80, 80);
             picActiveEmployees.TabIndex = 1;
@@ -853,7 +884,7 @@
             guna2CirclePictureBox1.ImageRotate = 0F;
             guna2CirclePictureBox1.Location = new Point(29, 24);
             guna2CirclePictureBox1.Name = "guna2CirclePictureBox1";
-            guna2CirclePictureBox1.ShadowDecoration.CustomizableEdges = customizableEdges6;
+            guna2CirclePictureBox1.ShadowDecoration.CustomizableEdges = customizableEdges14;
             guna2CirclePictureBox1.ShadowDecoration.Mode = Guna.UI2.WinForms.Enums.ShadowMode.Circle;
             guna2CirclePictureBox1.Size = new Size(80, 80);
             guna2CirclePictureBox1.SizeMode = PictureBoxSizeMode.StretchImage;
@@ -919,7 +950,7 @@
             // dtpDate
             // 
             dtpDate.Checked = true;
-            dtpDate.CustomizableEdges = customizableEdges7;
+            dtpDate.CustomizableEdges = customizableEdges15;
             dtpDate.FillColor = Color.White;
             dtpDate.Font = new Font("Segoe UI", 9F);
             dtpDate.ForeColor = Color.Black;
@@ -928,7 +959,7 @@
             dtpDate.MaxDate = new DateTime(9998, 12, 31, 0, 0, 0, 0);
             dtpDate.MinDate = new DateTime(1753, 1, 1, 0, 0, 0, 0);
             dtpDate.Name = "dtpDate";
-            dtpDate.ShadowDecoration.CustomizableEdges = customizableEdges8;
+            dtpDate.ShadowDecoration.CustomizableEdges = customizableEdges16;
             dtpDate.Size = new Size(170, 22);
             dtpDate.TabIndex = 2;
             dtpDate.Value = new DateTime(2026, 7, 20, 9, 53, 9, 23);
@@ -954,37 +985,6 @@
             lblTitle.Size = new Size(304, 40);
             lblTitle.TabIndex = 0;
             lblTitle.Text = "Dashboard Overview";
-            // 
-            // lblActivity
-            // 
-            lblActivity.AutoSize = true;
-            lblActivity.Font = new Font("Segoe UI Semibold", 14.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            lblActivity.Location = new Point(12, 1);
-            lblActivity.Name = "lblActivity";
-            lblActivity.Size = new Size(407, 25);
-            lblActivity.TabIndex = 0;
-            lblActivity.Text = "Juan Dela Cruz was added as a new employee.";
-            // 
-            // lblTime
-            // 
-            lblTime.AutoSize = true;
-            lblTime.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            lblTime.Location = new Point(503, 4);
-            lblTime.Name = "lblTime";
-            lblTime.Size = new Size(119, 21);
-            lblTime.TabIndex = 1;
-            lblTime.Text = "10 minutes ago";
-            // 
-            // pnlActivity
-            // 
-            pnlActivity.BackColor = Color.WhiteSmoke;
-            pnlActivity.BorderStyle = BorderStyle.FixedSingle;
-            pnlActivity.Controls.Add(lblTime);
-            pnlActivity.Controls.Add(lblActivity);
-            pnlActivity.Location = new Point(-1, 5);
-            pnlActivity.Name = "pnlActivity";
-            pnlActivity.Size = new Size(654, 35);
-            pnlActivity.TabIndex = 0;
             // 
             // Dashboard
             // 
@@ -1013,6 +1013,8 @@
             panel2.ResumeLayout(false);
             panel5.ResumeLayout(false);
             panel5.PerformLayout();
+            pnlActivity.ResumeLayout(false);
+            pnlActivity.PerformLayout();
             pnlTopRecentActivities.ResumeLayout(false);
             pnlTopRecentActivities.PerformLayout();
             pnlEmployeeStatus.ResumeLayout(false);
@@ -1039,8 +1041,6 @@
             ((System.ComponentModel.ISupportInitialize)guna2CirclePictureBox1).EndInit();
             pnlHeader.ResumeLayout(false);
             pnlHeader.PerformLayout();
-            pnlActivity.ResumeLayout(false);
-            pnlActivity.PerformLayout();
             ResumeLayout(false);
         }
 
@@ -1101,7 +1101,7 @@
         private Label lblInactiveEmployees;
         private Label lblOnLeave;
         private Label lblActiveEmployees;
-        private Guna.UI2.WinForms.Guna2TextBox txtRecentEmployees;
+        private Guna.UI2.WinForms.Guna2TextBox txtSearch;
         private Panel panel6;
         private Label label8;
         private Label label9;
