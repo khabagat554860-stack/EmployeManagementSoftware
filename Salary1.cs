@@ -20,8 +20,26 @@ namespace EmployeManagementSoftware
         public Salary1()
         {
             InitializeComponent();
-            UpdateSalaryDashboardMetrics();
-            //InitializePlaceholders(); //Commened out temporarily
+
+            cmbPosition.Enabled = false;
+
+            // Force-wire the event handler directly in code
+            dtpPayPeriod.ValueChanged -= dtpPayPeriod_ValueChanged; // avoid duplicate binding
+            dtpPayPeriod.ValueChanged += dtpPayPeriod_ValueChanged;
+
+            // Load initial data for selected month
+            RefreshSalaryGrid();
+            LoadDashboardMetrics();
+        }
+
+        private void RefreshSalaryGrid()
+        {
+
+            DataTable dt = DatabaseHelper.GetSalaryRecords(dtpPayPeriod.Value);
+
+            dgvSalaryRecords.DataSource = dt;
+            lblTotalRecords.Text = dt.Rows.Count.ToString();
+
         }
 
         private void InitializePlaceholders()
@@ -113,42 +131,59 @@ namespace EmployeManagementSoftware
 
         private void btnSave_Click(object sender, EventArgs e)
         {
-            using (SQLiteConnection conn = new SQLiteConnection(DatabaseHelper.ConnectionString))
+
+            string employeeId = txtEmpID.Text.Trim();
+
+            if (string.IsNullOrEmpty(employeeId))
             {
-                conn.Open();
-
-                string insertEmp = "INSERT OR IGNORE INTO Employees (EmployeeID, FullName, Position) VALUES (@ID, @Name, @Pos)";
-                using (SQLiteCommand cmd = new SQLiteCommand(insertEmp, conn))
-                {
-                    cmd.Parameters.AddWithValue("@ID", txtEmpID.Text.Trim());
-                    cmd.Parameters.AddWithValue("@Name", txtEmpName.Text.Trim());
-                    cmd.Parameters.AddWithValue("@Pos", cmbPosition.Text.Trim());
-                    cmd.ExecuteNonQuery();
-                }
-
-                string insertSalary = @"INSERT INTO SalaryRecords 
-                    (EmployeeID, BasicSalary, Allowances, Deductions, NetSalary, PaymentDate, PayPeriodMonth, PayPeriodYear) 
-                    VALUES (@ID, @Basic, @Allow, @Ded, @Net, @Date, @Month, @Year)";
-
-                using (SQLiteCommand cmd = new SQLiteCommand(insertSalary, conn))
-                {
-                    cmd.Parameters.AddWithValue("@ID", txtEmpID.Text.Trim());
-                    cmd.Parameters.AddWithValue("@Basic", GetDecimalValue(txtBasicSalary));
-                    cmd.Parameters.AddWithValue("@Allow", GetDecimalValue(txtAllowances));
-                    cmd.Parameters.AddWithValue("@Ded", GetDecimalValue(txtDeductions));
-                    cmd.Parameters.AddWithValue("@Net", GetDecimalValue(txtNetSalary));
-                    cmd.Parameters.AddWithValue("@Date", dtpPaymentDate.Value.ToString("yyyy-MM-dd"));
-                    cmd.Parameters.AddWithValue("@Month", dtpPayPeriod.Value.ToString("MMMM"));
-                    cmd.Parameters.AddWithValue("@Year", dtpPayPeriod.Value.ToString("yyyy"));
-
-                    cmd.ExecuteNonQuery();
-                }
+                MessageBox.Show("Please select or enter an Employee ID first.", "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
             }
 
-            MessageBox.Show("Record Saved Successfully!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            UpdateDashboard(); // FIXED: Called the correct method name
-            UpdateSalaryDashboardMetrics(); // Update the salary metrics on the dashboard
-            LoadSalaryRecords();
+            // 1. Grab the selected pay period date (Month & Year)
+            DateTime selectedPayPeriod = dtpPayPeriod.Value;
+
+            // 2. Check for duplicate records within the SAME month and year
+            if (DatabaseHelper.DoesSalaryRecordExist(employeeId, selectedPayPeriod))
+            {
+                MessageBox.Show($"A salary record for Employee ID '{employeeId}' already exists for {selectedPayPeriod:MMMM yyyy}!\n\nPlease use 'Update' to modify it, or select a different pay period.",
+                                "Duplicate Monthly Entry",
+                                MessageBoxButtons.OK,
+                                MessageBoxIcon.Warning);
+                return;
+            }
+
+            // 3. Clean and parse numeric input values
+            string rawBasic = txtBasicSalary.Text.Replace("P", "").Replace("₱", "").Trim();
+            string rawAllowances = txtAllowances.Text.Replace("P", "").Replace("₱", "").Trim();
+            string rawDeductions = txtDeductions.Text.Replace("P", "").Replace("₱", "").Trim();
+
+            if (!double.TryParse(rawBasic, out double basicSalary) ||
+                !double.TryParse(rawAllowances, out double allowances) ||
+                !double.TryParse(rawDeductions, out double deductions))
+            {
+                MessageBox.Show("Please enter valid numeric amounts.", "Input Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
+            // 4. Save to database using the selected pay period date
+            bool isSaved = DatabaseHelper.SaveSalaryRecord(employeeId, basicSalary, allowances, deductions, selectedPayPeriod);
+
+            if (isSaved)
+            {
+                MessageBox.Show("Salary record created successfully!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                RefreshSalaryGrid();
+                LoadDashboardMetrics();
+
+                // Clear input fields
+                txtEmpID.Clear();
+                txtEmpName.Clear();
+                txtBasicSalary.Clear();
+                txtAllowances.Clear();
+                txtDeductions.Clear();
+                txtNetSalary.Clear();
+            }
         }
 
         private void btnSearch_Click(object sender, EventArgs e)
@@ -173,7 +208,7 @@ namespace EmployeManagementSoftware
                         }
                         else
                         {
-                            MessageBox.Show("Employee not found! Click 'Add New' to register them.", "Info", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            MessageBox.Show("Employee not found! Go to 'Employees' to register them.", "Info", MessageBoxButtons.OK, MessageBoxIcon.Information);
                         }
                     }
                 }
@@ -187,45 +222,45 @@ namespace EmployeManagementSoftware
 
         private void btnUpdate_Click(object sender, EventArgs e)
         {
-            if (selectedRecordID == -1)
+            // 1. Ensure an Employee ID is present
+            string employeeId = txtEmpID.Text.Trim();
+
+            if (string.IsNullOrEmpty(employeeId))
             {
-                MessageBox.Show("Please select a salary record from the table list first to update.", "Selection Required", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show("Please select or enter an Employee ID first.", "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
 
-            using (SQLiteConnection conn = new SQLiteConnection(DatabaseHelper.ConnectionString))
+            // 2. Parse numeric salary inputs safely (removes 'P' or currency symbols if present)
+            string rawBasic = txtBasicSalary.Text.Replace("P", "").Replace("₱", "").Trim();
+            string rawAllowances = txtAllowances.Text.Replace("P", "").Replace("₱", "").Trim();
+            string rawDeductions = txtDeductions.Text.Replace("P", "").Replace("₱", "").Trim();
+
+            if (!double.TryParse(rawBasic, out double basicSalary) ||
+                !double.TryParse(rawAllowances, out double allowances) ||
+                !double.TryParse(rawDeductions, out double deductions))
             {
-                conn.Open();
-                string updateQuery = @"UPDATE SalaryRecords 
-                               SET BasicSalary = @Basic, 
-                                   Allowances = @Allow, 
-                                   Deductions = @Ded, 
-                                   NetSalary = @Net, 
-                                   PaymentDate = @Date, 
-                                   PayPeriodMonth = @Month, 
-                                   PayPeriodYear = @Year 
-                               WHERE RecordID = @RecordID";
-
-                using (SQLiteCommand cmd = new SQLiteCommand(updateQuery, conn))
-                {
-                    cmd.Parameters.AddWithValue("@Basic", GetDecimalValue(txtBasicSalary));
-                    cmd.Parameters.AddWithValue("@Allow", GetDecimalValue(txtAllowances));
-                    cmd.Parameters.AddWithValue("@Ded", GetDecimalValue(txtDeductions));
-                    cmd.Parameters.AddWithValue("@Net", GetDecimalValue(txtNetSalary));
-                    cmd.Parameters.AddWithValue("@Date", dtpPaymentDate.Value.ToString("yyyy-MM-dd"));
-                    cmd.Parameters.AddWithValue("@Month", dtpPayPeriod.Value.ToString("MMMM"));
-                    cmd.Parameters.AddWithValue("@Year", dtpPayPeriod.Value.ToString("yyyy"));
-                    cmd.Parameters.AddWithValue("@RecordID", selectedRecordID);
-
-                    cmd.ExecuteNonQuery();
-                }
+                MessageBox.Show("Please enter valid numeric amounts for Basic Salary, Allowances, and Deductions.", "Input Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
             }
 
-            MessageBox.Show("Salary Record Updated Successfully!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            // 3. Overwrite the salary details in the database
+            bool isUpdated = DatabaseHelper.UpdateEmployeeSalaryDetails(employeeId, basicSalary, allowances, deductions);
 
-            // Refresh the interface view components
-            LoadSalaryRecords(txtEmpID.Text.Trim());
-            UpdateSalaryDashboardMetrics();
+            if (isUpdated)
+            {
+                MessageBox.Show("Salary details overwritten successfully!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                // 4. Refresh the grid with SALARY columns
+                dgvSalaryRecords.DataSource = DatabaseHelper.GetSalaryRecords(dtpPayPeriod.Value);
+
+                // 5. Refresh the top 4 metric cards instantly!
+                LoadDashboardMetrics();
+            }
+            else
+            {
+                MessageBox.Show("Failed to update salary details. Employee ID not found.", "Update Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         private void dgvSalaryRecords_CellContentClick(object sender, DataGridViewCellEventArgs e)
@@ -249,37 +284,39 @@ namespace EmployeManagementSoftware
             UpdateDashboard();
         }
 
-        private void btnAddNew_Click(object sender, EventArgs e)
-        {
-            // Clear all the text boxes
-            txtEmpID.Clear();
-            txtEmpName.Clear();
-            cmbPosition.SelectedIndex = -1;
-            txtBasicSalary.Clear();
-            txtAllowances.Clear();
-            txtDeductions.Clear();
-            txtNetSalary.Clear();
-
-            // Reset date picker to today
-            dtpPaymentDate.Value = DateTime.Now;
-
-            // Reset our tracker tracking variable
-            selectedRecordID = -1;
-
-            // Place cursor right back at the ID prompt
-            txtEmpID.Focus();
-        }
+       
 
         private void btnClear_Click(object sender, EventArgs e)
         {
-            // 1. Wipe out only the financial input fields
-            txtBasicSalary.Clear();
-            txtAllowances.Clear();
-            txtDeductions.Clear();
-            txtNetSalary.Clear();
+            DialogResult result = MessageBox.Show(
+        "Are you sure you want to clear all salary figures and records?",
+        "Confirm Salary Clear",
+        MessageBoxButtons.YesNo,
+        MessageBoxIcon.Warning
+    );
 
-            // 2. Put the typing cursor directly back into Basic Salary for fast re-entry
-            txtBasicSalary.Focus();
+            if (result == DialogResult.Yes)
+            {
+                // 1. Clear salary data (leaves employee profiles intact)
+                DatabaseHelper.ClearAllSalaryRecords();
+
+                // 2. Refresh DataGridView
+                RefreshSalaryGrid();
+
+                // 3. Reload dashboard cards (Preserves Total Employees, resets salary cards to ₱0.00)
+                LoadDashboardMetrics();
+
+                // 4. Clear input fields on the left
+                txtEmpID.Clear();
+                txtEmpName.Clear();
+                txtBasicSalary.Clear();
+                txtAllowances.Clear();
+                txtDeductions.Clear();
+                txtNetSalary.Clear();
+
+                MessageBox.Show("Salary details cleared successfully! Total employee count retained.", "Cleared", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+
         }
         private void ClearFields()
         {
@@ -333,14 +370,14 @@ namespace EmployeManagementSoftware
             try
             {
                 // 1. Fetch the combined payroll data from our DatabaseHelper
-                System.Data.DataTable dt = DatabaseHelper.GetDashboardMetrics();
+                System.Data.DataTable dt = DatabaseHelper.GetDashboardMetrics(dtpPayPeriod.Value);
 
                 if (dt.Rows.Count > 0)
                 {
                     System.Data.DataRow row = dt.Rows[0];
 
                     // 2. Assign the database values directly to the labels at the top of your screen
-                    // ⚠️ Double-check your Salary1.cs [Design] tab to make sure these match your exact Label names!
+                    // Double-check your Salary1.cs [Design] tab to make sure these match your exact Label names!
                     lblTotalEmployees.Text = row["TotalEmployees"].ToString();
                     lblGrossPay.Text = "₱" + Convert.ToDecimal(row["TotalGross"]).ToString("#,##0.00");
                     lblDeduction.Text = "₱" + Convert.ToDecimal(row["TotalDeductions"]).ToString("#,##0.00");
@@ -350,6 +387,32 @@ namespace EmployeManagementSoftware
             catch (Exception ex)
             {
                 MessageBox.Show("Failed to load salary dashboard metrics: " + ex.Message, "Database Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void LoadDashboardMetrics()
+        {
+
+            DataTable dt = DatabaseHelper.GetDashboardMetrics(dtpPayPeriod.Value);
+
+            if (dt.Rows.Count > 0)
+            {
+                DataRow row = dt.Rows[0];
+
+                lblTotalEmployees.Text = row["TotalEmployees"].ToString();
+                lblGrossPay.Text = string.Format("₱{0:N2}", Convert.ToDouble(row["TotalGross"]));
+                lblDeduction.Text = string.Format("₱{0:N2}", Convert.ToDouble(row["TotalDeductions"]));
+                lblNetPay.Text = string.Format("₱{0:N2}", Convert.ToDouble(row["TotalNet"]));
+            }
+        }
+       
+        
+
+        private void txtEmpID_TextChanged_1(object sender, EventArgs e)
+        {
+            if (string.IsNullOrWhiteSpace(txtEmpID.Text))
+            {
+                RefreshSalaryGrid();
             }
         }
     }
