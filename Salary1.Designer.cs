@@ -79,7 +79,6 @@
             btnClear = new Button();
             btnUpdate = new Button();
             btnSave = new Button();
-            btnAddNew = new Button();
             btnSearch = new Button();
             dtpPaymentDate = new DateTimePicker();
             txtNetSalary = new Guna.UI2.WinForms.Guna2TextBox();
@@ -230,9 +229,9 @@
             lblTotalEmployees.ForeColor = Color.FromArgb(10, 35, 90);
             lblTotalEmployees.Location = new Point(114, 52);
             lblTotalEmployees.Name = "lblTotalEmployees";
-            lblTotalEmployees.Size = new Size(52, 41);
+            lblTotalEmployees.Size = new Size(35, 41);
             lblTotalEmployees.TabIndex = 1;
-            lblTotalEmployees.Text = "25";
+            lblTotalEmployees.Text = "0";
             // 
             // lblEmployeeTitle
             // 
@@ -289,9 +288,9 @@
             lblGrossPay.ForeColor = Color.FromArgb(22, 138, 77);
             lblGrossPay.Location = new Point(114, 52);
             lblGrossPay.Name = "lblGrossPay";
-            lblGrossPay.Size = new Size(189, 41);
+            lblGrossPay.Size = new Size(54, 41);
             lblGrossPay.TabIndex = 1;
-            lblGrossPay.Text = "₱650,000.00";
+            lblGrossPay.Text = "₱0";
             // 
             // lblGrossTitle
             // 
@@ -348,9 +347,9 @@
             lblDeduction.ForeColor = Color.FromArgb(244, 196, 48);
             lblDeduction.Location = new Point(114, 52);
             lblDeduction.Name = "lblDeduction";
-            lblDeduction.Size = new Size(189, 41);
+            lblDeduction.Size = new Size(54, 41);
             lblDeduction.TabIndex = 1;
-            lblDeduction.Text = "₱112,500.00";
+            lblDeduction.Text = "₱0";
             // 
             // lblDeductionTitle
             // 
@@ -407,9 +406,9 @@
             lblNetPay.ForeColor = Color.FromArgb(106, 13, 173);
             lblNetPay.Location = new Point(114, 52);
             lblNetPay.Name = "lblNetPay";
-            lblNetPay.Size = new Size(189, 41);
+            lblNetPay.Size = new Size(54, 41);
             lblNetPay.TabIndex = 1;
-            lblNetPay.Text = "₱537,500.00";
+            lblNetPay.Text = "₱0";
             // 
             // lblNetTitle
             // 
@@ -428,7 +427,6 @@
             panelSalaryDetails.Controls.Add(btnClear);
             panelSalaryDetails.Controls.Add(btnUpdate);
             panelSalaryDetails.Controls.Add(btnSave);
-            panelSalaryDetails.Controls.Add(btnAddNew);
             panelSalaryDetails.Controls.Add(btnSearch);
             panelSalaryDetails.Controls.Add(dtpPaymentDate);
             panelSalaryDetails.Controls.Add(txtNetSalary);
@@ -458,6 +456,7 @@
             cmbPosition.CustomizableEdges = customizableEdges5;
             cmbPosition.DrawMode = DrawMode.OwnerDrawFixed;
             cmbPosition.DropDownStyle = ComboBoxStyle.DropDownList;
+            cmbPosition.Enabled = false;
             cmbPosition.FocusedColor = Color.FromArgb(94, 148, 255);
             cmbPosition.FocusedState.BorderColor = Color.FromArgb(94, 148, 255);
             cmbPosition.Font = new Font("Segoe UI", 10F);
@@ -475,7 +474,7 @@
             btnClear.BackColor = Color.FromArgb(212, 61, 60);
             btnClear.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
             btnClear.ForeColor = Color.White;
-            btnClear.Location = new Point(363, 559);
+            btnClear.Location = new Point(307, 559);
             btnClear.Margin = new Padding(3, 4, 3, 4);
             btnClear.Name = "btnClear";
             btnClear.Size = new Size(107, 45);
@@ -489,7 +488,7 @@
             btnUpdate.BackColor = Color.FromArgb(244, 196, 48);
             btnUpdate.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
             btnUpdate.ForeColor = Color.White;
-            btnUpdate.Location = new Point(249, 559);
+            btnUpdate.Location = new Point(175, 559);
             btnUpdate.Margin = new Padding(3, 4, 3, 4);
             btnUpdate.Name = "btnUpdate";
             btnUpdate.Size = new Size(107, 45);
@@ -503,7 +502,7 @@
             btnSave.BackColor = Color.FromArgb(22, 138, 77);
             btnSave.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
             btnSave.ForeColor = Color.White;
-            btnSave.Location = new Point(130, 559);
+            btnSave.Location = new Point(43, 559);
             btnSave.Margin = new Padding(3, 4, 3, 4);
             btnSave.Name = "btnSave";
             btnSave.Size = new Size(107, 45);
@@ -511,20 +510,6 @@
             btnSave.Text = "Save";
             btnSave.UseVisualStyleBackColor = false;
             btnSave.Click += btnSave_Click;
-            // 
-            // btnAddNew
-            // 
-            btnAddNew.BackColor = Color.FromArgb(10, 35, 90);
-            btnAddNew.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            btnAddNew.ForeColor = Color.White;
-            btnAddNew.Location = new Point(16, 559);
-            btnAddNew.Margin = new Padding(3, 4, 3, 4);
-            btnAddNew.Name = "btnAddNew";
-            btnAddNew.Size = new Size(107, 45);
-            btnAddNew.TabIndex = 18;
-            btnAddNew.Text = "Add New";
-            btnAddNew.UseVisualStyleBackColor = false;
-            btnAddNew.Click += btnAddNew_Click;
             // 
             // btnSearch
             // 
@@ -672,12 +657,13 @@
             txtEmpID.ShadowDecoration.CustomizableEdges = customizableEdges18;
             txtEmpID.Size = new Size(151, 48);
             txtEmpID.TabIndex = 9;
+            txtEmpID.TextChanged += txtEmpID_TextChanged_1;
             // 
             // lblPaymentDate
             // 
             lblPaymentDate.AutoSize = true;
             lblPaymentDate.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            lblPaymentDate.Location = new Point(16, 500);
+            lblPaymentDate.Location = new Point(6, 489);
             lblPaymentDate.Name = "lblPaymentDate";
             lblPaymentDate.Size = new Size(144, 28);
             lblPaymentDate.TabIndex = 8;
@@ -847,9 +833,9 @@
             lblTotalRecords.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
             lblTotalRecords.Location = new Point(144, 0);
             lblTotalRecords.Name = "lblTotalRecords";
-            lblTotalRecords.Size = new Size(34, 28);
+            lblTotalRecords.Size = new Size(23, 28);
             lblTotalRecords.TabIndex = 0;
-            lblTotalRecords.Text = "25";
+            lblTotalRecords.Text = "0";
             // 
             // panel1
             // 
@@ -987,7 +973,6 @@
         private Guna.UI2.WinForms.Guna2CirclePictureBox guna2CirclePictureBox5;
         private Label lblSalaryDetails;
         private Guna.UI2.WinForms.Guna2TextBox txtEmpID;
-        private Button btnAddNew;
         private Button btnSearch;
         private DateTimePicker dtpPaymentDate;
         private Guna.UI2.WinForms.Guna2TextBox txtNetSalary;

@@ -17,14 +17,14 @@
 
         private void MainInterface_Load(object sender, EventArgs e)
         {
-
+            SetActiveMenu(panel1, lblDashboard);
         }
 
         private void lblDashboard_Click(object sender, EventArgs e)
         {
             mainPanel.Controls.Clear();
 
-
+            SetActiveMenu(panel1, lblDashboard);
             Dashboard dashboardForm = new Dashboard();
 
             dashboardForm.TopLevel = false;
@@ -41,7 +41,7 @@
         {
             mainPanel.Controls.Clear();
 
-
+            SetActiveMenu(panel4, lblEmployees);
             AddEmployee employeeForm = new AddEmployee();
 
             employeeForm.TopLevel = false;
@@ -75,7 +75,7 @@
         {
             mainPanel.Controls.Clear();
 
-
+            SetActiveMenu(panel2, lblSalary);
             Salary1 salaryForm = new Salary1();
 
             salaryForm.TopLevel = false;
@@ -85,6 +85,30 @@
 
             mainPanel.Controls.Add(salaryForm);
             salaryForm.Show();
+        }
+
+        private void SetActiveMenu(Panel activePanel, Label activeLabel)
+        {
+            Color inactiveText = Color.Navy;
+            Color inactiveBg = Color.Transparent;
+
+            // 2. Define active (highlighted) colors
+            Color activeText = Color.White;
+            Color activeBg = Color.FromArgb(10, 25, 100); // Dark Navy Blue highlight
+
+            // 3. Reset ALL Panels & Labels back to default
+            panel1.BackColor = inactiveBg;
+            lblDashboard.ForeColor = inactiveText;
+
+            panel4.BackColor = inactiveBg;
+            lblEmployees.ForeColor = inactiveText;
+
+            panel2.BackColor = inactiveBg;
+            lblSalary.ForeColor = inactiveText;
+
+            // 4. Highlight the selected Panel & Label
+            if (activePanel != null) activePanel.BackColor = activeBg;
+            if (activeLabel != null) activeLabel.ForeColor = activeText;
         }
     }
 }

@@ -70,10 +70,8 @@ namespace EmployeManagementSoftware
             cmdSalary.ExecuteNonQuery();
         }
 
-        /// <summary>
-        /// Calculates active dashboard metrics to feed live updates to your cards.
-        /// </summary>
-        public static DataTable GetDashboardMetrics()
+       
+        public static DataTable GetDashboardMetrics(DateTime selectedDate)
         {
             DataTable dt = new DataTable();
 
@@ -81,23 +79,28 @@ namespace EmployeManagementSoftware
             {
                 conn.Open();
 
-                // Aggregates total employee counts and calculates historical transaction costs
+                string pattern1 = selectedDate.ToString("yyyy-MM") + "%";
+                string pattern2 = "%" + selectedDate.ToString("MM/yyyy") + "%";
+
                 string query = @"SELECT 
-                                    (SELECT COUNT(*) FROM Employees) as TotalEmployees, 
-                                    COALESCE(SUM(BasicSalary + Allowances), 0) as TotalGross, 
-                                    COALESCE(SUM(Deductions), 0) as TotalDeductions, 
-                                    COALESCE(SUM(NetSalary), 0) as TotalNet 
-                                 FROM SalaryRecords";
+                            (SELECT COUNT(*) FROM Employees) as TotalEmployees, 
+                            COALESCE(SUM(BasicSalary + Allowances), 0) as TotalGross, 
+                            COALESCE(SUM(Deductions), 0) as TotalDeductions, 
+                            COALESCE(SUM(NetSalary), 0) as TotalNet 
+                         FROM SalaryRecords
+                         WHERE PaymentDate LIKE @P1 OR PaymentDate LIKE @P2";
 
                 using (var cmd = new SQLiteCommand(query, conn))
                 {
+                    cmd.Parameters.AddWithValue("@P1", pattern1);
+                    cmd.Parameters.AddWithValue("@P2", pattern2);
+
                     using (var reader = cmd.ExecuteReader())
                     {
                         dt.Load(reader);
                     }
                 }
             }
-
 
             return dt;
         }
@@ -162,5 +165,209 @@ namespace EmployeManagementSoftware
 
             return dt;
         }
+
+        public static bool UpdateEmployee(string employeeId, string fullName, string phone, string email, string position, string gender)
+        {
+            using (var conn = new SQLiteConnection(ConnectionString))
+            {
+                conn.Open();
+
+                string query = @"UPDATE Employees 
+                        SET FullName = @FullName, 
+                            PhoneNumber = @PhoneNumber, 
+                            Email = @Email, 
+                            Position = @Position, 
+                            Gender = @Gender
+                        WHERE EmployeeID = @EmployeeID";
+
+                using (var cmd = new SQLiteCommand(query, conn))
+                {
+                    cmd.Parameters.AddWithValue("@EmployeeID", employeeId);
+                    cmd.Parameters.AddWithValue("@FullName", fullName);
+                    cmd.Parameters.AddWithValue("@PhoneNumber", phone);
+                    cmd.Parameters.AddWithValue("@Email", email);
+                    cmd.Parameters.AddWithValue("@Position", position);
+                    cmd.Parameters.AddWithValue("@Gender", gender);
+
+                    int rowsAffected = cmd.ExecuteNonQuery();
+                    return rowsAffected > 0;
+                }
+            }
+        }
+
+        public static bool UpdateEmployeeSalaryDetails(string employeeId, double basicSalary, double allowances, double deductions)
+        {
+            using (var conn = new SQLiteConnection(ConnectionString))
+            {
+                conn.Open();
+
+                // 1. Update baseline in Employees table
+                string empQuery = @"UPDATE Employees 
+                            SET BasicSalary = @BasicSalary, 
+                                Allowances = @Allowances, 
+                                Deductions = @Deductions
+                            WHERE EmployeeID = @EmployeeID";
+
+                int rowsAffected = 0;
+
+                using (var cmd = new SQLiteCommand(empQuery, conn))
+                {
+                    cmd.Parameters.AddWithValue("@EmployeeID", employeeId);
+                    cmd.Parameters.AddWithValue("@BasicSalary", basicSalary);
+                    cmd.Parameters.AddWithValue("@Allowances", allowances);
+                    cmd.Parameters.AddWithValue("@Deductions", deductions);
+
+                    rowsAffected = cmd.ExecuteNonQuery();
+                }
+
+                // 2. Update history in SalaryRecords table (reusing the same 'conn')
+                double netSalary = basicSalary + allowances - deductions;
+                string recordQuery = @"UPDATE SalaryRecords 
+                               SET BasicSalary = @BasicSalary, 
+                                   Allowances = @Allowances, 
+                                   Deductions = @Deductions, 
+                                   NetSalary = @NetSalary 
+                               WHERE EmployeeID = @EmployeeID";
+
+                using (var cmdRecord = new SQLiteCommand(recordQuery, conn))
+                {
+                    cmdRecord.Parameters.AddWithValue("@EmployeeID", employeeId);
+                    cmdRecord.Parameters.AddWithValue("@BasicSalary", basicSalary);
+                    cmdRecord.Parameters.AddWithValue("@Allowances", allowances);
+                    cmdRecord.Parameters.AddWithValue("@Deductions", deductions);
+                    cmdRecord.Parameters.AddWithValue("@NetSalary", netSalary);
+                    cmdRecord.ExecuteNonQuery();
+                }
+
+                return rowsAffected > 0;
+            }
+        }
+
+
+        public static DataTable GetSalaryRecords(DateTime selectedDate)
+        {
+            DataTable dt = new DataTable();
+
+            using (var conn = new SQLiteConnection(ConnectionString))
+            {
+                conn.Open();
+
+                // Prepare patterns for both "2026-07%" and "%07/2026%"
+                string pattern1 = selectedDate.ToString("yyyy-MM") + "%";
+                string pattern2 = "%" + selectedDate.ToString("MM/yyyy") + "%";
+
+                string query = @"SELECT 
+                            s.EmployeeID, 
+                            COALESCE(e.FullName, '') AS FullName, 
+                            COALESCE(e.Position, '') AS Position, 
+                            s.BasicSalary, 
+                            s.Allowances, 
+                            s.Deductions, 
+                            s.NetSalary 
+                         FROM SalaryRecords s
+                         LEFT JOIN Employees e ON s.EmployeeID = e.EmployeeID
+                         WHERE s.PaymentDate LIKE @P1 OR s.PaymentDate LIKE @P2
+                         ORDER BY s.RecordID DESC";
+
+                using (var cmd = new SQLiteCommand(query, conn))
+                {
+                    cmd.Parameters.AddWithValue("@P1", pattern1);
+                    cmd.Parameters.AddWithValue("@P2", pattern2);
+
+                    using (var reader = cmd.ExecuteReader())
+                    {
+                        dt.Load(reader);
+                    }
+                }
+            }
+
+            return dt;
+        }
+
+
+        public static bool DoesSalaryRecordExist(string employeeId, DateTime paymentDate)
+        {
+            using (var conn = new SQLiteConnection(ConnectionString))
+            {
+                conn.Open();
+
+                // Format to "YYYY-MM%" (e.g., "2026-07%")
+                string monthYearPrefix = paymentDate.ToString("yyyy-MM") + "%";
+
+                string query = @"SELECT COUNT(1) FROM SalaryRecords 
+                        WHERE EmployeeID = @EmployeeID 
+                        AND PaymentDate LIKE @MonthYearPrefix";
+
+                using (var cmd = new SQLiteCommand(query, conn))
+                {
+                    cmd.Parameters.AddWithValue("@EmployeeID", employeeId);
+                    cmd.Parameters.AddWithValue("@MonthYearPrefix", monthYearPrefix);
+
+                    long count = Convert.ToInt64(cmd.ExecuteScalar());
+                    return count > 0;
+                }
+            }
+        }
+
+        public static bool ClearAllSalaryRecords()
+        {
+            using (var conn = new SQLiteConnection(ConnectionString))
+            {
+                conn.Open();
+
+                string deleteSalaryRecordsQuery = "DELETE FROM SalaryRecords;";
+                using (var cmd = new SQLiteCommand(deleteSalaryRecordsQuery, conn))
+                {
+                    cmd.ExecuteNonQuery();
+                }
+
+                return true;
+            }
+
+        }
+
+        public static bool SaveSalaryRecord(string employeeId, double basicSalary, double allowances, double deductions, DateTime paymentDate)
+        {
+            using (var conn = new SQLiteConnection(ConnectionString))
+            {
+                conn.Open();
+
+                double netSalary = basicSalary + allowances - deductions;
+
+                string query = @"INSERT INTO SalaryRecords (EmployeeID, BasicSalary, Allowances, Deductions, NetSalary, PaymentDate)
+                         VALUES (@EmployeeID, @BasicSalary, @Allowances, @Deductions, @NetSalary, @PaymentDate)";
+
+                using (var cmd = new SQLiteCommand(query, conn))
+                {
+                    cmd.Parameters.AddWithValue("@EmployeeID", employeeId);
+                    cmd.Parameters.AddWithValue("@BasicSalary", basicSalary);
+                    cmd.Parameters.AddWithValue("@Allowances", allowances);
+                    cmd.Parameters.AddWithValue("@Deductions", deductions);
+                    cmd.Parameters.AddWithValue("@NetSalary", netSalary);
+                    cmd.Parameters.AddWithValue("@PaymentDate", paymentDate.ToString("yyyy-MM-dd"));
+
+                    return cmd.ExecuteNonQuery() > 0;
+                }
+            }
+        }
+
+        public static void FixMissingPaymentDates()
+        {
+            using (var conn = new SQLiteConnection(ConnectionString))
+            {
+                conn.Open();
+
+                // Updates any blank/NULL dates to 'YYYY-MM-DD' format
+                string query = @"UPDATE SalaryRecords 
+                         SET PaymentDate = strftime('%Y-%m-%d', 'now') 
+                         WHERE PaymentDate IS NULL OR PaymentDate = ''";
+
+                using (var cmd = new SQLiteCommand(query, conn))
+                {
+                    cmd.ExecuteNonQuery();
+                }
+            }
+        }
+
     }
 }
