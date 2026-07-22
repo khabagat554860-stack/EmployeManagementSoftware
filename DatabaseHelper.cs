@@ -26,7 +26,7 @@ namespace EmployeManagementSoftware
             using var conn = new SQLiteConnection(ConnectionString);
             conn.Open();
 
-            // 1. Create Users Table (Fixed: contains the Password column for Sign Up)
+            // 1. Create Users Table
             const string createUsersQuery = @"CREATE TABLE IF NOT EXISTS Users (
                 Id INTEGER PRIMARY KEY AUTOINCREMENT,
                 FullName TEXT,
@@ -38,7 +38,7 @@ namespace EmployeManagementSoftware
             using var cmdUsers = new SQLiteCommand(createUsersQuery, conn);
             cmdUsers.ExecuteNonQuery();
 
-            // 2. Create Unified Employees Table (Uses FullName to match the search/save fields)
+            // 2. Create Unified Employees Table
             const string createEmployeesQuery = @"CREATE TABLE IF NOT EXISTS Employees (
                 EmployeeID TEXT PRIMARY KEY,
                 FullName TEXT NOT NULL,
@@ -54,7 +54,7 @@ namespace EmployeManagementSoftware
             using var cmdEmployees = new SQLiteCommand(createEmployeesQuery, conn);
             cmdEmployees.ExecuteNonQuery();
 
-            // 3. Create SalaryRecords Table (Fixed: contains the Month & Year fields)
+            // 3. Create SalaryRecords Table
             const string createSalaryRecordsQuery = @"CREATE TABLE IF NOT EXISTS SalaryRecords (
                 RecordID INTEGER PRIMARY KEY AUTOINCREMENT,
                 EmployeeID TEXT,
@@ -68,9 +68,11 @@ namespace EmployeManagementSoftware
 
             using var cmdSalary = new SQLiteCommand(createSalaryRecordsQuery, conn);
             cmdSalary.ExecuteNonQuery();
+
+            // 4. Create ActivityLogs Table
+            InitializeActivityLogTable();
         }
 
-       
         public static DataTable GetDashboardMetrics(DateTime selectedDate)
         {
             DataTable dt = new DataTable();
@@ -104,6 +106,7 @@ namespace EmployeManagementSoftware
 
             return dt;
         }
+
         public static DataTable GetEmployees()
         {
             DataTable dt = new DataTable();
@@ -133,6 +136,7 @@ namespace EmployeManagementSoftware
 
             return dt;
         }
+
         public static DataTable SearchEmployees(string keyword)
         {
             DataTable dt = new DataTable();
@@ -220,7 +224,7 @@ namespace EmployeManagementSoftware
                     rowsAffected = cmd.ExecuteNonQuery();
                 }
 
-                // 2. Update history in SalaryRecords table (reusing the same 'conn')
+                // 2. Update history in SalaryRecords table
                 double netSalary = basicSalary + allowances - deductions;
                 string recordQuery = @"UPDATE SalaryRecords 
                                SET BasicSalary = @BasicSalary, 
@@ -243,7 +247,6 @@ namespace EmployeManagementSoftware
             }
         }
 
-
         public static DataTable GetSalaryRecords(DateTime selectedDate)
         {
             DataTable dt = new DataTable();
@@ -252,7 +255,6 @@ namespace EmployeManagementSoftware
             {
                 conn.Open();
 
-                // Prepare patterns for both "2026-07%" and "%07/2026%"
                 string pattern1 = selectedDate.ToString("yyyy-MM") + "%";
                 string pattern2 = "%" + selectedDate.ToString("MM/yyyy") + "%";
 
@@ -284,14 +286,12 @@ namespace EmployeManagementSoftware
             return dt;
         }
 
-
         public static bool DoesSalaryRecordExist(string employeeId, DateTime paymentDate)
         {
             using (var conn = new SQLiteConnection(ConnectionString))
             {
                 conn.Open();
 
-                // Format to "YYYY-MM%" (e.g., "2026-07%")
                 string monthYearPrefix = paymentDate.ToString("yyyy-MM") + "%";
 
                 string query = @"SELECT COUNT(1) FROM SalaryRecords 
@@ -309,22 +309,6 @@ namespace EmployeManagementSoftware
             }
         }
 
-        public static bool ClearAllSalaryRecords()
-        {
-            using (var conn = new SQLiteConnection(ConnectionString))
-            {
-                conn.Open();
-
-                string deleteSalaryRecordsQuery = "DELETE FROM SalaryRecords;";
-                using (var cmd = new SQLiteCommand(deleteSalaryRecordsQuery, conn))
-                {
-                    cmd.ExecuteNonQuery();
-                }
-
-                return true;
-            }
-
-        }
 
         public static bool SaveSalaryRecord(string employeeId, double basicSalary, double allowances, double deductions, DateTime paymentDate)
         {
@@ -357,7 +341,6 @@ namespace EmployeManagementSoftware
             {
                 conn.Open();
 
-                // Updates any blank/NULL dates to 'YYYY-MM-DD' format
                 string query = @"UPDATE SalaryRecords 
                          SET PaymentDate = strftime('%Y-%m-%d', 'now') 
                          WHERE PaymentDate IS NULL OR PaymentDate = ''";
@@ -369,5 +352,144 @@ namespace EmployeManagementSoftware
             }
         }
 
+        public static void EnsureStatusColumnExists()
+        {
+            using (var conn = new SQLiteConnection(ConnectionString))
+            {
+                conn.Open();
+                string query = "ALTER TABLE Employees ADD COLUMN Status TEXT DEFAULT 'Active';";
+                using (var cmd = new SQLiteCommand(query, conn))
+                {
+                    try
+                    {
+                        cmd.ExecuteNonQuery();
+                    }
+                    catch
+                    {
+                        // Column already exists, safe to ignore
+                    }
+                }
+            }
+        }
+
+        public static void InitializeActivityLogTable()
+        {
+            using (var conn = new SQLiteConnection(ConnectionString))
+            {
+                conn.Open();
+                string sql = @"
+            CREATE TABLE IF NOT EXISTS ActivityLogs (
+                LogID INTEGER PRIMARY KEY AUTOINCREMENT,
+                EmployeeName TEXT NOT NULL,
+                ActionType TEXT NOT NULL,
+                Details TEXT,
+                Timestamp DATETIME DEFAULT CURRENT_TIMESTAMP
+            );";
+
+                using (var cmd = new SQLiteCommand(sql, conn))
+                {
+                    cmd.ExecuteNonQuery();
+                }
+            }
+        }
+
+        public static void LogActivity(string employeeName, string actionType, string details)
+        {
+            try
+            {
+                using (var conn = new SQLiteConnection(ConnectionString))
+                {
+                    conn.Open();
+                    string sql = @"
+                INSERT INTO ActivityLogs (EmployeeName, ActionType, Details, Timestamp) 
+                VALUES (@Name, @Action, @Details, @Time);";
+
+                    using (var cmd = new SQLiteCommand(sql, conn))
+                    {
+                        cmd.Parameters.AddWithValue("@Name", string.IsNullOrWhiteSpace(employeeName) ? "System" : employeeName);
+                        cmd.Parameters.AddWithValue("@Action", actionType);
+                        cmd.Parameters.AddWithValue("@Details", details);
+                        cmd.Parameters.AddWithValue("@Time", DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss"));
+                        cmd.ExecuteNonQuery();
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                System.Diagnostics.Debug.WriteLine("Failed to log activity: " + ex.Message);
+            }
+        }
+
+        public static int ClearSalaryRecordsForMonth(DateTime payPeriod)
+        {
+            using(var conn = new SQLiteConnection(ConnectionString))
+    {
+                conn.Open();
+
+                string monthName = payPeriod.ToString("MMMM");          // "August"
+                string monthNumStr = payPeriod.Month.ToString();        // "8"
+                string monthNumPadded = payPeriod.Month.ToString("D2"); // "08"
+                string yearStr = payPeriod.Year.ToString();              // "2026"
+
+                DateTime firstDay = new DateTime(payPeriod.Year, payPeriod.Month, 1);
+                DateTime lastDay = firstDay.AddMonths(1).AddDays(-1);
+
+                string query = @"DELETE FROM SalaryRecords 
+                         WHERE 
+                         (
+                             -- Match month & year columns
+                             (LOWER(TRIM(PayPeriodMonth)) = LOWER(@MonthName) OR TRIM(PayPeriodMonth) = @MonthNum OR TRIM(PayPeriodMonth) = @MonthPadded)
+                             AND TRIM(PayPeriodYear) = @Year
+                         )
+                         OR
+                         (
+                             -- Match date formats in PaymentDate column
+                             PaymentDate LIKE @PatternISO           -- 2026-08%
+                             OR PaymentDate LIKE @PatternText       -- %August%2026%
+                             OR PaymentDate LIKE @PatternSlash      -- %/08/2026%
+                             OR (PaymentDate >= @StartDate AND PaymentDate <= @EndDate)
+                         )";
+
+                using (var cmd = new SQLiteCommand(query, conn))
+                {
+                    cmd.Parameters.AddWithValue("@MonthName", monthName);
+                    cmd.Parameters.AddWithValue("@MonthNum", monthNumStr);
+                    cmd.Parameters.AddWithValue("@MonthPadded", monthNumPadded);
+                    cmd.Parameters.AddWithValue("@Year", yearStr);
+
+                    cmd.Parameters.AddWithValue("@PatternISO", $"{yearStr}-{monthNumPadded}%");
+                    cmd.Parameters.AddWithValue("@PatternText", $"%{monthName}%{yearStr}%");
+                    cmd.Parameters.AddWithValue("@PatternSlash", $"%/{monthNumPadded}/{yearStr}%");
+                    cmd.Parameters.AddWithValue("@StartDate", firstDay.ToString("yyyy-MM-dd"));
+                    cmd.Parameters.AddWithValue("@EndDate", lastDay.ToString("yyyy-MM-dd 23:59:59"));
+
+                    return cmd.ExecuteNonQuery(); // Returns count of records actually deleted
+                }
+            }
+        }
+        
+
+        public static DataTable GetRecentActivities()
+        {
+            DataTable dt = new DataTable();
+            using (var conn = new SQLiteConnection(ConnectionString))
+            {
+                conn.Open();
+
+                string sql = @"
+            SELECT EmployeeName, ActionType, Details, Timestamp 
+            FROM ActivityLogs 
+            WHERE EmployeeName != 'Maria Santos' 
+            ORDER BY LogID DESC 
+            LIMIT 10;";
+
+                using (var cmd = new SQLiteCommand(sql, conn))
+                {
+                    SQLiteDataAdapter da = new SQLiteDataAdapter(cmd);
+                    da.Fill(dt);
+                }
+            }
+            return dt;
+        }
     }
 }
