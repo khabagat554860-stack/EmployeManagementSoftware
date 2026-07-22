@@ -38,16 +38,6 @@
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges7 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges8 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             pnlDashboard = new Panel();
-            panel6 = new Panel();
-            label8 = new Label();
-            label9 = new Label();
-            panel4 = new Panel();
-            label10 = new Label();
-            label3 = new Label();
-            label4 = new Label();
-            panel3 = new Panel();
-            label1 = new Label();
-            label2 = new Label();
             pnlUpcomingEvents = new Panel();
             lblReviewDate = new Label();
             lblPerformanceReview = new Label();
@@ -61,12 +51,6 @@
             lblUpcomingEvents = new Label();
             pnlRecentActivities = new Panel();
             panel2 = new Panel();
-            panel5 = new Panel();
-            label6 = new Label();
-            label7 = new Label();
-            pnlActivity = new Panel();
-            lblTime = new Label();
-            lblActivity = new Label();
             pnlTopRecentActivities = new Panel();
             lblRecentActivities = new Label();
             pnlEmployeeStatus = new Panel();
@@ -111,16 +95,12 @@
             dtpDate = new Guna.UI2.WinForms.Guna2DateTimePicker();
             lblWelcome = new Label();
             lblTitle = new Label();
+            flpRecentActivities = new FlowLayoutPanel();
             pnlDashboard.SuspendLayout();
-            panel6.SuspendLayout();
-            panel4.SuspendLayout();
-            panel3.SuspendLayout();
             pnlUpcomingEvents.SuspendLayout();
             pnlTopUpcomingEvents.SuspendLayout();
             pnlRecentActivities.SuspendLayout();
             panel2.SuspendLayout();
-            panel5.SuspendLayout();
-            pnlActivity.SuspendLayout();
             pnlTopRecentActivities.SuspendLayout();
             pnlEmployeeStatus.SuspendLayout();
             panel1.SuspendLayout();
@@ -142,9 +122,6 @@
             // pnlDashboard
             // 
             pnlDashboard.BorderStyle = BorderStyle.FixedSingle;
-            pnlDashboard.Controls.Add(panel6);
-            pnlDashboard.Controls.Add(panel4);
-            pnlDashboard.Controls.Add(panel3);
             pnlDashboard.Controls.Add(pnlUpcomingEvents);
             pnlDashboard.Controls.Add(pnlRecentActivities);
             pnlDashboard.Controls.Add(pnlEmployeeStatus);
@@ -160,110 +137,6 @@
             pnlDashboard.Name = "pnlDashboard";
             pnlDashboard.Size = new Size(1543, 972);
             pnlDashboard.TabIndex = 0;
-            // 
-            // panel6
-            // 
-            panel6.BorderStyle = BorderStyle.FixedSingle;
-            panel6.Controls.Add(label8);
-            panel6.Controls.Add(label9);
-            panel6.Location = new Point(13, 768);
-            panel6.Margin = new Padding(3, 4, 3, 4);
-            panel6.Name = "panel6";
-            panel6.Size = new Size(746, 46);
-            panel6.TabIndex = 2;
-            // 
-            // label8
-            // 
-            label8.AutoSize = true;
-            label8.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label8.Location = new Point(576, 5);
-            label8.Name = "label8";
-            label8.Size = new Size(109, 28);
-            label8.TabIndex = 1;
-            label8.Text = "1 hour ago";
-            // 
-            // label9
-            // 
-            label9.AutoSize = true;
-            label9.Font = new Font("Segoe UI Semibold", 14.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label9.Location = new Point(14, 1);
-            label9.Name = "label9";
-            label9.Size = new Size(516, 32);
-            label9.TabIndex = 0;
-            label9.Text = "Maria Santos updated her profile information.";
-            // 
-            // panel4
-            // 
-            panel4.BorderStyle = BorderStyle.FixedSingle;
-            panel4.Controls.Add(label10);
-            panel4.Controls.Add(label3);
-            panel4.Controls.Add(label4);
-            panel4.Location = new Point(14, 860);
-            panel4.Margin = new Padding(3, 4, 3, 4);
-            panel4.Name = "panel4";
-            panel4.Size = new Size(745, 46);
-            panel4.TabIndex = 1;
-            // 
-            // label10
-            // 
-            label10.AutoSize = true;
-            label10.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label10.Location = new Point(575, 1);
-            label10.Name = "label10";
-            label10.Size = new Size(121, 28);
-            label10.TabIndex = 2;
-            label10.Text = "3 hours ago";
-            // 
-            // label3
-            // 
-            label3.AutoSize = true;
-            label3.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label3.Location = new Point(602, 5);
-            label3.Name = "label3";
-            label3.Size = new Size(18, 28);
-            label3.TabIndex = 1;
-            label3.Text = " ";
-            // 
-            // label4
-            // 
-            label4.AutoSize = true;
-            label4.Font = new Font("Segoe UI Semibold", 14.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label4.Location = new Point(14, 1);
-            label4.Name = "label4";
-            label4.Size = new Size(416, 32);
-            label4.TabIndex = 0;
-            label4.Text = "Monthly payroll has been generated.";
-            // 
-            // panel3
-            // 
-            panel3.BorderStyle = BorderStyle.FixedSingle;
-            panel3.Controls.Add(label1);
-            panel3.Controls.Add(label2);
-            panel3.Location = new Point(14, 908);
-            panel3.Margin = new Padding(3, 4, 3, 4);
-            panel3.Name = "panel3";
-            panel3.Size = new Size(745, 46);
-            panel3.TabIndex = 1;
-            // 
-            // label1
-            // 
-            label1.AutoSize = true;
-            label1.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label1.Location = new Point(576, 5);
-            label1.Name = "label1";
-            label1.Size = new Size(147, 28);
-            label1.TabIndex = 1;
-            label1.Text = "Today, 8:15 AM";
-            // 
-            // label2
-            // 
-            label2.AutoSize = true;
-            label2.Font = new Font("Segoe UI Semibold", 14.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label2.Location = new Point(14, 1);
-            label2.Name = "label2";
-            label2.Size = new Size(427, 32);
-            label2.TabIndex = 0;
-            label2.Text = "Administrator logged into the system.";
             // 
             // pnlUpcomingEvents
             // 
@@ -402,78 +275,13 @@
             // 
             panel2.BackColor = Color.White;
             panel2.BorderStyle = BorderStyle.FixedSingle;
-            panel2.Controls.Add(panel5);
-            panel2.Controls.Add(pnlActivity);
+            panel2.Controls.Add(flpRecentActivities);
             panel2.Dock = DockStyle.Fill;
             panel2.Location = new Point(0, 54);
             panel2.Margin = new Padding(3, 4, 3, 4);
             panel2.Name = "panel2";
             panel2.Size = new Size(745, 238);
             panel2.TabIndex = 7;
-            // 
-            // panel5
-            // 
-            panel5.BackColor = Color.WhiteSmoke;
-            panel5.BorderStyle = BorderStyle.FixedSingle;
-            panel5.Controls.Add(label6);
-            panel5.Controls.Add(label7);
-            panel5.Location = new Point(-2, 95);
-            panel5.Margin = new Padding(3, 4, 3, 4);
-            panel5.Name = "panel5";
-            panel5.Size = new Size(747, 46);
-            panel5.TabIndex = 1;
-            // 
-            // label6
-            // 
-            label6.AutoSize = true;
-            label6.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label6.Location = new Point(576, 7);
-            label6.Name = "label6";
-            label6.Size = new Size(121, 28);
-            label6.TabIndex = 1;
-            label6.Text = "2 hours ago";
-            // 
-            // label7
-            // 
-            label7.AutoSize = true;
-            label7.Font = new Font("Segoe UI Semibold", 14.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label7.Location = new Point(14, 1);
-            label7.Name = "label7";
-            label7.Size = new Size(373, 32);
-            label7.TabIndex = 0;
-            label7.Text = "Anna Reyes filed a leave request.";
-            // 
-            // pnlActivity
-            // 
-            pnlActivity.BackColor = Color.WhiteSmoke;
-            pnlActivity.BorderStyle = BorderStyle.FixedSingle;
-            pnlActivity.Controls.Add(lblTime);
-            pnlActivity.Controls.Add(lblActivity);
-            pnlActivity.Location = new Point(-1, 7);
-            pnlActivity.Margin = new Padding(3, 4, 3, 4);
-            pnlActivity.Name = "pnlActivity";
-            pnlActivity.Size = new Size(747, 46);
-            pnlActivity.TabIndex = 0;
-            // 
-            // lblTime
-            // 
-            lblTime.AutoSize = true;
-            lblTime.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            lblTime.Location = new Point(575, 5);
-            lblTime.Name = "lblTime";
-            lblTime.Size = new Size(151, 28);
-            lblTime.TabIndex = 1;
-            lblTime.Text = "10 minutes ago";
-            // 
-            // lblActivity
-            // 
-            lblActivity.AutoSize = true;
-            lblActivity.Font = new Font("Segoe UI Semibold", 14.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            lblActivity.Location = new Point(14, 1);
-            lblActivity.Name = "lblActivity";
-            lblActivity.Size = new Size(521, 32);
-            lblActivity.TabIndex = 0;
-            lblActivity.Text = "Juan Dela Cruz was added as a new employee.";
             // 
             // pnlTopRecentActivities
             // 
@@ -791,9 +599,9 @@
             lblOnLeavePercent.ForeColor = Color.White;
             lblOnLeavePercent.Location = new Point(158, 116);
             lblOnLeavePercent.Name = "lblOnLeavePercent";
-            lblOnLeavePercent.Size = new Size(116, 23);
+            lblOnLeavePercent.Size = new Size(94, 23);
             lblOnLeavePercent.TabIndex = 6;
-            lblOnLeavePercent.Text = "5.86% of total";
+            lblOnLeavePercent.Text = "0% of total";
             // 
             // picOnLeave
             // 
@@ -851,9 +659,9 @@
             lblActiveEmployeesPercent.ForeColor = Color.White;
             lblActiveEmployeesPercent.Location = new Point(141, 116);
             lblActiveEmployeesPercent.Name = "lblActiveEmployeesPercent";
-            lblActiveEmployeesPercent.Size = new Size(125, 23);
+            lblActiveEmployeesPercent.Size = new Size(94, 23);
             lblActiveEmployeesPercent.TabIndex = 6;
-            lblActiveEmployeesPercent.Text = "82.03% of total";
+            lblActiveEmployeesPercent.Text = "0% of total";
             // 
             // lblActiveEmployeesCount
             // 
@@ -1016,6 +824,17 @@
             lblTitle.TabIndex = 0;
             lblTitle.Text = "Dashboard Overview";
             // 
+            // flpRecentActivities
+            // 
+            flpRecentActivities.AutoScroll = true;
+            flpRecentActivities.BackColor = Color.Transparent;
+            flpRecentActivities.FlowDirection = FlowDirection.TopDown;
+            flpRecentActivities.Location = new Point(-1, -1);
+            flpRecentActivities.Name = "flpRecentActivities";
+            flpRecentActivities.Size = new Size(746, 238);
+            flpRecentActivities.TabIndex = 0;
+            flpRecentActivities.WrapContents = false;
+            // 
             // Dashboard
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
@@ -1028,22 +847,12 @@
             Text = "Dashboard";
             Load += Dashboard_Load;
             pnlDashboard.ResumeLayout(false);
-            panel6.ResumeLayout(false);
-            panel6.PerformLayout();
-            panel4.ResumeLayout(false);
-            panel4.PerformLayout();
-            panel3.ResumeLayout(false);
-            panel3.PerformLayout();
             pnlUpcomingEvents.ResumeLayout(false);
             pnlUpcomingEvents.PerformLayout();
             pnlTopUpcomingEvents.ResumeLayout(false);
             pnlTopUpcomingEvents.PerformLayout();
             pnlRecentActivities.ResumeLayout(false);
             panel2.ResumeLayout(false);
-            panel5.ResumeLayout(false);
-            panel5.PerformLayout();
-            pnlActivity.ResumeLayout(false);
-            pnlActivity.PerformLayout();
             pnlTopRecentActivities.ResumeLayout(false);
             pnlTopRecentActivities.PerformLayout();
             pnlEmployeeStatus.ResumeLayout(false);
@@ -1131,23 +940,8 @@
         private Label lblOnLeave;
         private Label lblActiveEmployees;
         private Guna.UI2.WinForms.Guna2TextBox txtSearch;
-        private Panel panel6;
-        private Label label8;
-        private Label label9;
-        private Panel panel4;
-        private Label label3;
-        private Label label4;
-        private Panel panel3;
-        private Label label1;
-        private Label label2;
         private Panel panel2;
-        private Panel panel5;
-        private Label label6;
-        private Label label7;
-        private Label label10;
         private Guna.UI2.WinForms.Guna2CirclePictureBox guna2CirclePictureBox1;
-        private Panel pnlActivity;
-        private Label lblTime;
-        private Label lblActivity;
+        private FlowLayoutPanel flpRecentActivities;
     }
 }

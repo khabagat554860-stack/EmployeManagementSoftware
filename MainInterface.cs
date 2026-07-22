@@ -18,6 +18,7 @@
         private void MainInterface_Load(object sender, EventArgs e)
         {
             SetActiveMenu(panel1, lblDashboard);
+            lblDashboard_Click(sender, e);
         }
 
         private void lblDashboard_Click(object sender, EventArgs e)

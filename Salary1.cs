@@ -14,44 +14,110 @@ namespace EmployeManagementSoftware
 {
     public partial class Salary1 : Form
     {
-
         private int selectedRecordID = -1;
+
+        // Flag to prevent event recursion when modifying dtpPayPeriod.Value inside its own event
+        private bool isAdjustingPayPeriod = false;
 
         public Salary1()
         {
             InitializeComponent();
 
+            // Make Position ComboBox strictly display-only
+            cmbPosition.DropDownStyle = ComboBoxStyle.DropDownList;
             cmbPosition.Enabled = false;
 
-            // Force-wire the event handler directly in code
-            dtpPayPeriod.ValueChanged -= dtpPayPeriod_ValueChanged; // avoid duplicate binding
+            // Format Pay Period picker to display clean Month & Year format
+            dtpPayPeriod.Format = DateTimePickerFormat.Custom;
+            dtpPayPeriod.CustomFormat = "MMMM yyyy";
+
+            // Set initial Pay Period picker to the 15th of the current month
+            DateTime now = DateTime.Now;
+            dtpPayPeriod.Value = new DateTime(now.Year, now.Month, 15);
+
+            // Wire up event handlers for value changes and popup calendar closure
+            dtpPayPeriod.ValueChanged -= dtpPayPeriod_ValueChanged;
             dtpPayPeriod.ValueChanged += dtpPayPeriod_ValueChanged;
+
+            dtpPayPeriod.CloseUp -= dtpPayPeriod_CloseUp;
+            dtpPayPeriod.CloseUp += dtpPayPeriod_CloseUp;
+
+            // Initialize payment date to the 15th of the selected pay period
+            SetPaymentDateToFifteenth();
 
             // Load initial data for selected month
             RefreshSalaryGrid();
             LoadDashboardMetrics();
         }
 
+        /// <summary>
+        /// Ensures the Pay Period date is anchored to the 15th of the selected month/year.
+        /// </summary>
+        private void EnsurePayPeriodIsFifteenth()
+        {
+            if (isAdjustingPayPeriod) return;
+
+            DateTime selected = dtpPayPeriod.Value;
+
+            // Snap date to 15th if it isn't already
+            if (selected.Day != 15)
+            {
+                isAdjustingPayPeriod = true;
+                dtpPayPeriod.Value = new DateTime(selected.Year, selected.Month, 15);
+                isAdjustingPayPeriod = false;
+            }
+
+            // Sync payment date picker and refresh grid/dashboard metrics
+            SetPaymentDateToFifteenth();
+            UpdateDashboard();
+            RefreshSalaryGrid();
+            LoadDashboardMetrics();
+        }
+
+        /// <summary>
+        /// Automatically forces the payment date picker to snap to the 15th of the currently selected month/year.
+        /// </summary>
+        private void SetPaymentDateToFifteenth()
+        {
+            DateTime selected = dtpPayPeriod.Value;
+            dtpPaymentDate.Value = new DateTime(selected.Year, selected.Month, 15);
+        }
+
+        /// <summary>
+        /// Helper to safely assign position text to a DropDownList ComboBox
+        /// </summary>
+        private void SetPositionText(string position)
+        {
+            if (string.IsNullOrWhiteSpace(position))
+            {
+                cmbPosition.SelectedIndex = -1;
+                return;
+            }
+
+            if (!cmbPosition.Items.Contains(position))
+            {
+                cmbPosition.Items.Add(position);
+            }
+
+            cmbPosition.SelectedItem = position;
+        }
+
         private void RefreshSalaryGrid()
         {
-
             DataTable dt = DatabaseHelper.GetSalaryRecords(dtpPayPeriod.Value);
 
+            // Unbind first to force WinForms to completely erase old visual rows
+            dgvSalaryRecords.DataSource = null;
             dgvSalaryRecords.DataSource = dt;
+
             lblTotalRecords.Text = dt.Rows.Count.ToString();
-
         }
 
-        private void InitializePlaceholders()
-        {
-
-            throw new NotImplementedException();
-
-        }
         private double GetDecimalValue(Guna.UI2.WinForms.Guna2TextBox tb)
         {
             return (tb.Text == "0.00" || string.IsNullOrWhiteSpace(tb.Text)) ? 0.00 : Convert.ToDouble(tb.Text);
         }
+
         private void UpdateDashboard()
         {
             using (var conn = new SQLiteConnection(DatabaseHelper.ConnectionString))
@@ -59,7 +125,7 @@ namespace EmployeManagementSoftware
                 conn.Open();
 
                 string selectedYear = dtpPayPeriod.Value.Year.ToString();
-                string selectedMonth = dtpPayPeriod.Value.ToString("MMMM"); // Dynamic matching for text e.g., "July"
+                string selectedMonth = dtpPayPeriod.Value.ToString("MMMM"); // Dynamic matching e.g., "July"
 
                 // Update date text sub-labels dynamically
                 lblGrossMonth.Text = $"For {selectedMonth} {selectedYear}";
@@ -70,7 +136,7 @@ namespace EmployeManagementSoftware
                 string empQuery = "SELECT COUNT(*) FROM Employees";
                 using (SQLiteCommand cmd = new SQLiteCommand(empQuery, conn))
                 {
-                    lblTotalEmployees.Text = cmd.ExecuteScalar().ToString();
+                    lblTotalEmployees.Text = cmd.ExecuteScalar()?.ToString() ?? "0";
                 }
 
                 // 2. Financial Totals filtered by Selected Pay Period
@@ -98,6 +164,7 @@ namespace EmployeManagementSoftware
                 }
             }
         }
+
         private void LoadSalaryRecords(string employeeId = "")
         {
             using (SQLiteConnection conn = new SQLiteConnection(DatabaseHelper.ConnectionString))
@@ -128,10 +195,8 @@ namespace EmployeManagementSoftware
             }
         }
 
-
         private void btnSave_Click(object sender, EventArgs e)
         {
-
             string employeeId = txtEmpID.Text.Trim();
 
             if (string.IsNullOrEmpty(employeeId))
@@ -171,18 +236,16 @@ namespace EmployeManagementSoftware
 
             if (isSaved)
             {
-                MessageBox.Show("Salary record created successfully!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                DatabaseHelper.LogActivity(
+                    txtEmpName.Text.Trim(),
+                    "Salary Created",
+                    $"Salary issued for {selectedPayPeriod:MMMM yyyy}"
+                );
 
+                MessageBox.Show("Salary record created successfully!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 RefreshSalaryGrid();
                 LoadDashboardMetrics();
-
-                // Clear input fields
-                txtEmpID.Clear();
-                txtEmpName.Clear();
-                txtBasicSalary.Clear();
-                txtAllowances.Clear();
-                txtDeductions.Clear();
-                txtNetSalary.Clear();
+                ClearFields();
             }
         }
 
@@ -202,7 +265,9 @@ namespace EmployeManagementSoftware
                         if (reader.Read())
                         {
                             txtEmpName.Text = reader["FullName"].ToString();
-                            cmbPosition.Text = reader["Position"].ToString();
+
+                            // Safely display position
+                            SetPositionText(reader["Position"].ToString());
 
                             LoadSalaryRecords(txtEmpID.Text.Trim()); // Filter grid view
                         }
@@ -213,11 +278,6 @@ namespace EmployeManagementSoftware
                     }
                 }
             }
-        }
-
-        private void LoadGridData(object text)
-        {
-            throw new NotImplementedException();
         }
 
         private void btnUpdate_Click(object sender, EventArgs e)
@@ -231,7 +291,7 @@ namespace EmployeManagementSoftware
                 return;
             }
 
-            // 2. Parse numeric salary inputs safely (removes 'P' or currency symbols if present)
+            // 2. Parse numeric salary inputs safely
             string rawBasic = txtBasicSalary.Text.Replace("P", "").Replace("₱", "").Trim();
             string rawAllowances = txtAllowances.Text.Replace("P", "").Replace("₱", "").Trim();
             string rawDeductions = txtDeductions.Text.Replace("P", "").Replace("₱", "").Trim();
@@ -249,13 +309,18 @@ namespace EmployeManagementSoftware
 
             if (isUpdated)
             {
+                DatabaseHelper.LogActivity(
+                    txtEmpName.Text.Trim(),
+                    "Salary Updated",
+                    $"Salary details updated for ID: {employeeId}"
+                );
+
                 MessageBox.Show("Salary details overwritten successfully!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
-                // 4. Refresh the grid with SALARY columns
+                // Refresh grid and metrics
                 dgvSalaryRecords.DataSource = DatabaseHelper.GetSalaryRecords(dtpPayPeriod.Value);
-
-                // 5. Refresh the top 4 metric cards instantly!
                 LoadDashboardMetrics();
+                ClearFields();
             }
             else
             {
@@ -268,56 +333,71 @@ namespace EmployeManagementSoftware
             if (e.RowIndex >= 0)
             {
                 DataGridViewRow row = dgvSalaryRecords.Rows[e.RowIndex];
-                txtEmpID.Text = row.Cells["EmployeeID"].Value.ToString();
+                txtEmpID.Text = row.Cells["EmployeeID"].Value?.ToString() ?? "";
                 txtEmpName.Text = row.Cells["FullName"].Value?.ToString() ?? "";
-                cmbPosition.Text = row.Cells["Position"].Value.ToString();
-                txtBasicSalary.Text = row.Cells["BasicSalary"].Value.ToString();
-                txtAllowances.Text = row.Cells["Allowances"].Value.ToString();
-                txtDeductions.Text = row.Cells["Deductions"].Value.ToString();
-                txtNetSalary.Text = row.Cells["NetSalary"].Value.ToString();
+
+                // Safely assign position to read-only ComboBox
+                SetPositionText(row.Cells["Position"].Value?.ToString() ?? "");
+
+                txtBasicSalary.Text = row.Cells["BasicSalary"].Value?.ToString() ?? "0";
+                txtAllowances.Text = row.Cells["Allowances"].Value?.ToString() ?? "0";
+                txtDeductions.Text = row.Cells["Deductions"].Value?.ToString() ?? "0";
+                txtNetSalary.Text = row.Cells["NetSalary"].Value?.ToString() ?? "0";
+
                 txtBasicSalary.ForeColor = Color.Black;
             }
         }
 
         private void dtpPayPeriod_ValueChanged(object sender, EventArgs e)
         {
-            UpdateDashboard();
+            EnsurePayPeriodIsFifteenth();
         }
 
-       
+        private void dtpPayPeriod_CloseUp(object sender, EventArgs e)
+        {
+            EnsurePayPeriodIsFifteenth();
+        }
 
         private void btnClear_Click(object sender, EventArgs e)
         {
+            string selectedMonth = dtpPayPeriod.Value.ToString("MMMM");
+            string selectedYear = dtpPayPeriod.Value.Year.ToString();
+
             DialogResult result = MessageBox.Show(
-        "Are you sure you want to clear all salary figures and records?",
-        "Confirm Salary Clear",
-        MessageBoxButtons.YesNo,
-        MessageBoxIcon.Warning
-    );
+                $"Are you sure you want to clear all salary records for {selectedMonth} {selectedYear}?",
+                "Confirm Monthly Salary Clear",
+                MessageBoxButtons.YesNo,
+                MessageBoxIcon.Warning
+            );
 
             if (result == DialogResult.Yes)
             {
-                // 1. Clear salary data (leaves employee profiles intact)
-                DatabaseHelper.ClearAllSalaryRecords();
+                // 1. Delete matching records from database
+                int deletedCount = DatabaseHelper.ClearSalaryRecordsForMonth(dtpPayPeriod.Value);
 
-                // 2. Refresh DataGridView
+                // 2. Log activity
+                DatabaseHelper.LogActivity(
+                    "System",
+                    "Salary Cleared",
+                    $"Cleared {deletedCount} record(s) for {selectedMonth} {selectedYear}"
+                );
+
+                // 3. Reset input textboxes
+                ClearFields();
+
+                // 4. Force DataGridView and Dashboard metrics to refresh
                 RefreshSalaryGrid();
-
-                // 3. Reload dashboard cards (Preserves Total Employees, resets salary cards to ₱0.00)
                 LoadDashboardMetrics();
 
-                // 4. Clear input fields on the left
-                txtEmpID.Clear();
-                txtEmpName.Clear();
-                txtBasicSalary.Clear();
-                txtAllowances.Clear();
-                txtDeductions.Clear();
-                txtNetSalary.Clear();
-
-                MessageBox.Show("Salary details cleared successfully! Total employee count retained.", "Cleared", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show(
+                    $"Cleared {deletedCount} record(s) for {selectedMonth} {selectedYear}!",
+                    "Cleared",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Information
+                );
             }
-
         }
+
         private void ClearFields()
         {
             txtEmpID.Clear();
@@ -327,12 +407,14 @@ namespace EmployeManagementSoftware
             txtAllowances.Text = "0.00"; txtAllowances.ForeColor = Color.Gray;
             txtDeductions.Text = "0.00"; txtDeductions.ForeColor = Color.Gray;
             txtNetSalary.Text = "0.00"; txtNetSalary.ForeColor = Color.Gray;
-            dtpPaymentDate.Value = DateTime.Now;
+
+            // Set payment date to 15th of selected period
+            SetPaymentDateToFifteenth();
         }
 
         private void Salary1_Load(object sender, EventArgs e)
         {
-
+            // Initial load logic if required
         }
 
         private void txtBasicSalary_TextChanged(object sender, EventArgs e)
@@ -340,48 +422,54 @@ namespace EmployeManagementSoftware
             CalculateNetPayOnTheFly();
         }
 
+        private void txtAllowances_TextChanged(object sender, EventArgs e)
+        {
+            CalculateNetPayOnTheFly();
+        }
+
+        private void txtDeductions_TextChanged(object sender, EventArgs e)
+        {
+            CalculateNetPayOnTheFly();
+        }
+
         private void CalculateNetPayOnTheFly()
         {
-            // Safely parse the text inputs, defaulting to 0 if empty or invalid
-            decimal.TryParse(txtBasicSalary.Text, out decimal basicSalary);
-            decimal.TryParse(txtAllowances.Text, out decimal allowances);
-            decimal.TryParse(txtDeductions.Text, out decimal deductions);
+            // Clean currency characters before parsing
+            string rawBasic = txtBasicSalary.Text.Replace("P", "").Replace("₱", "").Trim();
+            string rawAllowances = txtAllowances.Text.Replace("P", "").Replace("₱", "").Trim();
+            string rawDeductions = txtDeductions.Text.Replace("P", "").Replace("₱", "").Trim();
+
+            decimal.TryParse(rawBasic, out decimal basicSalary);
+            decimal.TryParse(rawAllowances, out decimal allowances);
+            decimal.TryParse(rawDeductions, out decimal deductions);
 
             // Business Logic
             decimal grossPay = basicSalary + allowances;
             decimal netSalary = grossPay - deductions;
 
-            // Display the calculation in your Net Salary textbox (formatted to 2 decimal places)
+            // Display the calculation in your Net Salary textbox
             txtNetSalary.Text = netSalary.ToString("N2");
-        }
-
-        private void txtAllowances_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void txtDeductions_TextChanged(object sender, EventArgs e)
-        {
-
         }
 
         public void UpdateSalaryDashboardMetrics()
         {
+            LoadDashboardMetrics();
+        }
+
+        private void LoadDashboardMetrics()
+        {
             try
             {
-                // 1. Fetch the combined payroll data from our DatabaseHelper
-                System.Data.DataTable dt = DatabaseHelper.GetDashboardMetrics(dtpPayPeriod.Value);
+                DataTable dt = DatabaseHelper.GetDashboardMetrics(dtpPayPeriod.Value);
 
                 if (dt.Rows.Count > 0)
                 {
-                    System.Data.DataRow row = dt.Rows[0];
+                    DataRow row = dt.Rows[0];
 
-                    // 2. Assign the database values directly to the labels at the top of your screen
-                    // Double-check your Salary1.cs [Design] tab to make sure these match your exact Label names!
                     lblTotalEmployees.Text = row["TotalEmployees"].ToString();
-                    lblGrossPay.Text = "₱" + Convert.ToDecimal(row["TotalGross"]).ToString("#,##0.00");
-                    lblDeduction.Text = "₱" + Convert.ToDecimal(row["TotalDeductions"]).ToString("#,##0.00");
-                    lblNetPay.Text = "₱" + Convert.ToDecimal(row["TotalNet"]).ToString("#,##0.00");
+                    lblGrossPay.Text = string.Format("₱{0:N2}", Convert.ToDouble(row["TotalGross"]));
+                    lblDeduction.Text = string.Format("₱{0:N2}", Convert.ToDouble(row["TotalDeductions"]));
+                    lblNetPay.Text = string.Format("₱{0:N2}", Convert.ToDouble(row["TotalNet"]));
                 }
             }
             catch (Exception ex)
@@ -389,24 +477,6 @@ namespace EmployeManagementSoftware
                 MessageBox.Show("Failed to load salary dashboard metrics: " + ex.Message, "Database Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
-
-        private void LoadDashboardMetrics()
-        {
-
-            DataTable dt = DatabaseHelper.GetDashboardMetrics(dtpPayPeriod.Value);
-
-            if (dt.Rows.Count > 0)
-            {
-                DataRow row = dt.Rows[0];
-
-                lblTotalEmployees.Text = row["TotalEmployees"].ToString();
-                lblGrossPay.Text = string.Format("₱{0:N2}", Convert.ToDouble(row["TotalGross"]));
-                lblDeduction.Text = string.Format("₱{0:N2}", Convert.ToDouble(row["TotalDeductions"]));
-                lblNetPay.Text = string.Format("₱{0:N2}", Convert.ToDouble(row["TotalNet"]));
-            }
-        }
-       
-        
 
         private void txtEmpID_TextChanged_1(object sender, EventArgs e)
         {
