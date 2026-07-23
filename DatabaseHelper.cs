@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.Data.Sqlite;
+using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Data.SQLite;
@@ -13,6 +14,7 @@ namespace EmployeManagementSoftware
     {
         // Centralized database filename used across all application forms
         private const string DB_NAME = "employees.db";
+        private static string dbPath = "employees.db";
 
         public static string ConnectionString { get; } = $"Data Source={DB_NAME};Version=3;";
 
@@ -422,8 +424,8 @@ namespace EmployeManagementSoftware
 
         public static int ClearSalaryRecordsForMonth(DateTime payPeriod)
         {
-            using(var conn = new SQLiteConnection(ConnectionString))
-    {
+            using (var conn = new SQLiteConnection(ConnectionString))
+            {
                 conn.Open();
 
                 string monthName = payPeriod.ToString("MMMM");          // "August"
@@ -467,7 +469,7 @@ namespace EmployeManagementSoftware
                 }
             }
         }
-        
+
 
         public static DataTable GetRecentActivities()
         {
@@ -490,6 +492,36 @@ namespace EmployeManagementSoftware
                 }
             }
             return dt;
+        }
+
+        public static bool DeleteSalaryRecordByEmployeeId(string employeeId)
+        {
+            try
+            {
+                using (var connection = new SqliteConnection("Data Source=employees.db"))
+                {
+                    connection.Open();
+
+                    // Using the confirmed table name: SalaryRecords
+                    string query = "DELETE FROM SalaryRecords WHERE EmployeeID = @EmployeeID";
+
+                    using (var command = new SqliteCommand(query, connection))
+                    {
+                        command.Parameters.AddWithValue("@EmployeeID", employeeId);
+                        int rowsAffected = command.ExecuteNonQuery();
+                        return rowsAffected > 0;
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error deleting salary record: " + ex.Message,
+                                "Database Error",
+                                MessageBoxButtons.OK,
+                                MessageBoxIcon.Error);
+                return false;
+            }
+
         }
     }
 }

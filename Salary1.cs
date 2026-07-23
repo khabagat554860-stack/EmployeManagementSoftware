@@ -23,6 +23,8 @@ namespace EmployeManagementSoftware
         {
             InitializeComponent();
 
+            
+
             // Make Position ComboBox strictly display-only
             cmbPosition.DropDownStyle = ComboBoxStyle.DropDownList;
             cmbPosition.Enabled = false;
@@ -483,6 +485,61 @@ namespace EmployeManagementSoftware
             if (string.IsNullOrWhiteSpace(txtEmpID.Text))
             {
                 RefreshSalaryGrid();
+            }
+        }
+
+        private void btnDeleteSalaryRecord_Click(object sender, EventArgs e)
+        {
+            string employeeId = txtEmpID.Text.Trim();
+
+            if (string.IsNullOrWhiteSpace(employeeId))
+            {
+                MessageBox.Show("Please select a salary record from the table to delete.",
+                                "No Selection",
+                                MessageBoxButtons.OK,
+                                MessageBoxIcon.Warning);
+                return;
+            }
+
+            string empName = txtEmpName.Text.Trim();
+            DateTime payPeriod = dtpPayPeriod.Value;
+
+            // 2. Confirm single-record deletion with the user
+            DialogResult confirm = MessageBox.Show(
+                $"Are you sure you want to delete the salary record for '{empName}' (ID: {employeeId}) for {payPeriod:MMMM yyyy}?\n\nThis will permanently remove this specific record.",
+                "Confirm Delete",
+                MessageBoxButtons.YesNo,
+                MessageBoxIcon.Warning
+            );
+
+            if (confirm == DialogResult.Yes)
+            {
+                // 3. Delete only this specific employee's salary record
+                bool deleted = DatabaseHelper.DeleteSalaryRecordByEmployeeId(employeeId);
+
+                if (deleted)
+                {
+                    // 4. Log the deletion event in Activity Logs
+                    DatabaseHelper.LogActivity(
+                        string.IsNullOrWhiteSpace(empName) ? $"Emp ID {employeeId}" : empName,
+                        "Salary Deleted",
+                        $"Deleted salary record for pay period {payPeriod:MMMM yyyy}"
+                    );
+
+                    MessageBox.Show("Salary record deleted successfully!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                    // 5. Update UI, recalculate cards, and reset input controls
+                    RefreshSalaryGrid();
+                    LoadDashboardMetrics();
+                    ClearFields();
+                }
+                else
+                {
+                    MessageBox.Show("Could not find a salary record to delete for this Employee ID.",
+                                    "Delete Failed",
+                                    MessageBoxButtons.OK,
+                                    MessageBoxIcon.Error);
+                }
             }
         }
     }
