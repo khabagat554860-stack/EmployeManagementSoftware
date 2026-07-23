@@ -29,26 +29,26 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Salary1));
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges1 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges2 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges3 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges4 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges5 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges6 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges7 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges8 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges9 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges10 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges11 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges12 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges13 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges14 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges15 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges16 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges17 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges18 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges19 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges20 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges41 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges42 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges43 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges44 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges45 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges46 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges47 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges48 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges49 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges50 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges51 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges52 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges53 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges54 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges55 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges56 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges57 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges58 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges59 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges60 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             panelHeader = new Panel();
             dtpPayPeriod = new DateTimePicker();
             lblPayPeriod = new Label();
@@ -107,6 +107,7 @@
             guna2CirclePictureBox6 = new Guna.UI2.WinForms.Guna2CirclePictureBox();
             lblSalaryRecords = new Label();
             lblFooter = new Label();
+            btnDeleteSalaryRecord = new Button();
             panelHeader.SuspendLayout();
             panelEmployees.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)guna2CirclePictureBox1).BeginInit();
@@ -204,7 +205,7 @@
             guna2CirclePictureBox1.Location = new Point(16, 19);
             guna2CirclePictureBox1.Margin = new Padding(3, 4, 3, 4);
             guna2CirclePictureBox1.Name = "guna2CirclePictureBox1";
-            guna2CirclePictureBox1.ShadowDecoration.CustomizableEdges = customizableEdges1;
+            guna2CirclePictureBox1.ShadowDecoration.CustomizableEdges = customizableEdges41;
             guna2CirclePictureBox1.ShadowDecoration.Mode = Guna.UI2.WinForms.Enums.ShadowMode.Circle;
             guna2CirclePictureBox1.Size = new Size(91, 107);
             guna2CirclePictureBox1.SizeMode = PictureBoxSizeMode.StretchImage;
@@ -263,7 +264,7 @@
             guna2CirclePictureBox2.Location = new Point(16, 19);
             guna2CirclePictureBox2.Margin = new Padding(3, 4, 3, 4);
             guna2CirclePictureBox2.Name = "guna2CirclePictureBox2";
-            guna2CirclePictureBox2.ShadowDecoration.CustomizableEdges = customizableEdges2;
+            guna2CirclePictureBox2.ShadowDecoration.CustomizableEdges = customizableEdges42;
             guna2CirclePictureBox2.ShadowDecoration.Mode = Guna.UI2.WinForms.Enums.ShadowMode.Circle;
             guna2CirclePictureBox2.Size = new Size(91, 107);
             guna2CirclePictureBox2.SizeMode = PictureBoxSizeMode.StretchImage;
@@ -322,7 +323,7 @@
             guna2CirclePictureBox3.Location = new Point(16, 19);
             guna2CirclePictureBox3.Margin = new Padding(3, 4, 3, 4);
             guna2CirclePictureBox3.Name = "guna2CirclePictureBox3";
-            guna2CirclePictureBox3.ShadowDecoration.CustomizableEdges = customizableEdges3;
+            guna2CirclePictureBox3.ShadowDecoration.CustomizableEdges = customizableEdges43;
             guna2CirclePictureBox3.ShadowDecoration.Mode = Guna.UI2.WinForms.Enums.ShadowMode.Circle;
             guna2CirclePictureBox3.Size = new Size(91, 107);
             guna2CirclePictureBox3.SizeMode = PictureBoxSizeMode.StretchImage;
@@ -381,7 +382,7 @@
             guna2CirclePictureBox4.Location = new Point(16, 19);
             guna2CirclePictureBox4.Margin = new Padding(3, 4, 3, 4);
             guna2CirclePictureBox4.Name = "guna2CirclePictureBox4";
-            guna2CirclePictureBox4.ShadowDecoration.CustomizableEdges = customizableEdges4;
+            guna2CirclePictureBox4.ShadowDecoration.CustomizableEdges = customizableEdges44;
             guna2CirclePictureBox4.ShadowDecoration.Mode = Guna.UI2.WinForms.Enums.ShadowMode.Circle;
             guna2CirclePictureBox4.Size = new Size(91, 107);
             guna2CirclePictureBox4.SizeMode = PictureBoxSizeMode.StretchImage;
@@ -423,6 +424,7 @@
             // panelSalaryDetails
             // 
             panelSalaryDetails.BorderStyle = BorderStyle.FixedSingle;
+            panelSalaryDetails.Controls.Add(btnDeleteSalaryRecord);
             panelSalaryDetails.Controls.Add(cmbPosition);
             panelSalaryDetails.Controls.Add(btnClear);
             panelSalaryDetails.Controls.Add(btnUpdate);
@@ -453,7 +455,7 @@
             // cmbPosition
             // 
             cmbPosition.BackColor = Color.Transparent;
-            cmbPosition.CustomizableEdges = customizableEdges5;
+            cmbPosition.CustomizableEdges = customizableEdges45;
             cmbPosition.DrawMode = DrawMode.OwnerDrawFixed;
             cmbPosition.DropDownStyle = ComboBoxStyle.DropDownList;
             cmbPosition.Enabled = false;
@@ -465,7 +467,7 @@
             cmbPosition.Items.AddRange(new object[] { "Developer", "Designer", "HR", "Sales", "Accountant" });
             cmbPosition.Location = new Point(175, 212);
             cmbPosition.Name = "cmbPosition";
-            cmbPosition.ShadowDecoration.CustomizableEdges = customizableEdges6;
+            cmbPosition.ShadowDecoration.CustomizableEdges = customizableEdges46;
             cmbPosition.Size = new Size(296, 36);
             cmbPosition.TabIndex = 22;
             // 
@@ -474,7 +476,7 @@
             btnClear.BackColor = Color.FromArgb(212, 61, 60);
             btnClear.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
             btnClear.ForeColor = Color.White;
-            btnClear.Location = new Point(307, 559);
+            btnClear.Location = new Point(363, 559);
             btnClear.Margin = new Padding(3, 4, 3, 4);
             btnClear.Name = "btnClear";
             btnClear.Size = new Size(107, 45);
@@ -488,7 +490,7 @@
             btnUpdate.BackColor = Color.FromArgb(244, 196, 48);
             btnUpdate.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
             btnUpdate.ForeColor = Color.White;
-            btnUpdate.Location = new Point(175, 559);
+            btnUpdate.Location = new Point(125, 559);
             btnUpdate.Margin = new Padding(3, 4, 3, 4);
             btnUpdate.Name = "btnUpdate";
             btnUpdate.Size = new Size(107, 45);
@@ -502,7 +504,7 @@
             btnSave.BackColor = Color.FromArgb(22, 138, 77);
             btnSave.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
             btnSave.ForeColor = Color.White;
-            btnSave.Location = new Point(43, 559);
+            btnSave.Location = new Point(6, 559);
             btnSave.Margin = new Padding(3, 4, 3, 4);
             btnSave.Name = "btnSave";
             btnSave.Size = new Size(107, 45);
@@ -536,7 +538,7 @@
             // 
             // txtNetSalary
             // 
-            txtNetSalary.CustomizableEdges = customizableEdges7;
+            txtNetSalary.CustomizableEdges = customizableEdges47;
             txtNetSalary.DefaultText = "";
             txtNetSalary.DisabledState.BorderColor = Color.FromArgb(208, 208, 208);
             txtNetSalary.DisabledState.FillColor = Color.FromArgb(226, 226, 226);
@@ -550,13 +552,13 @@
             txtNetSalary.Name = "txtNetSalary";
             txtNetSalary.PlaceholderText = "₱";
             txtNetSalary.SelectedText = "";
-            txtNetSalary.ShadowDecoration.CustomizableEdges = customizableEdges8;
+            txtNetSalary.ShadowDecoration.CustomizableEdges = customizableEdges48;
             txtNetSalary.Size = new Size(151, 48);
             txtNetSalary.TabIndex = 15;
             // 
             // txtDeductions
             // 
-            txtDeductions.CustomizableEdges = customizableEdges9;
+            txtDeductions.CustomizableEdges = customizableEdges49;
             txtDeductions.DefaultText = "";
             txtDeductions.DisabledState.BorderColor = Color.FromArgb(208, 208, 208);
             txtDeductions.DisabledState.FillColor = Color.FromArgb(226, 226, 226);
@@ -570,14 +572,14 @@
             txtDeductions.Name = "txtDeductions";
             txtDeductions.PlaceholderText = "₱";
             txtDeductions.SelectedText = "";
-            txtDeductions.ShadowDecoration.CustomizableEdges = customizableEdges10;
+            txtDeductions.ShadowDecoration.CustomizableEdges = customizableEdges50;
             txtDeductions.Size = new Size(151, 48);
             txtDeductions.TabIndex = 14;
             txtDeductions.TextChanged += txtDeductions_TextChanged;
             // 
             // txtAllowances
             // 
-            txtAllowances.CustomizableEdges = customizableEdges11;
+            txtAllowances.CustomizableEdges = customizableEdges51;
             txtAllowances.DefaultText = "";
             txtAllowances.DisabledState.BorderColor = Color.FromArgb(208, 208, 208);
             txtAllowances.DisabledState.FillColor = Color.FromArgb(226, 226, 226);
@@ -591,14 +593,14 @@
             txtAllowances.Name = "txtAllowances";
             txtAllowances.PlaceholderText = "₱";
             txtAllowances.SelectedText = "";
-            txtAllowances.ShadowDecoration.CustomizableEdges = customizableEdges12;
+            txtAllowances.ShadowDecoration.CustomizableEdges = customizableEdges52;
             txtAllowances.Size = new Size(151, 48);
             txtAllowances.TabIndex = 13;
             txtAllowances.TextChanged += txtAllowances_TextChanged;
             // 
             // txtBasicSalary
             // 
-            txtBasicSalary.CustomizableEdges = customizableEdges13;
+            txtBasicSalary.CustomizableEdges = customizableEdges53;
             txtBasicSalary.DefaultText = "";
             txtBasicSalary.DisabledState.BorderColor = Color.FromArgb(208, 208, 208);
             txtBasicSalary.DisabledState.FillColor = Color.FromArgb(226, 226, 226);
@@ -613,14 +615,14 @@
             txtBasicSalary.PlaceholderText = "₱";
             txtBasicSalary.RightToLeft = RightToLeft.No;
             txtBasicSalary.SelectedText = "";
-            txtBasicSalary.ShadowDecoration.CustomizableEdges = customizableEdges14;
+            txtBasicSalary.ShadowDecoration.CustomizableEdges = customizableEdges54;
             txtBasicSalary.Size = new Size(151, 48);
             txtBasicSalary.TabIndex = 12;
             txtBasicSalary.TextChanged += txtBasicSalary_TextChanged;
             // 
             // txtEmpName
             // 
-            txtEmpName.CustomizableEdges = customizableEdges15;
+            txtEmpName.CustomizableEdges = customizableEdges55;
             txtEmpName.DefaultText = "";
             txtEmpName.DisabledState.BorderColor = Color.FromArgb(208, 208, 208);
             txtEmpName.DisabledState.FillColor = Color.FromArgb(226, 226, 226);
@@ -634,13 +636,13 @@
             txtEmpName.Name = "txtEmpName";
             txtEmpName.PlaceholderText = "Enter Employee Name";
             txtEmpName.SelectedText = "";
-            txtEmpName.ShadowDecoration.CustomizableEdges = customizableEdges16;
+            txtEmpName.ShadowDecoration.CustomizableEdges = customizableEdges56;
             txtEmpName.Size = new Size(296, 48);
             txtEmpName.TabIndex = 10;
             // 
             // txtEmpID
             // 
-            txtEmpID.CustomizableEdges = customizableEdges17;
+            txtEmpID.CustomizableEdges = customizableEdges57;
             txtEmpID.DefaultText = "";
             txtEmpID.DisabledState.BorderColor = Color.FromArgb(208, 208, 208);
             txtEmpID.DisabledState.FillColor = Color.FromArgb(226, 226, 226);
@@ -654,7 +656,7 @@
             txtEmpID.Name = "txtEmpID";
             txtEmpID.PlaceholderText = "Enter Employee ID";
             txtEmpID.SelectedText = "";
-            txtEmpID.ShadowDecoration.CustomizableEdges = customizableEdges18;
+            txtEmpID.ShadowDecoration.CustomizableEdges = customizableEdges58;
             txtEmpID.Size = new Size(151, 48);
             txtEmpID.TabIndex = 9;
             txtEmpID.TextChanged += txtEmpID_TextChanged_1;
@@ -759,7 +761,7 @@
             guna2CirclePictureBox5.Location = new Point(15, -1);
             guna2CirclePictureBox5.Margin = new Padding(3, 4, 3, 4);
             guna2CirclePictureBox5.Name = "guna2CirclePictureBox5";
-            guna2CirclePictureBox5.ShadowDecoration.CustomizableEdges = customizableEdges19;
+            guna2CirclePictureBox5.ShadowDecoration.CustomizableEdges = customizableEdges59;
             guna2CirclePictureBox5.ShadowDecoration.Mode = Guna.UI2.WinForms.Enums.ShadowMode.Circle;
             guna2CirclePictureBox5.Size = new Size(69, 80);
             guna2CirclePictureBox5.SizeMode = PictureBoxSizeMode.StretchImage;
@@ -857,7 +859,7 @@
             guna2CirclePictureBox6.Location = new Point(24, -1);
             guna2CirclePictureBox6.Margin = new Padding(3, 4, 3, 4);
             guna2CirclePictureBox6.Name = "guna2CirclePictureBox6";
-            guna2CirclePictureBox6.ShadowDecoration.CustomizableEdges = customizableEdges20;
+            guna2CirclePictureBox6.ShadowDecoration.CustomizableEdges = customizableEdges60;
             guna2CirclePictureBox6.ShadowDecoration.Mode = Guna.UI2.WinForms.Enums.ShadowMode.Circle;
             guna2CirclePictureBox6.Size = new Size(69, 80);
             guna2CirclePictureBox6.SizeMode = PictureBoxSizeMode.StretchImage;
@@ -883,6 +885,20 @@
             lblFooter.Size = new Size(374, 20);
             lblFooter.TabIndex = 7;
             lblFooter.Text = "© 2026 Salary Management System. All rights reserved.";
+            // 
+            // btnDeleteSalaryRecord
+            // 
+            btnDeleteSalaryRecord.BackColor = Color.Gray;
+            btnDeleteSalaryRecord.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            btnDeleteSalaryRecord.ForeColor = Color.White;
+            btnDeleteSalaryRecord.Location = new Point(244, 559);
+            btnDeleteSalaryRecord.Margin = new Padding(3, 4, 3, 4);
+            btnDeleteSalaryRecord.Name = "btnDeleteSalaryRecord";
+            btnDeleteSalaryRecord.Size = new Size(107, 45);
+            btnDeleteSalaryRecord.TabIndex = 23;
+            btnDeleteSalaryRecord.Text = "Delete";
+            btnDeleteSalaryRecord.UseVisualStyleBackColor = false;
+            btnDeleteSalaryRecord.Click += btnDeleteSalaryRecord_Click;
             // 
             // Salary1
             // 
@@ -993,5 +1009,6 @@
         private Label lblTotalRecords;
         private DataGridView dgvSalaryRecords;
         private Guna.UI2.WinForms.Guna2ComboBox cmbPosition;
+        private Button btnDeleteSalaryRecord;
     }
 }
